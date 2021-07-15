@@ -1,5 +1,7 @@
 <template>
-	<v-list color="transparent">
+	<v-list color="transparent"
+		dense
+	>
 		<v-list-item class="pl-2">
 			<v-list-item-avatar
 				color="grey lighten-2"
@@ -32,7 +34,11 @@
 			:to="item.to"
 			link
 		>
-			<v-list-item-icon><v-icon>{{ item.icon }}</v-icon></v-list-item-icon>
+			<v-list-item-icon>
+				<v-icon size="20">
+					{{ item.icon }}
+				</v-icon>
+			</v-list-item-icon>
 			<v-list-item-content>
 				<v-list-item-title>{{ item.title }}</v-list-item-title>
 			</v-list-item-content>
@@ -43,7 +49,7 @@
 			:value="false"
 		>
 			<template #prependIcon>
-				<v-icon>
+				<v-icon size="20">
 					{{ drawerGroup.icon }}
 				</v-icon>
 			</template>
@@ -57,7 +63,11 @@
 				:to="item.to"
 				link
 			>
-				<v-list-item-icon><v-icon>{{ item.icon }}</v-icon></v-list-item-icon>
+				<v-list-item-icon>
+					<v-icon size="20">
+						{{ item.icon }}
+					</v-icon>
+				</v-list-item-icon>
 				<v-list-item-content>
 					<v-list-item-title>{{ item.title }}</v-list-item-title>
 				</v-list-item-content>

@@ -7,14 +7,18 @@
 			height="50"
 		>
 			<v-app-bar-nav-icon @click="toggleSettingsDrawer">
-				<v-icon v-if="mini">
+				<v-icon v-if="mini"
+					size="20"
+				>
 					mdi-menu
 				</v-icon>
-				<v-icon v-else>
+				<v-icon v-else
+					size="20"
+				>
 					mdi-menu-open
 				</v-icon>
 			</v-app-bar-nav-icon>
-			<v-toolbar-title style="font-size: 1.1rem;">
+			<v-toolbar-title style="font-size: 1rem;">
 				{{ $route.name }}
 			</v-toolbar-title>
 			<v-spacer />
