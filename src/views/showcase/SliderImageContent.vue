@@ -21,22 +21,17 @@
 							dark
 							class="showcase-blue-bg"
 							v-bind="attrs"
-							:height="($vuetify.breakpoint.smAndDown) ? 50 : 65"
-							:width="($vuetify.breakpoint.smAndDown) ? 130 : 200"
 							v-on="on"
 							@click="routeToFeedsPage()"
 						>
-							<span v-if="$vuetify.breakpoint.smAndUp"
-								class="explore"
-							>Explore</span>
-							<v-icon right
-								size="24"
-								:class="
-									$vuetify.breakpoint.mdAndUp
-										? 'ml-4'
-										: ''
-								"
-							>
+							<v-fade-transition>
+								<span v-if="$vuetify.breakpoint.smAndUp"
+									class="explore pr-2"
+								>
+									Explore
+								</span>
+							</v-fade-transition>
+							<v-icon>
 								mdi-arrow-right-circle
 							</v-icon>
 						</v-btn>
@@ -84,34 +79,58 @@ export default {
 
 <style lang="scss" scoped>
 .image-content {
-	padding: 150px 20px 0;
+	padding: 15vh 20px 0;
 	max-width: 1000px;
 	margin: 0 auto;
-	@media only screen and (max-width: 600px) {
-		padding-top: 50px;
-	}
 }
 .main {
+	transition: all ease .5s;
 	padding: 20px 0;
 	font-size: 4rem;
 	line-height: 4.5rem;
 	font-weight: 800;
 }
 .sub {
+	transition: all ease .5s;
 	font-size: 2rem;
 	line-height: 2.5rem;
 	font-weight: 600;
 }
 .context {
- text-transform: capitalize;
+	transition: all ease .5s;
+	text-transform: capitalize;
 	font-size: 2rem;
 	line-height: 2.5rem;
 	font-weight: 500;
 }
 .explore-btn {
 	padding-top: 20px;
+	.showcase-blue-bg {
+		transition: all ease .5s;
+		height: 55px;
+		width: 180px;
+		@media only screen and (max-width: 900px) {
+			height: 50px;
+			width: 150px;
+		}
+		@media only screen and (max-width: 700px) {
+			height: 47px;
+			width: 140px;
+		}
+		@media only screen and (max-width: 600px) {
+			height: 50px;
+			width: 70px;
+		}
+	}
 	.explore {
-		font-size: 18px
+		transition: all ease .5s;
+		font-size: 16px;
+		@media only screen and (max-width: 900px) {
+			font-size: 16px;
+		}
+		@media only screen and (max-width: 700px) {
+			font-size: 14px;
+		}
 	}
 }
 @media only screen and (max-width: 1000px) {
@@ -171,6 +190,21 @@ export default {
 	.context {
 		font-size: .875rem;
 		line-height: 1rem;
+	}
+}
+@media only screen and (max-width: 290px) {
+	.main {
+		padding: 4px 0;
+		font-size: 2rem;
+		line-height: 2.5rem;
+	}
+	.sub {
+		height: 0;
+		visibility: hidden;
+	}
+	.context {
+		height: 0;
+		visibility: hidden;
 	}
 }
 </style>
