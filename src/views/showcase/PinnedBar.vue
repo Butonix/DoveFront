@@ -200,7 +200,6 @@ export default {
 	methods: {
 		async init() {
 			await this.$store.dispatch("post/fetchPinnedMultimedia")
-			console.log(this.pinnedMedias)
 		},
 		initSwiper() {
 			Swiper.use([Navigation, Pagination]);

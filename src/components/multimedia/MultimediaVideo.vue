@@ -126,7 +126,6 @@ export default {
 			this.posterToUpload = null
 		},
 		async patch() {
-			console.log(this.posterToUpload)
 			try {
 				await this.$api.patch("multimedia-video/" + this.video.id + "/", this.$helper.getFormData({
 					...this.editor,

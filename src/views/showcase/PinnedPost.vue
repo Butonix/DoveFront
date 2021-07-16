@@ -84,7 +84,6 @@ export  default {
 	},
 	created() {
 		this.init()
-		console.log(this.posts)
 	},
 	methods: {
 		init() {
