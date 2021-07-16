@@ -183,14 +183,14 @@
 		</v-card>
 		<v-col cols="12"
 			class="pa-0"
-			style="position: absolute; bottom: 0;"
 		>
 			<v-card tile
-				height="35"
+				min-height="35"
 				style="font-size: 14px;"
 				color="rgb(233 30 99 / 11%)"
+				class="d-flex justify-center align-center"
 			>
-				<div class="fill-height d-flex justify-center align-center">
+				<div>
 					{{ new Date().getFullYear() }} — <strong class="px-1">Ishworiya Bhajan Mandal Sachchai Kendra Nepal</strong> - made with ❤️ by
 					<a href="https://github.com/kiranparajuli589"
 						target="_blank"
