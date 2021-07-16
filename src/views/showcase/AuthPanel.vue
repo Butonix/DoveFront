@@ -90,15 +90,16 @@ export default {
 
 <style scoped lang="scss">
 .auth-panel-btn {
+	background: rgb(219 165 32 / 52%);
 	top: 20px;
-	left: 90%;
+	right: 20px;
 }
 .logout {
 	top: 80px;
-	left: 90%;
+	right: 20px;
 }
 .register {
 	top: 80px;
-	left: 90%;
+	right: 20px;
 }
 </style>
