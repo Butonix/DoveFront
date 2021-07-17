@@ -16,7 +16,7 @@
 					class="mx-auto overflow-hidden"
 					color="transparent"
 					height="100%"
-					max-width="800"
+					max-width="600"
 					flat
 				>
 					<v-list
@@ -40,7 +40,7 @@
 									</h1>
 								</v-col>
 								<v-col cols="12"
-									class="month-column py-2"
+									class="month-column"
 								>
 									<h2 class="text-center">
 										{{ $moment(event.start_date).format('MMMM') }}
@@ -173,12 +173,14 @@ export default {
 </script>
 <style lang="sass" scoped>
 .date-avatar
-	border: 2px solid white !important
+	border: 3px solid white !important
 	background: rgb(232 140 4 / 1%)
 	position: absolute
 	top: 0
 	left: 5%
 	z-index: 2
+	@media only screen and (max-width: 600px)
+		border: 2px solid white !important
 .highlights-wrapper
 	margin-top: -20vh
 .highlights-carousel
@@ -197,6 +199,12 @@ export default {
 .big-title
 	font-size: 26px
 	line-height: 26px
+.month-column
+	padding-top: 4px !important
+	border-top: 3px solid white
+	@media only screen and (max-width: 600px)
+		padding-top: 4px !important
+		border-top: 2px solid white
 sup
 	font-size: 16px
 </style>
