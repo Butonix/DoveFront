@@ -24,19 +24,15 @@
 						<v-col cols="12">
 							<country-field
 								v-model="editedItem.country"
-								:items="countries.results"
 								:province="editedItem.province"
-								:loading="countriesLoading"
 								:errors="addFormErrors"
 							/>
 						</v-col>
 						<v-col cols="12">
 							<province-field
 								v-model="editedItem.province"
-								:items="provinces.results"
 								:country="editedItem.country"
 								:district="null"
-								:loading="provincesLoading"
 								:errors="addFormErrors"
 							/>
 						</v-col>
@@ -73,7 +69,8 @@ const urls = require("@/urls.json")
 const util = require("util")
 export default {
 	name: "AddDistrictFormDialog",
-	mixins: [CountryAutocomplete, ProvinceAutocomplete, Snack],
+	mixins: [Snack],
+	emits: ["reload"],
 	data: function () {
 		return {
 			createDialog: false,
@@ -113,7 +110,7 @@ export default {
 				})
 				await this.openSnack("District added successfully", "success")
 				this.closeDialog()
-				this.$bus.emit("reload")
+				this.$emit("reload")
 			} catch (e) {
 				const status = parseInt(e.response.status.toString())
 				if (status === 400) {

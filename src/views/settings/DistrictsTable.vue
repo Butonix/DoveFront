@@ -27,7 +27,7 @@
 						size="30"
 					>
 						<v-icon color="white"
-							size="20"
+							size="15"
 						>
 							mdi-map-marker-multiple-outline
 						</v-icon>
@@ -77,7 +77,7 @@
 					</v-btn>
 
 
-					<add-district-form-dialog />
+					<add-district-form-dialog @reload="initialize" />
 				</v-toolbar>
 			</template>
 			<!-- eslint-disable-next-line vue/valid-v-slot-->
@@ -141,6 +141,7 @@ export default {
 	mixins: [AdminTableList, AdminTableDeleteItemMixin],
 	data() {
 		return {
+			model: "district",
 			headers: [
 				{
 					text: "actions",
@@ -153,11 +154,7 @@ export default {
 				{ text: "UPDATED AT", value: "updated_at" }
 			],
 			//edit dialog for field
-			nameToUpdate: null,
-			mixinData: {
-				modelName: "District",
-				deleteAction: "location/deleteDistrict",
-			}
+			nameToUpdate: null
 		}
 	},
 	computed: {
