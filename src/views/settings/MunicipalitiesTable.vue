@@ -56,7 +56,7 @@
 					/>
 					<v-spacer />
 					<v-divider
-						class="mx-4 search-follower"
+						class="mx-4"
 						inset
 						vertical
 					/>
