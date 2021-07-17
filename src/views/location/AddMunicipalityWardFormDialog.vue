@@ -23,7 +23,7 @@
 							<province-field
 								v-model="editedItem.province"
 								:country="editedItem.country"
-								:district="null"
+								:district="editedItem.district"
 								:errors="addFormErrors"
 							/>
 						</v-col>
@@ -31,6 +31,7 @@
 							<district-field
 								v-model="editedItem.district"
 								:province="editedItem.province"
+								:municipality="editedItem.municipality"
 								:errors="addFormErrors"
 							/>
 						</v-col>
@@ -57,6 +58,7 @@
 								label="Number"
 								:errors="addFormErrors"
 								icon="mdi-numeric"
+								type="number"
 							/>
 						</v-col>
 					</v-row>

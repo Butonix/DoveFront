@@ -34,6 +34,7 @@
 								label="Number"
 								:errors="addFormErrors"
 								icon="mdi-numeric"
+								type="number"
 							/>
 						</v-col>
 					</v-row>

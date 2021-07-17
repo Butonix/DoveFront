@@ -23,7 +23,7 @@
 							<province-field
 								v-model="editedItem.province"
 								:country="editedItem.country"
-								:district="null"
+								:district="editedItem.district"
 								:errors="addFormErrors"
 							/>
 						</v-col>
