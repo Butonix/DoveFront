@@ -9,6 +9,7 @@
 			solo hide-details="auto"
 			prepend-inner-icon="mdi-magnify"
 		/>
+		<div class="py-1" />
 		<no-multimedia-card v-if="videos.length === 0"
 			text="Video database is empty."
 		/>

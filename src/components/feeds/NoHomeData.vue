@@ -1,30 +1,24 @@
 <template>
-	<v-card
-		color="transparent"
-		class="no-post py-3"
-		flat
-		min-height="73vh"
+	<v-card class="no-post"
+		max-height="300"
 	>
-		<v-chip color="purple lighten-5"
-			label
+		<v-img :src="image"
+			height="300"
 		>
-			{{ topText }}
-		</v-chip>
-		<v-card height="200"
-			max-width="500"
-			class="ma-4 mx-auto"
-			color="transparent"
-		>
-			<v-img
-				height="200"
-				:src="image"
-			/>
-		</v-card>
-		<v-chip label
-			color="blue lighten-4"
-		>
-			{{ bottomText }}
-		</v-chip>
+			<template #default>
+				<div class="fill-height text-center mx-2 d-flex justify-center align-center">
+					<div>
+						<div class="main">
+							{{ topText }}
+						</div>
+						<div class="py-1" />
+						<div class="sub">
+							{{ bottomText }}
+						</div>
+					</div>
+				</div>
+			</template>
+		</v-img>
 	</v-card>
 </template>
 
@@ -34,7 +28,7 @@ export default {
 	props: {
 		image: {
 			type: String,
-			default: "https://media.giphy.com/media/1O2BRZcDgIfDsKMTbG/giphy.gif"
+			default: require("@/assets/start-writing.jpg")
 		}
 	},
 	computed: {
@@ -58,6 +52,17 @@ export default {
 <style scoped lang="sass">
 .no-post
 	text-align: center
-	color: lightslategrey
-	font-size: .875rem
+	font-family: "Open Sans Condensed", sans-serif
+	.main
+		padding: 6px 15px 8px
+		border-radius: 20px
+		background: white
+		font-size: 14px
+	.sub
+		margin: 0 5px
+		padding: 6px 10px 8px
+		border-radius: 4px
+		background: white
+		font-size: 13px
+
 </style>

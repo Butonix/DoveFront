@@ -3,33 +3,36 @@
 		class="pa-4"
 		color="no-data-gradient"
 	>
-		<div class="d-flex justify-center">
-			<v-chip class="text-center"
-				color="rgba(0, 0, 0, .1)"
-			>
-				{{ text }}
-			</v-chip>
-		</div>
-		<v-card-actions class="d-flex justify-center">
-			<v-btn
-				color="rgba(0, 0, 0, .1)"
-				to="/home/multimedia/images"
-			>
-				Images
-			</v-btn>
-			<v-btn
-				color="rgba(0, 0, 0, .1)"
-				to="/home/multimedia/videos"
-			>
-				Videos
-			</v-btn>
-			<v-btn
-				color="rgba(0, 0, 0, .1)"
-				to="/home/multimedia/youtube"
-			>
-				Youtube
-			</v-btn>
-		</v-card-actions>
+		<v-img :src="require('@/assets/empty-copy.jpg')">
+			<template #default>
+				<div class="fill-height d-flex align-center justify-center">
+					<div>
+						<div class="d-flex justify-center">
+							<v-chip class="text-center white">
+								{{ text }}
+							</v-chip>
+						</div>
+						<v-card-actions class="d-flex justify-center">
+							<v-btn
+								to="/home/multimedia/images"
+							>
+								Images
+							</v-btn>
+							<v-btn
+								to="/home/multimedia/videos"
+							>
+								Videos
+							</v-btn>
+							<v-btn
+								to="/home/multimedia/youtube"
+							>
+								Youtube
+							</v-btn>
+						</v-card-actions>
+					</div>
+				</div>
+			</template>
+		</v-img>
 	</v-card>
 </template>
 
@@ -46,5 +49,7 @@ export default {
 </script>
 
 <style scoped>
-
+::v-deep.v-btn {
+	font-size: 12px;
+}
 </style>

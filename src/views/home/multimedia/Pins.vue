@@ -1,6 +1,6 @@
 <template>
 	<v-card class="mb-8 mt-2"
-		min-height="82vh"
+		min-height="77vh"
 		flat
 		color="transparent"
 	>

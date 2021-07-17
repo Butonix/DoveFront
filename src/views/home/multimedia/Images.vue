@@ -3,6 +3,13 @@
 		min-height="82vh"
 		color="transparent"
 	>
+		<div class="py-1" />
+		<v-text-field label="search"
+			name="search"
+			solo hide-details="auto"
+			prepend-inner-icon="mdi-magnify"
+		/>
+		<div class="py-1" />
 		<no-multimedia-card
 			v-if="images.length === 0"
 			text="Image database is empty."
@@ -26,7 +33,7 @@ import {mapGetters} from "vuex";
 export default {
 	name: "Images",
 	components: {
-		NoMultimediaCard: () => "@/components/multimedia/NoMultimediaCard.vue",
+		NoMultimediaCard: () => import("@/components/multimedia/NoMultimediaCard.vue"),
 		MultimediaAction: () => import("@/components/multimedia/MultimediaAction.vue")
 	},
 	computed: {
@@ -40,6 +47,7 @@ export default {
 			this.multimedias.results.forEach(media => {
 				temp = temp.concat(media["multimedia_images"])
 			})
+			console.log(temp)
 			return temp
 		}
 	}

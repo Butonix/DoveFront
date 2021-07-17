@@ -165,7 +165,6 @@
 				</v-btn>
 			</template>
 		</v-data-table>
-		<location-update-dialog model-name="branch" />
 		<admin-delete-item-dialog
 			model-name="branch"
 			delete-action="branch/delete"

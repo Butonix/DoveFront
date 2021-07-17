@@ -4,6 +4,13 @@
 		min-height="82vh"
 		color="transparent"
 	>
+		<div class="py-1" />
+		<v-text-field label="search"
+			name="search"
+			solo hide-details="auto"
+			prepend-inner-icon="mdi-magnify"
+		/>
+		<div class="py-1" />
 		<no-multimedia-card v-if="youtube_medias.length === 0"
 			text="Youtube database is empty."
 		/>
