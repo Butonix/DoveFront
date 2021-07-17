@@ -3,19 +3,21 @@
 		width="100vw"
 		flat tile
 	>
-		<v-app-bar height="60">
+		<v-app-bar height="50">
 			<v-app-bar-nav-icon
 				@click="$router.push({name: 'HOME'})"
 			>
-				<v-icon>
+				<v-icon size="20">
 					mdi-arrow-left-circle
 				</v-icon>
 			</v-app-bar-nav-icon>
-			<v-toolbar-title>
+			<v-toolbar-title style="font-size: 16px;">
 				{{ (multimedia) ? multimedia.title : "Not Found" }}
 			</v-toolbar-title>
 			<v-spacer />
-			<v-icon>mdi-video-vintage</v-icon>
+			<v-icon size="20">
+				mdi-video-vintage
+			</v-icon>
 			<div class="px-1" />
 		</v-app-bar>
 		<v-main>
@@ -43,6 +45,7 @@
 										icon
 										v-bind="attrs"
 										v-on="on"
+										@click="pauseAllPlaying()"
 									>
 										<v-icon>mdi-chevron-right</v-icon>
 									</v-btn>
@@ -52,6 +55,7 @@
 										icon
 										v-bind="attrs"
 										v-on="on"
+										@click="pauseAllPlaying()"
 									>
 										<v-icon>mdi-chevron-left</v-icon>
 									</v-btn>
@@ -112,69 +116,24 @@
 									</template>
 								</v-carousel-item>
 								<v-carousel-item
-									v-if="multimedia['multimedia_video_urls']"
+									v-for="videoUrl in multimedia['multimedia_video_urls']"
+									:key="videoUrl.video_url"
 									active-class="multimedia-active-video-url"
 									transition="fade-transition"
 									reverse-transition="fade-transition"
 								>
 									<template #default>
 										<v-card
-											v-if="nowPlaying"
 											height="77vh"
 											class="rounded-0"
 										>
-											<v-card height="50vh"
-												tile
-											>
-												<youtube-iframe
-													:video-url="nowPlaying"
-													height="100%"
-												/>
-											</v-card>
-											<v-list class="rounded-t-0"
-												style="overflow-y: auto; overflow-x: hidden; height: calc(77vh - 50vh)"
-											>
-												<v-list-item v-for="(videoUrl) in multimedia['multimedia_video_urls']"
-													:key="videoUrl.id + 522222 * 5.7"
-													@click="1"
-												>
-													<v-list-item-avatar tile>
-														<v-img class="thumbnail-radius"
-															:src="videoUrlThumbnail(videoUrl)"
-														/>
-													</v-list-item-avatar>
-													<v-list-item-content>
-														<v-list-item-title
-															class="video-list-name cursor"
-															@click="nowPlaying = videoUrl.video_url"
-														>
-															{{ videoUrl['yt_info']['title'] }}
-														</v-list-item-title>
-														<span>
-															<v-btn v-if="!(nowPlaying === videoUrl.video_url)" icon
-																color="red lighten-1"
-															>
-																<v-icon>mdi-play</v-icon>
-															</v-btn>
-															<span v-else>
-																<v-icon color="green">mdi-play</v-icon>
-															</span>
-														</span>
-													</v-list-item-content>
-													<v-list-item-action>
-														<v-btn
-															class="ma-2"
-															fab
-															x-small
-															@click="deleteVideoUrl(videoUrl.id)"
-														>
-															<v-icon color="error">
-																mdi-delete
-															</v-icon>
-														</v-btn>
-													</v-list-item-action>
-												</v-list-item>
-											</v-list>
+											<youtube
+												ref="yt"
+												height="100%"
+												width="100%"
+												:video-id="$youtube.getIdFromUrl(videoUrl.video_url)"
+												@playing="playing"
+											/>
 										</v-card>
 									</template>
 								</v-carousel-item>
@@ -199,7 +158,6 @@ export default {
 	name: "MultimediaDetailView",
 	components: {
 		SmallFooter,
-		YoutubeIframe: () => import("@/components/multimedia/YoutubeIframe.vue"),
 		BasePostDetail: () => import("@/components/post/_postDetail"),
 		CommentsDetail: () => import("@/views/post/CommentsDetail"),
 	},
@@ -243,12 +201,10 @@ export default {
 		async deleteVideoUrl(itemId) {
 
 		},
-		getId(videoUrl) {
-			return this.$helper.getVideoIdFromYoutubeURL(videoUrl)
+		async pauseAllPlaying() {
+			await this.pauseAllYt()
+			await this.pauseAllPlayingHTMLVideos()
 		},
-		prepareEmbedUrl(videoUrl) {
-			return `https://www.youtube.com/embed/${this.getId(videoUrl)}`
-		}
 	}
 }
 </script>
