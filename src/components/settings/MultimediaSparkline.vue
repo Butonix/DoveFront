@@ -1,9 +1,9 @@
 <template>
 	<v-card
-		class="mx-auto text-center"
-		color="green"
 		dark
-		max-width="600"
+		color="green"
+		max-width="500"
+		class="text-center"
 	>
 		<v-card-text>
 			<v-sheet color="rgba(0, 0, 0, .12)">
@@ -14,6 +14,7 @@
 					padding="24"
 					stroke-linecap="round"
 					smooth
+					line-width="2"
 				>
 					<template #label="item">
 						${{ item.value }}
@@ -23,21 +24,10 @@
 		</v-card-text>
 
 		<v-card-text>
-			<div class="text-h4 font-weight-thin">
-				Sales Last 24h
+			<div class="text-h5 font-weight-thin">
+				Mulimedias
 			</div>
 		</v-card-text>
-
-		<v-divider />
-
-		<v-card-actions class="justify-center">
-			<v-btn
-				block
-				text
-			>
-				Go to Report
-			</v-btn>
-		</v-card-actions>
 	</v-card>
 </template>
 

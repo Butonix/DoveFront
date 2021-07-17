@@ -3,20 +3,16 @@
 		<v-col cols="12"
 			class="d-flex align-center"
 		>
-			<user-sparkline />
-			<multimedia-sparkline />
+			<model-sparklines />
 		</v-col>
 		<model-summary />
 	</v-row>
 </template>
 <script>
-import UserSparkline from "@/components/settings/UserSparkline.vue";
-import MultimediaSparkline from "@/components/settings/MultimediaSparkline.vue";
 export default {
 	name: "SettingsHomeView",
 	components: {
-		MultimediaSparkline,
-		UserSparkline,
+		ModelSparklines: () => import("@/views/settings/ModelSparklines"),
 		ModelSummary: () => import("@/views/settings/ModelSummary"),
 	},
 	data: () => ({
