@@ -49,7 +49,7 @@ export default {
 			required: true
 		},
 		province: {
-			required: true,
+			default: null
 		},
 		errors: {
 			type: Object,

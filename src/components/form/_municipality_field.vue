@@ -47,13 +47,13 @@ export default {
 			required: true
 		},
 		district: {
-			required: true
+			default: null
 		},
 		ward: {
-			required: true
+			default: null
 		},
 		vdc: {
-			required: true
+			default: null
 		},
 		errors: {
 			type: Object,

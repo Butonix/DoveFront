@@ -45,10 +45,10 @@ export default {
 			required: true
 		},
 		country: {
-			required: true
+			default: null
 		},
 		district: {
-			required: true
+			default: null
 		},
 		errors: {
 			type: Object,

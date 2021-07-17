@@ -47,7 +47,7 @@ export default {
 			required: true
 		},
 		vdc: {
-			required: true
+			default: null
 		},
 		errors: {
 			type: Object,

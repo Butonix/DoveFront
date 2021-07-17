@@ -47,13 +47,13 @@ export default {
 			required: true
 		},
 		province: {
-			required: true,
+			default: null
 		},
 		municipality: {
-			required: true,
+			default: null
 		},
 		vdc: {
-			required: true,
+			default: null
 		},
 		errors: {
 			type: Object,

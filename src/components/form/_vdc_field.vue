@@ -50,10 +50,10 @@ export default {
 			required: true
 		},
 		ward: {
-			required: true
+			default: null
 		},
 		municipality: {
-			required: true
+			default: null
 		},
 		errors: {
 			type: Object,

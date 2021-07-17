@@ -47,10 +47,10 @@ export default {
 			required: true
 		},
 		municipality: {
-			required: true
+			default: null
 		},
 		vdc: {
-			required: true
+			default: null
 		},
 		errors: {
 			type: Object,
