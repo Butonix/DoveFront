@@ -40,7 +40,8 @@ const getters = {
 const actions = {
 	async fetchPinnedMultimedia({commit}) {
 		const response = await $api.getWithPayload(urls.multimedia.set, {
-			is_pinned: true
+			is_pinned: true,
+			is_approved: true
 		})
 		commit(SET_PINNED_POST, response)
 	},
