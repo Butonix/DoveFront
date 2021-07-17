@@ -9,7 +9,7 @@
 			show-size
 			:accept="accept"
 			:label="label.toUpperCase()"
-			clearable
+			:clearable="clearable"
 			multiple
 			hide-details="auto"
 			prepend-icon=""
@@ -47,6 +47,10 @@ export default {
 		accept: {
 			required: true,
 			type: String
+		},
+		clearable: {
+			default: true,
+			type: Boolean
 		}
 	},
 	emits: ["input"],
