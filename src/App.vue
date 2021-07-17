@@ -62,4 +62,7 @@ export default {
 .send-icon-button {
 	transform: rotate(-60deg)
 }
+.dialog-header {
+	font-size: 16px;
+}
 </style>
