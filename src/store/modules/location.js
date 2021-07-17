@@ -1,6 +1,7 @@
 import $api from "@/handler/axios"
 const urls = require("@/urls.json")
 const locationUrls = urls.location
+const util = require("util")
 
 export const SET_COUNTRIES = "SET_COUNTRIES"
 export const SET_PROVINCES = "SET_PROVINCES"
@@ -154,7 +155,31 @@ const actions = {
 		} catch {
 			return false
 		}
-	}
+	},
+	async deleteCountry({}, {id: id}) {{
+		try {
+			await $api.delete(util.format(locationUrls.countryDetail, id))
+			return true
+		} catch (e) {
+			return false
+		}
+	}},
+	async deleteProvince({}, {id: id}) {{
+		try {
+			await $api.delete(util.format(locationUrls.provinceDetail, id))
+			return true
+		} catch (e) {
+			return false
+		}
+	}},
+	async deleteDistrict({}, {id: id}) {{
+		try {
+			await $api.delete(util.format(locationUrls.districtDetail, id))
+			return true
+		} catch (e) {
+			return false
+		}
+	}}
 }
 
 export default {
