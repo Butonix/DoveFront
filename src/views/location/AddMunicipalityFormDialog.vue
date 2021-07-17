@@ -3,24 +3,15 @@
 		v-model="createDialog"
 		max-width="500px"
 	>
-		<v-card min-height="700">
+		<v-card>
 			<v-card-title class="elevation-4">
-				<span class="dialog-header">New District</span>
+				<span class="dialog-header">New Municipality</span>
 			</v-card-title>
 			<div class="py-6" />
 
 			<v-card-text>
 				<v-container>
 					<v-row class="ma-0 pa-0">
-						<v-col cols="12">
-							<text-field
-								v-model="editedItem.name"
-								name="name"
-								label="Name"
-								:errors="addFormErrors"
-								icon="mdi-format-title"
-							/>
-						</v-col>
 						<v-col cols="12">
 							<country-field
 								v-model="editedItem.country"
@@ -34,6 +25,22 @@
 								:country="editedItem.country"
 								:district="null"
 								:errors="addFormErrors"
+							/>
+						</v-col>
+						<v-col cols="12">
+							<district-field
+								v-model="editedItem.district"
+								:province="editedItem.province"
+								:errors="addFormErrors"
+							/>
+						</v-col>
+						<v-col cols="12">
+							<text-field
+								v-model="editedItem.name"
+								name="name"
+								label="Name"
+								:errors="addFormErrors"
+								icon="mdi-format-title"
 							/>
 						</v-col>
 					</v-row>
@@ -52,7 +59,7 @@
 				<v-btn
 					color="blue darken-1"
 					text
-					@click="createDistrict"
+					@click="createMunicipality"
 				>
 					Save
 				</v-btn>
@@ -66,7 +73,7 @@ import Snack from "@/mixins/Snack";
 const urls = require("@/urls.json")
 const util = require("util")
 export default {
-	name: "AddDistrictFormDialog",
+	name: "AddMunicipalityFormDialog",
 	mixins: [Snack],
 	emits: ["reload"],
 	data: function () {
@@ -74,6 +81,7 @@ export default {
 			createDialog: false,
 			editedItem: {
 				name: null,
+				district: null,
 				province: null,
 				country: null
 			},
@@ -81,10 +89,10 @@ export default {
 		};
 	},
 	async created() {
-		this.$bus.on("open-add-district-form", this.openDialog)
+		this.$bus.on("open-add-municipality-form", this.openDialog)
 	},
 	beforeUnmount() {
-		this.$bus.off("open-add-district-form")
+		this.$bus.off("open-add-municipality-form")
 	},
 	methods: {
 		openDialog() {
@@ -94,19 +102,19 @@ export default {
 		closeDialog() {
 			const defaultData = {
 				name: null,
-				province: null
+				district: null
 			}
 			this.addFormErrors = defaultData
 			this.editedItem = defaultData
 			this.createDialog = false
 		},
-		async createDistrict() {
+		async createMunicipality() {
 			try {
-				await this.$api.post(urls.location.districtList, {
+				await this.$api.post(urls.location.municipalityList, {
 					name: this.editedItem.name,
-					province: this.editedItem.province
+					district: this.editedItem.district
 				})
-				await this.openSnack("District added successfully", "success")
+				await this.openSnack("Municipality added successfully", "success")
 				this.closeDialog()
 				this.$emit("reload")
 			} catch (e) {
@@ -114,7 +122,7 @@ export default {
 				if (status === 400) {
 					this.addFormErrors = e.response.data
 				} else {
-					await this.openSnack("District create failed")
+					await this.openSnack("Municipality create failed")
 				}
 			}
 		},
