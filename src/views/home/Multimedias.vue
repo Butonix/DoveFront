@@ -5,10 +5,11 @@
 		max-width="700" class="mx-auto rounded-0"
 		color="transparent"
 	>
-		<div v-if="$vuetify.breakpoint.smAndUp"
-			class="py-2"
-		/>
-
+		<v-fade-transition>
+			<div v-if="$vuetify.breakpoint.width > 700"
+				class="py-2"
+			/>
+		</v-fade-transition>
 		<v-card color="#90328e14">
 			<v-tabs
 				v-model="tab"
@@ -24,8 +25,16 @@
 					:key="item.title"
 					:to="item.to"
 				>
-					<v-icon>{{ item.icon }}</v-icon>
-					<span class="pl-1">{{ item.title }}</span>
+					<v-icon size="16"
+						style="margin-top: -1.5px;"
+					>
+						{{ item.icon }}
+					</v-icon>
+					<span
+						v-if="$vuetify.breakpoint.width > 275"
+						class="pl-1"
+						style="font-size: 12px; !important;"
+					>{{ item.title }}</span>
 				</v-tab>
 			</v-tabs>
 		</v-card>

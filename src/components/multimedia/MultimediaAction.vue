@@ -1,62 +1,57 @@
 <template>
 	<v-card-actions class="pa-2 pt-0 flex-wrap justify-space-between">
 		<v-btn
-			:small="ifScreenWidthIsLessThanSmall"
-			:x-small="ifScreenWidthIsLessThanXSmall"
+			:icon="ifScreenWidthIsLessThanSmall"
+			:small="!ifScreenWidthIsLessThanSmall"
+			height="40"
 			class="ma-1"
 			depressed
 			color="#953b93"
 			dark
-			@click="dialog=true"
+			@click="$emit('edit')"
 		>
-			<v-icon
-				:small="ifScreenWidthIsLessThanSmall"
-			>
+			<v-icon>
 				mdi-pencil
 			</v-icon>
 		</v-btn>
 		<v-btn depressed
 			class="ma-1"
-			:small="ifScreenWidthIsLessThanSmall"
-			:x-small="ifScreenWidthIsLessThanXSmall"
+			:icon="ifScreenWidthIsLessThanSmall"
+			:small="!ifScreenWidthIsLessThanSmall"
+			height="40"
 		>
-			<v-icon
-				:small="ifScreenWidthIsLessThanSmall"
-			>
+			<v-icon>
 				mdi-heart-outline
 			</v-icon>
 		</v-btn>
 		<v-btn depressed
 			class="ma-1"
-			:small="ifScreenWidthIsLessThanSmall"
-			:x-small="ifScreenWidthIsLessThanXSmall"
+			:icon="ifScreenWidthIsLessThanSmall"
+			:small="!ifScreenWidthIsLessThanSmall"
+			height="40"
 		>
-			<v-icon
-				:small="ifScreenWidthIsLessThanSmall"
-			>
+			<v-icon>
 				mdi-comment-outline
 			</v-icon>
 		</v-btn>
 		<v-btn depressed
 			class="ma-1"
-			:small="ifScreenWidthIsLessThanSmall"
-			:x-small="ifScreenWidthIsLessThanXSmall"
+			:icon="ifScreenWidthIsLessThanSmall"
+			:small="!ifScreenWidthIsLessThanSmall"
+			height="40"
 		>
-			<v-icon
-				:small="ifScreenWidthIsLessThanSmall"
-			>
+			<v-icon>
 				mdi-share
 			</v-icon>
 		</v-btn>
 		<v-spacer />
 		<v-btn depressed
 			class="ma-1"
-			:small="ifScreenWidthIsLessThanSmall"
-			:x-small="ifScreenWidthIsLessThanXSmall"
+			:icon="ifScreenWidthIsLessThanSmall"
+			:small="!ifScreenWidthIsLessThanSmall"
+			height="40"
 		>
-			<v-icon
-				:small="ifScreenWidthIsLessThanXSmall"
-			>
+			<v-icon>
 				mdi-bookmark-outline
 			</v-icon>
 		</v-btn>
@@ -67,13 +62,11 @@
 export default {
 	name: "MultimediaAction",
 	props: {},
+	emits: ["edit"],
 	data: () => ({}),
 	computed: {
-		ifScreenWidthIsLessThanXSmall() {
-			return this.$vuetify.breakpoint.width < 330
-		},
 		ifScreenWidthIsLessThanSmall() {
-			return this.$vuetify.breakpoint.width < 400
+			return this.$vuetify.breakpoint.width < 500
 		}
 	},
 	methods: {}

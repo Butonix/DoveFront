@@ -4,11 +4,28 @@
 		color="transparent"
 	>
 		<div class="py-1" />
-		<v-text-field label="search"
-			name="search"
-			solo hide-details="auto"
-			prepend-inner-icon="mdi-magnify"
-		/>
+		<v-row no-gutters>
+			<v-col cols="12"
+				xl="6" lg="6"
+				md="6" sm="6"
+			>
+				<v-text-field label="search"
+					name="search" class="ma-1"
+					solo hide-details="auto"
+					prepend-inner-icon="mdi-magnify"
+				/>
+			</v-col>
+			<v-col cols="12"
+				xl="6" lg="6"
+				md="6" sm="6"
+			>
+				<v-text-field label="filter"
+					name="filter" class="ma-1"
+					solo hide-details="auto"
+					prepend-inner-icon="mdi-filter"
+				/>
+			</v-col>
+		</v-row>
 		<div class="py-1" />
 		<no-multimedia-card v-if="videos.length === 0"
 			text="Video database is empty."

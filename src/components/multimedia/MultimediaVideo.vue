@@ -7,16 +7,25 @@
 			:src="video.video"
 			height="40vh"
 		/>
-		<v-card-title class="pt-0">
+		<v-card-title
+			v-if="video.title"
+			class="pt-0"
+			style="font-size: 18px;"
+		>
 			{{ video.title }}
 		</v-card-title>
-		<v-card-subtitle>{{ video.subtitle }}</v-card-subtitle>
-		<multimedia-action />
+		<v-card-subtitle
+			v-if="video.subtitle"
+			style="font-size: 14px;"
+		>
+			{{ video.subtitle }}
+		</v-card-subtitle>
+		<multimedia-action @edit="editVideo" />
 		<v-dialog v-model="dialog"
 			max-width="500"
 		>
 			<v-card>
-				<v-card-title class="d-flex flex-wrap grey lighten-3">
+				<v-card-title class="d-flex flex-wrap grey lighten-3 elevation-4">
 					<v-icon>mdi-youtube-studio</v-icon>
 					<span class="px-1">Your video studio</span>
 					<v-spacer />
@@ -33,13 +42,15 @@
 					label="title"
 					icon="mdi-format-title"
 					:errors="formErrors"
+					counter="64"
 				/>
-				<text-field
+				<text-area
 					v-model="editor.subtitle"
 					name="subtitle"
 					label="subtitle"
 					icon="mdi-subtitles"
 					:errors="formErrors"
+					counter="255"
 				/>
 				<v-fab-transition>
 					<v-col v-if="posterBlob"
@@ -111,13 +122,14 @@ export default {
 		},
 		formErrors: {}
 	}),
-	created() {
-		this.editor = {
-			title: this.video.title,
-			subtitle: this.video.subtitle
-		}
-	},
 	methods: {
+		editVideo() {
+			this.dialog = true
+			this.editor = {
+				title: this.video.title,
+				subtitle: this.video.subtitle
+			}
+		},
 		createBlob(e) {
 			if (e) this.posterBlob = URL.createObjectURL(e)
 		},
