@@ -179,6 +179,38 @@ const actions = {
 		} catch (e) {
 			return false
 		}
+	}},
+	async deleteMunicipality({}, {id: id}) {{
+		try {
+			await $api.delete(util.format(locationUrls.municipalityDetail, id))
+			return true
+		} catch (e) {
+			return false
+		}
+	}},
+	async deleteMunicipalityWard({}, {id: id}) {{
+		try {
+			await $api.delete(util.format(locationUrls.municipalityWardDetail, id))
+			return true
+		} catch (e) {
+			return false
+		}
+	}},
+	async deleteVdc({}, {id: id}) {{
+		try {
+			await $api.delete(util.format(locationUrls.vdcDetail, id))
+			return true
+		} catch (e) {
+			return false
+		}
+	}},
+	async deleteVdcWard({}, {id: id}) {{
+		try {
+			await $api.delete(util.format(locationUrls.vdcWardDetail, id))
+			return true
+		} catch (e) {
+			return false
+		}
 	}}
 }
 
