@@ -232,7 +232,7 @@ export default {
 		}),
 		coverImg() {
 			if (!this.article) return false
-			else if (this.article["cover_images"]) return this.article["cover_images"]["image"]
+			else if (this.article["cover_image"]) return this.article["cover_image"]["image"]
 			else return false
 		},
 		getArticleHtml() {
