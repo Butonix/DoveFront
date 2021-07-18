@@ -12,7 +12,10 @@ const routes = [
 		children: [{
 			path: "",
 			name: "SACHCHAI SHOWCASE",
-			component: () => import("@/views/showcase/ShowCase")
+			component: () => import("@/views/showcase/ShowCase"),
+			meta: {
+				authentication: true
+			}
 		}]
 	},
 	{
@@ -22,22 +25,34 @@ const routes = [
 			{
 				path: "start-article",
 				name: "Editor",
-				component: () => import("@/views/home/Editor")
+				component: () => import("@/views/home/Editor"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "feeds",
 				name: "HOME",
-				component: () => import("@/views/home/Home")
+				component: () => import("@/views/home/Home"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "my-posts",
 				name: "MY POSTS",
-				component: () => import("@/views/member/MyPosts")
+				component: () => import("@/views/member/MyPosts"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "article",
 				name: "SACHCHAI NEPAL ARTICLES",
-				component: () => import("@/views/home/Articles")
+				component: () => import("@/views/home/Articles"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "multimedia",
@@ -47,29 +62,44 @@ const routes = [
 					{
 						path: "",
 						name: "Multimedia Images",
-						component: () => import("@/views/home/multimedia/Pins.vue")
+						component: () => import("@/views/home/multimedia/Pins.vue"),
+						meta: {
+							authentication: true
+						}
 					},
 					{
 						path: "images",
 						name: "Multimedia Photos",
-						component: () => import("@/views/home/multimedia/Images")
+						component: () => import("@/views/home/multimedia/Images"),
+						meta: {
+							authentication: true
+						}
 					},
 					{
 						path: "videos",
 						name: "Multimedia Videos",
-						component: () => import("@/views/home/multimedia/Videos")
+						component: () => import("@/views/home/multimedia/Videos"),
+						meta: {
+							authentication: true
+						}
 					},
 					{
 						path: "youtube",
 						name: "Youtube",
-						component: () => import("@/views/home/multimedia/Youtube")
+						component: () => import("@/views/home/multimedia/Youtube"),
+						meta: {
+							authentication: true
+						}
 					}
 				]
 			},
 			{
 				path: "event",
 				name: "SACHCHAI NEPAL EVENTS",
-				component: () => import("@/views/event/EventsHome")
+				component: () => import("@/views/event/EventsHome"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "event/:id",
@@ -79,34 +109,52 @@ const routes = [
 					{
 						path: "about",
 						name: "About Event",
-						component: () => import("@/views/event/detail_tab/About")
+						component: () => import("@/views/event/detail_tab/About"),
+						meta: {
+							authentication: true
+						}
 					},
 					{
 						path: "discussion",
 						name: "Event Discussion",
-						component: () => import("@/views/event/detail_tab/Discussion")
+						component: () => import("@/views/event/detail_tab/Discussion"),
+						meta: {
+							authentication: true
+						}
 					},
 					{
 						path: "images",
 						name: "Event Photos",
-						component: () => import("@/views/event/detail_tab/Photos")
+						component: () => import("@/views/event/detail_tab/Photos"),
+						meta: {
+							authentication: true
+						}
 					},
 					{
 						path: "multimedias",
 						name: "Event Multimedias",
-						component: () => import("@/views/event/detail_tab/Multimedia")
+						component: () => import("@/views/event/detail_tab/Multimedia"),
+						meta: {
+							authentication: true
+						}
 					}
 				]
 			},
 			{
 				path: "map/branch",
 				name: "BRANCHES MAP",
-				component: () => import("@/views/map/Branch")
+				component: () => import("@/views/map/Branch"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "map/kendra",
 				name: "KENDRA MAP",
-				component: () => import("@/views/map/Kendra")
+				component: () => import("@/views/map/Kendra"),
+				meta: {
+					authentication: true
+				}
 			},
 		]
 	},
@@ -114,12 +162,18 @@ const routes = [
 	{
 		path: "/home/article/:id",
 		name: "SACHCHAI NEPAL ARTICLE",
-		component: () => import("@/components/article/ArticleDetail.vue")
+		component: () => import("@/components/article/ArticleDetail.vue"),
+		meta: {
+			authentication: true
+		}
 	},
 	{
 		path: "/home/multimedia/:id",
 		name: "SACHCHAI NEPAL MULTIMEDIA",
-		component: () => import("@/views/multimedia/MultimediaDetail")
+		component: () => import("@/views/multimedia/MultimediaDetail"),
+		meta: {
+			authentication: true
+		}
 	},
 	{
 		name: "unauthorized",
@@ -157,7 +211,8 @@ const routes = [
 				name: "SACHCHAI KENDRA NEPAL ADMINISTRATION",
 				component: () => import("@/views/settings/Home"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -165,7 +220,8 @@ const routes = [
 				name: "FOLLOWERS ADMINISTRATION",
 				component: () => import("@/views/settings/FollowersTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -173,7 +229,8 @@ const routes = [
 				name: "MEMBERS ADMINISTRATION",
 				component: () => import("@/views/settings/MembersTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -189,7 +246,8 @@ const routes = [
 				name: "BRANCHES ADMINISTRATION",
 				component: () => import("@/views/settings/BranchTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -197,7 +255,8 @@ const routes = [
 				name: "BRANCH ADMINISTRATION",
 				component: () => import("@/views/branch/BranchDetail"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -205,7 +264,8 @@ const routes = [
 				name: "COUNTRY ADMINISTRATION",
 				component: () => import("@/views/settings/CountriesTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -213,7 +273,8 @@ const routes = [
 				name: "PROVINCE ADMINISTRATION",
 				component: () => import("@/views/settings/ProvincesTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -221,7 +282,8 @@ const routes = [
 				name: "DISTRICT ADMINISTRATION",
 				component: () => import("@/views/settings/DistrictsTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -229,7 +291,8 @@ const routes = [
 				name: "MUNICIPALITY ADMINISTRATION",
 				component: () => import("@/views/settings/MunicipalitiesTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -237,7 +300,8 @@ const routes = [
 				name: "MUNICIPALITY WARD ADMINISTRATION",
 				component: () => import("@/views/settings/MunicipalityWardsTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -245,7 +309,8 @@ const routes = [
 				name: "VDC ADMINISTRATION",
 				component: () => import("@/views/settings/VDCsTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -253,7 +318,8 @@ const routes = [
 				name: "VDC WARD ADMINISTRATION",
 				component: () => import("@/views/settings/VDCWardsTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -261,7 +327,8 @@ const routes = [
 				name: "ARTICLES ADMINISTRATION",
 				component: () => import("@/views/settings/ArticlesTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 
@@ -270,7 +337,8 @@ const routes = [
 				name: "MULTIMEDIA ADMINISTRATION",
 				component: () => import("@/views/settings/MultimediasTable.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -278,7 +346,8 @@ const routes = [
 				name: "EVENTS ADMINISTRATION",
 				component: () => import("@/views/settings/EventsTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -286,7 +355,8 @@ const routes = [
 				name: "SHOWCASE GALLERY ADMINISTRATION",
 				component: () => import("@/views/settings/ShowcaseImage.vue"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -294,7 +364,8 @@ const routes = [
 				name: "ADS ADMINISTRATION",
 				component: () => import("@/views/settings/AdsTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -302,7 +373,8 @@ const routes = [
 				name: "ABOUT US ADMINISTRATION",
 				component: () => import("@/views/settings/AboutUsTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -310,7 +382,8 @@ const routes = [
 				name: "CONTACT US ADMINISTRATION",
 				component: () => import("@/views/settings/ContactUsTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -318,7 +391,8 @@ const routes = [
 				name: "SERVICES ADMINISTRATION",
 				component: () => import("@/views/settings/ServicesTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -326,7 +400,8 @@ const routes = [
 				name: "FEEDBACK ADMINISTRATION",
 				component: () => import("@/views/settings/FeedbacksTable"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -334,7 +409,8 @@ const routes = [
 				name: "MAP ADMINISTRATION",
 				component: () => import("@/views/settings/MapAdmin"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 			{
@@ -342,7 +418,8 @@ const routes = [
 				name: "KENDRA INFO ADMIN",
 				component: () => import("@/views/settings/KendraInformation"),
 				meta: {
-					authentication: true
+					authentication: true,
+					admin: true
 				}
 			},
 		]
@@ -355,22 +432,34 @@ const routes = [
 			{
 				path: "event",
 				name: "PROFILE EVENTS",
-				component: () => import("@/views/profile/EventsTab")
+				component: () => import("@/views/profile/EventsTab"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "home",
 				name: "ABOUT ME",
-				component: () => import("@/views/profile/AboutMeTab")
+				component: () => import("@/views/profile/AboutMeTab"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "photo",
 				name: "MY PHOTOS",
-				component: () => import("@/views/profile/PhotosTab")
+				component: () => import("@/views/profile/PhotosTab"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "multimedia",
 				name: "MY MULTIMEDIAS",
-				component: () => import("@/views/profile/MultimediaTab")
+				component: () => import("@/views/profile/MultimediaTab"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "change-password",
@@ -380,32 +469,50 @@ const routes = [
 			{
 				path: "feedback",
 				name: "MY FEEDBACKS",
-				component: () => import("@/views/profile/MyFeedbacks")
+				component: () => import("@/views/profile/MyFeedbacks"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "contribution",
 				name: "MY CONTRIBUTIONS",
-				component: () => import("@/views/profile/MyContributions")
+				component: () => import("@/views/profile/MyContributions"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "edit-detail",
 				name: "EDIT DETAIL",
-				component: () => import("@/views/profile/EditProfile")
+				component: () => import("@/views/profile/EditProfile"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "location",
 				name: "LOCATION",
-				component: () => import("@/views/profile/LocationInfo")
+				component: () => import("@/views/profile/LocationInfo"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "branch",
 				name: "MY BRANCH",
-				component: () => import("@/views/profile/MyBranchInfo")
+				component: () => import("@/views/profile/MyBranchInfo"),
+				meta: {
+					authentication: true
+				}
 			},
 			{
 				path: "membership",
 				name: "MEMBERSHIP INFORMATION",
-				component: () => import("@/views/profile/Membership")
+				component: () => import("@/views/profile/Membership"),
+				meta: {
+					authentication: true
+				}
 			},
 		],
 	},
@@ -421,10 +528,14 @@ router.beforeEach((to, from, next) => {
 	if (to.meta.authentication) {
 		const token = helper.getAccessToken()
 		if (token) {
-			if (helper.getCurrentUser().is_superuser) {
-				next();
+			if(to.meta.admin) {
+				if (helper.getCurrentUser().is_superuser) {
+					next();
+				} else {
+					next("/unauthorized");
+				}
 			} else {
-				next("/unauthorized");
+				next()
 			}
 		} else {
 			next("/auth/login");
