@@ -49,7 +49,6 @@
 									<v-card height="40vh">
 										<v-img :src="image.image"
 											height="40vh"
-											contain
 										/>
 									</v-card>
 								</v-carousel-item>

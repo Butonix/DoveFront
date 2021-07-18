@@ -72,6 +72,7 @@
 										<card-img
 											:src="item.image"
 											height="77vh"
+											:contain="true"
 										>
 											<v-btn
 												class="ma-2"
