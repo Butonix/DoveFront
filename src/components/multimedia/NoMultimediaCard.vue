@@ -1,6 +1,6 @@
 <template>
 	<v-card
-		class="pa-4"
+		class="pa-4 no-data"
 		color="no-data-gradient"
 	>
 		<v-img :src="require('@/assets/empty-copy.jpg')">
@@ -8,9 +8,9 @@
 				<div class="fill-height d-flex align-center justify-center">
 					<div>
 						<div class="d-flex justify-center">
-							<v-chip class="text-center white">
+							<p class="text-center main">
 								{{ text }}
-							</v-chip>
+							</p>
 						</div>
 						<v-card-actions class="d-flex justify-center">
 							<v-btn
@@ -52,4 +52,15 @@ export default {
 ::v-deep.v-btn {
 	font-size: 12px;
 }
+</style>
+
+<style lang="sass">
+.no-data
+	text-align: center
+	font-family: "Open Sans Condensed", sans-serif
+	.main
+		padding: 6px 15px 8px
+		border-radius: 20px
+		background: white
+		font-size: 14px
 </style>
