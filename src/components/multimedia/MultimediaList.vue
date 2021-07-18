@@ -13,30 +13,30 @@
 						>
 							<v-carousel height="40vh"
 								hide-delimiters
-								class="media-carousel"
+								show-arrows-on-hover
 							>
-								<template #prev="{ on, attrs }">
-									<v-btn
-										v-show="moreThanOneItem(post)"
-										class="carousel-btn"
-										v-bind="attrs"
-										icon
-										v-on="on"
-										@click="pauseAllPlaying()"
-									>
-										<v-icon>mdi-chevron-left</v-icon>
-									</v-btn>
-								</template>
 								<template #next="{ on, attrs }">
 									<v-btn
 										v-show="moreThanOneItem(post)"
-										class="carousel-btn"
+										dark
+										fab
 										v-bind="attrs"
-										icon
 										v-on="on"
 										@click="pauseAllPlaying()"
 									>
 										<v-icon>mdi-chevron-right</v-icon>
+									</v-btn>
+								</template>
+								<template #prev="{ on, attrs }">
+									<v-btn
+										v-show="moreThanOneItem(post)"
+										dark
+										fab
+										v-bind="attrs"
+										v-on="on"
+										@click="pauseAllPlaying()"
+									>
+										<v-icon>mdi-chevron-left</v-icon>
 									</v-btn>
 								</template>
 								<v-carousel-item v-for="image in post['multimedia_images']"
@@ -145,14 +145,14 @@ export default {
 		right: 2%;
 	}
 }
-.media-carousel {
-	.carousel-btn {
-		display: none;
-	}
-}
-.media-carousel:hover {
-	.carousel-btn {
-		display: block;
-	}
-}
+//.media-carousel {
+//	.carousel-btn {
+//		display: none;
+//	}
+//}
+//.media-carousel:hover {
+//	.carousel-btn {
+//		display: block;
+//	}
+//}
 </style>

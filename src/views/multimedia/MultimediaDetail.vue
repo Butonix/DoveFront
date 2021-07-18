@@ -38,6 +38,7 @@
 							<v-carousel
 								hide-delimiters
 								height="77vh"
+								show-arrows-on-hover
 								style="border-radius: 4px;"
 							>
 								<template #next="{ on, attrs }">
@@ -66,20 +67,24 @@
 									active-class="multimedia-active-image"
 									reverse-transition="fade-transition"
 									transition="fade-transition"
-									:src="item.image"
 								>
 									<template #default>
-										<v-btn
-											class="ma-2"
-											fab
-											x-small
-											style="position: absolute; right: 20px; top: 10px;"
-											@click="deleteImage(item.id)"
+										<card-img
+											:src="item.image"
+											height="77vh"
 										>
-											<v-icon color="error">
-												mdi-delete
-											</v-icon>
-										</v-btn>
+											<v-btn
+												class="ma-2"
+												fab
+												x-small
+												style="position: absolute; right: 20px; top: 10px;"
+												@click="deleteImage(item.id)"
+											>
+												<v-icon color="error">
+													mdi-delete
+												</v-icon>
+											</v-btn>
+										</card-img>
 									</template>
 								</v-carousel-item>
 								<v-carousel-item
