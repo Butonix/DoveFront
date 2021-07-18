@@ -11,7 +11,8 @@
 						<v-card height="40vh"
 							dark
 						>
-							<v-carousel height="40vh"
+							<v-carousel
+								height="40vh"
 								hide-delimiters
 								show-arrows-on-hover
 							>
@@ -19,8 +20,9 @@
 									<v-btn
 										v-show="moreThanOneItem(post)"
 										dark
-										fab
 										v-bind="attrs"
+										:style="carouselNavItemStyle"
+										icon
 										v-on="on"
 										@click="pauseAllPlaying()"
 									>
@@ -31,7 +33,8 @@
 									<v-btn
 										v-show="moreThanOneItem(post)"
 										dark
-										fab
+										icon
+										:style="carouselNavItemStyle"
 										v-bind="attrs"
 										v-on="on"
 										@click="pauseAllPlaying()"
@@ -39,10 +42,17 @@
 										<v-icon>mdi-chevron-left</v-icon>
 									</v-btn>
 								</template>
-								<v-carousel-item v-for="image in post['multimedia_images']"
+								<v-carousel-item
+									v-for="image in post['multimedia_images']"
 									:key="image.image"
-									:src="image.image"
-								/>
+								>
+									<v-card height="40vh">
+										<v-img :src="image.image"
+											height="40vh"
+											contain
+										/>
+									</v-card>
+								</v-carousel-item>
 								<v-carousel-item v-for="video in post['multimedia_videos']"
 									:key="video.video"
 								>
@@ -98,6 +108,7 @@ export default {
 	},
 	data() {
 		return {
+			carouselNavItemStyle: "height: 30px !important; width: 30px !important;",
 			dialog: false
 		}
 	},
@@ -145,14 +156,4 @@ export default {
 		right: 2%;
 	}
 }
-//.media-carousel {
-//	.carousel-btn {
-//		display: none;
-//	}
-//}
-//.media-carousel:hover {
-//	.carousel-btn {
-//		display: block;
-//	}
-//}
 </style>
