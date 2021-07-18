@@ -45,7 +45,7 @@
 			multiple
 			class="file-input"
 			type="file"
-			accept="video/*"
+			accept=".webm,.mp4,.mpeg,.flv,.mov,.MOV"
 			@change="videoInputChanged"
 		>
 		<v-row

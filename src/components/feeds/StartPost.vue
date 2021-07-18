@@ -32,7 +32,7 @@
 				multiple
 				class="file-input"
 				type="file"
-				accept="video/*"
+				accept=".webm,.mp4,.mpeg,.flv,.mov,.MOV"
 				@change="videoInputChanged"
 			>
 			<v-toolbar color="#be75bd">
