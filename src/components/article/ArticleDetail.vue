@@ -185,6 +185,7 @@
 					<v-img src="https://media.giphy.com/media/MViYNpI0wx69zX7j7w/giphy.gif"
 						height="80"
 						dark
+						eager
 						style="border-radius: 4px;"
 					>
 						<div class="headline text-center align-center">
