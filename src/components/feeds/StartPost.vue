@@ -373,9 +373,10 @@
 			<v-card-actions class="pa-4">
 				<v-btn
 					id="post-submit"
+					:loading="posting"
 					block
 					dark
-					color="rgb(201 134 201)"
+					color="rgb(221 103 241)"
 					@click="makeMultimedia"
 				>
 					POST
@@ -401,6 +402,7 @@ export default {
 	mixins: [Snack, HtmlVideoMixin],
 	emits: ["close-dialog"],
 	data: () => ({
+		posting: false,
 		addDescription: false,
 		files: [],
 		dialog: false,
@@ -576,8 +578,10 @@ export default {
 			}
 		},
 		async makeMultimedia() {
+			this.posting = true
 			let response
 			response = await this.createMultimedia()
+			this.posting = false
 			if (!response) {
 				await this.showPostCreationErrorMessages()
 			} else {
