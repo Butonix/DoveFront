@@ -14,7 +14,7 @@
 			dark
 			app
 			fixed
-			height="80"
+			height="60"
 			class="blue-gradient"
 		>
 			<v-app-bar-nav-icon @click.stop="toggleProfileDrawer">
@@ -29,42 +29,26 @@
 			<v-card
 				flat
 				color="transparent"
-				height="55"
-				width="55"
+				height="48"
+				width="48"
 			>
 				<v-img
 					contain
-					height="55"
-					width="55"
+					height="48"
+					width="48"
 					:src="require('@/assets/peace-pegion.png')"
 				/>
 			</v-card>
 			<v-spacer />
-			<v-card
-				light
-				color="transparent"
-				class="elevation-12 top-tab-wrapper"
-			>
-				<profile-header-tab :show-arrows="false" />
-			</v-card>
+			<profile-header-tab />
 			<v-spacer />
 			<div class="px-1" />
 			<profile-dropdown />
 		</v-app-bar>
-		<v-card
-			light
-			max-width="1000"
-			color="tab-blue-gradient"
-			class="mx-auto rounded-t-0 aux-profile-tab-card elevation-12"
-		>
-			<profile-header-tab />
-		</v-card>
-		<v-main class="mt-0 pt-0">
-			<v-container class="mt-0 pt-0">
+		<v-main>
+			<v-container class="pa-0">
 				<v-row no-gutters>
-					<v-col cols="12"
-						class="layout-col"
-					>
+					<v-col cols="12">
 						<the-snackbar />
 						<v-card flat
 							max-width="1000" class="mx-auto"
@@ -169,32 +153,4 @@ export default {
 	background-image: linear-gradient( 109.6deg,  rgb(113, 192, 238) 11.2%, rgba(93,52,236,1) 100.2% )
 .tab-blue-gradient
 	background-image: linear-gradient( 109.6deg,  rgba(39,142,255,1) 11.2%, rgba(98,113,255,0.78) 100.2% )
-.top-tab-wrapper
-	transition: all .5s
-	visibility: visible
-	opacity: 1
-	@media only screen and (max-width: 630px)
-		margin: 0
-		visibility: hidden
-		opacity: 0
-		overflow: hidden
-		height: 0 !important
-		max-width: 0 !important
-.aux-profile-tab-card
-	transition: all .5s
-	visibility: visible
-	opacity: 1
-	@media only screen and (min-width: 631px)
-		visibility: hidden
-		opacity: 0
-		overflow: hidden
-		height: 0 !important
-		max-width: 0 !important
-	@media only screen and (max-width: 631px)
-		margin-top: 80px
-.layout-col
-	margin: 80px auto 0
-	transition: margin-top .5s ease
-	@media only screen and (max-width: 631px)
-		margin-top: 0
 </style>
