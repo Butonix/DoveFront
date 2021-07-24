@@ -13,7 +13,7 @@
 			max-height="45"
 			max-width="45"
 			:color="color"
-			@click="$vuetify.goTo(0)"
+			@click="scrollToTop"
 		>
 			<v-icon size="20">
 				{{ icon }}
@@ -40,6 +40,12 @@ export default {
 		fab: false
 	}),
 	methods: {
+		scrollToTop() {
+			window.scroll({
+				top: 0,
+				behavior: "smooth"
+			})
+		},
 		onScroll(e) {
 			if (typeof window === "undefined") return
 			const top = window.pageYOffset || e.target.scrollTop
