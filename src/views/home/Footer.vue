@@ -191,11 +191,7 @@
 				class="d-flex justify-center align-center"
 			>
 				<div>
-					{{ new Date().getFullYear() }} — <strong class="px-1">Ishworiya Bhajan Mandal Sachchai Kendra Nepal</strong> - made with ❤️ by
-					<a href="https://github.com/kiranparajuli589"
-						target="_blank"
-						class="px-1"
-					>Kiran Parajuli</a>
+					{{ new Date().getFullYear() }} — <strong class="px-1">Ishworiya Bhajan Mandal Sachchai Kendra Nepal</strong>
 				</div>
 			</v-card>
 		</v-col>
