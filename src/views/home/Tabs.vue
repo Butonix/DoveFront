@@ -13,7 +13,7 @@
 			icons-and-text
 			slider-size="3"
 			active-class="home-tab-active"
-			slider-color="white"
+			slider-color="#ac5ba5"
 		>
 			<v-tab
 				v-for="(tab, index) in homeTabItems"
@@ -122,6 +122,6 @@ export default {
 
 <style scoped>
 .home-tab-active {
-	color: white !important;
+	color: #ac5ba5 !important;
 }
 </style>

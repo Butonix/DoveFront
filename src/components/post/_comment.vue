@@ -9,19 +9,22 @@
 		>
 			<v-list-item v-for="(item) in comments"
 				:key="item.id"
-				class="pl-0"
+				class="pl-0 d-flex align-start"
 			>
-				<v-avatar size="45"
-					tile
-					class="d-flex justify-content-center ma-2 elevation-4 comment-avatar"
-					:color="$constants.pickBackgroundColor()"
+				<div>
+					<v-avatar :color="$constants.pickBackgroundColor()"
+						class="ml-1 mr-2 mt-3 mb-1"
+						size="40"
+					>
+						<span class="white--text headline">
+							{{ $helper.getUsernameInitials(item.writer) }}
+						</span>
+					</v-avatar>
+				</div>
+				<v-list-item-content class="pl-0"
+					style="position: relative"
 				>
-					<span class="white--text headline">
-						{{ $helper.getUsernameInitials(item.writer) }}
-					</span>
-				</v-avatar>
-				<v-list-item-content class="pl-0">
-					<v-list-item-title>
+					<div>
 						<code v-if="item.writer"
 							class="comment-writer mx-1"
 						>
@@ -35,11 +38,16 @@
 						<v-icon small>
 							mdi-reply-circle
 						</v-icon>
-					</v-list-item-title>
-					<v-list-item-subtitle class="comment-text">
+					</div>
+					<div
+						class="comment-text"
+					>
 						{{ item.comment }}
-					</v-list-item-subtitle>
+					</div>
 				</v-list-item-content>
+			</v-list-item>
+			<v-list-item v-if="commentsNotShownCount">
+				See {{ commentsNotShownCount }} more comments in details.
 			</v-list-item>
 		</v-list>
 		<v-divider class="my-2" />
@@ -81,7 +89,8 @@ export default {
 			multimedia: null
 		},
 		latestCommentTime: null,
-		comments: null
+		comments: null,
+		commentsNotShownCount: null
 	}),
 	async created() {
 		await this.init()
@@ -96,8 +105,13 @@ export default {
 			)
 			// only show 2 comments in comment history
 			if (response.count === 0) response = []
-			else if (response.count <= 6) response = response.results
-			else if (response.count > 6) response = response.results.slice(0, 6)
+			else if (response.count <= 3) response = response.results
+			else {
+				if (response.count > 3) response = response.results.slice(0, 3)
+				console.log(response.count)
+				this.commentsNotShownCount = parseInt(response.count) - 3
+				console.log(this.commentsNotShownCount)
+			}
 			this.comments = response
 		},
 		async addCommentToPost() {
@@ -122,17 +136,18 @@ export default {
 	background: aliceblue;
 	border-radius: 10px;
 	margin: 5px;
+	font-size: .875rem;
 }
 .comment-writer {
 	font-family: Roboto, sans-serif;
-	font-weight: bold;
 	color: #686868 !important;
+	font-size: 12px;
 }
 .comment-created-at {
 	font-family: Roboto, sans-serif;
-	font-weight: bold;
 	color: #686868 !important;
 	background: #eaeaea !important;
+	font-size: 12px;
 }
 .comment-avatar {
 	border-radius: 5px !important;

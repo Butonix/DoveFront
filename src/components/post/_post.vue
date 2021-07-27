@@ -4,14 +4,6 @@
 		color="white"
 	>
 		<v-list-item>
-			<v-list-item-avatar v-if="post['uploaded_by']['active_profile_image']"
-				size="50"
-				class="elevation-4"
-			>
-				<v-img
-					:src="post['uploaded_by']['active_profile_image']"
-				/>
-			</v-list-item-avatar>
 			<v-list-item-content>
 				<v-list-item-title
 					class="headline cursor"

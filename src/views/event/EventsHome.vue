@@ -1,6 +1,7 @@
 <template>
 	<v-card :loading="loading"
-		flat class="rounded-0 mx-auto my-8"
+		flat tile
+		class="mx-auto"
 		color="transparent"
 		max-width="1000"
 	>

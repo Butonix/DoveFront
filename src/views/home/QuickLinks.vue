@@ -1,17 +1,11 @@
 <template>
-	<v-list>
+	<v-list rounded
+		class="px-0"
+	>
 		<v-list-item class="pl-2">
-			<v-list-item-avatar
-				color="#ab5aa9"
-				class="ma-0 pa-0 d-flex justify-center"
-			>
-				<span class="headline white--text">
-					{{ $helper.getCurrentUserInitials() }}
-				</span>
-			</v-list-item-avatar>
 			<v-list-item-content class="pl-4">
 				<v-list-item-title class="full-name">
-					<h4 v-text="getFullName" />
+					<div v-text="getFullName" />
 				</v-list-item-title>
 				<v-list-item-subtitle>
 					<v-icon small
@@ -36,7 +30,7 @@
 				</v-btn>
 			</v-list-item-action>
 		</v-list-item>
-		<v-divider class="mx-2 mt-3" />
+		<v-divider class="mt-3" />
 		<v-list-group
 			v-for="item in items"
 			:key="item.title"
@@ -204,6 +198,10 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.full-name {
+	font-size: 20px;
+	text-transform: uppercase;
+}
 .link-title {
 	font-size: .875rem;
 	font-weight: 500;

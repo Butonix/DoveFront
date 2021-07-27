@@ -1,15 +1,10 @@
 <template>
 	<v-card v-if="multimedias"
 		:loading="loading"
-		flat
-		max-width="700" class="mx-auto rounded-0"
+		flat tile
+		max-width="700" class="mx-auto"
 		color="transparent"
 	>
-		<v-fade-transition>
-			<div v-if="$vuetify.breakpoint.width > 700"
-				class="py-2"
-			/>
-		</v-fade-transition>
 		<v-card color="#90328e14">
 			<v-tabs
 				v-model="tab"

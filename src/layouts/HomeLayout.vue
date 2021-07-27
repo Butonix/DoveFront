@@ -1,58 +1,9 @@
 <template>
 	<v-card
-		class="overflow-hidden rounded-0"
+		tile flat
+		class="overflow-hidden"
 	>
-		<v-app-bar
-			dark
-			app
-			fixed
-			height="60"
-			color="purple-gradient"
-		>
-			<v-app-bar-nav-icon @click.stop="toggleHomeDrawer()">
-				<v-icon v-if="mini"
-					color="grey darken-4"
-				>
-					mdi-menu
-				</v-icon>
-				<v-icon v-else
-					color="grey darken-4"
-				>
-					mdi-menu-open
-				</v-icon>
-			</v-app-bar-nav-icon>
-			<v-card
-				class="mx-4"
-				:class="$route.name === 'HOME' ? '' : 'cursor'"
-				flat
-				color="transparent"
-				height="45"
-				width="45"
-			>
-				<v-img
-					contain
-					height="45"
-					width="45"
-					:src="require('@/assets/peace-pegion.png')"
-					@click="routeToFeeds"
-				/>
-			</v-card>
-			<v-spacer />
-
-			<home-tabs />
-			<v-spacer />
-			<div class="px-1" />
-			<profile-dropdown />
-		</v-app-bar>
-
-		<!-- eslint-disable-next-line vue/no-deprecated-v-bind-sync -->
-		<v-navigation-drawer v-model="homeDrawer" :mini-variant.sync="mini"
-			app
-			:permanent="$vuetify.breakpoint.mdAndUp"
-			:temporary="!$vuetify.breakpoint.mdAndUp"
-		>
-			<quick-links @toggle="mini = !mini" />
-		</v-navigation-drawer>
+		<home-toolbar />
 
 		<v-main>
 			<v-container
@@ -62,53 +13,78 @@
 				<v-row no-gutters>
 					<v-col>
 						<the-snackbar />
-						<transition name="view">
-							<router-view />
-						</transition>
+						<v-card
+							flat
+							color="transparent"
+							class="mx-auto pa-0"
+							max-width="1400"
+						>
+							<div class="py-1" />
+							<v-row
+								class="ma-0 pa-0"
+								align="start"
+								justify="center"
+							>
+								<v-col cols="12"
+									xl="3"
+									lg="3"
+									md="3"
+									sm="3"
+								>
+									<quick-links-component />
+									<facebook-group />
+								</v-col>
+								<v-col
+									class="ma-0 router-column"
+									cols="12"
+									xl="6"
+									lg="6"
+									md="6"
+									sm="6"
+								>
+									<transition name="view">
+										<router-view />
+									</transition>
+								</v-col>
+								<v-col
+									cols="12"
+									xl="3"
+									lg="3"
+									md="3"
+									sm="3"
+								>
+									<home-ads-column />
+								</v-col>
+							</v-row>
+						</v-card>
 					</v-col>
 				</v-row>
 			</v-container>
 			<scroll-up color="#91348e" />
-			<home-footer />
+			<home-simple-footer />
 		</v-main>
 	</v-card>
 </template>
 
 <script>
 import TheSnackbar from "@/components/utils/TheSnackbar.vue";
-import HomeTabs from "@/views/home/Tabs";
+import HomeToolbar from "@/views/home/HomeToolbar.vue";
+import HomeAdsColumn from "@/views/home/Ads.vue";
+import QuickLinksComponent from "@/views/home/QuickLinks.vue";
+import HomeSimpleFooter from "@/views/home/HomeFooter.vue";
+import FacebookGroup from "@/components/utils/FacebookGroup.vue";
 
 export default {
 	name: "SacchaiHomeLayout",
 	components: {
-		HomeTabs,
+		FacebookGroup,
+		HomeSimpleFooter,
+		QuickLinksComponent,
+		HomeAdsColumn,
+		HomeToolbar,
 		TheSnackbar,
-		ProfileDropdown: () => import("@/views/home/ProfileDropdown"),
-		HomeFooter: () => import("@/views/home/Footer"),
-		QuickLinks: () => import("@/views/home/QuickLinks"),
 		ScrollUp: () => import("@/components/utils/ScrollTop.vue")
-	},
-	data: () => ({
-		homeDrawer: false,
-		mini: false,
-		logo: require("@/assets/showcase_logo_v1.png"),
-	}),
-	created() {
-		this.mini = this.$vuetify.breakpoint.smAndUp
-	},
-	methods: {
-		routeToFeeds() {
-			if (this.$route.name !== "HOME") {
-				this.$router.push({name: "HOME"})
-			}
-		},
-		toggleHomeDrawer() {
-			if (this.$vuetify.breakpoint.mdAndUp) this.mini = !this.mini
-			else {
-				this.homeDrawer = !this.homeDrawer
-			}
-		}
-	},
+	}
 }
 </script>
 <style lang="sass" scoped>
@@ -125,7 +101,19 @@ export default {
 	background-color: #f3edff
 </style>
 <style lang="scss" scoped>
-.purple-gradient {
-	background-image: linear-gradient( 111.5deg,  rgba(254,210,255,1) -7.2%, rgba(115,9,112,1) 100.2% );
+.router-column {
+	overflow-x: hidden;
+	overflow-y: auto !important;
+	height: 100vh;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.router-column::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.router-column {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
 }
 </style>

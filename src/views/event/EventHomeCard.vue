@@ -1,169 +1,153 @@
 <template>
 	<v-card :loading="loading">
-		<v-row class="ma-0 pa-0"
+		<v-img
+			:src="event['banner_images']['image']"
+			class="event-banner"
+			max-height="400"
+		/>
+		<v-card-subtitle class="pb-0">
+			<span class="chip-like">
+				<v-icon class="detail-icon"
+					size="16"
+				>
+					mdi-account-circle
+				</v-icon>
+				{{ getEventCreatorFullName(event.created_by) }}
+			</span>
+			<span class="chip-like">
+				<v-icon class="detail-icon"
+					size="16"
+				>
+					mdi-clock
+				</v-icon>
+				{{ formatDate(event.created_at) }}
+			</span>
+		</v-card-subtitle>
+		<v-card-title
+			class="display-1 cursor-pointer pt-0 pb-1"
+			@click="routeToEventDetail(event.id)"
+			v-text="event.title"
+		/>
+		<v-divider class="mx-3" />
+		<v-card-subtitle class="pt-1">
+			<span class="chip-like transparent">
+				<v-icon size="16"
+					class="detail-icon"
+				>
+					mdi-city
+				</v-icon>
+				{{ event.branch.name }}
+			</span>
+		</v-card-subtitle>
+		<v-card-text class="py-0 pb-2">
+			{{ event.description }}
+			<span>...</span>
+		</v-card-text>
+
+		<v-row class="ma-0 pa-0">
+			<v-col class="pa-0">
+				<v-list two-line
+					class="pa-0"
+					color="transparent"
+				>
+					<v-list-item>
+						<v-list-item-icon><v-icon>mdi-calendar</v-icon></v-list-item-icon>
+						<v-list-item-content>
+							<v-list-item-title>Starts from</v-list-item-title>
+							<v-list-item-subtitle>
+								{{ formatDate(event.start_date) }}
+								<span>{{ $moment(event.start_date).fromNow() }}</span>
+							</v-list-item-subtitle>
+						</v-list-item-content>
+					</v-list-item>
+				</v-list>
+			</v-col>
+			<v-col class="pa-0">
+				<v-list two-line
+					color="transparent"
+					class="pa-0"
+				>
+					<v-list-item>
+						<v-list-item-icon><v-icon>mdi-google-maps</v-icon></v-list-item-icon>
+						<v-list-item-content>
+							<v-list-item-title>Location</v-list-item-title>
+							<v-list-item-subtitle>
+								<span v-if="event.municipality">
+									{{ getMunicipalityWard }} {{ getMunicipality }}
+								</span>
+								<span v-else>
+									{{ getVdcWard }} {{ getVdc }}
+								</span>
+								{{ getDistrict }}, {{ getProvince }}, {{ getCountry }}
+							</v-list-item-subtitle>
+						</v-list-item-content>
+					</v-list-item>
+				</v-list>
+			</v-col>
+			<v-col class="pa-0">
+				<v-list two-line
+					class="pa-0"
+					color="transparent"
+				>
+					<v-list-item>
+						<v-list-item-icon><v-icon>mdi-cog</v-icon></v-list-item-icon>
+						<v-list-item-content>
+							<v-list-item-title>Type</v-list-item-title>
+							<v-list-item-subtitle>
+								{{ event.type }}
+							</v-list-item-subtitle>
+						</v-list-item-content>
+					</v-list-item>
+				</v-list>
+			</v-col>
+		</v-row>
+
+		<v-row v-if="eventStatistics"
+			class="ma-0 pa-0"
+			no-gutters
 			align="center"
 		>
-			<v-col cols="12"
-				:xl="(event['banner_images']) ? 8 : 12"
-				:lg="(event['banner_images']) ? 8 : 12"
-			>
-				<v-card-subtitle class="pb-0">
-					<span class="chip-like">
-						<v-icon class="detail-icon"
-							size="16"
-						>
-							mdi-account-circle
-						</v-icon>
-						{{ getEventCreatorFullName(event.created_by) }}
-					</span>
-					<span class="chip-like">
-						<v-icon class="detail-icon"
-							size="16"
-						>
-							mdi-clock
-						</v-icon>
-						{{ formatDate(event.created_at) }}
-					</span>
-				</v-card-subtitle>
-				<v-card-title
-					class="display-1 cursor-pointer pt-0 pb-1"
+			<v-card-actions>
+				<v-btn
+					depressed
 					@click="routeToEventDetail(event.id)"
-					v-text="event.title"
-				/>
-				<v-divider class="mx-3" />
-				<v-card-subtitle class="pt-1">
-					<span class="chip-like transparent">
-						<v-icon size="16"
-							class="detail-icon"
-						>
-							mdi-city
-						</v-icon>
-						{{ event.branch.name }}
-					</span>
-				</v-card-subtitle>
-				<v-card-text class="py-0 pb-2">
-					{{ event.description }}
-					<span>...</span>
-				</v-card-text>
-
-				<v-row class="ma-0 pa-0">
-					<v-col class="pa-0">
-						<v-list two-line
-							class="pa-0"
-							color="transparent"
-						>
-							<v-list-item>
-								<v-list-item-icon><v-icon>mdi-calendar</v-icon></v-list-item-icon>
-								<v-list-item-content>
-									<v-list-item-title>Starts from</v-list-item-title>
-									<v-list-item-subtitle>
-										{{ formatDate(event.start_date) }}
-										<span>{{ $moment(event.start_date).fromNow() }}</span>
-									</v-list-item-subtitle>
-								</v-list-item-content>
-							</v-list-item>
-						</v-list>
-					</v-col>
-					<v-col class="pa-0">
-						<v-list two-line
-							color="transparent"
-							class="pa-0"
-						>
-							<v-list-item>
-								<v-list-item-icon><v-icon>mdi-google-maps</v-icon></v-list-item-icon>
-								<v-list-item-content>
-									<v-list-item-title>Location</v-list-item-title>
-									<v-list-item-subtitle>
-										<span v-if="event.municipality">
-											{{ getMunicipalityWard }} {{ getMunicipality }}
-										</span>
-										<span v-else>
-											{{ getVdcWard }} {{ getVdc }}
-										</span>
-										{{ getDistrict }}, {{ getProvince }}, {{ getCountry }}
-									</v-list-item-subtitle>
-								</v-list-item-content>
-							</v-list-item>
-						</v-list>
-					</v-col>
-					<v-col class="pa-0">
-						<v-list two-line
-							class="pa-0"
-							color="transparent"
-						>
-							<v-list-item>
-								<v-list-item-icon><v-icon>mdi-cog</v-icon></v-list-item-icon>
-								<v-list-item-content>
-									<v-list-item-title>Type</v-list-item-title>
-									<v-list-item-subtitle>
-										{{ event.type }}
-									</v-list-item-subtitle>
-								</v-list-item-content>
-							</v-list-item>
-						</v-list>
-					</v-col>
-				</v-row>
-
-				<v-row v-if="eventStatistics"
-					class="ma-0 pa-0"
-					no-gutters
-					align="center"
 				>
-					<v-card-actions>
-						<v-btn
-							depressed
-							@click="routeToEventDetail(event.id)"
-						>
-							<v-icon>mdi-eye</v-icon>
-							<span class="button-span">View</span>
-						</v-btn>
-					</v-card-actions>
-					<v-card-actions>
-						<v-btn
-							:loading="interestedLoading"
-							depressed
-							@click="toggleInterestedStatus(event.id)"
-						>
-							<v-icon>mdi-star-circle</v-icon>
-							<span v-if="eventStatistics['interested']"
-								class="button-span red--text text--lighten-1"
-							>Remove Interest</span>
-							<span v-else
-								class="green--text button-span text--darken-3"
-							>Add Interest</span>
-							<span class="stat">({{ eventStatistics['interested_count'] }})</span>
-						</v-btn>
-					</v-card-actions>
-					<v-card-actions>
-						<v-btn
-							:loading="goingStatusLoading"
-							depressed
-							@click="toggleGoingStatus(event.id)"
-						>
-							<v-icon>mdi-walk</v-icon>
-							<span v-if="eventStatistics['going']"
-								class="button-span red--text text--lighten-1"
-							>Not Going</span>
-							<span v-else
-								class="green--text button-span text--darken-3"
-							>I Am Going</span>
-							<span class="stat">({{ eventStatistics['going_count'] }})</span>
-						</v-btn>
-					</v-card-actions>
-				</v-row>
-			</v-col>
-			<v-col
-				v-if="event['banner_images']"
-				cols="12"
-				xl="4"
-				lg="4"
-			>
-				<v-img
-					:src="event['banner_images']['image']"
-					class="event-banner"
-					max-height="400"
-				/>
-			</v-col>
+					<v-icon>mdi-eye</v-icon>
+					<span class="button-span">View</span>
+				</v-btn>
+			</v-card-actions>
+			<v-card-actions>
+				<v-btn
+					:loading="interestedLoading"
+					depressed
+					@click="toggleInterestedStatus(event.id)"
+				>
+					<v-icon>mdi-star-circle</v-icon>
+					<span v-if="eventStatistics['interested']"
+						class="button-span red--text text--lighten-1"
+					>Remove Interest</span>
+					<span v-else
+						class="green--text button-span text--darken-3"
+					>Add Interest</span>
+					<span class="stat">({{ eventStatistics['interested_count'] }})</span>
+				</v-btn>
+			</v-card-actions>
+			<v-card-actions>
+				<v-btn
+					:loading="goingStatusLoading"
+					depressed
+					@click="toggleGoingStatus(event.id)"
+				>
+					<v-icon>mdi-walk</v-icon>
+					<span v-if="eventStatistics['going']"
+						class="button-span red--text text--lighten-1"
+					>Not Going</span>
+					<span v-else
+						class="green--text button-span text--darken-3"
+					>I Am Going</span>
+					<span class="stat">({{ eventStatistics['going_count'] }})</span>
+				</v-btn>
+			</v-card-actions>
 		</v-row>
 	</v-card>
 </template>

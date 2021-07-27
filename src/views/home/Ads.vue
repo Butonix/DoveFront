@@ -70,6 +70,6 @@
 </template>
 <script>
 export default {
-	name: "HomeAdsColumnView"
+	name: "HomeAdsColumn"
 }
 </script>
