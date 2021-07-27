@@ -112,10 +112,12 @@ module.exports = {
 		return currentUser.username === writerUsername
 	},
 	replaceBackendHost(url) {
+		console.log(url)
 		// https://sachchaikendranepal.org.np:8000/media/multimedias/27/images/4848987693940148509.jpg from
 		// https://backend.sachchaikendranepal.org.np/media/multimedias/27/images/4848987693940148509.jpg to
 		if (url.includes("https://sachchaikendranepal.org.np:8000"))
 			return url.replace("https://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np")
+		console.log(url)
 		return url
 	}
 }
