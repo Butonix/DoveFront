@@ -31,7 +31,7 @@
 									md="3"
 									sm="3"
 								>
-									<quick-links-component />
+									<quick-links />
 									<facebook-group />
 								</v-col>
 								<v-col
@@ -53,36 +53,31 @@
 									md="3"
 									sm="3"
 								>
-									<home-ads-column />
+									<home-ads />
 								</v-col>
 							</v-row>
 						</v-card>
 					</v-col>
 				</v-row>
 			</v-container>
+			<facebook-chat />
 			<scroll-up color="#91348e" />
-			<home-simple-footer />
+			<home-footer />
 		</v-main>
 	</v-card>
 </template>
 
 <script>
-import TheSnackbar from "@/components/utils/TheSnackbar.vue";
-import HomeToolbar from "@/views/home/HomeToolbar.vue";
-import HomeAdsColumn from "@/views/home/Ads.vue";
-import QuickLinksComponent from "@/views/home/QuickLinks.vue";
-import HomeSimpleFooter from "@/views/home/HomeFooter.vue";
-import FacebookGroup from "@/components/utils/FacebookGroup.vue";
-
 export default {
 	name: "SacchaiHomeLayout",
 	components: {
-		FacebookGroup,
-		HomeSimpleFooter,
-		QuickLinksComponent,
-		HomeAdsColumn,
-		HomeToolbar,
-		TheSnackbar,
+		TheSnackbar: () => import("@/components/utils/TheSnackbar"),
+		HomeToolbar: () => import("@/views/home/HomeToolbar"),
+		HomeAds: () => import("@/views/home/Ads"),
+		QuickLinks: () => import("@/views/home/QuickLinks"),
+		HomeFooter: () => import("@/views/home/HomeFooter"),
+		FacebookGroup: () => import("@/components/utils/FacebookGroup"),
+		FacebookChat: () => import("@/components/utils/FacebookChat"),
 		ScrollUp: () => import("@/components/utils/ScrollTop.vue")
 	}
 }
