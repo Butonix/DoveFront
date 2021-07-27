@@ -7,7 +7,7 @@
 		<v-fade-transition>
 			<v-img
 				v-if="banners"
-				:src="banners['image']"
+				:src="$helper.replaceBackendHost(banners['image'])"
 				height="60vh"
 				max-width="1000"
 				class="mx-auto event-banner"

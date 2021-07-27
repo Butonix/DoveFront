@@ -62,7 +62,6 @@
 			</v-container>
 			<facebook-chat />
 			<scroll-up color="#91348e" />
-			<home-footer />
 		</v-main>
 	</v-card>
 </template>
@@ -75,7 +74,6 @@ export default {
 		HomeToolbar: () => import("@/views/home/HomeToolbar"),
 		HomeAds: () => import("@/views/home/Ads"),
 		QuickLinks: () => import("@/views/home/QuickLinks"),
-		HomeFooter: () => import("@/views/home/HomeFooter"),
 		FacebookGroup: () => import("@/components/utils/FacebookGroup"),
 		FacebookChat: () => import("@/components/utils/FacebookChat"),
 		ScrollUp: () => import("@/components/utils/ScrollTop.vue")

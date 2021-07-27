@@ -35,7 +35,7 @@
 								max-width="300"
 							>
 								<v-img
-									:src="item.image"
+									:src="$helper.replaceBackendHost(item.image)"
 									max-width="300"
 									height="300"
 								/>
@@ -73,7 +73,7 @@
 								max-width="300"
 							>
 								<v-img
-									:src="item.image"
+									:src="$helper.replaceBackendHost(item.image)"
 									max-width="300"
 									height="300"
 								/>
@@ -111,7 +111,7 @@
 								max-width="300"
 							>
 								<v-img
-									:src="item.image"
+									:src="$helper.replaceBackendHost(item.image)"
 									max-width="300"
 									height="300"
 								/>
@@ -149,7 +149,7 @@
 								max-width="300"
 							>
 								<v-img
-									:src="item.image"
+									:src="$helper.replaceBackendHost(item.image)"
 									max-width="300"
 									height="300"
 								/>
@@ -187,7 +187,7 @@
 								max-width="300"
 							>
 								<v-img
-									:src="item.image"
+									:src="$helper.replaceBackendHost(item.image)"
 									max-width="300"
 									height="300"
 								/>

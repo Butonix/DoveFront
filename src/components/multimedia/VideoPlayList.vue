@@ -10,7 +10,7 @@
 				width="100%"
 				controls
 				crossorigin="anonymous"
-				:src="nowPlaying"
+				:src="$helper.replaceBackendHost(nowPlaying)"
 			/>
 		</v-card>
 		<v-list>

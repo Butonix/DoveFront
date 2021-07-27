@@ -43,7 +43,7 @@
 			>
 				<v-img
 					v-if="editedIndex !== -1"
-					:src="getBannerImage"
+					:src="$helper.replaceBackendHost(getBannerImage)"
 					height="300"
 					style="border-radius: 0 0 10px 10px"
 				/>

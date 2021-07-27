@@ -251,7 +251,7 @@
 						xl="4"
 						lg="4"
 					>
-						<v-img :src="item.image"
+						<v-img :src="$helper.replaceBackendHost(item.image)"
 							max-height="400"
 							class="event-banner"
 						/>

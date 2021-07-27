@@ -44,16 +44,16 @@
 								</template>
 								<v-carousel-item
 									v-for="image in post['multimedia_images']"
-									:key="image.image"
+									:key="$helper.replaceBackendHost(image.image)"
 								>
 									<v-card height="40vh">
-										<v-img :src="image.image"
+										<v-img :src="$helper.replaceBackendHost(image.image)"
 											height="40vh"
 										/>
 									</v-card>
 								</v-carousel-item>
 								<v-carousel-item v-for="video in post['multimedia_videos']"
-									:key="video.video"
+									:key="$helper.replaceBackendHost(video.video)"
 								>
 									<v-card
 										height="40vh"
@@ -62,11 +62,11 @@
 										class="ma-0 pa-0"
 									>
 										<video
-											:poster="video.poster"
+											:poster="$helper.replaceBackendHost(video.poster)"
 											controls
 											height="100%"
 											width="100%"
-											:src="video.video"
+											:src="$helper.replaceBackendHost(video.video)"
 											@play="onPlay"
 										/>
 									</v-card>

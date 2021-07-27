@@ -10,7 +10,7 @@
 			<template #topContent>
 				<v-img
 					class="cover-image"
-					:src="getCoverImage"
+					:src="$helper.replaceBackendHost(getCoverImage)"
 					height="400"
 				/>
 				<div class="px-4">

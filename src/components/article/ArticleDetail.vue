@@ -61,7 +61,7 @@
 			>
 				<v-img
 					v-if="coverImg"
-					:src="coverImg"
+					:src="$helper.replaceBackendHost(coverImg)"
 					height="450"
 					width="100%"
 				/>
@@ -157,7 +157,7 @@
 									<v-img
 										width="100%"
 										height="350"
-										:src="getImageSrc(h)"
+										:src="$helper.replaceBackendHost(getImageSrc(h))"
 										:alt="getAltText(h)"
 									/>
 								</v-card>

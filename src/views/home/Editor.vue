@@ -131,7 +131,7 @@
 				>
 					<v-img
 						contain
-						:src="cover['image']"
+						:src="$helper.replaceBackendHost(cover['image'])"
 						height="400"
 					>
 						<v-btn fab
@@ -350,7 +350,7 @@ export default {
 										return {
 											success: 1,
 											file: {
-												url: res.image,
+												url: $helper.replaceBackendHost(res.image),
 											}
 										};
 									})

@@ -6,11 +6,11 @@
 		class="ma-0 pa-0"
 	>
 		<video
-			:poster="poster"
+			:poster="$helper.replaceBackendHost(poster)"
 			controls
 			height="100%"
 			width="100%"
-			:src="src"
+			:src="$helper.replaceBackendHost(src)"
 			@play="onPlay"
 		/>
 	</v-card>

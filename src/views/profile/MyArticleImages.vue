@@ -69,7 +69,7 @@
 						sm="6"
 						class="pa-1"
 					>
-						<card-image
+						<card-img
 							height="200"
 							:src="img.image"
 						/>
@@ -84,7 +84,7 @@
 						sm="6"
 						class="pa-1"
 					>
-						<card-image
+						<card-img
 							height="200"
 							:src="url['image_url']"
 						/>
@@ -95,10 +95,8 @@
 	</v-card>
 </template>
 <script>
-import CardImage from "@/components/multimedia/CardImage.vue";
 export default {
 	name: "MyArticleImages",
-	components: {CardImage},
 	computed: {
 		myArticles() {
 			return this.$helper.getCurrentUser()["my_articles"]

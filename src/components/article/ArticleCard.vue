@@ -11,7 +11,7 @@
 			<v-img
 				class="cursor"
 				gradient="to top, rgba(100,115,201, 0), rgba(25,32,72, .6)"
-				:src="article['cover_image']['image']"
+				:src="$helper.replaceBackendHost(article['cover_image']['image'])"
 				height="250"
 				@click="routeToArticleDetail(article.id)"
 			>

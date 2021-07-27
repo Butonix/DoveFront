@@ -11,7 +11,7 @@
 				dark
 				tile
 			>
-				<v-img :src="src"
+				<v-img :src="$helper.replaceBackendHost(src)"
 					height="100%"
 					contain
 				>
@@ -29,7 +29,7 @@
 		</v-dialog>
 		<v-img
 			class="card-image"
-			:src="src"
+			:src="$helper.replaceBackendHost(src)"
 			:height="height"
 			:contain="contain"
 		>

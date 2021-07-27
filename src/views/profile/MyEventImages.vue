@@ -67,7 +67,7 @@
 						sm="6"
 						class="pa-1"
 					>
-						<card-image
+						<card-img
 							height="200"
 							:src="img.image"
 						/>
@@ -79,12 +79,11 @@
 </template>
 
 <script>
-import CardImage from "@/components/multimedia/CardImage.vue";
 import EventFormDialog from "@/views/event/EventFormDialog.vue";
 
 export default {
 	name: "MyEventImages",
-	components: {EventFormDialog, CardImage},
+	components: {EventFormDialog},
 	computed: {
 		myEvents() {
 			return this.$helper.getCurrentUser()["my_events"]

@@ -23,7 +23,7 @@
 								<v-card height="100vh"
 									class="rounded-0"
 								>
-									<v-img :src="item.image"
+									<v-img :src="$helper.replaceBackendHost(item.image)"
 										height="100vh"
 										contain
 									/>

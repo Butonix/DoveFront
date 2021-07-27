@@ -115,7 +115,7 @@
 												width="100%"
 												controls
 												crossorigin="anonymous"
-												:src="item.video"
+												:src="$helper.replaceBackendHost(item.video)"
 												@play="onPlay"
 											/>
 										</v-card>

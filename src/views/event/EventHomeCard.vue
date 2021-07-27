@@ -1,7 +1,7 @@
 <template>
 	<v-card :loading="loading">
 		<v-img
-			:src="event['banner_images']['image']"
+			:src="$helper.replaceBackendHost(event['banner_images']['image'])"
 			class="event-banner"
 			max-height="400"
 		/>

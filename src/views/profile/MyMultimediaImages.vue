@@ -67,7 +67,7 @@
 						sm="6"
 						class="pa-1"
 					>
-						<card-image
+						<card-img
 							height="200"
 							:src="img.image"
 						/>
@@ -78,12 +78,11 @@
 	</v-card>
 </template>
 <script>
-import CardImage from "@/components/multimedia/CardImage.vue";
 import StartAPostComponent from "@/components/feeds/StartPost.vue";
 
 export default {
 	name: "MyMultimediaImages",
-	components: {StartAPostComponent, CardImage},
+	components: {StartAPostComponent},
 	computed: {
 		myMultimedias() {
 			return this.$helper.getCurrentUser()["my_multimedias"]

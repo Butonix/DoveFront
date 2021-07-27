@@ -8,7 +8,7 @@
 			dark
 			fixed
 			bottom
-			right
+			left
 			medium
 			max-height="45"
 			max-width="45"
