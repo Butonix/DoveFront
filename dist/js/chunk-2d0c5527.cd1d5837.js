@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0c5527"],{"3f31":function(t,e,n){"use strict";n.r(e);var a=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{attrs:{id:"fb-root"}})},c=[],o={name:"FacebookChat"},r=o,s=n("2877"),u=Object(s["a"])(r,a,c,!1,null,"457853f2",null);e["default"]=u.exports}}]);
-//# sourceMappingURL=chunk-2d0c5527.cd1d5837.js.map
