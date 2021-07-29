@@ -1,6 +1,7 @@
 <template>
 	<div class="peek-services-wrapper">
 		<v-card id="peek-services-card"
+			:loading="loading"
 			flat
 			outlined
 			max-width="1200"
@@ -18,32 +19,44 @@
 				- Mahatma Gandhi
 			</p>
 			<v-row
-				id="services-row"
+				v-if="services"
 				align="center"
-				class="text-center ma-0-0"
+				class="text-center ma-0 pa-0"
 			>
 				<v-col
-					v-for="(item, index) in items"
+					v-for="(item, index) in services"
 					:id="item.id"
 					:key="index"
-					class="peek-card ma-0 pa-1 pa-md-3 pa-lg-4 pa-xl-6"
 					cols="12"
 					xl="4" lg="4"
 					md="4" sm="4"
 				>
-					<v-avatar size="200">
-						<v-img :src="item.image" />
-					</v-avatar>
-					<p class="peek-title">
-						{{ item.title }}
-					</p>
-					<v-card
-						class="ma-2 mx-auto"
-						flat
-						outlined
-						max-width="450"
+					<v-card class="pa-2 service-card d-flex justify-center align-start"
+						:min-height="(index % 2 === 0) ? 700 : 680"
 					>
-						<v-card-text>{{ getPeekDescription(item.description) }}</v-card-text>
+						<div>
+							<v-avatar
+								color="grey"
+								size="200"
+								class="rounded-circle service-img"
+							>
+								<v-img
+									v-if="item.images.length"
+									:src="$helper.replaceBackendHost(item.images[0].image)"
+								/>
+							</v-avatar>
+							<p class="peek-title">
+								{{ item.title }}
+							</p>
+							<v-card
+								class="ma-2 mx-auto"
+								flat
+								outlined
+								max-width="450"
+							>
+								<v-card-text>{{ getPeekDescription(item.description) }}</v-card-text>
+							</v-card>
+						</div>
 					</v-card>
 				</v-col>
 			</v-row>
@@ -51,31 +64,27 @@
 	</div>
 </template>
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	name: "PeekServicesBox",
 	data: () => ({
-		items: [
-			{
-				id: "satsang-col",
-				title: "SATSANG",
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-				image: "https://s3-ap-south-1.amazonaws.com/soulveda-media-prod/wp-content/uploads/2019/11/07115632/DV_What-is-Satsang.jpg"
-			},
-			{
-				id: "motivation-col",
-				title: "MOTIVATION",
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-				image: "https://www.careersinaudit.com/getasset/45b80f0b-1410-4675-99e6-c6e2885214d4/"
-			},
-			{
-				id: "peace-col",
-				title: "PEACE OF MIND",
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-				image: "https://cdn.dribbble.com/users/1738860/screenshots/5554042/meditation_4x.png?compress=1&resize=400x300"
-			}
-		]
+		loading: null,
 	}),
+	computed: {
+		...mapGetters({
+			services: "utilities/serviceList"
+		})
+	},
+	async created() {
+		await this.init()
+	},
 	methods: {
+		async init() {
+			this.loading = true
+			await this.$store.dispatch("utilities/fetchServices")
+			this.loading = false
+		},
 		getPeekDescription(text) {
 			if (this.$vuetify.breakpoint.width > 400) return text
 			else return text.toString().substr(0, 100) + "<span>...</span><br/><a href='#' class='see-more'>See More</a>"
@@ -144,7 +153,8 @@ export default {
 			padding-bottom: 10px
 	::v-deep.v-avatar
 		transition: ease-in-out .2s
-		backface-visibility: hidden !important
+		animation-name: reverse
+		animation-duration: .5s
 		@media only screen and (max-width: 400px) and (min-width: 211px)
 			height: 140px !important
 			min-width: 140px !important
@@ -158,17 +168,24 @@ export default {
 			min-width: 50px !important
 			width: 50px !important
 	::v-deep.v-avatar:hover
-		transition: ease-in-out .2s
-		backface-visibility: hidden !important
-		width: 150px !important
-		min-width: 150px !important
-		height: 150px !important
-	.peek-card
+		animation-duration: .5s
+		animation-name: scaleAnimation
+		animation-fill-mode: forwards
+	.service-card
 		.peek-title
 			margin: 0
 			padding: 20px 0
 			font-family: 'Cinzel', serif
 			font-weight: 500
 			font-size: 24px
-
+@keyframes scaleAnimation
+	from
+		transform: scale(1)
+	to
+		transform: scale(.8)
+@keyframes reverse
+	from
+		transform: scale(.8)
+	to
+		transform: scale(1)
 </style>

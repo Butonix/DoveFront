@@ -1,11 +1,15 @@
 <template>
-	<v-card max-width="1000"
+	<v-card
+		:loading="loading"
+		max-width="1000"
 		class="mx-auto"
 		flat
 		color="transparent rounded-0"
 	>
 		<div style="padding: 200px;" />
-		<div class="demo-wrapper">
+		<div v-if="gallery"
+			class="demo-wrapper"
+		>
 			<section class="scatter-section demo-text">
 				<div class="wrapper text">
 					LOVEDGALLERYFROMUS
@@ -15,106 +19,48 @@
 				<v-card class="wrapper"
 					height="340" flat
 				>
-					<li>
+					<li v-for="img in gallery.slice(0, 4)"
+						:key="img.id"
+					>
 						<v-img height="340" eager
 							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=102"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=153"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=86"
+							:src="$helper.replaceBackendHost(img.image)"
 						/>
 					</li>
 				</v-card>
 			</section>
 			<section class="scatter-section demo-gallery">
 				<ul class="wrapper">
-					<li>
+					<li v-for="img in gallery.slice(3, 7)"
+						:key="img.id"
+					>
 						<v-img height="340" eager
 							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=16"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=185"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=67"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=102"
+							:src="$helper.replaceBackendHost(img.image)"
 						/>
 					</li>
 				</ul>
 			</section>
 			<section class="scatter-section demo-gallery">
 				<ul class="wrapper">
-					<li>
+					<li v-for="img in gallery.slice(7, 11)"
+						:key="img.id"
+					>
 						<v-img height="340" eager
 							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=2"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=117"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=146"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=91"
+							:src="$helper.replaceBackendHost(img.image)"
 						/>
 					</li>
 				</ul>
 			</section>
 			<section class="scatter-section demo-gallery">
 				<ul class="wrapper">
-					<li>
+					<li v-for="img in gallery.slice(-4)"
+						:key="img.id"
+					>
 						<v-img height="340" eager
 							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=12"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=99"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=1"
-						/>
-					</li>
-					<li>
-						<v-img height="340" eager
-							class="scatter-image"
-							src="https://source.unsplash.com/random/1240x874?sig=175"
+							:src="$helper.replaceBackendHost(img.image)"
 						/>
 					</li>
 				</ul>
@@ -131,19 +77,34 @@
 <script>
 import {gsap} from "gsap"
 import {ScrollTrigger} from "gsap/ScrollTrigger"
+import {mapGetters} from "vuex";
 
 
 export default {
-	mounted() {
+	name: "Scatter",
+	data: () => ({
+		loading: null,
+	}),
+	computed: {
+		...mapGetters({
+			gallery: "utilities/galleryList"
+		})
+	},
+	async created(){
+		await this.init()
 		gsap.registerPlugin(ScrollTrigger);
 
 		this.initializeAnimation()
 	},
 	methods: {
+		async init() {
+			this.loading = true
+			await this.$store.dispatch("utilities/fetchGalleryImages")
+			this.loading = false
+		},
 		initializeAnimation()  {
 			document.body.style.overflow = "auto";
 			document.scrollingElement.scrollTo(0, 0);
-			gsap.to(document.querySelector(".loader"), { autoAlpha: 0 });
 
 			gsap.utils.toArray(".scatter-section").forEach((section, index) => {
 				const w = section.querySelector(".wrapper");
@@ -193,19 +154,6 @@ footer {height: 50vh}
 
 :any-link { color: #4e9815; }
 
-.df {display: flex}
-.aic {align-items: center}
-.jcc {justify-content: center}
-
-.loader {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: black;
-	color: white;
-}
 
 .demo-wrapper {
 	overflow-x: hidden;
