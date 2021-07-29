@@ -4,7 +4,7 @@
 		id="start-post-card"
 		color="white"
 		class="mx-auto mb-3 elevation-2"
-		max-width="800"
+		max-width="1000"
 		outlined
 	>
 		<div

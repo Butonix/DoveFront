@@ -5,6 +5,15 @@
 	>
 		<home-toolbar />
 
+		<!-- eslint-disable-next-line vue/no-deprecated-v-bind-sync vue/max-attributes-per-line -->
+		<v-navigation-drawer v-if="$vuetify.breakpoint.mdAndDown" v-model="homeDrawer" :mini-variant.sync="mini"
+			app
+			permanent
+			expand-on-hover
+		>
+			<quick-links @toggle="toggleMini" />
+		</v-navigation-drawer>
+
 		<v-main>
 			<v-container
 				fluid
@@ -17,7 +26,7 @@
 							flat
 							color="transparent"
 							class="mx-auto pa-0"
-							max-width="1400"
+							max-width="1500"
 						>
 							<div class="py-1" />
 							<v-row
@@ -25,22 +34,24 @@
 								align="start"
 								justify="center"
 							>
-								<v-col cols="12"
-									xl="3"
-									lg="3"
-									md="3"
-									sm="3"
-								>
-									<quick-links />
-									<facebook-group />
-								</v-col>
+								<v-fade-transition mode="in-out">
+									<v-col
+										v-if="$vuetify.breakpoint.lgAndUp"
+										cols="12"
+										xl="3"
+										lg="3"
+									>
+										<quick-links />
+										<facebook-group />
+									</v-col>
+								</v-fade-transition>
 								<v-col
 									class="ma-0 router-column"
 									cols="12"
 									xl="6"
 									lg="6"
-									md="6"
-									sm="6"
+									md="8"
+									sm="8"
 								>
 									<transition name="view">
 										<router-view />
@@ -50,8 +61,8 @@
 									cols="12"
 									xl="3"
 									lg="3"
-									md="3"
-									sm="3"
+									md="4"
+									sm="4"
 								>
 									<home-ads />
 								</v-col>
@@ -77,6 +88,17 @@ export default {
 		FacebookGroup: () => import("@/components/utils/FacebookGroup"),
 		FacebookChat: () => import("@/components/utils/FacebookChat"),
 		ScrollUp: () => import("@/components/utils/ScrollTop.vue")
+	},
+	data: () => ({
+		homeDrawer: false,
+		mini: true,
+	}),
+	methods: {
+		toggleMini() {
+			console.log("here")
+			console.log(this.mini)
+			this.mini = !(this.mini)
+		}
 	}
 }
 </script>

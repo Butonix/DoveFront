@@ -1,8 +1,13 @@
 <template>
-	<v-list rounded
+	<v-list flat
 		class="px-0"
 	>
 		<v-list-item class="pl-2">
+			<v-list-item-avatar v-if="$vuetify.breakpoint.mdAndDown"
+				color="grey lighten-3 elevation-4"
+			>
+				{{ getFullName[0] }}
+			</v-list-item-avatar>
 			<v-list-item-content class="pl-4">
 				<v-list-item-title class="full-name">
 					<div v-text="getFullName" />
@@ -21,16 +26,8 @@
 					</v-icon>
 				</v-list-item-subtitle>
 			</v-list-item-content>
-			<v-list-item-action v-if="!$vuetify.breakpoint.mdAndUp">
-				<v-btn fab
-					x-small
-					@click="$emit('toggle')"
-				>
-					<v-icon>mdi-chevron-left</v-icon>
-				</v-btn>
-			</v-list-item-action>
 		</v-list-item>
-		<v-divider class="mt-3" />
+		<v-divider class="mt-3 mb-1" />
 		<v-list-group
 			v-for="item in items"
 			:key="item.title"
@@ -105,8 +102,8 @@ export default {
 				action: "mdi-bird",
 				items: [
 					{ title: "Youtube", icon: "mdi-youtube", to: "https://www.youtube.com/channel/UCJciQdMbWCr-hPmVWu9HVyw" },
-					{ title: "Facebook", icon: "mdi-facebook", to: "/profile/articles" },
-					{ title: "Instagram", icon: "mdi-instagram", to: "/profile/images" }
+					{ title: "Facebook Group", icon: "mdi-facebook", to: "https://www.facebook.com/groups/2553480628235742/" },
+					{ title: "Facebook Page", icon: "mdi-facebook", to: "https://www.facebook.com/sachchaikendranepal" },
 				],
 				title: "Sachchai",
 			},
