@@ -1,7 +1,9 @@
 <template>
 	<div v-if="!loading">
 		<v-list-item dark>
-			<v-list-item-avatar :color="$constants.pickBackgroundColor()">
+			<v-list-item-avatar :color="$constants.pickBackgroundColor()"
+				class="d-flex justify-center align-center"
+			>
 				{{ $helper.getUsernameInitials(post.uploaded_by) }}
 			</v-list-item-avatar>
 			<v-list-item-content>
