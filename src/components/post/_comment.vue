@@ -103,14 +103,12 @@ export default {
 				"multimedia/fetchCommentsForId",
 				{id: this.postId}
 			)
-			// only show 2 comments in comment history
+			// only show 3 comments in comment history
 			if (response.count === 0) response = []
 			else if (response.count <= 3) response = response.results
 			else {
 				if (response.count > 3) response = response.results.slice(0, 3)
-				console.log(response.count)
 				this.commentsNotShownCount = parseInt(response.count) - 3
-				console.log(this.commentsNotShownCount)
 			}
 			this.comments = response
 		},

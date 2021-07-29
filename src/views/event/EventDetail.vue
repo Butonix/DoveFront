@@ -1,78 +1,93 @@
 <template>
-	<div v-if="event"
-		id="event-detail-container"
-	>
-		<v-row id="event-top-row"
-			class="ma-0 pa-0"
+	<v-card width="100vw">
+		<v-toolbar
+			color="transparent"
+			class="mx-auto"
+			tile
+			height="60"
 		>
-			<banner-column :event="event"
-				@refresh-event="init"
-			/>
-			<date-column :event="event" />
-			<top-info-column :event="event" />
-			<actions :event="event" />
-			<v-col cols="12"
-				class="pa-0"
+			<v-avatar
+				v-if="$vuetify.breakpoint.smAndUp"
+				class="detail-toolbar-avatar"
+				color="primary"
+				size="42"
 			>
-				<v-divider class="mx-auto" />
-			</v-col>
-			<v-col cols="12"
-				class="pa-0"
-			>
-				<v-toolbar
-					max-width="1000"
-					color="transparent"
-					class="mx-auto"
-					rounded
+				<v-icon color="white"
+					size="24"
 				>
-					<v-avatar
-						v-if="$vuetify.breakpoint.smAndUp"
-						class="detail-toolbar-avatar"
-						color="primary"
-						size="42"
+					mdi-calendar-clock
+				</v-icon>
+			</v-avatar>
+			<v-spacer />
+			<v-card height="55">
+				<v-tabs
+					v-model="tab"
+					height="55"
+					background-color="transparent"
+					centered
+					icons-and-text
+					slider-size="3"
+					slider-color="primary"
+					show-arrows
+				>
+					<v-tab
+						v-for="(item, index) in eventTabItems"
+						:key="index"
+						:to="item.to"
+						active-class=""
+						exact-active-class="active-tab"
 					>
-						<v-icon color="white"
-							size="24"
-						>
-							mdi-calendar-clock
+						<span>{{ item.title }}</span>
+						<v-icon v-if="$vuetify.breakpoint.smAndUp">
+							{{ item.icon }}
 						</v-icon>
-					</v-avatar>
-					<v-spacer />
-					<v-tabs
-						v-model="tab"
-						background-color="transparent"
-						centered
-						icons-and-text
-						slider-size="3"
-						slider-color="primary"
-						show-arrows
-					>
-						<v-tab
-							v-for="(item, index) in eventTabItems"
-							:key="index"
-							:to="item.to"
-						>
-							<span>{{ item.title }}</span>
-							<v-icon v-if="$vuetify.breakpoint.smAndUp">
-								{{ item.icon }}
-							</v-icon>
-						</v-tab>
-					</v-tabs>
-					<v-spacer />
-				</v-toolbar>
-			</v-col>
-			<v-col cols="12">
-				<v-card max-width="1000"
-					class="mx-auto"
-					color="transparent"
+					</v-tab>
+				</v-tabs>
+			</v-card>
+			<v-spacer />
+			<v-btn icon
+				to="/home/feeds"
+			>
+				<v-icon>
+					mdi-home
+				</v-icon>
+			</v-btn>
+		</v-toolbar>
+		<div v-if="event"
+			id="event-detail-container"
+		>
+			<v-row id="event-top-row"
+				class="ma-0 pa-0"
+			>
+				<banner-column :event="event"
+					@refresh-event="init"
+				/>
+				<date-column :event="event" />
+				<top-info-column :event="event" />
+				<actions :event="event" />
+				<v-col cols="12"
+					class="pa-0"
 				>
-					<v-tabs-items v-model="tab">
-						<router-view />
-					</v-tabs-items>
-				</v-card>
-			</v-col>
-		</v-row>
-	</div>
+					<v-divider class="mx-auto" />
+				</v-col>
+				<v-col cols="12"
+					class="pa-0"
+				>
+					<div class="py-1" />
+				</v-col>
+				<v-col cols="12">
+					<v-card max-width="1000"
+						class="mx-auto"
+						color="transparent"
+					>
+						<v-tabs-items v-model="tab">
+							<router-view />
+						</v-tabs-items>
+					</v-card>
+				</v-col>
+			</v-row>
+		</div>
+	</v-card>
 </template>
 <script>
 import {mapGetters} from "vuex";
@@ -166,8 +181,7 @@ export default {
 	max-width: 770px
 	margin: auto auto
 	text-align: center
-.event-tab
-	background: #fff9fe !important
+
 
 </style>
 <style lang="scss">

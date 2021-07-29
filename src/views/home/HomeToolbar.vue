@@ -4,6 +4,12 @@
 		fixed
 		height="60"
 	>
+		<v-app-bar-nav-icon
+			v-if="$vuetify.breakpoint.mdAndDown"
+			@click="$emit('toggle')"
+		>
+			<v-icon>mdi-menu</v-icon>
+		</v-app-bar-nav-icon>
 		<v-card
 			class="mx-4"
 			:class="$route.name === 'HOME' ? '' : 'cursor'"
@@ -36,6 +42,7 @@ export default {
 	name: "HomeToolbar",
 	components: {ProfileDropdown, HomeTabs},
 	props: {},
+	emits: ["toggle"],
 	data: () => ({
 		logo: require("@/assets/showcase_logo_v1.png"),
 	}),

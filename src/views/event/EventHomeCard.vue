@@ -1,44 +1,86 @@
 <template>
 	<v-card :loading="loading">
 		<v-img
+			v-if="event['banner_images']['image']"
+			dark
 			:src="$helper.replaceBackendHost(event['banner_images']['image'])"
 			class="event-banner"
 			max-height="400"
+		>
+			<v-card-subtitle class="pb-0">
+				<span class="chip-like">
+					<v-icon class="detail-icon"
+						size="16"
+					>
+						mdi-account-circle
+					</v-icon>
+					{{ getEventCreatorFullName(event.created_by) }}
+				</span>
+				<span class="chip-like">
+					<v-icon class="detail-icon"
+						size="16"
+					>
+						mdi-clock
+					</v-icon>
+					{{ formatDate(event.created_at) }}
+				</span>
+			</v-card-subtitle>
+			<v-card-title
+				class="display-1 cursor-pointer pt-0 pb-1"
+				@click="routeToEventDetail(event.id)"
+				v-text="event.title"
+			/>
+			<v-divider class="mx-3" />
+			<v-card-subtitle class="pt-1">
+				<span class="chip-like transparent">
+					<v-icon size="16"
+						class="detail-icon"
+					>
+						mdi-city
+					</v-icon>
+					<span class="white--text pl-2">{{ event.branch.name }}</span>
+				</span>
+			</v-card-subtitle>
+		</v-img>
+		<div v-else>
+			<v-card-subtitle class="pb-0">
+				<span class="chip-like">
+					<v-icon class="detail-icon"
+						size="16"
+					>
+						mdi-account-circle
+					</v-icon>
+					{{ getEventCreatorFullName(event.created_by) }}
+				</span>
+				<span class="chip-like">
+					<v-icon class="detail-icon"
+						size="16"
+					>
+						mdi-clock
+					</v-icon>
+					{{ formatDate(event.created_at) }}
+				</span>
+			</v-card-subtitle>
+			<v-card-title
+				class="display-1 cursor-pointer pt-0 pb-1"
+				@click="routeToEventDetail(event.id)"
+				v-text="event.title"
+			/>
+			<v-divider class="mx-3" />
+			<v-card-subtitle class="pt-1">
+				<span class="chip-like transparent">
+					<v-icon size="16"
+						class="detail-icon"
+					>
+						mdi-city
+					</v-icon>
+					{{ event.branch.name }}
+				</span>
+			</v-card-subtitle>
+		</div>
+		<div v-if="event['banner_images']['image']"
+			class="py-1"
 		/>
-		<v-card-subtitle class="pb-0">
-			<span class="chip-like">
-				<v-icon class="detail-icon"
-					size="16"
-				>
-					mdi-account-circle
-				</v-icon>
-				{{ getEventCreatorFullName(event.created_by) }}
-			</span>
-			<span class="chip-like">
-				<v-icon class="detail-icon"
-					size="16"
-				>
-					mdi-clock
-				</v-icon>
-				{{ formatDate(event.created_at) }}
-			</span>
-		</v-card-subtitle>
-		<v-card-title
-			class="display-1 cursor-pointer pt-0 pb-1"
-			@click="routeToEventDetail(event.id)"
-			v-text="event.title"
-		/>
-		<v-divider class="mx-3" />
-		<v-card-subtitle class="pt-1">
-			<span class="chip-like transparent">
-				<v-icon size="16"
-					class="detail-icon"
-				>
-					mdi-city
-				</v-icon>
-				{{ event.branch.name }}
-			</span>
-		</v-card-subtitle>
 		<v-card-text class="py-0 pb-2">
 			{{ event.description }}
 			<span>...</span>

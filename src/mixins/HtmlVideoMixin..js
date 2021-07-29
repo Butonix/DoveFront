@@ -6,9 +6,17 @@ const HtmlVideoMixin = {
 	},
 	created() {
 		window.addEventListener("scroll", this.handleScroll);
+		const homeRouter = document.querySelector(".router-column")
+		if(homeRouter) {
+			homeRouter.addEventListener("scroll", this.handleScroll)
+		}
 	},
 	destroyed() {
 		window.removeEventListener("scroll", this.handleScroll);
+		const homeRouter = document.querySelector(".router-column")
+		if(homeRouter) {
+			homeRouter.removeEventListener("scroll", this.handleScroll)
+		}
 	},
 	methods: {
 		isElementOnViewPort(element) {

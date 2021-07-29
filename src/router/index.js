@@ -56,12 +56,11 @@ const routes = [
 			},
 			{
 				path: "multimedia",
-				name: "SACHCHAI NEPAL MULTIMEDIAS",
 				component: () => import("@/views/home/Multimedias"),
 				children: [
 					{
 						path: "",
-						name: "Multimedia Images",
+						name: "SACHCHAI NEPAL MULTIMEDIAS",
 						component: () => import("@/views/home/multimedia/Pins.vue"),
 						meta: {
 							authentication: true
@@ -102,45 +101,6 @@ const routes = [
 				}
 			},
 			{
-				path: "event/:id",
-				name: "EVENT DETAIL HOME",
-				component: () => import("@/views/event/EventDetail"),
-				children: [
-					{
-						path: "about",
-						name: "About Event",
-						component: () => import("@/views/event/detail_tab/About"),
-						meta: {
-							authentication: true
-						}
-					},
-					{
-						path: "discussion",
-						name: "Event Discussion",
-						component: () => import("@/views/event/detail_tab/Discussion"),
-						meta: {
-							authentication: true
-						}
-					},
-					{
-						path: "images",
-						name: "Event Photos",
-						component: () => import("@/views/event/detail_tab/Photos"),
-						meta: {
-							authentication: true
-						}
-					},
-					{
-						path: "multimedias",
-						name: "Event Multimedias",
-						component: () => import("@/views/event/detail_tab/Multimedia"),
-						meta: {
-							authentication: true
-						}
-					}
-				]
-			},
-			{
 				path: "map/branch",
 				name: "BRANCHES MAP",
 				component: () => import("@/views/map/Branch"),
@@ -174,6 +134,44 @@ const routes = [
 		meta: {
 			authentication: true
 		}
+	},
+	{
+		path: "/home/event/:id",
+		component: () => import("@/views/event/EventDetail"),
+		children: [
+			{
+				path: "about",
+				name: "EVENT DETAIL HOME",
+				component: () => import("@/views/event/detail_tab/About"),
+				meta: {
+					authentication: true
+				}
+			},
+			{
+				path: "discussion",
+				name: "Event Discussion",
+				component: () => import("@/views/event/detail_tab/Discussion"),
+				meta: {
+					authentication: true
+				}
+			},
+			{
+				path: "images",
+				name: "Event Photos",
+				component: () => import("@/views/event/detail_tab/Photos"),
+				meta: {
+					authentication: true
+				}
+			},
+			{
+				path: "multimedias",
+				name: "Event Multimedias",
+				component: () => import("@/views/event/detail_tab/Multimedia"),
+				meta: {
+					authentication: true
+				}
+			}
+		]
 	},
 	{
 		name: "unauthorized",

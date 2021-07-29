@@ -3,13 +3,13 @@
 		tile flat
 		class="overflow-hidden"
 	>
-		<home-toolbar />
+		<home-toolbar @toggle="homeDrawer = !homeDrawer" />
 
-		<!-- eslint-disable-next-line vue/no-deprecated-v-bind-sync vue/max-attributes-per-line -->
-		<v-navigation-drawer v-if="$vuetify.breakpoint.mdAndDown" v-model="homeDrawer" :mini-variant.sync="mini"
+		<v-navigation-drawer
+			v-if="$vuetify.breakpoint.mdAndDown"
+			v-model="homeDrawer"
 			app
-			permanent
-			expand-on-hover
+			temporary
 		>
 			<quick-links />
 		</v-navigation-drawer>
@@ -63,8 +63,11 @@
 									lg="3"
 									md="4"
 									sm="4"
+									class="ads"
 								>
 									<home-ads />
+									<div class="py-1" />
+									<facebook />
 								</v-col>
 							</v-row>
 						</v-card>
@@ -81,6 +84,7 @@
 export default {
 	name: "SacchaiHomeLayout",
 	components: {
+		Facebook: () => import("@/views/showcase/Facebook.vue"),
 		TheSnackbar: () => import("@/components/utils/TheSnackbar"),
 		HomeToolbar: () => import("@/views/home/HomeToolbar"),
 		HomeAds: () => import("@/views/home/Ads"),
@@ -92,7 +96,7 @@ export default {
 	data: () => ({
 		homeDrawer: false,
 		mini: true,
-	}),
+	})
 }
 </script>
 <style lang="sass" scoped>
@@ -112,7 +116,7 @@ export default {
 .router-column {
 	overflow-x: hidden;
 	overflow-y: auto !important;
-	height: 100vh;
+	height: 150vh;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 .router-column::-webkit-scrollbar {
