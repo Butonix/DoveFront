@@ -36,7 +36,7 @@
 				<v-carousel-item
 					v-for="(item, index) in postImages"
 					:key="index + 5 * 7"
-					:src="item.image"
+					:src="$helper.replaceBackendHost(item.image)"
 					transition="fade-transition"
 					reverse-transition="fade-transition"
 				/>
