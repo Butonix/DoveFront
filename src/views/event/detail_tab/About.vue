@@ -1,7 +1,13 @@
 <template>
-	<v-card v-if="event" class="event-tab">
-		<v-list class="about-event-list" two-line color="transparent">
-			<v-list-item v-for="(item, index) in aboutEventInfo" :key="item.field">
+	<v-card v-if="event"
+		class="event-tab"
+	>
+		<v-list class="about-event-list"
+			two-line color="transparent"
+		>
+			<v-list-item v-for="(item, index) in aboutEventInfo"
+				:key="item.field"
+			>
 				<v-list-item-avatar>
 					<v-icon>{{ item.icon }}</v-icon>
 				</v-list-item-avatar>
@@ -16,7 +22,9 @@
 							</p>
 						</div>
 					</v-list-item-subtitle>
-					<v-divider v-if="index !== aboutEventInfo.length" class="mt-1" />
+					<v-divider v-if="index !== aboutEventInfo.length"
+						class="mt-1"
+					/>
 				</v-list-item-content>
 			</v-list-item>
 		</v-list>
@@ -24,7 +32,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 
 export default {
 	name: "AboutEvent",
@@ -37,30 +45,31 @@ export default {
 			if (!this.event) return []
 			if (!this.event.created_by) return []
 			if (!this.event.branch) return []
-			return [{
+			return [
+				{
 					icon: "mdi-star",
 					field: "Interested",
-					value: (this.statistics["interested_count"] === 0) ?
-						"No followers are interested yet" :
-						(this.statistics["interested_count"] === 1) ?
-						"One follower is interested" :
-						`${this.statistics["interested_count"]} followers are interested`
+					value: (this.statistics["interested_count"] === 0)
+						? "No followers are interested yet"
+						: (this.statistics["interested_count"] === 1)
+							? "One follower is interested"
+							: `${this.statistics["interested_count"]} followers are interested`
 				},
 				{
 					icon: "mdi-account-group",
 					field: "I want to go",
-					value: (this.statistics["going_count"] === 0) ?
-						"No followers are attending yet" :
-						(this.statistics["going_count"] === 1) ?
-						"One follower is attending" :
-						`${this.statistics["going_count"]} followers are attending`
+					value: (this.statistics["going_count"] === 0)
+						? "No followers are attending yet"
+						: (this.statistics["going_count"] === 1)
+							? "One follower is attending"
+							: `${this.statistics["going_count"]} followers are attending`
 				},
 				{
 					icon: "mdi-clock",
 					field: "Date-Time",
 					value: this.event.start_date + " for " + this.event.duration + ` ${(this.event.duration > 1) ? "days" : "day"}`
 				},
-				{ icon: "mdi-home", field: "Venue", value: this.event.venue },
+				{icon: "mdi-home", field: "Venue", value: this.event.venue},
 				{
 					icon: "mdi-earth",
 					field: "Organizer",
@@ -85,6 +94,7 @@ export default {
 <style lang="sass" scoped>
 .field-title
 	font-size: .875rem
+
 .about-event-list
 	color: #3b3b3b !important
 </style>

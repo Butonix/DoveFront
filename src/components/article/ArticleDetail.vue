@@ -176,10 +176,8 @@
 							</v-col>
 						</v-row>
 					</template>
-					<div
-						v-else
-						v-html="h"
-					/>
+					<!--	 eslint-disable-next-line-->
+					<div v-else v-html="h"/>
 				</v-card-text>
 				<v-card-text class="d-flex justify-start align-center">
 					<v-img src="https://media.giphy.com/media/MViYNpI0wx69zX7j7w/giphy.gif"
