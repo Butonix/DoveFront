@@ -11,7 +11,7 @@
 			permanent
 			expand-on-hover
 		>
-			<quick-links @toggle="toggleMini" />
+			<quick-links />
 		</v-navigation-drawer>
 
 		<v-main>
@@ -93,13 +93,6 @@ export default {
 		homeDrawer: false,
 		mini: true,
 	}),
-	methods: {
-		toggleMini() {
-			console.log("here")
-			console.log(this.mini)
-			this.mini = !(this.mini)
-		}
-	}
 }
 </script>
 <style lang="sass" scoped>
