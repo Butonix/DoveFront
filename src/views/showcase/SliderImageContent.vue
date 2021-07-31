@@ -19,6 +19,7 @@
 						<v-btn
 							:loading="loading"
 							dark
+							height="55"
 							class="showcase-blue-bg"
 							v-bind="attrs"
 							v-on="on"
@@ -107,18 +108,14 @@ export default {
 	padding-top: 20px;
 	.showcase-blue-bg {
 		transition: all ease .5s;
-		height: 55px;
 		width: 180px;
 		@media only screen and (max-width: 900px) {
-			height: 50px;
 			width: 150px;
 		}
 		@media only screen and (max-width: 700px) {
-			height: 47px;
 			width: 140px;
 		}
 		@media only screen and (max-width: 600px) {
-			height: 50px;
 			width: 70px;
 		}
 	}

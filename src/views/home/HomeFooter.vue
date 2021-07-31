@@ -7,7 +7,12 @@
 			class="d-flex justify-space-between align-center"
 		>
 			<div class="pl-2 text-uppercase">
-				2021 Sachchai Kendra Nepal
+				<v-icon small>
+					mdi-copyright
+				</v-icon>
+				<div class="px-1">
+					2021 Sachchai Kendra Nepal
+				</div>
 			</div>
 			<div class="pr-2">
 				<v-icon color="red">
@@ -28,5 +33,10 @@ export default {
 </script>
 
 <style scoped>
-
+.text-uppercase {
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	color: #929292;
+}
 </style>

@@ -5,7 +5,7 @@
 		flat
 	>
 		<div class="fb-group"
-			data-href="https://www.facebook.com/groups/sachchaikendranepal" data-width="340"
+			data-href="https://www.facebook.com/groups/sachchaikendranepal" data-width="350"
 			data-show-social-context="true" data-show-metadata="false"
 		>
 			<blockquote cite="https://www.facebook.com/groups/sachchaikendranepal"

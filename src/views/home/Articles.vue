@@ -3,7 +3,7 @@
 		:loading="loading"
 		flat
 		tile
-		max-width="900" class="mx-auto"
+		class="mx-auto"
 		color="transparent"
 	>
 		<div v-if="$vuetify.breakpoint.smAndUp"

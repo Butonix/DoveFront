@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///../../../src/components/VIcon/index.ts"],"names":[],"mappings":"kHAAA,gBAGA","file":"js/chunk-2d0f07c5.54b9a0dc.js","sourcesContent":["import VIcon from './VIcon'\n\nexport { VIcon }\nexport default VIcon\n"],"sourceRoot":""}

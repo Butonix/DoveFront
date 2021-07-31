@@ -2,8 +2,11 @@
 	<v-card
 		class="pa-4 no-data"
 		color="no-data-gradient"
+		height="600"
 	>
-		<v-img :src="require('@/assets/empty-copy.jpg')">
+		<v-img :src="require('@/assets/empty-copy.jpg')"
+			height="100%"
+		>
 			<template #default>
 				<div class="fill-height d-flex align-center justify-center">
 					<div>

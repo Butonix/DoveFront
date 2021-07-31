@@ -1,6 +1,7 @@
 <template>
 	<v-list
 		class="px-0 rounded"
+		max-width="350"
 	>
 		<v-list-item class="pl-2">
 			<v-list-item-avatar v-if="$vuetify.breakpoint.mdAndDown"

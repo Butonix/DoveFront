@@ -36,7 +36,7 @@
 			:key="p.id" class="my-2 mx-1"
 		>
 			<card-img :src="p.image"
-				height="35vh"
+				height="45vh"
 				:contain="false"
 			/>
 			<v-card-title

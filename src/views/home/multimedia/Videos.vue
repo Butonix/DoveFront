@@ -1,8 +1,5 @@
 <template>
-	<v-card
-		min-height="82vh"
-		color="transparent"
-	>
+	<v-card color="transparent">
 		<div class="py-1" />
 		<v-row no-gutters>
 			<v-col cols="12"

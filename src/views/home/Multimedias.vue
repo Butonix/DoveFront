@@ -2,9 +2,12 @@
 	<v-card v-if="multimedias"
 		:loading="loading"
 		flat tile
-		max-width="700" class="mx-auto"
+		class="mx-auto"
 		color="transparent"
 	>
+		<div v-if="$vuetify.breakpoint.smAndUp"
+			class="py-1"
+		/>
 		<v-card color="#90328e14">
 			<v-tabs
 				v-model="tab"
