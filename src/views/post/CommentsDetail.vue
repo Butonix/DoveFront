@@ -7,7 +7,6 @@
 		</v-toolbar>
 		<v-list v-if="comments.count > 0"
 			two-line
-			color="grey darken-3"
 		>
 			<template v-for="(item, index) in comments.results">
 				<v-subheader
