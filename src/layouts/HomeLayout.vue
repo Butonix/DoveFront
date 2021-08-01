@@ -69,11 +69,10 @@
 </template>
 
 <script>
-import HomeSimpleFooter from "@/views/home/HomeFooter.vue";
 export default {
 	name: "SacchaiHomeLayout",
 	components: {
-		HomeSimpleFooter,
+		HomeSimpleFooter: () => import("@/views/home/HomeFooter.vue"),
 		TheSnackbar: () => import("@/components/utils/TheSnackbar"),
 		HomeToolbar: () => import("@/views/home/HomeToolbar"),
 		QuickLinks: () => import("@/views/home/QuickLinks"),
