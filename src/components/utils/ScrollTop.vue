@@ -23,7 +23,7 @@
 </template>
 <script>
 export default {
-	name: "ScrollTopComponent",
+	name: "ScrollTop",
 	props: {
 		color: {
 			type: String,

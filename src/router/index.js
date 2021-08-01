@@ -25,7 +25,7 @@ const routes = [
 			{
 				path: "start-article",
 				name: "Editor",
-				component: () => import("@/views/home/Editor"),
+				component: () => import("@/components/ArticleEditor.vue"),
 				meta: {
 					authentication: true
 				}
@@ -324,6 +324,16 @@ const routes = [
 				path: "article",
 				name: "ARTICLES ADMINISTRATION",
 				component: () => import("@/views/settings/ArticlesTable.vue"),
+				meta: {
+					authentication: true,
+					admin: true
+				}
+			},
+
+			{
+				path: "article/:id",
+				name: "ARTICLE ADMINISTRATION",
+				component: () => import("@/views/settings/ArticleDetail.vue"),
 				meta: {
 					authentication: true,
 					admin: true

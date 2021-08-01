@@ -52,6 +52,9 @@
 							<transition name="setting">
 								<router-view />
 							</transition>
+							<scroll-top
+								color="#12223b"
+							/>
 							<div class="py-2" />
 						</v-card>
 					</v-col>
@@ -62,19 +65,20 @@
 	</div>
 </template>
 <script>
-import TheSnackbar from "@/components/utils/TheSnackbar.vue";
-import SmallFooter from "@/components/utils/SmallFooter.vue";
-import AdminSidebar from "@/views/settings/AdminSidebar";
-import ToFeedsPageBtn from "@/components/button/ToFeedsPageBtn.vue";
-import ProfileDropdown from "@/views/home/ProfileDropdown";
+
+
+
+
+
 
 export default {
 	name: "SettingsLayout",
 	components: {
-		ProfileDropdown,
-		AdminSidebar,
-		SmallFooter,
-		TheSnackbar
+		TheSnackbar: () => import("@/components/utils/TheSnackbar.vue"),
+		SmallFooter: () => import("@/components/utils/SmallFooter.vue"),
+		AdminSidebar: () => import("@/views/settings/AdminSidebar"),
+		ProfileDropdown: () => import("@/views/home/ProfileDropdown"),
+		ScrollTop: () => import("@/components/utils/ScrollTop.vue")
 	},
 	data() {
 		return {

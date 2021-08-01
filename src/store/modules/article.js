@@ -16,7 +16,8 @@ const state = {
 	article: null,
 	formErrors: {},
 	articleImages: {},
-	articleExtraStatus: {}
+	articleExtraStatus: {},
+	toView: null
 }
 
 const mutations = {
@@ -34,13 +35,17 @@ const mutations = {
 	},
 	[SET_ARTICLE_EXTRA_STATUS](state, value) {
 		state.articleExtraStatus = value
+	},
+	SET_ARTICLE_TO_VIEW(state, value) {
+		state.toView = value
 	}
 }
 
 const getters = {
 	list: state => state.articles,
 	detail: state => state.article,
-	formErrors: state => state.formErrors
+	formErrors: state => state.formErrors,
+	toView: state => state.toView
 }
 
 const actions = {

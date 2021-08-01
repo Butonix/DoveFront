@@ -1,15 +1,14 @@
 <template>
 	<v-card
-		max-width="100vh"
+		:max-width="maxWidth"
 		flat
-		tile
-		class="mx-auto transparent ma-2"
+		class="mx-auto transparent"
 		min-height="87vh"
 	>
 		<v-card
 			v-if="onGoingArticle"
 			class="ma-2 mx-auto"
-			max-width="100vh"
+			:max-width="maxWidth"
 		>
 			<v-toolbar flat>
 				<v-app-bar-nav-icon style="font-size: 1.4rem;">
@@ -213,6 +212,16 @@ import Snack from "@/mixins/Snack";
 
 export default {
 	mixins: [Snack],
+	props: {
+		onGoingArticle: {
+			type: Object,
+			required: true
+		},
+		maxWidth: {
+			type: String,
+			default: "100vh"
+		}
+	},
 	data: () => ({
 		editor: null,
 		topImage: null,
@@ -225,9 +234,6 @@ export default {
 		getTopImage() {
 			return require("@/assets/upload_image_icon.png")
 		},
-		...mapGetters({
-			onGoingArticle: "article/detail"
-		})
 	},
 	mounted() {
 
@@ -238,17 +244,12 @@ export default {
 	},
 	methods: {
 		async initialize() {
-			const started = await this.$store.dispatch("article/startWriting")
-			if (!started) await this.openSnack("Cannot start an article for you." +
-				" Please contact administrator.")
-			else {
-				this.headline = this.onGoingArticle.title
-				if (this.onGoingArticle.tags) {
-					this.tags = this.onGoingArticle.tags.split(",")
-				}
-				if (this.onGoingArticle["cover_images"]) {
-					this.cover = this.onGoingArticle["cover_images"]
-				}
+			this.headline = this.onGoingArticle.title
+			if (this.onGoingArticle.tags) {
+				this.tags = this.onGoingArticle.tags.split(",")
+			}
+			if (this.onGoingArticle["cover_image"]) {
+				this.cover = this.onGoingArticle["cover_image"]
 			}
 		},
 		initEditor(article) {
@@ -469,6 +470,8 @@ export default {
 	border: 2px dashed grey
 	border-radius: 6px !important
 	padding: 12px
+	width: 80vw
+	max-width: 600px
 .start-writing
 	color: dimgrey
 	font-family: "Pacifico",sans-serif

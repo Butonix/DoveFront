@@ -51,6 +51,16 @@
 				</v-toolbar>
 			</template>
 			<!-- eslint-disable-next-line vue/valid-v-slot-->
+			<template #item.title="{ item }">
+				<v-btn
+					x-small
+					text
+					@click="toArticleDetail(item)"
+				>
+					{{ item.title }}
+				</v-btn>
+			</template>
+			<!-- eslint-disable-next-line vue/valid-v-slot-->
 			<template #item.timestamp="{ item }">
 				{{ $moment(item.timestamp).fromNow() }}
 			</template>
@@ -128,7 +138,7 @@
 	</div>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import AdminTableList from "@/mixins/AdminTableList";
 import AdminTableDeleteItemMixin from "@/mixins/AdminTableDeleteItemMixin";
 import ToggleApproval from "@/mixins/ToggleApproval";
@@ -160,6 +170,7 @@ export default {
 		})
 	},
 	methods: {
+		...mapMutations("article", ["SET_ARTICLE_TO_VIEW"]),
 		async initialize(val = null) {
 			this.loading = true
 			if (!val) val = this.options.page
@@ -170,6 +181,10 @@ export default {
 			this.items = this.articles
 			this.totalItems = this.articles.count
 			this.loading = false
+		},
+		toArticleDetail(item) {
+			this.SET_ARTICLE_TO_VIEW(item)
+			this.$router.push({ name: "ARTICLE ADMINISTRATION", params: {id: item.id}})
 		},
 		async pin(item) {
 			const res = await this.$store.dispatch("article/pin", {id: item.id})
