@@ -11,6 +11,7 @@
 				<span class="chip-like">
 					<v-icon class="detail-icon"
 						size="16"
+						color="grey"
 					>
 						mdi-account-circle
 					</v-icon>
@@ -19,6 +20,7 @@
 				<span class="chip-like">
 					<v-icon class="detail-icon"
 						size="16"
+						color="grey"
 					>
 						mdi-clock
 					</v-icon>

@@ -3,8 +3,10 @@
 		flat tile
 		class="mx-auto"
 		color="transparent"
-		max-width="1000"
 	>
+		<div v-if="$vuetify.breakpoint.smAndUp"
+			class="py-1"
+		/>
 		<v-toolbar
 			color="transparent"
 			height="60"

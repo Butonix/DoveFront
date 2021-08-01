@@ -6,18 +6,13 @@
 			tile
 			height="60"
 		>
-			<v-avatar
-				v-if="$vuetify.breakpoint.smAndUp"
-				class="detail-toolbar-avatar"
-				color="primary"
-				size="42"
+			<v-btn icon
+				@click="$router.go(-1)"
 			>
-				<v-icon color="white"
-					size="24"
-				>
-					mdi-calendar-clock
+				<v-icon size="24">
+					mdi-arrow-left
 				</v-icon>
-			</v-avatar>
+			</v-btn>
 			<v-spacer />
 			<v-card height="55">
 				<v-tabs
