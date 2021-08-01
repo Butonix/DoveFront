@@ -14,9 +14,7 @@
 					{{ articleToView.title }}
 				</v-app-bar-title>
 			</v-toolbar>
-			<editor :on-going-article="articleToView"
-				max-width="800"
-			/>
+			<editor :on-going-article="articleToView" />
 		</v-card>
 		<div v-else>
 			<v-btn to="/admin/article">

@@ -1,6 +1,5 @@
 <template>
 	<v-card
-		:max-width="maxWidth"
 		flat
 		class="mx-auto transparent"
 		min-height="87vh"
@@ -8,7 +7,6 @@
 		<v-card
 			v-if="onGoingArticle"
 			class="ma-2 mx-auto"
-			:max-width="maxWidth"
 		>
 			<v-toolbar flat>
 				<v-app-bar-nav-icon style="font-size: 1.4rem;">
@@ -216,10 +214,6 @@ export default {
 		onGoingArticle: {
 			type: Object,
 			required: true
-		},
-		maxWidth: {
-			type: String,
-			default: "100vh"
 		}
 	},
 	data: () => ({
