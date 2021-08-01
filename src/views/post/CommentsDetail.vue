@@ -204,7 +204,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 .comment
-	background-color: #6d6d6f
+	background-color: #e8e8e8
 	font-size: .87rem
 	border-radius: 4px
 	padding: 10px

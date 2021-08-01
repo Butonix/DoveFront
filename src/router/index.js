@@ -339,11 +339,19 @@ const routes = [
 					admin: true
 				}
 			},
-
 			{
 				path: "multimedia",
 				name: "MULTIMEDIA ADMINISTRATION",
 				component: () => import("@/views/settings/MultimediasTable.vue"),
+				meta: {
+					authentication: true,
+					admin: true
+				}
+			},
+			{
+				path: "multimedia/:id",
+				name: "MULTIMEDIA DETAIL ADMINISTRATION",
+				component: () => import("@/views/multimedia/MultimediaDetail.vue"),
 				meta: {
 					authentication: true,
 					admin: true

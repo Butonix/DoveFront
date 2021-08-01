@@ -29,9 +29,7 @@ export default {
 	},
 	methods: {
 		async initialize() {
-			console.log("here")
 			const started = await this.$store.dispatch("article/startWriting")
-			console.log(this.onGoingArticle)
 			if (!started) await this.openSnack("Cannot start an article for you." +
 				" Please contact administrator.")
 			this.loading = false

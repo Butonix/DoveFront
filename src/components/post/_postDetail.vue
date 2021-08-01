@@ -79,10 +79,14 @@
 						</span>
 						{{ formatDate(target.approved_at) }}
 					</v-card-subtitle>
-					<v-card-text v-if="target.description"
+					<v-card-text
+						v-if="target['uploaded_by']"
 						class="py-0 pb-2"
 					>
-						{{ target.description }}
+						<span>
+							{{ target.description }}
+							<span v-if="!target.description && ifWriterIsCurrentUser">Add description</span>
+						</span>
 						<span><v-btn
 							x-small
 							color="primary"

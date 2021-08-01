@@ -5,7 +5,7 @@
 	>
 		<v-app-bar height="50">
 			<v-app-bar-nav-icon
-				@click="$router.push({name: 'HOME'})"
+				@click="$router.go(-1)"
 			>
 				<v-icon size="20">
 					mdi-arrow-left-circle
@@ -29,7 +29,9 @@
 					class="mx-auto"
 					flat tile
 				>
-					<div class="ma-3" />
+					<div v-if="!$route.fullPath.includes('admin/multimedia')"
+						class="ma-3"
+					/>
 					<base-post-detail
 						v-if="multimediaId"
 						:target="multimedia"
@@ -75,6 +77,7 @@
 											:contain="true"
 										>
 											<v-btn
+												v-if="$helper.ifWriterIsCurrentUser(multimedia.uploaded_by.username) || $helper.isCurrentUserSuperAdmin()"
 												class="ma-2"
 												fab
 												x-small
@@ -101,6 +104,7 @@
 											class="rounded-0"
 										>
 											<v-btn
+												v-if="$helper.ifWriterIsCurrentUser(multimedia.uploaded_by.username) || $helper.isCurrentUserSuperAdmin()"
 												class="ma-2"
 												fab
 												x-small
@@ -133,6 +137,14 @@
 											height="77vh"
 											class="rounded-0"
 										>
+											<v-card-actions>
+												<v-btn v-if="$helper.ifWriterIsCurrentUser(multimedia.uploaded_by.username) || $helper.isCurrentUserSuperAdmin()"
+													icon
+													@click="deleteVideoUrl(videoUrl.id)"
+												>
+													<v-icon>mdi-delete</v-icon>
+												</v-btn>
+											</v-card-actions>
 											<youtube
 												ref="yt"
 												height="100%"
@@ -152,7 +164,7 @@
 				</v-card>
 			</v-container>
 		</v-main>
-		<small-footer />
+		<small-footer v-if="!$route.fullPath.includes('admin/multimedia')" />
 	</v-card>
 </template>
 <script>

@@ -60,6 +60,15 @@
 				/>
 			</template>
 			<!-- eslint-disable-next-line vue/valid-v-slot-->
+			<template #item.title="{ item }">
+				<v-btn x-small
+					text
+					@click="toMultimediaDetail(item)"
+				>
+					{{ item.title }}
+				</v-btn>
+			</template>
+			<!-- eslint-disable-next-line vue/valid-v-slot-->
 			<template #item.timestamp="{ item }">
 				{{ $moment(item.timestamp).fromNow() }}
 			</template>
@@ -112,7 +121,7 @@
 	</div>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import AdminTableDeleteItemMixin from "@/mixins/AdminTableDeleteItemMixin";
 import ToggleApproval from "@/mixins/ToggleApproval";
 import AdminTableList from "@/mixins/AdminTableList";
@@ -148,6 +157,7 @@ export default {
 		await this.initialize()
 	},
 	methods: {
+		...mapMutations("multimedia", ["SET_MULTIMEDIA_TO_VIEW"]),
 		async initialize(val) {
 			this.loading = true
 			if (!val) val = 1
@@ -158,6 +168,10 @@ export default {
 			this.totalItems = this.multimedias.count
 			this.loading = false
 		},
+		toMultimediaDetail(item) {
+			this.SET_MULTIMEDIA_TO_VIEW(item)
+			this.$router.push({ name: "MULTIMEDIA DETAIL ADMINISTRATION", params: {id: item.id}})
+		}
 	}
 }
 </script>

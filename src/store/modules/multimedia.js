@@ -24,7 +24,8 @@ const state = {
 	formErrors: {
 		... defaultFormErrors
 	},
-	multimediaExtraStatus: {}
+	multimediaExtraStatus: {},
+	toView: null,
 }
 
 const mutations = {
@@ -37,18 +38,16 @@ const mutations = {
 	[SET_FORM_ERRORS](state, value) {
 		state.formErrors = value
 	},
+	SET_MULTIMEDIA_TO_VIEW(state, value) {
+		state.toView = value
+	}
 }
 
 const getters = {
-	list: state => {
-		return state.multimedias
-	},
-	formErrors: state => {
-		return state.formErrors
-	},
-	multimediaDetail: state => {
-		return state.multimedia
-	},
+	list: state => state.multimedias,
+	formErrors: state => state.formErrors,
+	multimediaDetail: state => state.multimedia,
+	inView: state => state.toView
 }
 
 const actions = {
