@@ -1,9 +1,11 @@
 <template>
-	<div>
+	<v-card flat
+		tile class="transparent"
+		:loading="loading"
+	>
 		<not-found v-if="postNotAvailable" />
 		<v-card
 			v-else
-			:loading="loading"
 			class="ma-0 pa-0 elevation-0"
 		>
 			<base-post-detail
@@ -41,7 +43,7 @@
 				</template>
 			</base-post-detail>
 		</v-card>
-	</div>
+	</v-card>
 </template>
 <script>
 import {mapGetters} from "vuex";

@@ -6,7 +6,6 @@ const util = require("util")
 const articleUrl = urls.article
 
 export const SET_ARTICLES = "SET_ARTICLES"
-export const SET_ARTICLE = "SET_ARTICLE"
 export const SET_FORM_ERRORS = "SET_FORM_ERRORS"
 export const SET_ARTICLE_IMAGES = "SET_ARTICLE_IMAGES"
 export const SET_ARTICLE_EXTRA_STATUS = "SET_ARTICLE_EXTRA_STATUS"
@@ -24,7 +23,7 @@ const mutations = {
 	[SET_ARTICLES](state, value) {
 		state.articles = value
 	},
-	[SET_ARTICLE](state, value) {
+	SET_ARTICLE(state, value) {
 		state.article = value
 	},
 	[SET_FORM_ERRORS](state, value) {
@@ -174,6 +173,7 @@ const actions = {
 	async startWriting({commit}) {
 		try {
 			const response = await $api.post(articleUrl.startWriting)
+			commit("SET_ARTICLE_TO_VIEW", null)
 			commit("SET_ARTICLE", response)
 			return true
 		} catch (e) {

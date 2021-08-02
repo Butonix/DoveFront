@@ -53,6 +53,7 @@
 								<router-view />
 							</transition>
 							<scroll-top
+								style="z-index: 55;"
 								color="#12223b"
 							/>
 							<div class="py-2" />

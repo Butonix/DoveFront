@@ -6,6 +6,7 @@
 		<editor
 			v-if="onGoingArticle"
 			:on-going-article="onGoingArticle"
+			mode="start"
 		/>
 	</v-card>
 </template>

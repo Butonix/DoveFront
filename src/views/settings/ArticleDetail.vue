@@ -14,7 +14,9 @@
 					{{ articleToView.title }}
 				</v-app-bar-title>
 			</v-toolbar>
-			<editor :on-going-article="articleToView" />
+			<editor :on-going-article="articleToView"
+				mode="view"
+			/>
 		</v-card>
 		<div v-else>
 			<v-btn to="/admin/article">
@@ -25,18 +27,25 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
 	name: "ArticleDetail",
 	components: {
 		Editor: () => import("@/views/home/Editor.vue")
 	},
+	beforeRouteLeave(to, from, next) {
+		this.SET_ARTICLE(null)
+		next()
+	},
 	computed: {
 		...mapGetters({
 			articleToView: "article/toView"
 		})
 	},
+	methods: {
+		...mapMutations("article", ["SET_ARTICLE"])
+	}
 }
 </script>
 

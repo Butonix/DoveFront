@@ -1,7 +1,9 @@
 <template>
 	<v-card
+		:dark="isAdminRoute"
+		:max-width="isAdminRoute ? '1000' : '100vw'"
 		width="100vw"
-		flat tile
+		flat
 	>
 		<v-app-bar height="50">
 			<v-app-bar-nav-icon
@@ -20,7 +22,9 @@
 			</v-icon>
 			<div class="px-1" />
 		</v-app-bar>
-		<v-main>
+		<v-main
+			:class="{'pa-0': isAdminRoute}"
+		>
 			<v-container fluid>
 				<not-found v-if="postNotAvailable" />
 				<v-card v-else
@@ -164,11 +168,11 @@
 				</v-card>
 			</v-container>
 		</v-main>
-		<small-footer v-if="!$route.fullPath.includes('admin/multimedia')" />
+		<small-footer v-if="!isAdminRoute" />
 	</v-card>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import SmallFooter from "@/components/utils/SmallFooter.vue";
 import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
 
@@ -180,6 +184,10 @@ export default {
 		CommentsDetail: () => import("@/views/post/CommentsDetail"),
 	},
 	mixins: [HtmlVideoMixin],
+	beforeRouteLeave(to, from, next) {
+		this.SET_MULTIMEDIA({})
+		next()
+	},
 	data: () => ({
 		multimediaId: null,
 		loading: false,
@@ -189,15 +197,17 @@ export default {
 	computed: {
 		... mapGetters({
 			multimedia: "multimedia/multimediaDetail"
-		})
+		}),
+		isAdminRoute() {
+			console.log(this.$route.name === "MULTIMEDIA DETAIL ADMINISTRATION")
+			return this.$route.name === "MULTIMEDIA DETAIL ADMINISTRATION"
+		}
 	},
 	async created() {
 		await this.init()
 	},
 	methods: {
-		videoUrlThumbnail(videoUrl) {
-			return videoUrl["yt_info"]["thumbnail_url"]
-		},
+		...mapMutations("multimedia", ["SET_MULTIMEDIA"]),
 		async init() {
 			this.loading=true
 			this.multimediaId = parseInt(this.$route.params.id)

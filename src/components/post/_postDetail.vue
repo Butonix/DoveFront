@@ -158,17 +158,11 @@
 				<div class="py-12" />
 			</v-col>
 			<v-col cols="12">
-				<slot name="comments" />
-			</v-col>
-			<v-col cols="12">
-				<div class="py-4" />
-			</v-col>
-			<v-col cols="12">
 				<v-text-field
 					v-model="comment.comment"
 					class="comment"
 					filled
-					placeholder="Add a comment"
+					placeholder="Add your comment here..."
 					hide-details="auto"
 					clearable
 					prepend-inner-icon="mdi-comment"
@@ -184,7 +178,10 @@
 				</v-text-field>
 			</v-col>
 			<v-col cols="12">
-				<div class="py-12" />
+				<div class="py-4" />
+			</v-col>
+			<v-col cols="12">
+				<slot name="comments" />
 			</v-col>
 		</v-row>
 	</v-card>

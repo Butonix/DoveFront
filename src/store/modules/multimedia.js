@@ -5,7 +5,6 @@ const multimediaUrl = urls.multimedia
 const util = require("util")
 
 export const SET_MULTIMEDIAS = "SET_MULTIMEDIAS"
-export const SET_MULTIMEDIA = "SET_MULTIMEDIA"
 export const SET_FORM_ERRORS = "SET_FORM_ERRORS"
 
 
@@ -32,7 +31,7 @@ const mutations = {
 	[SET_MULTIMEDIAS](state, value) {
 		state.multimedias = value
 	},
-	[SET_MULTIMEDIA](state, value) {
+	SET_MULTIMEDIA(state, value) {
 		state.multimedia = value
 	},
 	[SET_FORM_ERRORS](state, value) {

@@ -1,5 +1,6 @@
 <template>
 	<v-card width="100vw">
+		<the-snackbar />
 		<v-toolbar
 			color="indigo lighten-4"
 			height="60"
@@ -14,6 +15,24 @@
 			</v-app-bar-nav-icon>
 
 			<v-spacer />
+
+			<div v-if="!articleForEdit">
+				<div v-if="article">
+					<v-btn v-if="$helper.ifWriterIsCurrentUser(article['created_by']['username'])"
+						icon
+						@click="setArticleForEdit"
+					>
+						<v-icon>mdi-pencil</v-icon>
+					</v-btn>
+				</div>
+			</div>
+			<div v-else>
+				<v-btn icon
+					@click="clearArticleForEdit"
+				>
+					<v-icon>mdi-close</v-icon>
+				</v-btn>
+			</div>
 
 			<v-btn v-if="status.loved"
 				icon
@@ -45,178 +64,197 @@
 				<v-icon>mdi-bookmark-outline</v-icon>
 			</v-btn>
 		</v-toolbar>
-		<v-card
-			v-if="article"
-			:loading="loading"
-			max-width="900"
-			color="transparent"
-			class="overflow-hidden mx-auto my-4"
-			tile
-		>
-			<v-card
-				v-if="coverImg"
-				tile
-				height="450"
-				width="100%"
+		<v-slide-x-transition mode="out-in">
+			<v-card v-if="articleForEdit"
+				max-width="900"
+				class="mx-auto"
 			>
-				<v-img
-					v-if="coverImg"
-					:src="$helper.replaceBackendHost(coverImg)"
-					height="450"
-					width="100%"
+				<editor :on-going-article="articleForEdit"
+					mode="edit"
 				/>
 			</v-card>
-			<div class="py-2" />
-			<v-card-subtitle v-if="article.tags"
-				class="pb-0"
-			>
-				<v-chip
-					v-for="(tag, index) in article.tags.split(',')"
-					:key="index"
-					label
-					class="mr-1"
-					small
+			<div>
+				<v-card
+					v-if="article"
+					:loading="loading"
+					max-width="900"
+					color="transparent"
+					class="overflow-hidden mx-auto my-4"
+					tile
 				>
-					<span>#{{ tag }}</span>
-				</v-chip>
-			</v-card-subtitle>
-			<v-card-title class="display-2">
-				{{ article.title }}
-			</v-card-title>
-			<v-card-subtitle class="py-1">
-				<v-chip class="mr-1"
-					small
-				>
-					<v-icon small
-						class="pr-1"
+					<v-card
+						v-if="coverImg"
+						tile
+						height="450"
+						width="100%"
 					>
-						mdi-account-circle
-					</v-icon>
-					<span>{{ article.created_by.username }}</span>
-				</v-chip>
-				<v-chip class="mx-1"
-					small
-				>
-					<v-icon small
-						class="pr-1"
+						<v-img
+							v-if="coverImg"
+							:src="$helper.replaceBackendHost(coverImg)"
+							height="450"
+							width="100%"
+						/>
+					</v-card>
+					<div class="py-2" />
+					<v-card-subtitle v-if="article.tags"
+						class="pb-0"
 					>
-						mdi-calendar-plus
-					</v-icon>
-					<span>{{ $moment(article.timestamp).format("Do MMM YYYY") }}</span>
-				</v-chip>
-				<v-chip class="mx-1"
-					small
-				>
-					<v-icon small
-						class="pr-1"
-					>
-						mdi-account-check
-					</v-icon>
-					<span>{{ article.approved_by.username }}</span>
-				</v-chip>
-				<v-chip class="mx-1"
-					small
-				>
-					<v-icon small
-						class="pr-1"
-					>
-						mdi-calendar-check
-					</v-icon>
-					<span>{{ $moment(article.approved_at).format("Do MMM YYYY") }}</span>
-				</v-chip>
-			</v-card-subtitle>
-			<div class="py-4">
-				<v-card-text v-for="(h, index) in getArticleHtml"
-					:key="index"
-					class="py-2"
-				>
-					<template
-						v-if="h.includes('iframe') && h.includes('youtube.com/embed')"
-					>
-						<v-card dark>
-							<youtube-iframe
-								height="400"
-								:video-url="getIframeSrc(h)"
-							/>
-						</v-card>
-					</template>
-					<template
-						v-else-if="h.includes('<img src=')"
-					>
-						<v-row no-gutters>
-							<v-col
-								cols="12"
-								:sm="(ifFullWidth(h)) ? 12 : 8"
-								:md="(ifFullWidth(h)) ? 12 : 8"
-								:lg="(ifFullWidth(h)) ? 12 : 8"
-								:xl="(ifFullWidth(h)) ? 12 : 8"
+						<v-chip
+							v-for="(tag, index) in article.tags.split(',')"
+							:key="index"
+							label
+							class="mr-1"
+							small
+						>
+							<span>#{{ tag }}</span>
+						</v-chip>
+					</v-card-subtitle>
+					<v-card-title class="display-2">
+						{{ article.title }}
+					</v-card-title>
+					<v-card-subtitle class="py-1">
+						<v-chip class="mr-1"
+							small
+						>
+							<v-icon small
+								class="pr-1"
 							>
-								<v-card dark
-									height="350"
-								>
-									<v-img
-										width="100%"
-										height="350"
-										:src="$helper.replaceBackendHost(getImageSrc(h))"
-										:alt="getAltText(h)"
+								mdi-account-circle
+							</v-icon>
+							<span>{{ article.created_by.username }}</span>
+						</v-chip>
+						<v-chip class="mx-1"
+							small
+						>
+							<v-icon small
+								class="pr-1"
+							>
+								mdi-calendar-plus
+							</v-icon>
+							<span>{{ $moment(article.timestamp).format("Do MMM YYYY") }}</span>
+						</v-chip>
+						<v-chip class="mx-1"
+							small
+						>
+							<v-icon small
+								class="pr-1"
+							>
+								mdi-account-check
+							</v-icon>
+							<span>{{ article.approved_by.username }}</span>
+						</v-chip>
+						<v-chip class="mx-1"
+							small
+						>
+							<v-icon small
+								class="pr-1"
+							>
+								mdi-calendar-check
+							</v-icon>
+							<span>{{ $moment(article.approved_at).format("Do MMM YYYY") }}</span>
+						</v-chip>
+					</v-card-subtitle>
+					<div class="py-4">
+						<v-card-text v-for="(h, index) in getArticleHtml"
+							:key="index"
+							class="py-2"
+						>
+							<template
+								v-if="h.includes('iframe') && h.includes('youtube.com/embed')"
+							>
+								<v-card dark>
+									<youtube-iframe
+										height="400"
+										:video-url="getIframeSrc(h)"
 									/>
 								</v-card>
-							</v-col>
-							<v-col v-if="getAltText(h)"
-								cols="12"
-								:sm="12"
-								:md="(ifFullWidthForAlt(h)) ? 12 : 4"
-								:lg="(ifFullWidthForAlt(h)) ? 12 : 4"
-								:xl="(ifFullWidthForAlt(h)) ? 12 : 4"
-								:class="($vuetify.breakpoint.smAndDown) ? 'py-2' : 'py -2'"
+							</template>
+							<template
+								v-else-if="h.includes('<img src=')"
 							>
-								<p>
-									{{ getAltText(h) }}
-								</p>
-							</v-col>
-						</v-row>
-					</template>
-					<!--	 eslint-disable-next-line-->
-					<div v-else v-html="h"/>
-				</v-card-text>
-				<v-card-text class="d-flex justify-start align-center">
-					<v-img src="https://media.giphy.com/media/MViYNpI0wx69zX7j7w/giphy.gif"
-						height="80"
-						dark
-						eager
-						style="border-radius: 4px;"
-					>
-						<div class="headline text-center align-center">
-							<v-col class="pt-lg-6 pt-sm-6 pt-lg-6 pt-xl-6">
-								Thank you! You've made to the end.
-							</v-col>
-						</div>
-					</v-img>
-				</v-card-text>
-				<v-card-text>
-					<article-comment-detail />
-				</v-card-text>
+								<v-row no-gutters>
+									<v-col
+										cols="12"
+										:sm="(ifFullWidth(h)) ? 12 : 8"
+										:md="(ifFullWidth(h)) ? 12 : 8"
+										:lg="(ifFullWidth(h)) ? 12 : 8"
+										:xl="(ifFullWidth(h)) ? 12 : 8"
+									>
+										<v-card dark
+											height="350"
+										>
+											<v-img
+												width="100%"
+												height="350"
+												:src="$helper.replaceBackendHost(getImageSrc(h))"
+												:alt="getAltText(h)"
+											/>
+										</v-card>
+									</v-col>
+									<v-col v-if="getAltText(h)"
+										cols="12"
+										:sm="12"
+										:md="(ifFullWidthForAlt(h)) ? 12 : 4"
+										:lg="(ifFullWidthForAlt(h)) ? 12 : 4"
+										:xl="(ifFullWidthForAlt(h)) ? 12 : 4"
+										:class="($vuetify.breakpoint.smAndDown) ? 'py-2' : 'py -2'"
+									>
+										<p>
+											{{ getAltText(h) }}
+										</p>
+									</v-col>
+								</v-row>
+							</template>
+							<!--	 eslint-disable-next-line-->
+							<div v-else v-html="h"/>
+						</v-card-text>
+						<v-card-text class="d-flex justify-start align-center">
+							<v-img src="https://media.giphy.com/media/MViYNpI0wx69zX7j7w/giphy.gif"
+								height="80"
+								dark
+								eager
+								style="border-radius: 4px;"
+							>
+								<div class="headline text-center align-center">
+									<v-col class="pt-lg-6 pt-sm-6 pt-lg-6 pt-xl-6">
+										Thank you! You've made to the end.
+									</v-col>
+								</div>
+							</v-img>
+						</v-card-text>
+						<v-card-text>
+							<article-comment-detail />
+						</v-card-text>
+					</div>
+				</v-card>
 			</div>
-		</v-card>
+		</v-slide-x-transition>
 		<small-footer />
 	</v-card>
 </template>
 <script>
 import YoutubeIframe from "@/components/multimedia/YoutubeIframe.vue";
 import ArticleCommentDetail from "@/views/article/ArticleCommentsDetail.vue";
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import ArticleActions from "@/mixins/ArticleActions.js";
 import Snack from "@/mixins/Snack.js";
 import SmallFooter from "@/components/utils/SmallFooter.vue";
+import Editor from "@/views/home/Editor.vue";
+import TheSnackbar from "@/components/utils/TheSnackbar.vue";
 const editorJsHtml = require("editorjs-html");
 
 export default {
 	name: "ArticleDetail",
-	components: {SmallFooter, YoutubeIframe, ArticleCommentDetail},
+	components: {TheSnackbar, Editor, SmallFooter, YoutubeIframe, ArticleCommentDetail},
 	mixins: [ArticleActions, Snack],
+	beforeRouteLeave(to, from, next) {
+		this.SET_ARTICLE(null)
+		next()
+	},
 	data() {
 		return {
 			loading: null,
+			articleForEdit: null,
 			status: {
 				loved: null,
 				bookmarked: null,
@@ -246,6 +284,7 @@ export default {
 		await this.initStatus()
 	},
 	methods: {
+		...mapMutations("article", ["SET_ARTICLE"]),
 		ifFullWidth(h) {
 			return (this.getAltText(h).length > 800 || this.getAltText(h).length < 80)
 		},
@@ -263,6 +302,14 @@ export default {
 				"article/fetchMyStatus",
 				{ id: this.article.id }
 			)
+		},
+		setArticleForEdit() {
+			this.clearArticleForEdit()
+			this.articleForEdit = this.article
+			this.openSnack("Your are now inside article edit mode. Please save before exiting.", "success")
+		},
+		clearArticleForEdit() {
+			this.articleForEdit = null
 		},
 		getRegexMatch(regex, text) {
 			let match

@@ -8,7 +8,9 @@
 			v-if="onGoingArticle"
 			class="ma-2 mx-auto"
 		>
-			<v-toolbar flat>
+			<v-toolbar
+				flat
+			>
 				<v-app-bar-nav-icon style="font-size: 1.4rem;">
 					<v-avatar>
 						<v-img :src="require('@/assets/start_writing.png')" />
@@ -19,7 +21,9 @@
 				</v-toolbar-title>
 				<v-spacer />
 				<div class="mx-1" />
-				<v-tooltip bottom>
+				<v-tooltip v-if="mode === 'start'"
+					bottom
+				>
 					<template #activator="{on, attrs}">
 						<v-btn
 							color="indigo lighten-2"
@@ -131,7 +135,9 @@
 						:src="$helper.replaceBackendHost(cover['image'])"
 						height="400"
 					>
-						<v-btn fab
+						<v-btn
+							v-if="mode !== 'view'"
+							fab
 							x-small
 							color="red lighten-1"
 							class="ma-4"
@@ -144,23 +150,32 @@
 					</v-img>
 				</v-card>
 			</v-fab-transition>
-			<v-text-field
-				v-model="headline"
-				outlined
-				color="grey"
-				class="elevation-0 article-headline"
-				height="80"
-				hide-details="auto"
-				placeholder="YOUR ARTICLE HEADER"
-			/>
-			<v-col cols="9"
+			<v-card flat rounded
+				color="transparent"
+				max-width="860"
 				class="mx-auto"
+			>
+				<v-text-field
+					v-model="headline"
+					outlined
+					color="grey"
+					class="elevation-0 article-headline"
+					height="80"
+					full-width
+					placeholder="YOUR ARTICLE HEADER"
+				/>
+			</v-card>
+			<v-card max-width="860"
+				class="mx-auto px-8"
+				flat color="transparent"
 			>
 				<v-combobox
 					v-model="tags"
+					filled
 					label="Set tags for your article"
 					multiple
 					chips
+					full-width
 				>
 					<template #selection="data">
 						<v-chip
@@ -179,11 +194,12 @@
 						</v-chip>
 					</template>
 				</v-combobox>
-			</v-col>
+			</v-card>
 			<div
 				id="editorjs"
-				class="article-editor"
+				class="article-editor rounded"
 			/>
+			<div class="py-6" />
 		</v-card>
 	</v-card>
 </template>
@@ -214,6 +230,10 @@ export default {
 		onGoingArticle: {
 			type: Object,
 			required: true
+		},
+		mode: {
+			type: String,
+			default: "start"
 		}
 	},
 	data: () => ({
@@ -228,9 +248,6 @@ export default {
 		getTopImage() {
 			return require("@/assets/upload_image_icon.png")
 		},
-	},
-	mounted() {
-
 	},
 	async created() {
 		await this.initialize()
@@ -362,6 +379,7 @@ export default {
 			})
 		},
 		async saveDraft() {
+			if (this.mode !== "start") return
 			const outputData = await this.editor.save()
 			const res = await this.$store.dispatch("article/patch", {
 				id: this.onGoingArticle.id,
@@ -374,11 +392,14 @@ export default {
 			if (res) await this.openSnack("Your article is saved as draft successfully.", "success")
 			else await this.openSnack("Failed to save article as draft. Please try again.")
 		},
-		async postArticle() {
+		checkHeadline() {
 			if(!this.headline) {
-				await this.openSnack("Please set a headline for your article.")
-				return
-			}
+				this.openSnack("Please set a headline for your article.")
+				return false
+			} return true
+		},
+		async postArticle() {
+			if (!this.checkHeadline()) return
 			const outputData = await this.editor.save()
 			const res = await this.$store.dispatch("article/patch", {
 				id: this.onGoingArticle.id,
@@ -387,7 +408,7 @@ export default {
 					description: JSON.stringify(outputData)
 				}
 			})
-			if (res) {
+			if (res && this.mode === "start") {
 				const res = await this.$store.dispatch("article/completeWriting", {id: this.onGoingArticle.id})
 				if (res) {
 					await this.openSnack("Your article is published and will be visible after approval.", "success")
@@ -410,6 +431,7 @@ export default {
 			this.topImageUrl = null
 		},
 		async setCoverImage() {
+			if (this.mode !== "start" || this.mode !== "edit") return
 			const formData = this.$helper.getFormData({
 				article: this.onGoingArticle.id,
 				image: this.topImage
@@ -418,6 +440,7 @@ export default {
 			await this.initialize()
 		},
 		async deleteCover() {
+			if (this.mode !== "start" || this.mode !== "edit") return
 			await this.$store.dispatch("article/deleteCover", {id: this.cover.id})
 			await this.$store.dispatch("article/fetchSingle", {id: this.onGoingArticle.id})
 			await this.initialize()
@@ -439,13 +462,12 @@ export default {
 	padding: 2px 4px
 	min-height: 70px
 .article-editor
-	background-color: transparent
+	background-color: #f6fafe
 	max-width: 800px
 	min-height: 80vh
 	margin: auto
 	padding-top: 40px
 .article-headline
-	max-width: 750px
 	margin: auto
 	padding: 30px 30px 0 30px
 .upload-image
