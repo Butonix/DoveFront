@@ -18,7 +18,9 @@
 					:src="$helper.getCurrentProfileImage()"
 				/>
 			</v-avatar>
-			<v-btn v-else
+			<v-btn
+				v-else
+				dark
 				fab
 				small
 				color="deep-purple"

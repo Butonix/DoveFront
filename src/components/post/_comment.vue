@@ -2,12 +2,12 @@
 	<div
 		class="comment-container mx-2"
 	>
-		<v-list v-if="comments"
+		<v-list v-if="post"
 			class="comment-histories"
 			two-line
 			dense
 		>
-			<v-list-item v-for="(item) in comments"
+			<v-list-item v-for="(item) in commentsToShow"
 				:key="item.id"
 				class="pl-0 d-flex align-start"
 			>
@@ -78,8 +78,8 @@
 export default {
 	name: "CommentComponent",
 	props: {
-		postId: {
-			type: Number,
+		post: {
+			type: Object,
 			required: true
 		}
 	},
@@ -89,7 +89,7 @@ export default {
 			multimedia: null
 		},
 		latestCommentTime: null,
-		comments: null,
+		commentsToShow: [],
 		commentsNotShownCount: null
 	}),
 	async created() {
@@ -97,26 +97,21 @@ export default {
 	},
 	methods: {
 		async init() {
-
-			let response
-			response = await this.$store.dispatch(
-				"multimedia/fetchCommentsForId",
-				{id: this.postId}
-			)
-			// only show 3 comments in comment history
-			if (response.count === 0) response = []
-			else if (response.count <= 3) response = response.results
+			if (this.post.comments.count === 0) this.commentsToShow = []
+			else if (this.post.comments.length <= 3) this.commentsToShow = this.post.comments
 			else {
-				if (response.count > 3) response = response.results.slice(0, 3)
-				this.commentsNotShownCount = parseInt(response.count) - 3
+				if (this.post.comments.length > 3) {
+					this.commentsToShow = this.post.comments.slice(0, 3)
+					this.commentsNotShownCount = this.post.comments.length - 3
+				}
 			}
-			this.comments = response
 		},
 		async addCommentToPost() {
-			this.comment.multimedia = this.postId
+			this.comment.multimedia = this.post.id
 			const posted = await this.$store.dispatch("multimedia/postComment", { body: this.comment })
 			if (posted === true) {
 				this.comment.comment = ""
+				await this.$store.dispatch("multimedia/filter", {is_approved: true})
 				await this.init()
 			} else if (posted === 500) {
 				await this.openSnack("Internal server error. Please try again later")

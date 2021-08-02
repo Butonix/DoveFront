@@ -113,7 +113,7 @@
 		>
 			<span>{{ extraStatus.love_count }}</span>&nbsp;Love {{ (extraStatus.love_count > 1) ? 'Reacts' : 'React' }}
 		</p>
-		<post-comment :post-id="post.id" />
+		<post-comment :post="post" />
 	</v-card>
 </template>
 
@@ -137,26 +137,33 @@ export default {
 		}
 	},
 	data: () => ({
-		extraStatus: {
-			loved: null,
-			bookmarked: null,
-			love_count: null
-		}
+		extraStatus: {}
 	}),
-	async created() {
-		await this.init()
+	computed:{
+		currentUser() {
+			return this.$helper.getCurrentUser()
+		}
+	},
+	created() {
+		this.init()
 	},
 	methods: {
-		async init() {
-			this.extraStatus = await this.$store.dispatch(
-				"multimedia/fetchMyStatus",
-				{ id: this.post.id }
-			)
+		init() {
+			let loveCount = 0
+			this.post.loved.forEach(item => {
+				if(item.is_loved) loveCount ++
+			})
+			this.extraStatus = {
+				loved: this.post.loved.find(({lover, is_loved}) => (lover === this.currentUser.id && is_loved)),
+				bookmarked: this.post.bookmarks.find(({marker, is_bookmarked}) => (marker === this.currentUser.id && is_bookmarked)),
+				love_count: loveCount
+			}
 		},
 		async performPostAction(actionText) {
 			const fullActionText = `multimedia/${actionText}`
 			await this.$store.dispatch(fullActionText, {id: this.post.id})
-			await this.init()
+			await this.$store.dispatch("multimedia/filter", {is_approved: true})
+			this.init()
 		},
 		routeToPostDetail() {
 			const routeName = (this.isArticle) ? "SACHCHAI NEPAL ARTICLE" : "SACHCHAI NEPAL MULTIMEDIA"
