@@ -1,10 +1,12 @@
 <template>
-	<div v-if="!loading">
+	<v-card flat
+		color="transparent" loading="!loading"
+	>
 		<v-list-item dark>
 			<v-list-item-avatar :color="$constants.pickBackgroundColor()"
 				class="d-flex justify-center align-center"
 			>
-				{{ $helper.getUsernameInitials(post.uploaded_by) }}
+				{{ $helper.getUsernameInitials(pin.uploaded_by) }}
 			</v-list-item-avatar>
 			<v-list-item-content>
 				<v-list-item-title
@@ -14,7 +16,7 @@
 					{{ post.title }}
 				</v-list-item-title>
 				<v-list-item-subtitle class="subtitle">
-					by&nbsp;{{ (post.uploaded_by.full_name) ? post.uploaded_by.full_name : post.uploaded_by.username }}
+					by&nbsp;{{ (pin.uploaded_by.full_name) ? pin.uploaded_by.full_name : pin.uploaded_by.username }}
 				</v-list-item-subtitle>
 			</v-list-item-content>
 			<span>
@@ -38,7 +40,7 @@
 				<v-carousel-item
 					v-for="(item, index) in postImages"
 					:key="index + 5 * 7"
-					:src="$helper.replaceBackendHost(item.image)"
+					:src="$helper.replaceBackendHost(item.image || item.image_url)"
 					transition="fade-transition"
 					reverse-transition="fade-transition"
 				/>
@@ -49,7 +51,7 @@
 				/>
 			</div>
 		</v-carousel>
-	</div>
+	</v-card>
 </template>
 <script>
 import router from "@/router"
@@ -68,6 +70,7 @@ export  default {
 		}
 	},
 	data: () =>({
+		pin: null,
 		loading: false,
 		postImages: [],
 		postVideos: [],
@@ -75,13 +78,9 @@ export  default {
 	}),
 	computed: {
 		userHasProfileImage() {
-			if (!this.post) return false
-			return this.post["uploaded_by"].profile["profile_images"].length > 0
-		},
-		getUploaderImage() {
-			if (this.userHasProfileImage) {
-				return this.post["uploaded_by"].profile["profile_images"][0].image
-			} else return "None"
+			if (!this.pin) return false
+			if (!this.pin.uploaded_by) return false
+			return this.pin["uploaded_by"]["active_profile_image"] !== null
 		}
 	},
 	created() {
@@ -91,17 +90,24 @@ export  default {
 		init() {
 			this.loading = true
 			if (this.post) {
-				if (this.post["article_images"]) this.postImages = this.post["article_images"]
-				else {
-					this.postImages = this.post["multimedia_images"]
+				this.pin = this.post
+				if (this.isArticle) {
+					this.postImages = []
+					console.log(this.post)
+					if (this.post["cover_image"]) this.postImages.push(this.post["cover_image"])
+					if (this.post["images"].length) this.postImages = this.postImages.concat(this.post["images"])
+					if (this.post["image_urls"].length) this.postImages = this.postImages.concat(this.post["image_urls"])
+				}
+				if(!this.post["uploaded_by"] && this.post.created_by) {
+					this.pin["uploaded_by"] = this.post.created_by
 				}
 			}
 			this.loading = false
 		},
 		routeToPostDetail() {
 			this.isArticle
-				? router.push({name: "SACHCHAI NEPAL ARTICLE", params: { id: this.post.id }})
-				: router.push({name: "SACHCHAI NEPAL MULTIMEDIA", params: { id: this.post.id }})
+				? router.push({name: "SACHCHAI NEPAL ARTICLE", params: { id: this.pin.id }})
+				: router.push({name: "SACHCHAI NEPAL MULTIMEDIA", params: { id: this.pin.id }})
 		},
 	}
 }

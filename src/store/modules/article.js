@@ -16,7 +16,8 @@ const state = {
 	formErrors: {},
 	articleImages: {},
 	articleExtraStatus: {},
-	toView: null
+	toView: null,
+	pinned: {}
 }
 
 const mutations = {
@@ -37,6 +38,9 @@ const mutations = {
 	},
 	SET_ARTICLE_TO_VIEW(state, value) {
 		state.toView = value
+	},
+	SET_PINNED(state, value) {
+		state.pinned = value
 	}
 }
 
@@ -44,7 +48,8 @@ const getters = {
 	list: state => state.articles,
 	detail: state => state.article,
 	formErrors: state => state.formErrors,
-	toView: state => state.toView
+	toView: state => state.toView,
+	pins: state => state.pinned
 }
 
 const actions = {
@@ -55,6 +60,11 @@ const actions = {
 	async filter({commit}, payload) {
 		const response = await $api.getWithPayload(articleUrl.set, payload)
 		commit("SET_ARTICLES", response)
+	},
+
+	async fetchPinned({commit}) {
+		const response = await $api.getWithPayload(articleUrl.set, {is_pinned: true})
+		commit("SET_PINNED", response)
 	},
 
 	async fetchSingle({ commit }, {id: id}) {
