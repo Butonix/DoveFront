@@ -1,5 +1,8 @@
 <template>
-	<div class="highlights-wrapper mx-1">
+	<v-card class="highlights-wrapper mx-1 transparent"
+		flat
+		:loading="loading"
+	>
 		<v-carousel
 			cycle
 			:show-arrows="false"
@@ -105,7 +108,7 @@
 				</v-card>
 			</v-carousel-item>
 		</v-carousel>
-	</div>
+	</v-card>
 </template>
 <script>
 import {mapGetters} from "vuex";
@@ -182,7 +185,7 @@ export default {
 	@media only screen and (max-width: 600px)
 		border: 2px solid white !important
 .highlights-wrapper
-	margin-top: -20vh
+	margin-top: -18vh
 .highlights-carousel
 	max-width: 1000px
 	max-height: 290px

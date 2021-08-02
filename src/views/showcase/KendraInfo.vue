@@ -72,15 +72,13 @@ export default {
 		kendra: [
 			{
 				image: require("@/assets/kendra_pramukh.jpg"),
-				name: "Prakash Deep Gaire",
-				position: "Kendra Pramukh",
-				branch: "Sachchai Kendra Nepal"
+				name: "प्रकाश दिप गैरे",
+				position: "प्रमुख",
 			},
 			{
 				image: require("@/assets/kendra_saha_pramukh.jpg"),
-				name: "Sushila Kattel Gaire",
-				position: "Kendra Upa Pramukh",
-				branch: "Sachchai Kendra Nepal"
+				name: "सुशिला कट्टेल गैरे",
+				position: "उप-प्रमुख"
 			}
 		]
 	}),
