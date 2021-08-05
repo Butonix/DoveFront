@@ -48,7 +48,10 @@
 			<div v-else
 				class="py-1"
 			/>
-			<multimedia-action @edit="editImage(p)" />
+			<multimedia-action
+				v-if="$helper.isUserLoggedIn()"
+				@edit="editImage(p)"
+			/>
 		</v-card>
 		<v-dialog v-model="edit">
 			<v-card>

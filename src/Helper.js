@@ -27,6 +27,7 @@ module.exports = {
 	},
 	isCurrentUserSuperAdmin() {
 		if (this.isUserLoggedIn()) {
+			if (!this.getCurrentUser()) return false
 			const currentUser = this.getCurrentUser()
 			return currentUser["is_superuser"]
 		}
@@ -88,8 +89,7 @@ module.exports = {
 		return img
 	},
 	isUserLoggedIn() {
-		const currentUser = this.getCurrentUser()
-		return typeof currentUser === "object";
+		return this.getCurrentUser();
 	},
 	getVideoIdFromYoutubeURL(url) {
 		let ID = ""

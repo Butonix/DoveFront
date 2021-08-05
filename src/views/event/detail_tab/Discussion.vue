@@ -27,7 +27,9 @@
 				</v-textarea>
 			</v-card>
 		</v-dialog>
-		<div class="pa-2">
+		<div v-if="$helper.isUserLoggedIn()"
+			class="pa-2"
+		>
 			<v-text-field
 				v-model="myComment"
 				class="pa-4"
@@ -95,7 +97,12 @@
 			<v-list-item>
 				<v-list-item-content>
 					<v-list-item-title class="grey--text darken-1">
-						Be the first to add comment!
+						<div v-if="$helper.isUserLoggedIn()">
+							Be the first to add comment!
+						</div>
+						<div v-else>
+							Please login to add you comment!
+						</div>
 					</v-list-item-title>
 					<v-list-item-subtitle class="grey--text">
 						No discussions made yet.

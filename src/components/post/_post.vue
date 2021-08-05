@@ -17,7 +17,7 @@
 					<span class="subtitle-chip">{{ (isArticle) ? 'article' : 'multimedia' }}</span>
 				</v-list-item-subtitle>
 			</v-list-item-content>
-			<v-list-item-action>
+			<v-list-item-action v-if="$helper.isCurrentUserSuperAdmin()">
 				<v-btn v-if="post.is_pinned"
 					icon
 					@click="revokePin"
@@ -51,10 +51,13 @@
 			{{ post.description }}
 		</v-card-text>
 
-		<v-row class="ma-0 post-actions-row"
+		<v-row v-if="$helper.isUserLoggedIn()"
+			class="ma-0 post-actions-row"
 			align="center"
 		>
-			<v-card-actions class="ma-0 pa-0">
+			<v-card-actions
+				class="ma-0 pa-0"
+			>
 				<v-btn
 					v-if="extraStatus.loved"
 					icon
@@ -113,7 +116,10 @@
 		>
 			<span>{{ extraStatus.love_count }}</span>&nbsp;Love {{ (extraStatus.love_count > 1) ? 'Reacts' : 'React' }}
 		</p>
-		<post-comment :post="post" />
+		<post-comment
+			v-if="$helper.isUserLoggedIn()"
+			:post="post"
+		/>
 	</v-card>
 </template>
 
@@ -153,10 +159,12 @@ export default {
 			this.post.loved.forEach(item => {
 				if(item.is_loved) loveCount ++
 			})
-			this.extraStatus = {
-				loved: this.post.loved.find(({lover, is_loved}) => (lover === this.currentUser.id && is_loved)),
-				bookmarked: this.post.bookmarks.find(({marker, is_bookmarked}) => (marker === this.currentUser.id && is_bookmarked)),
-				love_count: loveCount
+			if (this.$helper.isUserLoggedIn()) {
+				this.extraStatus = {
+					loved: this.post.loved.find(({lover, is_loved}) => (lover === this.currentUser.id && is_loved)),
+					bookmarked: this.post.bookmarks.find(({marker, is_bookmarked}) => (marker === this.currentUser.id && is_bookmarked)),
+					love_count: loveCount
+				}
 			}
 		},
 		async performPostAction(actionText) {

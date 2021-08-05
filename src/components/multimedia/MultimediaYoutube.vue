@@ -20,7 +20,10 @@
 			>
 				{{ y.yt_info.title }}
 			</v-card-title>
-			<multimedia-action @edit="editVideoUrl(y)" />
+			<multimedia-action
+				v-if="$helper.isUserLoggedIn()"
+				@edit="editVideoUrl(y)"
+			/>
 		</v-card>
 		<v-dialog v-model="edit">
 			<v-card>

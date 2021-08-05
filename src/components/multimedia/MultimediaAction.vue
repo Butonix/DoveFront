@@ -1,6 +1,7 @@
 <template>
 	<v-card-actions class="pa-2 pt-0 flex-wrap justify-space-between">
 		<v-btn
+			v-if="$helper.isCurrentUserSuperAdmin()"
 			:icon="ifScreenWidthIsLessThanSmall"
 			:small="!ifScreenWidthIsLessThanSmall"
 			height="40"

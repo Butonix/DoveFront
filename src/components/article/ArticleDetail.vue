@@ -18,7 +18,7 @@
 
 			<div v-if="!articleForEdit">
 				<div v-if="article">
-					<v-btn v-if="$helper.ifWriterIsCurrentUser(article['created_by']['username'])"
+					<v-btn v-if="$helper.isUserLoggedIn() && $helper.ifWriterIsCurrentUser(article['created_by']['username'])"
 						icon
 						@click="setArticleForEdit"
 					>
@@ -296,12 +296,6 @@ export default {
 			const articleId = this.$route.params.id
 			await this.$store.dispatch("article/fetchSingle", {id: articleId})
 			this.loading = false
-		},
-		async initMyStatus() {
-			this.status = await this.$store.dispatch(
-				"article/fetchMyStatus",
-				{ id: this.article.id }
-			)
 		},
 		setArticleForEdit() {
 			this.clearArticleForEdit()

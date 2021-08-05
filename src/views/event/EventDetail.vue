@@ -59,7 +59,10 @@
 				/>
 				<date-column :event="event" />
 				<top-info-column :event="event" />
-				<actions :event="event" />
+				<actions
+					v-if="$helper.isUserLoggedIn()"
+					:event="event"
+				/>
 				<v-col cols="12"
 					class="pa-0"
 				>

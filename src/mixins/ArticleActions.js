@@ -1,6 +1,7 @@
 const ArticleActions = {
 	methods: {
 		async initStatus() {
+			if (!this.$helper.isUserLoggedIn()) return
 			this.loading = true
 			this.status = await this.$store.dispatch(
 				"article/fetchMyStatus",

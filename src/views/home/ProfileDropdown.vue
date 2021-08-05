@@ -9,26 +9,40 @@
 		close-delay="1"
 	>
 		<template #activator="{ attrs, on }">
-			<v-avatar v-if="$helper.getCurrentProfileImage()"
-				size="45"
-				v-bind="attrs"
-				v-on="on"
-			>
-				<v-img
-					:src="$helper.getCurrentProfileImage()"
-				/>
-			</v-avatar>
-			<v-btn
-				v-else
-				dark
-				fab
-				small
-				color="deep-purple"
-				v-bind="attrs"
-				v-on="on"
-			>
-				<span class="headline">{{ $helper.getCurrentUserInitials() }}</span>
-			</v-btn>
+			<div v-if="$helper.getCurrentUser()">
+				<v-avatar v-if="$helper.getCurrentProfileImage()"
+					size="45"
+					v-bind="attrs"
+					v-on="on"
+				>
+					<v-img
+						:src="$helper.getCurrentProfileImage()"
+					/>
+				</v-avatar>
+				<v-btn
+					v-else
+					dark
+					fab
+					small
+					color="deep-purple"
+					v-bind="attrs"
+					v-on="on"
+				>
+					<span class="headline">{{ $helper.getCurrentUserInitials() }}</span>
+				</v-btn>
+			</div>
+			<div v-else>
+				<v-btn
+					v-bind="attrs"
+					icon
+					color="purple lighten-2"
+					v-on="on"
+				>
+					<v-icon large>
+						mdi-apps-box
+					</v-icon>
+				</v-btn>
+			</div>
 		</template>
 		<v-card
 			color="teal lighten-5"
@@ -74,14 +88,18 @@
 export default {
 	data: () => ({
 		defaultProfileImage: require("@/assets/default_profile_image.png"),
-		items: [
-			{ text: "Showcase", icon: "mdi-image-filter-vintage", to: "/" },
-			{ text: "Feeds", icon: "mdi-home", to: "/home/feeds" },
-			{ text: "Profile", icon: "mdi-account-circle-outline", to: "/profile/home"},
-			{ text: "Settings", icon: "mdi-cog-outline", divider: true, to: "/admin/home" },
-		],
 		logoutItem: { text: "Log Out", icon: "mdi-logout", to: "/auth/login", divider: true }
 	}),
+	computed: {
+		items() {
+			return [
+				{text: "Showcase", icon: "mdi-image-filter-vintage", to: "/"},
+				{text: "Feeds", icon: "mdi-home", to: "/home/feeds"},
+				{text: "Profile", icon: "mdi-account-circle-outline", to: "/profile/home"},
+				{text: "Settings", icon: "mdi-cog-outline", divider: true, to: "/admin/home"},
+			]
+		},
+	},
 	methods: {
 		logout() {
 			this.$helper.clearApplicationData()

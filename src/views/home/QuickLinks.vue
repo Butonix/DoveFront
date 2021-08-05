@@ -3,17 +3,15 @@
 		class="px-0 rounded"
 		max-width="350"
 	>
-		<v-list-item class="pl-2">
-			<v-list-item-avatar v-if="$vuetify.breakpoint.mdAndDown"
-				color="grey lighten-3 elevation-4"
-			>
-				{{ getFullName[0] }}
-			</v-list-item-avatar>
-			<v-list-item-content class="pl-4">
+		<v-list-item>
+			<v-list-item-content>
 				<v-list-item-title class="full-name">
 					<div v-text="getFullName" />
 				</v-list-item-title>
-				<v-list-item-subtitle>
+				<v-list-item-subtitle
+					v-if="$helper.isUserLoggedIn()"
+					class="d-flex justify-center align-center"
+				>
 					<v-icon small
 						color="orange"
 					>
@@ -185,6 +183,7 @@ export default {
 	}),
 	computed: {
 		getFullName() {
+			if(!this.$helper.isUserLoggedIn()) return "Sachchai Kendra Nepal"
 			const currentUser = this.$helper.getCurrentUser()
 			if (currentUser.first_name && currentUser.last_name) {
 				return `${currentUser.first_name} ${currentUser.last_name}`
@@ -198,11 +197,11 @@ export default {
 <style scoped lang="scss">
 .full-name {
 	font-size: 20px;
-	text-transform: uppercase;
+	text-transform: capitalize;
 }
 .link-title {
-	font-size: .875rem;
-	font-weight: 500;
+	font-size: 14px;
+	font-weight: 400;
 }
 .link-subtitle {
 	font-size: .875rem;

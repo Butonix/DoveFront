@@ -4,7 +4,7 @@
 		class="transparent"
 	>
 		<div class="py-1" />
-		<v-overlay :value="overlay">
+		<v-overlay :value="loading">
 			<v-progress-circular indeterminate
 				size="64"
 			/>
@@ -59,7 +59,6 @@ export default {
 	mixins: [HtmlVideoMixin],
 	data: () => ({
 		loading: true,
-		overlay: true,
 	}),
 	computed: {
 		...mapGetters({
@@ -70,7 +69,6 @@ export default {
 		if (!this.multimedias.count) {
 			await this.$store.dispatch("multimedia/filter", {is_approved: true})
 		}
-		this.overlay = false
 		this.loading = false
 	},
 }

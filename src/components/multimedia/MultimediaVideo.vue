@@ -20,7 +20,10 @@
 		>
 			{{ video.subtitle }}
 		</v-card-subtitle>
-		<multimedia-action @edit="editVideo" />
+		<multimedia-action
+			v-if="$helper.isUserLoggedIn()"
+			@edit="editVideo"
+		/>
 		<v-dialog v-model="dialog"
 			max-width="500"
 		>

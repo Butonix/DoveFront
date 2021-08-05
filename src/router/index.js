@@ -14,7 +14,7 @@ const routes = [
 			name: "SACHCHAI SHOWCASE",
 			component: () => import("@/views/showcase/ShowCase"),
 			meta: {
-				authentication: true
+				authentication: false
 			}
 		}]
 	},
@@ -35,7 +35,7 @@ const routes = [
 				name: "HOME",
 				component: () => import("@/views/home/Home"),
 				meta: {
-					authentication: true
+					authentication: false
 				}
 			},
 			{
@@ -51,7 +51,7 @@ const routes = [
 				name: "SACHCHAI NEPAL ARTICLES",
 				component: () => import("@/views/home/Articles"),
 				meta: {
-					authentication: true
+					authentication: false
 				}
 			},
 			{
@@ -63,7 +63,7 @@ const routes = [
 						name: "SACHCHAI NEPAL MULTIMEDIAS",
 						component: () => import("@/views/home/multimedia/Pins.vue"),
 						meta: {
-							authentication: true
+							authentication: false
 						}
 					},
 					{
@@ -71,7 +71,7 @@ const routes = [
 						name: "Multimedia Photos",
 						component: () => import("@/views/home/multimedia/Images"),
 						meta: {
-							authentication: true
+							authentication: false
 						}
 					},
 					{
@@ -79,7 +79,7 @@ const routes = [
 						name: "Multimedia Videos",
 						component: () => import("@/views/home/multimedia/Videos"),
 						meta: {
-							authentication: true
+							authentication: false
 						}
 					},
 					{
@@ -87,7 +87,7 @@ const routes = [
 						name: "Youtube",
 						component: () => import("@/views/home/multimedia/Youtube"),
 						meta: {
-							authentication: true
+							authentication: false
 						}
 					}
 				]
@@ -97,7 +97,7 @@ const routes = [
 				name: "SACHCHAI NEPAL EVENTS",
 				component: () => import("@/views/event/EventsHome"),
 				meta: {
-					authentication: true
+					authentication: false
 				}
 			},
 			{
@@ -124,7 +124,7 @@ const routes = [
 		name: "SACHCHAI NEPAL ARTICLE",
 		component: () => import("@/components/article/ArticleDetail.vue"),
 		meta: {
-			authentication: true
+			authentication: false
 		}
 	},
 	{
@@ -132,7 +132,7 @@ const routes = [
 		name: "SACHCHAI NEPAL MULTIMEDIA",
 		component: () => import("@/views/multimedia/MultimediaDetail"),
 		meta: {
-			authentication: true
+			authentication: false
 		}
 	},
 	{
@@ -144,7 +144,7 @@ const routes = [
 				name: "EVENT DETAIL HOME",
 				component: () => import("@/views/event/detail_tab/About"),
 				meta: {
-					authentication: true
+					authentication: false
 				}
 			},
 			{
@@ -152,7 +152,7 @@ const routes = [
 				name: "Event Discussion",
 				component: () => import("@/views/event/detail_tab/Discussion"),
 				meta: {
-					authentication: true
+					authentication: false
 				}
 			},
 			{
@@ -160,7 +160,7 @@ const routes = [
 				name: "Event Photos",
 				component: () => import("@/views/event/detail_tab/Photos"),
 				meta: {
-					authentication: true
+					authentication: false
 				}
 			},
 			{
@@ -168,7 +168,7 @@ const routes = [
 				name: "Event Multimedias",
 				component: () => import("@/views/event/detail_tab/Multimedia"),
 				meta: {
-					authentication: true
+					authentication: false
 				}
 			}
 		]

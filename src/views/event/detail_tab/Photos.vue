@@ -34,7 +34,7 @@
 		</v-row>
 		<v-card-text v-if="event.created_by">
 			<div
-				v-if="$helper.ifWriterIsCurrentUser(event.created_by.username)"
+				v-if="$helper.isUserLoggedIn() && $helper.ifWriterIsCurrentUser(event.created_by.username)"
 				class="upload-image-container"
 			>
 				<div class="upload-image cursor"

@@ -24,7 +24,12 @@
 				id="start-a-post"
 				class="pa-0 ma-0"
 			>
-				Start a post
+				<span v-if="$helper.isUserLoggedIn()">
+					Start a post
+				</span>
+				<span v-else>
+					Become a follower
+				</span>
 			</p>
 		</div>
 		<v-divider />
@@ -60,6 +65,7 @@
 				:color="imageButton.color"
 				size="22"
 				:tooltip="imageButton.text"
+				:is-disabled="!$helper.isUserLoggedIn()"
 				@click.stop="$refs.preImageInput.click()"
 			/>
 			<depressed-button
@@ -68,6 +74,7 @@
 				:color="videoButton.color"
 				size="22"
 				:tooltip="videoButton.text"
+				:is-disabled="!$helper.isUserLoggedIn()"
 				@click.stop="$refs.preVideoInput.click()"
 			/>
 			<depressed-button
@@ -76,6 +83,7 @@
 				:color="youtubeButton.color"
 				size="22"
 				:tooltip="youtubeButton.text"
+				:is-disabled="!$helper.isUserLoggedIn()"
 				@click.stop="openStartPostBoxDialog({url: true})"
 			/>
 			<depressed-button
@@ -84,6 +92,7 @@
 				:color="eventButton.color"
 				size="22"
 				:tooltip="eventButton.text"
+				:is-disabled="!$helper.isUserLoggedIn()"
 				@click.stop="openAddEventFormDialog"
 			/>
 			<depressed-button
@@ -92,7 +101,7 @@
 				:color="startArticleButton.color"
 				size="22"
 				:tooltip="startArticleButton.text"
-				:is-disabled="startArticleButton.disabled"
+				:is-disabled="!$helper.isUserLoggedIn() || startArticleButton.disabled"
 				:to="startArticleButton.to"
 			/>
 		</v-row>
@@ -130,7 +139,11 @@ export default {
 	},
 	methods: {
 		openStartPostBoxDialog(attrs) {
-			this.$bus.emit("open-start-post-dialog", attrs)
+			if (!this.$helper.isUserLoggedIn()) {
+				this.$router.push("/auth/register")
+			} else {
+				this.$bus.emit("open-start-post-dialog", attrs)
+			}
 		},
 		openAddEventFormDialog() {
 			this.$bus.emit("open-event-form-dialog-add-item")
@@ -179,6 +192,7 @@ export default {
 		opacity: 0
 		overflow: hidden
 #start-post-box
+	cursor: pointer
 	@media only screen and (max-width: 225px)
 		padding: 4px
 		margin: 0 !important

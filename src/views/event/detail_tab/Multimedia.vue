@@ -167,6 +167,7 @@ export default {
 			event: "event/detail"
 		}),
 		ifWriterIsCurrentUser() {
+			if(!this.$helper.isUserLoggedIn()) return false
 			if (!this.event) return false
 			if (!this.event.created_by) return false
 			return this.$helper.ifWriterIsCurrentUser(this.event.created_by.username)
