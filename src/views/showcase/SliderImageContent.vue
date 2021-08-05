@@ -60,17 +60,11 @@ export default {
 	methods: {
 		async routeToFeedsPage() {
 			this.loading = true
-			if (!this.$helper.getCurrentUser()) {
-				await this.openSnack("You are not logged in. Please login or register view our feeds pages.")
-				await this.$router.push({name: "LOG IN"})
-			}
-			else {
-				const approvedPayload = {is_approved: true}
-				await this.$store.dispatch("multimedia/filter", approvedPayload)
-				await this.$store.dispatch("article/filter", approvedPayload)
-				await this.$store.dispatch("event/filter", approvedPayload)
-				await this.$router.push({name: "HOME"})
-			}
+			const approvedPayload = {is_approved: true}
+			await this.$store.dispatch("multimedia/filter", approvedPayload)
+			await this.$store.dispatch("article/filter", approvedPayload)
+			await this.$store.dispatch("event/filter", approvedPayload)
+			await this.$router.push({name: "HOME"})
 			this.loading = false
 		},
 	}
