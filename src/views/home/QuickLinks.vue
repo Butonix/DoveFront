@@ -1,16 +1,22 @@
 <template>
 	<v-list
-		class="px-0 rounded"
-		max-width="350"
+		class="px-2 pt-0 rounded"
+		max-width="450"
 	>
-		<v-list-item>
+		<v-list-item two-line>
+			<v-list-item-avatar color="grey">
+				<v-img v-if="$helper.getCurrentProfileImage()"
+					:src="$helper.getCurrentProfileImage()"
+				/>
+				<span v-else>{{ getFullName[0] }}</span>
+			</v-list-item-avatar>
 			<v-list-item-content>
 				<v-list-item-title class="full-name">
 					<div v-text="getFullName" />
 				</v-list-item-title>
 				<v-list-item-subtitle
 					v-if="$helper.isUserLoggedIn()"
-					class="d-flex justify-center align-center"
+					class="d-flex justify-start align-center"
 				>
 					<v-icon small
 						color="orange"
@@ -26,12 +32,13 @@
 				</v-list-item-subtitle>
 			</v-list-item-content>
 		</v-list-item>
-		<v-divider class="mt-3 mb-1" />
 		<v-list-group
 			v-for="item in items"
 			:key="item.title"
 			v-model="item.active"
 			active-class="black--text"
+			no-action
+			append-icon="mdi-chevron-down"
 		>
 			<template #prependIcon>
 				<v-icon color="grey darken-2">
@@ -196,8 +203,8 @@ export default {
 </script>
 <style scoped lang="scss">
 .full-name {
-	font-size: 20px;
-	text-transform: capitalize;
+	font-size: 16px;
+	text-transform: uppercase;
 }
 .link-title {
 	font-size: 14px;

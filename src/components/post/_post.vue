@@ -1,7 +1,7 @@
 <template>
 	<!--	TODO: make dark implementation too -->
 	<v-card
-		color="white"
+		outlined
 	>
 		<v-list-item>
 			<v-list-item-content>

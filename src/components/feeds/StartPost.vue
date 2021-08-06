@@ -4,7 +4,7 @@
 		class="start-post-dialog"
 		max-width="600"
 	>
-		<v-card>
+		<v-card v-if="$helper.isUserLoggedIn()">
 			<input
 				v-show="false"
 				id="image-input"

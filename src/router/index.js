@@ -205,7 +205,7 @@ const routes = [
 		component: () => import("@/layouts/Settings"),
 		children: [
 			{
-				path: "home",
+				path: "dashboard",
 				name: "SACHCHAI KENDRA NEPAL ADMINISTRATION",
 				component: () => import("@/views/settings/Home"),
 				meta: {

@@ -3,8 +3,8 @@
 		transition="slide-y-transition"
 		bottom
 		offset-y
-		max-width="300"
 		nudge-bottom="5"
+		nudge-right="5"
 		close-on-click
 		close-delay="1"
 	>
@@ -45,41 +45,60 @@
 			</div>
 		</template>
 		<v-card
-			color="teal lighten-5"
+			color="#f5f0f6"
+			max-width="600"
 		>
-			<v-list
-				color="transparent"
-				rounded
-				dense
-			>
-				<v-list-item-group
+			<div class="d-flex flex-wrap align-center pa-2">
+				<v-card
 					v-for="(item, i) in items"
 					:key="i"
+					rounded
+					:to="item.to"
+					height="90"
+					width="90"
+					outlined
+					class="ma-2 app-item"
+					:class="{
+						'app-item-active': appItemActive[item.text]
+					}"
+					:disabled="appItemActive[item.text]"
 				>
-					<v-list-item
-						link
-						:to="item.to"
-					>
-						<v-list-item-icon>
-							<v-icon v-text="item.icon" />
-						</v-list-item-icon>
-						<v-list-item-content>
-							<v-list-item-title v-text="item.text" />
-						</v-list-item-content>
-					</v-list-item>
-					<v-divider class="my-1" />
-				</v-list-item-group>
-				<v-list-item
+					<div class="text-center pt-4">
+						<v-icon v-text="item.icon" />
+					</div>
+					<div class="item-title">
+						{{ item.text }}
+					</div>
+				</v-card>
+				<v-card
+					v-if="$helper.isUserLoggedIn()"
+					rounded
+					height="90" width="90"
+					outlined class="ma-2 app-item"
 					@click="logout"
 				>
-					<v-list-item-icon>
+					<div class="text-center pt-4">
 						<v-icon v-text="logoutItem.icon" />
-					</v-list-item-icon>
-					<v-list-item-content>
-						<v-list-item-title v-text="logoutItem.text" />
-					</v-list-item-content>
-				</v-list-item>
-			</v-list>
+					</div>
+					<div class="item-title">
+						{{ logoutItem.text }}
+					</div>
+				</v-card>
+				<v-card
+					v-else
+					height="90" width="90"
+					rounded outlined
+					:to="loginItem.to"
+					class="ma-2 app-item"
+				>
+					<div class="text-center pt-4">
+						<v-icon v-text="loginItem.icon" />
+					</div>
+					<div class="item-title">
+						{{ loginItem.text }}
+					</div>
+				</v-card>
+			</div>
 		</v-card>
 	</v-menu>
 </template>
@@ -88,16 +107,38 @@
 export default {
 	data: () => ({
 		defaultProfileImage: require("@/assets/default_profile_image.png"),
-		logoutItem: { text: "Log Out", icon: "mdi-logout", to: "/auth/login", divider: true }
+		logoutItem: { text: "Log Out", icon: "mdi-logout", to: "/auth/login", divider: true },
+		loginItem: { text: "Log In", icon: "mdi-login", to: "/auth/login", divider: true }
 	}),
 	computed: {
+		appItemActive() {
+			return {
+				Showcase: (this.$route.name === "SACHCHAI SHOWCASE"),
+				Feeds: (this.$route.fullPath.includes("/home/")),
+				Profile: (this.$route.fullPath.includes("/profile/")),
+				Settings: false,
+			}
+		},
 		items() {
-			return [
-				{text: "Showcase", icon: "mdi-image-filter-vintage", to: "/"},
-				{text: "Feeds", icon: "mdi-home", to: "/home/feeds"},
-				{text: "Profile", icon: "mdi-account-circle-outline", to: "/profile/home"},
-				{text: "Settings", icon: "mdi-cog-outline", divider: true, to: "/admin/home"},
-			]
+			if (this.$helper.isCurrentUserSuperAdmin()) {
+				return [
+					{text: "Showcase", icon: "mdi-image-filter-vintage", to: "/"},
+					{text: "Feeds", icon: "mdi-home", to: "/home/feeds"},
+					{text: "Profile", icon: "mdi-account-circle-outline", to: "/profile/home"},
+					{text: "Settings", icon: "mdi-cog-outline", divider: true, to: "/admin/dashboard"},
+				]
+			} else if(this.$helper.isUserLoggedIn()) {
+				return [
+					{text: "Showcase", icon: "mdi-image-filter-vintage", to: "/"},
+					{text: "Feeds", icon: "mdi-home", to: "/home/feeds"},
+					{text: "Profile", icon: "mdi-account-circle-outline", to: "/profile/home"},
+				]
+			} else {
+				return [
+					{text: "Showcase", icon: "mdi-image-filter-vintage", to: "/"},
+					{text: "Feeds", icon: "mdi-home", to: "/home/feeds"},
+				]
+			}
 		},
 	},
 	methods: {
@@ -119,4 +160,19 @@ export default {
 	@media only screen and (max-width: 260px) and (min-width: 190px)
 		width: 30px !important
 		height: 30px !important
+</style>
+<style lang="scss">
+.item-title {
+	text-align: center;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding: 10px 0;
+}
+.app-item-active {
+	background-color: #f5f5f5 !important;
+}
+.app-item:hover {
+	background-color: #f5f5f5;
+}
+
 </style>

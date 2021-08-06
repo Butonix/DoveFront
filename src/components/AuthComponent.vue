@@ -4,14 +4,14 @@
 		class="mx-auto my-0 auth-card"
 		max-width="100vw"
 		max-height="100%"
-		flat
+		flat tile
 	>
 		<v-toolbar
 			class="elevation-12 ma-0 pa-0 px-4"
 			color="#e4ab02"
 			height="55"
 			width="100vw"
-			fixed
+			fixed tile
 		>
 			<v-btn icon
 				@click="$router.go(-1)"

@@ -82,7 +82,7 @@ export default {
 	emits: ["toggle"],
 	data: () => ({
 		drawerItems: [
-			{ title: "Home", icon: "mdi-home", to: "/admin/home" },
+			{ title: "Home", icon: "mdi-home", to: "/admin/dashboard" },
 			{ title: "Follower", icon: "mdi-account-multiple", to: "/admin/follower" },
 			{ title: "Member", icon: "mdi-account-tie", to: "/admin/member" },
 			{ title: "Branch", icon: "mdi-city", to: "/admin/branch" },

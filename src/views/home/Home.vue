@@ -1,45 +1,48 @@
 <template>
 	<v-card flat
 		rounded
-		class="transparent"
+		class="transparent mx-auto px-2"
+		:width="criticalScreenWidth ? 600: 800"
 	>
-		<div class="py-1" />
+		<div class="py-2" />
 		<v-overlay :value="loading">
 			<v-progress-circular indeterminate
 				size="64"
 			/>
 		</v-overlay>
-		<v-row no-gutters>
-			<v-col cols="12"
-				xl="8" lg="8"
-				md="8" sm="8"
-				:class="{
-					'pr-4 router-column': $vuetify.breakpoint.width > 600
-				}"
+		<v-card flat
+			class="transparent"
+		>
+			<add-post-box />
+			<no-home-data v-if="multimedias.count === 0 || !multimedias.results"
+				:image="require('@/assets/noPostsImg.jpg')"
+			/>
+			<v-card v-else
+				flat :loading="loading"
+				class="transparent"
+				rounded
 			>
-				<add-post-box />
-				<no-home-data v-if="multimedias.count === 0 || !multimedias.results"
-					:image="require('@/assets/noPostsImg.jpg')"
+				<multimedia-list
+					:posts="multimedias.results"
 				/>
-				<v-card v-else
-					flat :loading="loading"
-					class="transparent"
-					rounded
-				>
-					<multimedia-list
-						:posts="multimedias.results"
-					/>
-				</v-card>
-			</v-col>
-			<v-col
-				xl="4" lg="4"
-				md="4" sm="4"
+			</v-card>
+			<v-navigation-drawer
+				right
+				:permanent="!$vuetify.breakpoint.mdAndDown"
+				:temporary="$vuetify.breakpoint.mdAndDown"
+				:width="criticalScreenWidth ? 300: 350"
+				color="#f6f4fc"
+				class="px-2"
+				style="position: fixed; right: 0; border-radius: 0;"
+				:style="(!$vuetify.breakpoint.mdAndDown) ? 'top: 60px; height: 90vh;': 'top: 0; height: 100vh'"
 			>
+				<div class="py-1" />
 				<home-ads />
 				<div class="py-1" />
 				<facebook />
-			</v-col>
-		</v-row>
+				<div class="py-1" />
+			</v-navigation-drawer>
+		</v-card>
 	</v-card>
 </template>
 
@@ -63,7 +66,10 @@ export default {
 	computed: {
 		...mapGetters({
 			multimedias: "multimedia/list"
-		})
+		}),
+		criticalScreenWidth() {
+			return this.$vuetify.breakpoint.width > 1260 && this.$vuetify.breakpoint.width < 1620;
+		}
 	},
 	async created() {
 		if (!this.multimedias.count) {
@@ -73,20 +79,20 @@ export default {
 	},
 }
 </script>
-<style lang="scss" scoped>
-.router-column {
-	overflow-x: hidden;
-	overflow-y: auto !important;
-	height: 150vh;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.router-column::-webkit-scrollbar {
-	display: none;
-}
+<!--<style lang="scss" scoped>-->
+<!--.router-column {-->
+<!--	overflow-x: hidden;-->
+<!--	overflow-y: auto !important;-->
+<!--	height: 150vh;-->
+<!--}-->
+<!--/* Hide scrollbar for Chrome, Safari and Opera */-->
+<!--.router-column::-webkit-scrollbar {-->
+<!--	display: none;-->
+<!--}-->
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.router-column {
-	-ms-overflow-style: none;  /* IE and Edge */
-	scrollbar-width: none;  /* Firefox */
-}
-</style>
+<!--/* Hide scrollbar for IE, Edge and Firefox */-->
+<!--.router-column {-->
+<!--	-ms-overflow-style: none;  /* IE and Edge */-->
+<!--	scrollbar-width: none;  /* Firefox */-->
+<!--}-->
+<!--</style>-->
