@@ -157,6 +157,7 @@ export default {
 	methods: {
 		async init() {
 			const postId = this.$route.params.id
+			if(!this.$helper.isUserLoggedIn()) return
 			this.extraStatus = await this.$store.dispatch(
 				"multimedia/fetchMyStatus",
 				{ id: postId }

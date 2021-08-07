@@ -108,6 +108,7 @@ module.exports = {
 		return `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`
 	},
 	ifWriterIsCurrentUser(writerUsername) {
+		if (!this.isUserLoggedIn()) return false
 		const currentUser = this.getCurrentUser()
 		return currentUser.username === writerUsername
 	},

@@ -16,8 +16,17 @@
 						class="ml-1 mr-2 mt-3 mb-1"
 						size="40"
 					>
-						<span class="white--text headline">
+						<span
+							v-if="item.writer"
+							class="white--text headline"
+						>
 							{{ $helper.getUsernameInitials(item.writer) }}
+						</span>
+						<span
+							v-else
+							class="white--text headline"
+						>
+							A
 						</span>
 					</v-avatar>
 				</div>
@@ -29,6 +38,9 @@
 							class="comment-writer mx-1"
 						>
 							{{ item.writer.username }}
+						</code>
+						<code class="comment-writer mx-1">
+							Anonymous
 						</code>
 						<code
 							class="comment-created-at mx-1"

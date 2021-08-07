@@ -217,6 +217,7 @@ export default {
 	}),
 	computed: {
 		ifWriterIsCurrentUser() {
+			if (!this.$helper.isUserLoggedIn()) return
 			return this.$helper.getCurrentUser().username === this.target["uploaded_by"]["username"]
 		},
 		writer() {
@@ -262,7 +263,7 @@ export default {
 		},
 		async addCommentToPost() {
 			this.comment.multimedia = this.target.id
-			await this.$store.dispatch("post/postComment", {body: this.comment})
+			await this.$store.dispatch("multimedia/postComment", {body: this.comment})
 			this.$bus.emit("refresh-comment-in-details-page")
 			this.comment.comment = ""
 		}

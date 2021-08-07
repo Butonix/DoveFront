@@ -26,15 +26,20 @@
 					:key="index"
 					class="pl-3 pr-1 comment-item"
 				>
-					<div v-if="$helper.ifWriterIsCurrentUser(item.writer.username)">
+					<div>
 						<v-avatar size="45"
 							tile
 							class="d-flex justify-content-center ma-2 elevation-4 comment-avatar"
 							:color="$constants.pickBackgroundColor()"
 						>
-							<span class="white--text headline">
+							<span v-if="item.writer"
+								class="white--text headline"
+							>
 								{{ $helper.getUsernameInitials(item.writer) }}
 							</span>
+							<span v-else
+								class="white--text headline"
+							>A</span>
 						</v-avatar>
 						<v-dialog
 							v-model="updateCommentDialog"
@@ -111,12 +116,22 @@
 								{{ $moment(item.created_at).fromNow() }}
 							</code>
 						</v-list-item-title>
+						<v-list-item-title v-else>
+							<code class="detail-code">
+								<v-icon size="16"
+									class="detail-icon"
+								>
+									mdi-account-circle
+								</v-icon>
+								Anonymous
+							</code>
+						</v-list-item-title>
 						<v-list-item-subtitle class="comment">
 							{{ item.comment }}
 						</v-list-item-subtitle>
 					</v-list-item-content>
 					<v-list-item-action class="comment-actions">
-						<v-btn v-if="$helper.ifWriterIsCurrentUser(item.writer.username) || $helper.isCurrentUserSuperAdmin() "
+						<v-btn v-if="ifWriterIsCurrentUser(item.writer) || $helper.isCurrentUserSuperAdmin() "
 							icon
 							@click="removeComment(item.id)"
 						>
@@ -159,6 +174,11 @@ export default {
 		this.$bus.off("refresh-comment-in-details-page")
 	},
 	methods: {
+		ifWriterIsCurrentUser(writer){
+			if(!writer) return false
+			if (!this.$helper.getCurrentUser()) return false
+			return (writer.username === this.$helper.getCurrentUser().username)
+		},
 		openUpdateCommentDialog(comment) {
 			this.updateCommentDialog = true
 			this.updateComment.comment = comment
