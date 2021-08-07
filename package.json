@@ -33,6 +33,7 @@
     "editorjs-style": "^3.0.2",
     "editorjs-text-alignment-blocktune": "^1.0.2",
     "editorjs-undo": "^0.1.6",
+    "emoji-vue": "^0.2.4",
     "flickity": "^2.2.1",
     "gsap": "^3.6.1",
     "hls.js": "^1.0.5",

@@ -39,7 +39,9 @@
 						>
 							{{ item.writer.username }}
 						</code>
-						<code class="comment-writer mx-1">
+						<code v-else
+							class="comment-writer mx-1"
+						>
 							Anonymous
 						</code>
 						<code
@@ -59,36 +61,31 @@
 				</v-list-item-content>
 			</v-list-item>
 			<v-list-item v-if="commentsNotShownCount">
-				See {{ commentsNotShownCount }} more comments in details.
+				<v-btn
+					small
+					text
+					class="to-detail"
+					:to="'/home/multimedia/' + post.id"
+				>
+					See {{ commentsNotShownCount }} more comments in details section
+				</v-btn>
 			</v-list-item>
 		</v-list>
 		<v-divider class="my-2" />
-		<div class="comment-box pb-2">
-			<v-text-field
-				v-model="comment.comment"
-				class="comment"
-				outlined
-				dense
-				hide-details="auto"
-				placeholder="Add a comment"
-				@keydown.enter="addCommentToPost"
-			>
-				<template #append>
-					<v-icon class="send-icon-button"
-						color="primary"
-						@click="addCommentToPost"
-					>
-						mdi-send
-					</v-icon>
-				</template>
-			</v-text-field>
-		</div>
+		<comment-box
+			:id="post.id"
+			model="multimedia"
+			@refresh="init()"
+		/>
 	</div>
 </template>
 
 <script>
+
+import CommentBox from "@/components/form/CommentBox.vue";
 export default {
 	name: "CommentComponent",
+	components: {CommentBox},
 	props: {
 		post: {
 			type: Object,
@@ -96,6 +93,7 @@ export default {
 		}
 	},
 	data: () => ({
+		text: "",
 		comment: {
 			comment: null,
 			multimedia: null
@@ -117,32 +115,12 @@ export default {
 					this.commentsNotShownCount = this.post.comments.length - 3
 				}
 			}
-		},
-		async addCommentToPost() {
-			this.comment.multimedia = this.post.id
-			const posted = await this.$store.dispatch("multimedia/postComment", { body: this.comment })
-			if (posted === true) {
-				this.comment.comment = ""
-				await this.$store.dispatch("multimedia/filter", {is_approved: true})
-				await this.init()
-			} else if (posted === 500) {
-				await this.openSnack("Internal server error. Please try again later")
-			} else {
-				await this.openSnack(posted.comment[0])
-			}
 		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-.comment-text {
-	padding: 10px;
-	background: aliceblue;
-	border-radius: 10px;
-	margin: 5px;
-	font-size: .875rem;
-}
 .comment-writer {
 	font-family: Roboto, sans-serif;
 	color: #686868 !important;

@@ -93,7 +93,6 @@ export  default {
 				this.pin = this.post
 				if (this.isArticle) {
 					this.postImages = []
-					console.log(this.post)
 					if (this.post["cover_image"]) this.postImages.push(this.post["cover_image"])
 					if (this.post["images"].length) this.postImages = this.postImages.concat(this.post["images"])
 					if (this.post["image_urls"].length) this.postImages = this.postImages.concat(this.post["image_urls"])

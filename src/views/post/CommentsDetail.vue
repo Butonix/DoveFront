@@ -250,5 +250,5 @@ export default {
 .detail-icon
 	margin-top: -2px
 .comment-avatar
-	border-radius: 4px !important
+	border-radius: 50% !important
 </style>

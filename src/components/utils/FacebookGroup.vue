@@ -1,11 +1,11 @@
 <template>
 	<v-card
-		max-width="350"
-		class="my-2 overflow-hidden"
+		max-width="345"
+		class="my-2 overflow-hidden mx-auto"
 		flat
 	>
 		<div class="fb-group"
-			data-href="https://www.facebook.com/groups/sachchaikendranepal" data-width="350"
+			data-href="https://www.facebook.com/groups/sachchaikendranepal" data-width="345"
 			data-show-social-context="true" data-show-metadata="false"
 		>
 			<blockquote cite="https://www.facebook.com/groups/sachchaikendranepal"

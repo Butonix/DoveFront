@@ -49,7 +49,6 @@ export default {
 		TheSnackbar: () => import("@/components/utils/TheSnackbar"),
 		HomeToolbar: () => import("@/views/home/HomeToolbar"),
 		QuickLinks: () => import("@/views/home/QuickLinks"),
-		// FacebookGroup: () => import("@/components/utils/FacebookGroup"),
 		FacebookChat: () => import("@/components/utils/FacebookChat"),
 		ScrollUp: () => import("@/components/utils/ScrollTop.vue"),
 		// Facebook: () => import("@/views/showcase/Facebook.vue"),

@@ -8,7 +8,9 @@
 				<v-img v-if="$helper.getCurrentProfileImage()"
 					:src="$helper.getCurrentProfileImage()"
 				/>
-				<span v-else>{{ getFullName[0] }}</span>
+				<span v-else
+					class="white--text"
+				>{{ getFullName[0] }}</span>
 			</v-list-item-avatar>
 			<v-list-item-content>
 				<v-list-item-title class="full-name">
@@ -190,7 +192,7 @@ export default {
 	}),
 	computed: {
 		getFullName() {
-			if(!this.$helper.isUserLoggedIn()) return "Sachchai Kendra Nepal"
+			if(!this.$helper.isUserLoggedIn()) return "Welcome to peace"
 			const currentUser = this.$helper.getCurrentUser()
 			if (currentUser.first_name && currentUser.last_name) {
 				return `${currentUser.first_name} ${currentUser.last_name}`

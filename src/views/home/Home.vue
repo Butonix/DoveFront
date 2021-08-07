@@ -33,11 +33,15 @@
 				:width="criticalScreenWidth ? 300: 350"
 				color="#f6f4fc"
 				class="px-2"
-				style="position: fixed; right: 0; border-radius: 0;"
-				:style="(!$vuetify.breakpoint.mdAndDown) ? 'top: 60px; height: 90vh;': 'top: 0; height: 100vh'"
+				style="position: fixed; right: 0; border-radius: 0; top: 0; height: 100vh"
 			>
+				<div v-if="!$vuetify.breakpoint.mdAndDown"
+					style="height: 60px;"
+				/>
 				<div class="py-1" />
 				<home-ads />
+				<div class="py-1" />
+				<facebook-group />
 				<div class="py-1" />
 				<facebook />
 				<div class="py-1" />
@@ -57,6 +61,7 @@ export default {
 		NoHomeData: () => import("@/components/feeds/NoHomeData.vue"),
 		AddPostBox: () => import("@/views/home/AddPostBox"),
 		Facebook: () => import("@/views/showcase/Facebook.vue"),
+		FacebookGroup: () => import("@/components/utils/FacebookGroup"),
 		HomeAds: () => import("@/views/home/Ads"),
 	},
 	mixins: [HtmlVideoMixin],

@@ -106,6 +106,7 @@
 										<v-card
 											height="77vh"
 											class="rounded-0"
+											color="grey lighten-3"
 										>
 											<v-btn
 												v-if="$helper.ifWriterIsCurrentUser(multimedia.uploaded_by.username) || $helper.isCurrentUserSuperAdmin()"
@@ -140,6 +141,7 @@
 										<v-card
 											height="77vh"
 											class="rounded-0"
+											color="grey lighten-3"
 										>
 											<v-card-actions>
 												<v-btn v-if="$helper.ifWriterIsCurrentUser(multimedia.uploaded_by.username) || $helper.isCurrentUserSuperAdmin()"
@@ -199,7 +201,6 @@ export default {
 			multimedia: "multimedia/multimediaDetail"
 		}),
 		isAdminRoute() {
-			console.log(this.$route.name === "MULTIMEDIA DETAIL ADMINISTRATION")
 			return this.$route.name === "MULTIMEDIA DETAIL ADMINISTRATION"
 		}
 	},
