@@ -4,6 +4,7 @@
 		flat tile
 		class="mx-auto"
 		color="transparent"
+		:width="criticalScreenWidth ? 700: 1000"
 	>
 		<div v-if="$vuetify.breakpoint.smAndUp"
 			class="py-1"
@@ -39,6 +40,7 @@
 
 		<v-tabs-items v-model="tab"
 			style="background-color: transparent"
+			class="px-2"
 		>
 			<router-view />
 		</v-tabs-items>
@@ -67,6 +69,9 @@ export default {
 		...mapGetters({
 			multimedias: "multimedia/list"
 		}),
+		criticalScreenWidth() {
+			return this.$vuetify.breakpoint.width > 1260 && this.$vuetify.breakpoint.width < 1620;
+		}
 	},
 	async created() {
 		this.loading = true

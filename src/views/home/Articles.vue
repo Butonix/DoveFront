@@ -5,6 +5,7 @@
 		tile
 		class="mx-auto"
 		color="transparent"
+		:width="criticalScreenWidth ? 700: 900"
 	>
 		<div v-if="$vuetify.breakpoint.smAndUp"
 			class="py-1"
@@ -72,7 +73,10 @@ export default {
 	computed: {
 		...mapGetters({
 			articles: "article/list"
-		})
+		}),
+		criticalScreenWidth() {
+			return this.$vuetify.breakpoint.width > 1260 && this.$vuetify.breakpoint.width < 1620;
+		}
 	},
 	async created() {
 		this.loading = true

@@ -4,7 +4,7 @@
 		class="transparent mx-auto px-2"
 		:width="criticalScreenWidth ? 600: 800"
 	>
-		<div class="py-2" />
+		<div class="py-1" />
 		<v-overlay :value="loading">
 			<v-progress-circular indeterminate
 				size="64"

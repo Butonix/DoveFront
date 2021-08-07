@@ -112,7 +112,7 @@
 							<v-btn fab
 								x-small
 								class="ma-3 set-image"
-								@click="setCoverImage"
+								@click.stop="setCoverImage"
 							>
 								<v-icon
 									color="green lighten-3"
@@ -214,14 +214,18 @@ import TextVariantTune from "@editorjs/text-variant-tune";
 const Quote = require("@editorjs/quote");
 const Marker = require("@editorjs/marker");
 const Checklist = require("@editorjs/checklist");
-const Paragraph = require("@editorjs/paragraph");
+const Paragraph = require("editorjs-paragraph-with-alignment");
 const Embed = require("@editorjs/embed");
 import Undo from "editorjs-undo";
 const urls = require("@/urls.json")
 import DragDrop from "editorjs-drag-drop";
 import {getAccessToken} from "@/Helper";
-import {mapGetters} from "vuex";
 import Snack from "@/mixins/Snack";
+import Table from "@editorjs/table";
+import AlignmentBlockTune from "editorjs-text-alignment-blocktune";
+import SocialPost from "editorjs-social-post-plugin";
+import * as EditorJSStyle from "editorjs-style";
+const RawTool = require("@editorjs/raw");
 
 
 export default {
@@ -273,18 +277,20 @@ export default {
 				autofocus: true,
 				holder: "editorjs",
 				tools: {
+					textVariant: TextVariantTune,
+					alignmentTune: AlignmentBlockTune,
 					header: {
 						class: Header,
 						shortcut: "CMD+SHIFT+H",
 						config: {
 							placeholder: "Enter a header",
 							levels: [1, 2, 3, 4, 5],
-							defaultLevel: 1
-						}
+							defaultLevel: 2
+						},
+						tunes: ["alignmentTune"]
 					},
 					underline: Underline,
 					list: List,
-					textVariant: TextVariantTune,
 					quote: {
 						class: Quote,
 						inlineToolbar: true,
@@ -371,6 +377,17 @@ export default {
 						}
 					},
 					embed: Embed,
+					table: {
+						class: Table,
+						inlineToolbar: true,
+						config: {
+							rows: 2,
+							cols: 3,
+						},
+					},
+					socialPost: SocialPost,
+					raw: RawTool,
+					style: EditorJSStyle.StyleInlineTool,
 				},
 				tunes: ["textVariant"],
 				data: (this.onGoingArticle.description)
@@ -408,14 +425,19 @@ export default {
 					description: JSON.stringify(outputData)
 				}
 			})
-			if (res && this.mode === "start") {
-				const res = await this.$store.dispatch("article/completeWriting", {id: this.onGoingArticle.id})
-				if (res) {
-					await this.openSnack("Your article is published and will be visible after approval.", "success")
-					await this.$router.push({name: "HOME"})
+			if(res) {
+				if (this.mode === "start") {
+					const res = await this.$store.dispatch("article/completeWriting", {id: this.onGoingArticle.id})
+					if (res) {
+						await this.openSnack("Your article is published and will be visible after approval.", "success")
+						await this.$router.push({name: "HOME"})
+					}
+					else await this.openSnack("Article failed to be completed. Please try again")
+				} else {
+					await this.openSnack("Article updated successfully.")
 				}
-				else await this.openSnack("Article failed to be completed. Please try again")
-			} else await this.openSnack("Article publish failed. Please try again")
+			}
+			else await this.openSnack("Article publish failed. Please try again")
 		},
 		openUploader() {
 			this.$refs.topImageInput.click()
@@ -431,20 +453,21 @@ export default {
 			this.topImageUrl = null
 		},
 		async setCoverImage() {
-			if (this.mode !== "start" || this.mode !== "edit") return
 			const formData = this.$helper.getFormData({
 				article: this.onGoingArticle.id,
 				image: this.topImage
 			})
 			await this.$store.dispatch("article/addCoverImage", formData)
+			await this.$store.dispatch("article/fetchSingle", {id: this.onGoingArticle.id})
 			await this.initialize()
 		},
 		async deleteCover() {
-			if (this.mode !== "start" || this.mode !== "edit") return
-			await this.$store.dispatch("article/deleteCover", {id: this.cover.id})
-			await this.$store.dispatch("article/fetchSingle", {id: this.onGoingArticle.id})
-			await this.initialize()
-			this.cover = null
+			if (["start", "edit"].includes(this.mode)) {
+				await this.$store.dispatch("article/deleteCover", {id: this.cover.id})
+				await this.$store.dispatch("article/fetchSingle", {id: this.onGoingArticle.id})
+				await this.initialize()
+				this.cover = null
+			}
 		}
 	}
 }
@@ -506,4 +529,17 @@ export default {
 	.set-image
 		position: absolute
 		right: 20px
+</style>
+<style lang="scss">
+.ce-toolbar__plus {
+	border: 1px solid #e6f3fd;
+	border-radius: 30%;
+	background-color: #fdfdfd;
+}
+.ce-toolbox {
+	background-color: #fdfdfd;
+	border-radius: 4px;
+	border: 1px solid #e4e4ff;
+	padding: 4px;
+}
 </style>

@@ -116,7 +116,7 @@ export default {
 				Showcase: (this.$route.name === "SACHCHAI SHOWCASE"),
 				Feeds: (this.$route.fullPath.includes("/home/")),
 				Profile: (this.$route.fullPath.includes("/profile/")),
-				Settings: false,
+				Settings: (this.$route.fullPath.includes("/admin/")),
 			}
 		},
 		items() {

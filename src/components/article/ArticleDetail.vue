@@ -73,7 +73,7 @@
 					mode="edit"
 				/>
 			</v-card>
-			<div>
+			<div v-else>
 				<v-card
 					v-if="article"
 					:loading="loading"
