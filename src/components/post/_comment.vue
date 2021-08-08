@@ -1,13 +1,16 @@
 <template>
 	<div
+		v-if="post"
 		class="comment-container mx-2"
 	>
-		<v-list v-if="post"
+		<v-list
+			v-if="commentsToShow.length"
 			class="comment-histories"
 			two-line
 			dense
 		>
-			<v-list-item v-for="(item) in commentsToShow"
+			<v-list-item
+				v-for="(item) in commentsToShow"
 				:key="item.id"
 				class="pl-0 d-flex align-start"
 			>

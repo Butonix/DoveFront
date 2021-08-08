@@ -81,13 +81,28 @@ export default {
 .comment-box {
 	position: relative;
 	.comment-input {
-		width: 93%;
+		width: 95%;
+		@media only screen and (max-width: 1460px) {
+			width: 92%;
+		}
+		@media only screen and (max-width: 730px) {
+			width: 90%;
+		}
+		@media only screen and (max-width: 530px) {
+			width: 88%;
+		}
+		@media only screen and (max-width: 412px) {
+			width: 85%;
+		}
+		@media only screen and (max-width: 300px) {
+			width: 80%;
+		}
 	}
 }
 
 .comment-btn {
 	position: absolute;
 	top: 0;
-	right: 4px;
+	right: -6px;
 }
 </style>

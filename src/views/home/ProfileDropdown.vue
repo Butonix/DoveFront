@@ -35,10 +35,10 @@
 				<v-btn
 					v-bind="attrs"
 					icon
-					color="purple lighten-2"
+					color="grey darken-2"
 					v-on="on"
 				>
-					<v-icon large>
+					<v-icon size="30">
 						mdi-apps-box
 					</v-icon>
 				</v-btn>
@@ -48,7 +48,10 @@
 			color="#f5f0f6"
 			max-width="600"
 		>
-			<div class="d-flex flex-wrap align-center pa-2">
+			<v-row class="ma-0 pa-2"
+				justify="space-around"
+				align="center"
+			>
 				<v-card
 					v-for="(item, i) in items"
 					:key="i"
@@ -98,7 +101,7 @@
 						{{ loginItem.text }}
 					</div>
 				</v-card>
-			</div>
+			</v-row>
 		</v-card>
 	</v-menu>
 </template>

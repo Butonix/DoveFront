@@ -117,7 +117,6 @@
 			<span>{{ extraStatus.love_count }}</span>&nbsp;Love {{ (extraStatus.love_count > 1) ? 'Reacts' : 'React' }}
 		</p>
 		<post-comment
-			v-if="$helper.isUserLoggedIn()"
 			:post="post"
 		/>
 	</v-card>
