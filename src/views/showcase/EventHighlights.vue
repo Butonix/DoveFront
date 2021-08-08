@@ -73,12 +73,12 @@
 								<v-list-item-subtitle v-show="$vuetify.breakpoint.smAndUp"
 									class="d-flex justify-space-between align-center flex-wrap"
 								>
-									<p class="subtitle-2 ma-0 text-start">
+									<p class="ma-0 text-start info-text">
 										<span><v-icon>mdi-sort-clock-descending</v-icon></span>
 										{{ $moment(event.start_date).format('LLLL').split(',')[0] }}
 										{{ event.time_of_day }}
 									</p>
-									<p class="subtitle-2 ma-0">
+									<p class="ma-0 info-text">
 										<v-icon>mdi-sort-clock-ascending</v-icon>
 										{{ $moment(event.start_date).add(event.duration, 'days').format('LLLL').split(',')[0] }}
 									</p>
@@ -87,11 +87,11 @@
 									v-show="$vuetify.breakpoint.smAndUp"
 									class="d-flex justify-space-between align-center flex-wrap"
 								>
-									<p class="ma-0 subtitle-2 text-start">
+									<p class="ma-0 text-start info-text">
 										<v-icon>mdi-home</v-icon>
 										{{ event.venue }}
 									</p>
-									<p class="subtitle-2 ma-0">
+									<p class="ma-0 info-text">
 										<v-icon>mdi-google-maps</v-icon>
 										{{ getMunicipalityOrVdcWard(event) }}
 									</p>
@@ -212,4 +212,7 @@ export default {
 		border-top: 2px solid white
 sup
 	font-size: 16px
+.info-text
+	font-size: 14px
+	font-weight: 500
 </style>
