@@ -59,6 +59,7 @@ export default {
 			this.$refs.emoji.clear()
 		},
 		async addCommentTo() {
+			if (!this.comment.comment) return
 			this.comment[this.model] = this.id
 			const posted = await this.$store.dispatch(`${this.model}/postComment`, { body: this.comment })
 			if (posted === true) {
