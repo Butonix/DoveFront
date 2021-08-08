@@ -40,8 +40,8 @@ export default {
 .round-touch {
 	border-radius: 4px;
 }
-.quick-sand-font {
-	font-family: 'Quicksand', sans-serif;
+.nepali-font {
+	font-family: 'Poppins', sans-serif !important;
 }
 .video-container {
 	overflow: hidden;

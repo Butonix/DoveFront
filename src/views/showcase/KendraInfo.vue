@@ -9,13 +9,13 @@
 		>
 			<v-card-subtitle
 				id="kendra_name"
-				class="text-center"
+				class="text-center nepali-font"
 			>
 				ईश्वरीय मार्ग भजन मंडल सच्चाई केन्द्र नेपाल
 			</v-card-subtitle>
 			<v-card-subtitle
 				id="kendra_motto"
-				class="text-center"
+				class="text-center nepali-font"
 			>
 				हिमाल पहाड तराई, कोहि छैन पराई, सबैलाई समेट्ने एक मात्र सच्चाई
 			</v-card-subtitle>
@@ -38,17 +38,15 @@
 							<v-img :src="item.image" />
 						</v-avatar>
 						<div class="personal-info">
-							<div class="name">
+							<div class="name nepali-font">
 								{{ item.name }}
 							</div>
-							<div class="branch">
-								{{ item.branch }}
-							</div>
-							<div class="position">
+							<div class="position nepali-font">
 								{{ item.position }}
 							</div>
-							<div class="contact">
-								{{ item.contact }}
+							<div class="contact nepali-font py-2">
+								<span><v-icon size="18">mdi-phone</v-icon></span>
+								<span class="px-2">{{ item.contact }}</span>
 							</div>
 						</div>
 					</v-card>
@@ -74,11 +72,13 @@ export default {
 				image: require("@/assets/kendra_pramukh.jpg"),
 				name: "प्रकाश दिप गैरे",
 				position: "प्रमुख",
+				contact: "9856015401"
 			},
 			{
 				image: require("@/assets/kendra_saha_pramukh.jpg"),
 				name: "सुशिला कट्टेल गैरे",
-				position: "उप-प्रमुख"
+				position: "उप-प्रमुख",
+				contact: "9856015403"
 			}
 		]
 	}),
@@ -169,7 +169,7 @@ export default {
 .position
 	font-size: 1.1rem
 .contact
-	font-size: .875rem
+	font-size: 1rem
 </style>
 <style lang="scss" scoped>
 .kendra-info-bg-img{

@@ -7,10 +7,10 @@
 			<div class="text-uppercase context">
 				{{ item.context }}
 			</div>
-			<div class="main">
+			<div class="main nepali-font">
 				{{ item.title }}
 			</div>
-			<div class="sub">
+			<div class="sub nepali-font">
 				{{ item.subtitle }}
 			</div>
 			<div class="explore-btn">
@@ -82,7 +82,7 @@ export default {
 	padding: 20px 0;
 	font-size: 4rem;
 	line-height: 4.5rem;
-	font-weight: 800;
+	font-weight: 600;
 }
 .sub {
 	transition: all ease .5s;
