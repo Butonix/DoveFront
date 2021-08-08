@@ -176,10 +176,8 @@ export default {
 		width: 22px !important
 #start-a-post
 	transition: all .3s
-	font-size: 26px
-	font-weight: 400
-	font-family: "Acme", sans-serif
-	letter-spacing: 1px
+	font-size: 28px
+	font-weight: 700
 	color: #4f5151
 	visibility: visible
 	opacity: 1

@@ -8,7 +8,7 @@
 			class="mx-auto"
 			color="transparent"
 		>
-			<v-card-title class="overline text-uppercase pt-0">
+			<v-card-title class="text-uppercase pt-0">
 				Our Services
 			</v-card-title>
 			<v-divider />
@@ -49,12 +49,14 @@
 								{{ item.title }}
 							</p>
 							<v-card
-								class="ma-2 mx-auto"
+								class="ma-2 mx-auto pa-4"
 								flat
 								outlined
 								max-width="450"
 							>
-								<v-card-text>{{ getPeekDescription(item.description) }}</v-card-text>
+								<div style="font-size: 16px !important;">
+									{{ getPeekDescription(item.description) }}
+								</div>
 							</v-card>
 						</div>
 					</v-card>
@@ -111,11 +113,9 @@ export default {
 	.quote
 		margin: 0
 		padding: 150px 80px 0 80px !important
-
 		font-size: 3rem
 		line-height: 3.3rem
-		font-family: 'Acme', sans-serif
-		font-weight: 600
+		font-weight: 700
 		letter-spacing: 1px
 		text-align: center
 		transition: all .3s
@@ -136,7 +136,6 @@ export default {
 		padding: 15px 0
 		font-size: 1.9rem
 		line-height: 1.9rem
-		font-family: 'Lobster Two', cursive
 		font-weight: 500
 		transition: all .3s
 		@media only screen and (max-width: 895px) and (min-width: 436px)
@@ -175,7 +174,6 @@ export default {
 		.peek-title
 			margin: 0
 			padding: 20px 0
-			font-family: 'Cinzel', serif
 			font-weight: 500
 			font-size: 24px
 @keyframes scaleAnimation

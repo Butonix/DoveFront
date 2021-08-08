@@ -9,34 +9,6 @@
 		<div v-if="$vuetify.breakpoint.smAndUp"
 			class="py-1"
 		/>
-		<v-card color="#90328e14">
-			<v-tabs
-				v-model="tab"
-				background-color="transparent"
-				color="basil"
-				grow
-				show-arrows
-				height="50"
-				rounded
-			>
-				<v-tab
-					v-for="item in items"
-					:key="item.title"
-					:to="item.to"
-				>
-					<v-icon size="16"
-						style="margin-top: -1.5px;"
-					>
-						{{ item.icon }}
-					</v-icon>
-					<span
-						v-if="$vuetify.breakpoint.width > 275"
-						class="pl-1"
-						style="font-size: 12px; !important;"
-					>{{ item.title }}</span>
-				</v-tab>
-			</v-tabs>
-		</v-card>
 
 		<v-tabs-items v-model="tab"
 			style="background-color: transparent"
@@ -44,6 +16,38 @@
 		>
 			<router-view />
 		</v-tabs-items>
+		<v-navigation-drawer
+			right
+			:permanent="!$vuetify.breakpoint.mdAndDown"
+			:temporary="$vuetify.breakpoint.mdAndDown"
+			:width="criticalScreenWidth ? 250: 300"
+			color="#f6f4fc"
+			class="px-2"
+			style="position: fixed; right: 0; border-radius: 0; top: 0; height: 100vh"
+		>
+			<div v-if="!$vuetify.breakpoint.mdAndDown"
+				style="height: 60px;"
+			/>
+			<div class="py-1" />
+			<v-card outlined>
+				<v-card-title>
+					This is multimedia sidebar
+				</v-card-title>
+				<v-list>
+					<v-list-item v-for="(item, index) in items"
+						:key="index"
+						:to="item.to"
+					>
+						<v-list-item-avatar>
+							<v-icon>{{ item.icon }}</v-icon>
+						</v-list-item-avatar>
+						<v-list-item-content>
+							<v-list-item-title>{{ item.title }}</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+				</v-list>
+			</v-card>
+		</v-navigation-drawer>
 	</v-card>
 </template>
 <script>

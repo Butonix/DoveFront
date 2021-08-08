@@ -15,6 +15,7 @@
 					v-model="homeDrawer"
 					:permanent="!$vuetify.breakpoint.mdAndDown"
 					:temporary="$vuetify.breakpoint.mdAndDown"
+					width="280"
 					color="#f6f4fc"
 					style="position: fixed; left: 0;"
 					:style="(!$vuetify.breakpoint.mdAndDown) ? 'top: 60px;': ''"
@@ -50,9 +51,7 @@ export default {
 		HomeToolbar: () => import("@/views/home/HomeToolbar"),
 		QuickLinks: () => import("@/views/home/QuickLinks"),
 		FacebookChat: () => import("@/components/utils/FacebookChat"),
-		ScrollUp: () => import("@/components/utils/ScrollTop.vue"),
-		// Facebook: () => import("@/views/showcase/Facebook.vue"),
-		// HomeAds: () => import("@/views/home/Ads"),
+		ScrollUp: () => import("@/components/utils/ScrollTop.vue")
 	},
 	data: () => ({
 		homeDrawer: true,
@@ -60,31 +59,6 @@ export default {
 	})
 }
 </script>
-<style lang="scss">
-::v-deep.v-navigation-drawer .v-navigation-drawer__border {
-	display: none
-}
-.right-sidebar {
-	position: fixed; right: 20px; top: 80px;
-}
-</style>
-<style lang="scss" scoped>
-.right-sidebar {
-	overflow-x: hidden;
-	overflow-y: auto !important;
-	height: 150vh;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.right-sidebar::-webkit-scrollbar {
-	display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.right-sidebar {
-	-ms-overflow-style: none;  /* IE and Edge */
-	scrollbar-width: none;  /* Firefox */
-}
-</style>
 <style lang="sass" scoped>
 .view-enter-active, .view-leave-active
 	transition: opacity .4s ease-in-out, transform .4s ease

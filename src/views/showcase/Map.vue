@@ -26,7 +26,7 @@
 					</v-avatar>
 					{{ mapInfo.title }}
 				</div>
-				<p class="subtitle-2 find-us-subtitle">
+				<p class="find-us-subtitle">
 					{{ mapInfo.description }}
 				</p>
 				<div class="">
@@ -110,7 +110,6 @@ export default {
 			-webkit-transition: all 1s
 .find-us-title
 	transition: all .2s
-	font-family: 'Lemonada', cursive !important
 	font-size: 50px
 	line-height: 50px
 	font-weight: 700

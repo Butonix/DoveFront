@@ -3,6 +3,7 @@
 		v-if="article"
 		:loading="loading"
 		class="list-card"
+		outlined
 	>
 		<v-card
 			v-if="article['is_pinned']"
@@ -65,23 +66,19 @@
 					</v-list-item-subtitle>
 					<v-list-item-subtitle class="d-flex flex-wrap justify-start">
 						<v-chip color="grey lighten-3">
-							<v-icon class="pr-1 mb-1"
-								size="20"
-							>
+							<v-icon size="20">
 								mdi-heart-multiple-outline
 							</v-icon>
-							Reactions ({{ status['love_count'] }})
+							<span class="pl-1">Reactions <span v-if="status['love_count']">({{ status['love_count'] }})</span></span>
 						</v-chip>
 						<v-chip
 							color="grey lighten-3"
-							class="mx-1 mb-1"
+							class="mb-0"
 						>
-							<v-icon class="pr-1"
-								size="20"
-							>
+							<v-icon size="20">
 								mdi-comment-outline
 							</v-icon>
-							Comments
+							<span class="pl-1">Comments</span>
 						</v-chip>
 						<v-chip
 							v-if="status['bookmarked']"
@@ -89,13 +86,12 @@
 							class="mb-1"
 							@click="revokeBookmark"
 						>
-							<v-icon
-								class="pr-1"
-								size="20"
+							<v-icon size="20"
+								color="black"
 							>
 								mdi-bookmark
 							</v-icon>
-							Bookmark
+							<span class="pl-1">Bookmark</span>
 						</v-chip>
 						<v-chip v-else
 							@click="bookmark"

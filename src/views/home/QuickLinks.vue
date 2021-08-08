@@ -1,8 +1,5 @@
 <template>
-	<v-list
-		class="px-2 pt-0 rounded"
-		max-width="450"
-	>
+	<v-list class="px-2 pt-0 rounded">
 		<v-list-item two-line>
 			<v-list-item-avatar color="grey">
 				<v-img v-if="$helper.getCurrentProfileImage()"
@@ -163,7 +160,7 @@ export default {
 					{ title: "Peace", icon: "mdi-peace" },
 					{ title: "Satsang", icon: "mdi-dance-ballroom" },
 				],
-				title: "Our Services",
+				title: "Services",
 			},
 			{
 				action: "mdi-google-maps",
@@ -207,10 +204,11 @@ export default {
 .full-name {
 	font-size: 16px;
 	text-transform: uppercase;
+	font-weight: 600;
 }
 .link-title {
 	font-size: 14px;
-	font-weight: 400;
+	font-weight: 500;
 }
 .link-subtitle {
 	font-size: .875rem;

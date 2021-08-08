@@ -12,9 +12,8 @@
 					{{ post.title }}
 				</v-list-item-title>
 				<v-list-item-subtitle v-if="post['uploaded_by']">
-					<code>{{ post['uploaded_by']['username'] }}</code>
+					<span class="subtitle-chip">{{ post['uploaded_by']['username'] }}</span>
 					<span class="subtitle-chip">{{ $moment(post['uploaded_at']).format("MMMM Do YYYY") }}</span>
-					<span class="subtitle-chip">{{ (isArticle) ? 'article' : 'multimedia' }}</span>
 				</v-list-item-subtitle>
 			</v-list-item-content>
 			<v-list-item-action v-if="$helper.isCurrentUserSuperAdmin()">

@@ -9,7 +9,7 @@
 		>
 			<v-list-item
 				v-if="comments.results.length === 0"
-				style="border-radius: 4px;"
+				class="rounded"
 			>
 				Be the first to comment!
 			</v-list-item>

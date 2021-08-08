@@ -17,42 +17,60 @@
 				mdi-air-conditioner
 			</v-icon>
 		</v-btn>
-		<v-scale-transition>
-			<v-scale-transition>
-				<v-btn
-					v-if="$helper.isUserLoggedIn && toggle"
-					class="logout"
-					fab
-					dark
-					fixed
-					top
-					right
-					small
-					color="teal"
-					@click="logout"
-				>
-					<v-icon size="20">
-						mdi-logout-variant
-					</v-icon>
-				</v-btn>
-				<v-btn
-					v-if="!$helper.isUserLoggedIn && toggle"
-					class="register"
-					fab
-					dark
-					fixed
-					top
-					right
-					small
-					color="green"
-					@click="routeToRegisterPage"
-				>
-					<v-icon size="24">
-						mdi-account-plus
-					</v-icon>
-				</v-btn>
-			</v-scale-transition>
-		</v-scale-transition>
+		<v-fab-transition>
+			<v-btn
+				v-if="$helper.isUserLoggedIn() && toggle"
+				class="logout"
+				fab
+				dark
+				fixed
+				top
+				right
+				small
+				color="teal"
+				@click="logout"
+			>
+				<v-icon size="20">
+					mdi-logout-variant
+				</v-icon>
+			</v-btn>
+		</v-fab-transition>
+		<v-fab-transition>
+			<v-btn
+				v-if="!$helper.isUserLoggedIn() && toggle"
+				class="register"
+				fab
+				dark
+				fixed
+				top
+				right
+				small
+				color="green"
+				@click="routeToRegisterPage"
+			>
+				<v-icon size="20">
+					mdi-account-plus
+				</v-icon>
+			</v-btn>
+		</v-fab-transition>
+		<v-fab-transition>
+			<v-btn
+				v-if="!$helper.isUserLoggedIn() && toggle"
+				class="login"
+				fab
+				dark
+				fixed
+				top
+				right
+				small
+				color="primary"
+				to="/auth/login"
+			>
+				<v-icon size="20">
+					mdi-login-variant
+				</v-icon>
+			</v-btn>
+		</v-fab-transition>
 	</div>
 </template>
 
@@ -100,6 +118,10 @@ export default {
 }
 .register {
 	top: 80px;
+	right: 20px;
+}
+.login {
+	top: 140px;
 	right: 20px;
 }
 </style>

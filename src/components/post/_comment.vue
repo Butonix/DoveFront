@@ -33,9 +33,7 @@
 						</span>
 					</v-avatar>
 				</div>
-				<v-list-item-content class="pl-0"
-					style="position: relative"
-				>
+				<v-list-item-content class="comment-item-box">
 					<div>
 						<code v-if="item.writer"
 							class="comment-writer mx-1"
@@ -124,18 +122,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.comment-item-box {
+	position: relative;
+	background-color: #eaeaea;
+	border-radius: 8px;
+}
+.comment-text {
+	font-weight: 500;
+	padding: 4px;
+}
 .comment-writer {
-	font-family: Roboto, sans-serif;
+	font-family: inherit;
+	font-weight: 500;
 	color: #686868 !important;
 	font-size: 12px;
 }
 .comment-created-at {
-	font-family: Roboto, sans-serif;
+	font-family: inherit;
+	font-weight: 500;
 	color: #686868 !important;
-	background: #eaeaea !important;
 	font-size: 12px;
-}
-.comment-avatar {
-	border-radius: 5px !important;
 }
 </style>

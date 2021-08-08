@@ -86,6 +86,25 @@
 				:image="require('@/assets/noEventsHome.gif')"
 			/>
 		</v-fade-transition>
+		<v-navigation-drawer
+			right
+			:permanent="!$vuetify.breakpoint.mdAndDown"
+			:temporary="$vuetify.breakpoint.mdAndDown"
+			:width="criticalScreenWidth ? 250: 300"
+			color="#f6f4fc"
+			class="px-2"
+			style="position: fixed; right: 0; border-radius: 0; top: 0; height: 100vh"
+		>
+			<div v-if="!$vuetify.breakpoint.mdAndDown"
+				style="height: 60px;"
+			/>
+			<div class="py-1" />
+			<v-card>
+				<v-card-title>
+					This is events sidebar
+				</v-card-title>
+			</v-card>
+		</v-navigation-drawer>
 	</v-card>
 </template>
 <script>

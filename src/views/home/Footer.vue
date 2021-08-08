@@ -307,10 +307,12 @@ export default {
 		line-height: 3rem;
 	}
 	.become-text {
-		padding: 10px
+		font-weight: 500;
+		padding: 10px;
 	}
 	.become-btn {
-		padding: 10px
+		padding: 10px;
+		font-weight: 500 !important;
 	}
 }
 </style>

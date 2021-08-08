@@ -5,7 +5,7 @@
 		tile
 		class="mx-auto"
 		color="transparent"
-		:width="criticalScreenWidth ? 700: 900"
+		:width="criticalScreenWidth ? 680: 900"
 	>
 		<div v-if="$vuetify.breakpoint.smAndUp"
 			class="py-1"
@@ -16,7 +16,7 @@
 		>
 			<v-sheet
 				color="transparent"
-				elevation="4"
+				elevation="2"
 				rounded
 				class="py-1 pl-4 pr-1 mx-auto"
 			>
@@ -47,6 +47,25 @@
 			/>
 		</div>
 		<div class="py-16" />
+		<v-navigation-drawer
+			right
+			:permanent="!$vuetify.breakpoint.mdAndDown"
+			:temporary="$vuetify.breakpoint.mdAndDown"
+			:width="criticalScreenWidth ? 250: 300"
+			color="#f6f4fc"
+			class="px-2"
+			style="position: fixed; right: 0; border-radius: 0; top: 0; height: 100vh"
+		>
+			<div v-if="!$vuetify.breakpoint.mdAndDown"
+				style="height: 60px;"
+			/>
+			<div class="py-1" />
+			<v-card>
+				<v-card-title>
+					This is article sidebar
+				</v-card-title>
+			</v-card>
+		</v-navigation-drawer>
 	</v-card>
 </template>
 

@@ -13,6 +13,9 @@ export default {
 }
 </script>
 <style lang="scss">
+* {
+	font-family: Quicksand, sans-serif;
+}
 .v-label {
 	font-size: 14px !important;
 }

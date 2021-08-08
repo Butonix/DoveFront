@@ -11,7 +11,7 @@
 				<span class="chip-like">
 					<v-icon class="detail-icon"
 						size="16"
-						color="grey"
+						color="grey lighten-4"
 					>
 						mdi-account-circle
 					</v-icon>
@@ -20,7 +20,7 @@
 				<span class="chip-like">
 					<v-icon class="detail-icon"
 						size="16"
-						color="grey"
+						color="grey lighten-4"
 					>
 						mdi-clock
 					</v-icon>
@@ -229,7 +229,7 @@ export default {
 			return (this.event.country) ? this.event.country.name : ""
 		},
 		getMunicipalityWard() {
-			return (this.event.municipality_ward) ? this.event.municipality_ward.name.name + " -" : ""
+			return (this.event.municipality_ward) ? this.event.municipality_ward.name + " -" : ""
 		},
 		getMunicipality() {
 			return (this.event.municipality) ? this.event.municipality.name : ""
@@ -313,7 +313,7 @@ export default {
 	margin-top: -2px;
 }
 .chip-like {
-	background-color: #dcdcdc;
+	background-color: #535353;
 	margin: 0 2px;
 	padding: 2px;
 	border-radius: 2px;

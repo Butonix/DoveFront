@@ -44,7 +44,7 @@
 						cols="12"
 					>
 						<v-card-text
-							class="subtitle-1 d-flex justify-center pb-0 grey--text text--darken-2 font-weight-bold"
+							class="d-flex justify-center pb-0 grey--text text--darken-2 font-weight-bold"
 						>
 							We provide a nice feeds management for our followers.
 							We can post our thoughts, events or any inspirations as Sachchai Nepal Post.
@@ -298,7 +298,7 @@ export default {
 	font-size: 14px !important
 .pin-header
 	text-align: center
-	font-family: "Acme", sans-serif
+	font-weight: 700
 	@media only screen and (min-width: 1390px)
 		font-size: 52px
 		line-height: 52px

@@ -10,7 +10,7 @@
 			</v-list-item-avatar>
 			<v-list-item-content>
 				<v-list-item-title
-					class="title cursor"
+					class="pin-item-title cursor"
 					@click="routeToPostDetail()"
 				>
 					{{ post.title }}
@@ -114,8 +114,6 @@ export  default {
 <style lang="sass" scoped>
 .cursor
 	cursor: pointer
-.title
-	font-size: 14px!important
 #parallax-actions
 	cursor: pointer
 .bottom-round-touch

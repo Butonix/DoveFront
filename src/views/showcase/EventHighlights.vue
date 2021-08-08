@@ -1,7 +1,9 @@
 <template>
-	<v-card class="highlights-wrapper mx-1 transparent"
+	<v-card
+		class="highlights-wrapper mx-1 transparent"
 		flat
 		:loading="loading"
+		dark
 	>
 		<v-carousel
 			cycle

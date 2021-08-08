@@ -17,7 +17,7 @@
 						Area where all of us struggle to trust <span id="god">GOD</span>
 						with <span id="keys">likes and shares</span>.
 					</h1>
-					<h4 class="display-1">
+					<h4>
 						"We are committed to our Mother Nature, The Earth and the Great Universe."
 					</h4>
 					<v-row justify="center"
@@ -82,8 +82,7 @@ export default {
 		-webkit-background-clip: text
 		-webkit-text-fill-color: transparent
 		line-height: 75px
-		font-family: 'Acme', serif !important
-		font-weight: 600
+		font-weight: 700
 		@media only screen and (max-width: 710px)
 			margin-top: -20px
 			font-size: 55px
@@ -113,7 +112,6 @@ export default {
 		text-transform: uppercase
 		font-size: 22px !important
 		line-height: 20px
-		font-style: oblique
 		@media only screen and (max-width: 710px)
 			margin: 0
 			padding: 10px 0
