@@ -80,21 +80,21 @@ export default {
 .main {
 	transition: all ease .5s;
 	padding: 20px 0;
-	font-size: 4rem;
-	line-height: 4.5rem;
+	font-size: 3rem;
+	line-height: 4rem;
 	font-weight: 600;
 }
 .sub {
 	transition: all ease .5s;
-	font-size: 2rem;
-	line-height: 2.5rem;
+	font-size: 1.5rem;
+	line-height: 2rem;
 	font-weight: 600;
 }
 .context {
 	transition: all ease .5s;
 	text-transform: capitalize;
-	font-size: 2rem;
-	line-height: 2.5rem;
+	font-size: 1.5rem;
+	line-height: 2rem;
 	font-weight: 500;
 }
 .explore-btn {
@@ -125,23 +125,23 @@ export default {
 }
 @media only screen and (max-width: 1000px) {
 	.main {
-		font-size: 3.2rem;
-		line-height: 4rem;
+		font-size: 2.8rem;
+		line-height: 3.2rem;
 	}
 	.sub {
-		font-size: 1.5rem;
-		line-height: 2rem;
+		font-size: 1.4rem;
+		line-height: 1.8rem;
 	}
 	.context {
-		font-size: 1.5rem;
-		line-height: 2rem;
+		font-size: 1.2rem;
+		line-height: 1.6rem;
 	}
 }
 @media only screen and (max-width: 600px) {
 	.main {
 		padding: 12px 0;
-		font-size: 3rem;
-		line-height: 3.5rem;
+		font-size: 2.4rem;
+		line-height: 3rem;
 	}
 	.sub {
 		font-size: 1.2rem;
@@ -155,8 +155,8 @@ export default {
 @media only screen and (max-width: 450px) {
 	.main {
 		padding: 8px 0;
-		font-size: 2.6rem;
-		line-height: 3rem;
+		font-size: 2rem;
+		line-height: 2.5rem;
 	}
 	.sub {
 		font-size: 1.2rem;

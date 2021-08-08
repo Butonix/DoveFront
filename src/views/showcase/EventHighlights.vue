@@ -55,7 +55,8 @@
 						</v-list-item-avatar>
 						<v-fade-transition>
 							<v-list-item-content
-								class="highlights-content"
+								class="highlights-content elevation-4"
+								:class="colors[index%3]"
 							>
 								<v-list-item-title
 									class="py-2"
@@ -120,9 +121,9 @@ export default {
 	data: () => ({
 		loading: null,
 		colors: [
-			"grey darken-3",
-			"#1F7087",
-			"#385F73",
+			"light-blue darken-4",
+			"cyan darken-4",
+			"purple darken-4",
 		],
 	}),
 	computed: {
@@ -196,7 +197,6 @@ export default {
 	position: absolute
 	top: 70px
 	padding: 70px 20px 20px 20px
-	background: darkslategrey
 	border-radius: 4px
 .small-title
 	font-size: 22px
