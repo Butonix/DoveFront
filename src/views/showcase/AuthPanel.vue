@@ -113,15 +113,15 @@ export default {
 	right: 20px;
 }
 .logout {
-	top: 80px;
+	top: 80px !important;
 	right: 20px;
 }
 .register {
-	top: 80px;
+	top: 80px !important;
 	right: 20px;
 }
 .login {
-	top: 140px;
+	top: 140px !important;
 	right: 20px;
 }
 </style>
