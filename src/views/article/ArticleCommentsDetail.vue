@@ -152,12 +152,10 @@ export default {
 	margin: 5px;
 }
 .comment-writer {
-	font-family: Roboto, sans-serif;
 	font-weight: bold;
 	color: #686868 !important;
 }
 .comment-created-at {
-	font-family: Roboto, sans-serif;
 	font-weight: bold;
 	color: #686868 !important;
 	background: #eaeaea !important;

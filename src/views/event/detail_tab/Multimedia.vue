@@ -237,7 +237,6 @@ export default {
 </script>
 <style lang="scss">
 .video-list-name {
-	font-family: 'Mate SC', serif;
 	font-size: 1.2rem;
 }
 .no-videos {

@@ -92,7 +92,6 @@ export default {
 .library-title {
 	font-size: 2.6rem;
 	font-weight: 400;
-	font-family: 'Quicksand', sans-serif;
 	padding: 20px 0;
 }
 .page-title {

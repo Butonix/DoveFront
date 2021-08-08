@@ -20,10 +20,7 @@
 			>
 				<v-img src="@/assets/dove-solid.svg" />
 			</v-avatar>
-			<p
-				id="start-a-post"
-				class="pa-0 ma-0"
-			>
+			<p class="pa-0 ma-0 start-a-post">
 				<span v-if="$helper.isUserLoggedIn()">
 					Start a post
 				</span>
@@ -174,10 +171,13 @@ export default {
 		height: 22px !important
 		min-width: 22px !important
 		width: 22px !important
-#start-a-post
+.start-a-post
+	span
+		font-family: "Acme", sans-serif
 	transition: all .3s
 	font-size: 28px
-	font-weight: 700
+	font-weight: 400
+	letter-spacing: 1px
 	color: #4f5151
 	visibility: visible
 	opacity: 1

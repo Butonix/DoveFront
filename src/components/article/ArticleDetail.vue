@@ -13,6 +13,9 @@
 					<v-icon>mdi-arrow-left-thick</v-icon>
 				</v-btn>
 			</v-app-bar-nav-icon>
+			<v-app-bar-title v-if="article">
+				{{ article.title }}
+			</v-app-bar-title>
 
 			<v-spacer />
 
@@ -338,6 +341,7 @@ export default {
 	padding-top: 0
 ::v-deep.v-card__text p
 	margin-bottom: 0 !important
+	font-size: 1rem
 ::v-deep.v-card__text blockquote
 	padding: 20px
 	background-color: whitesmoke

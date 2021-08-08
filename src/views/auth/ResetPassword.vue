@@ -79,6 +79,8 @@ export default {
 				subtitle: "Provide <b>username / email</b> to reset your password. <br/> Reset password link will be sent to your email address."
 			},
 			menuItems: [
+				{ icon: "mdi-image-filter-vintage", title: "Showcase",  to: "/"},
+				{ icon: "mdi-home", title: "Feeds Page",  to: "/home/feeds"},
 				{ icon: "mdi-lock-question", title: "Login", to: "/auth/login"},
 				{ icon: "mdi-account-plus", title: "Become a follower",  to: "/auth/register"},
 			],

@@ -327,7 +327,8 @@
 				align="center"
 			>
 				<v-col cols="12">
-					<p class="ma-0 pa-0 pb-sm-2 pb-md-2 overline text-center"
+					<p class="ma-0 pa-0 pb-sm-2 pb-md-2 text-center text-uppercase"
+						style="font-size: 14px; font-weight: 500;"
 						@click="$refs.imageInput.click()"
 					>
 						add to your post
@@ -599,14 +600,13 @@ export default {
 
 <style lang="sass" scoped>
 #title
-	font-family: Roboto, sans-serif
 	font-size: 20px
+	font-weight: 500
 
 #description
 	margin-top: 0 !important
 	padding-top: 15px !important
 	font-size: 20px
-	font-family: "Roboto", sans-serif
 	line-height: 25px
 
 #post-submit
@@ -647,9 +647,9 @@ export default {
 	z-index: 500
 .title-toolbar
 	font-size: 1rem
-	font-weight: 400
+	font-weight: 600
+	color: white
 	text-transform: uppercase
-	font-family: 'Open Sans Condensed', sans-serif
 .right-corner
 	position: absolute
 	right: 1%

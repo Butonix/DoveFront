@@ -173,7 +173,6 @@ export default {
 	text-align: center
 	color: white !important
 	font-size: 24px
-	font-family: 'Lemonada', serif
 	font-weight: 600 !important
 .event-description
 	max-width: 770px

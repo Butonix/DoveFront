@@ -50,13 +50,11 @@ export default {
 
 <style lang="sass" scoped>
 #auth-title-en
-	font-family: 'Crimson Text', serif !important
 	font-size: 35px !important
 	font-weight: 500 !important
 	padding-top: 15px
 
 #auth-title-np
-	font-family: 'Khand', serif !important
 	font-size: 35px !important
 	font-weight: 500 !important
 	padding-top: 15px

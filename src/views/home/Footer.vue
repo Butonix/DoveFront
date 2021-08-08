@@ -295,7 +295,6 @@ export default {
 .become-follower {
 	font-size: 4rem;
 	line-height: 4rem;
-	font-family: 'Quicksand', sans-serif;
 	text-align: center;
 	display: flex;
 	align-items: center;

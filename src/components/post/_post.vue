@@ -204,7 +204,6 @@ export default {
 	cursor: pointer
 .love-count
 	font-size: 12px
-	font-family: 'Fira Sans', sans-serif
 	font-weight: 500
 	span
 		font-size: 14px

@@ -5,28 +5,11 @@
 		color="transparent"
 	>
 		<div class="py-1" />
-		<v-row no-gutters>
-			<v-col cols="12"
-				xl="6" lg="6"
-				md="6" sm="6"
-			>
-				<v-text-field label="search"
-					name="search" class="ma-1"
-					solo hide-details="auto"
-					prepend-inner-icon="mdi-magnify"
-				/>
-			</v-col>
-			<v-col cols="12"
-				xl="6" lg="6"
-				md="6" sm="6"
-			>
-				<v-text-field label="filter"
-					name="filter" class="ma-1"
-					solo hide-details="auto"
-					prepend-inner-icon="mdi-filter"
-				/>
-			</v-col>
-		</v-row>
+		<v-card>
+			<v-card-title>Watch our videos from youtube</v-card-title>
+			<v-card-subtitle>All of these videos are also available in youtube</v-card-subtitle>
+			<v-card-subtitle>You can go to youtube and watch out videos directly from there.</v-card-subtitle>
+		</v-card>
 		<div class="py-1" />
 		<no-multimedia-card v-if="youtube_medias.length === 0"
 			text="Youtube database is empty."

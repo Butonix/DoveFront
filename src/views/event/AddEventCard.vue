@@ -53,7 +53,6 @@ export default {
 		border-radius: 16px !important;
 		.add-event-text {
 			min-height: 100px;
-			font-family: "Acme", sans-serif;
 			font-size: 1.6rem;
 			display: flex;
 			justify-content: center;

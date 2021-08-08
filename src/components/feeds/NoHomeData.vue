@@ -52,7 +52,6 @@ export default {
 <style scoped lang="sass">
 .no-post
 	text-align: center
-	font-family: "Open Sans Condensed", sans-serif
 	.main
 		padding: 6px 15px 8px
 		border-radius: 20px

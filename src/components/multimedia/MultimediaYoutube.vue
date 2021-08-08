@@ -5,8 +5,12 @@
 			class="my-2 pa-0"
 			min-height="40vh"
 			width="100%"
+			outlined
 		>
-			<v-card height="40vh">
+			<v-card height="40vh"
+				tile
+				style="border-radius: 4px 4px 0 0 !important;"
+			>
 				<youtube
 					ref="yt"
 					height="100%"

@@ -174,7 +174,6 @@ export default {
 	padding: 0
 	font-size: 22px
 	color: darkslategrey
-	font-family: "Chilanka", sans-serif
 	font-weight: bold
 	border-bottom: 1px solid grey
 	max-width: 1200px

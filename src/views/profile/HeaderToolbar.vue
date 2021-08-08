@@ -34,7 +34,6 @@ export default {
 
 <style scoped>
 .toolbar-title {
-	font-family: "Open Sans Condensed", sans-serif;
 	color: darkslategrey;
 }
 </style>

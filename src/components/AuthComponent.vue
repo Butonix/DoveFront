@@ -75,12 +75,12 @@
 						{{ pageIcon }}
 					</v-icon>
 				</v-avatar>
-				<span id="org-title">{{ title }}</span>
+				<span id="auth-title">{{ title }}</span>
 			</div>
 
 			<v-card-text>
 				<!-- eslint-disable-next-line vue/no-v-html vue/max-attributes-per-line -->
-				<div class="subtitle-2" v-html="subtitle" />
+				<div class="auth-subtitle" v-html="subtitle" />
 			</v-card-text>
 			<v-divider class="mb-4" />
 			<slot name="form" />
@@ -140,22 +140,24 @@ export default {
 .top-image
 	border-radius: 0 0 10px 10px
 .register-title
-	font-family: "Kelly Slab", cursive
 	font-size: 22px
+	font-weight: 500
 .register-container
 	height: 100%
 	background: linear-gradient(45deg, rgb(37, 158, 239), rgb(184, 204, 234), rgb(16, 123, 207))
 .register-card
 	border-radius: 0 !important
-#org-title
-	font-size: 48px
+#auth-title
+	font-size: 42px
 	padding-left: 10px
 	transition: all .5s
-	font-family: "Abril Fatface", cursive
+	font-weight: 700
 	@media only screen and (max-width: 500px)
 		font-size: 32px
 	@media only screen and (max-width: 320px)
 		font-size: 20px
+.auth-subtitle
+	font-size: 16px
 #logo
 	transition: all .5s
 	@media only screen and (max-width: 320px)
@@ -163,8 +165,6 @@ export default {
 		min-width: 30px !important
 		width: 30px !important
 .auth-logo
-	// visibility hidden but not occupying space :)
-	// love transition
 	transition: all .2s ease-in-out
 	visibility: visible
 	opacity: 1

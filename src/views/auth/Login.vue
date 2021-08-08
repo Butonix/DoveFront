@@ -106,11 +106,14 @@
 </template>
 
 <script>
+import Snack from "@/mixins/Snack.js";
+
 export default {
 	name: "LoginComponent",
 	components: {
 		AuthComponent: () => import("@/components/AuthComponent"),
 	},
+	mixins: [Snack],
 	data() {
 		return {
 			overlay: false,
@@ -121,6 +124,8 @@ export default {
 				subtitle: "Let's begin an amazing journey with <b>Ishworiya Marg Bhajan Mandal Sachchai Kendra Nepal</b>."
 			},
 			menuItems: [
+				{ icon: "mdi-image-filter-vintage", title: "Showcase",  to: "/"},
+				{ icon: "mdi-home", title: "Feeds Page",  to: "/home/feeds"},
 				{ icon: "mdi-account-plus", title: "Become a follower",  to: "/auth/register"},
 				{ icon: "mdi-lock-question", title: "Forget password?", to: "/auth/reset-password"},
 			],
@@ -142,12 +147,7 @@ export default {
 			} finally {
 				this.overlay = false
 			}
-		},
-		async openSnack(text, color="error") {
-			await this.$store.dispatch("snack/setSnackState", true)
-			await this.$store.dispatch("snack/setSnackColor", color)
-			await this.$store.dispatch("snack/setSnackText", text)
-		},
+		}
 	}
 }
 </script>

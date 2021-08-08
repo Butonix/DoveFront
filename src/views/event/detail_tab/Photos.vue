@@ -177,7 +177,6 @@ export default {
 	min-height: 150px;
 	border-radius: 20px;
 	border: 4px dotted black;
-	font-family: 'Stint Ultra Condensed', cursive;
 	font-size: 2rem;
 }
 .file-uploads {

@@ -187,7 +187,6 @@ export default {
 	padding: 0
 	margin-top: -10px
 .events-home-title
-	font-family: 'Quicksand', sans-serif
 	font-size: 1.1rem
 	font-weight: 600
 	color: #444444

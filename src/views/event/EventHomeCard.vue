@@ -307,7 +307,6 @@ export default {
 	margin-top: -10px;
 }
 .stat {
-	font-family: 'Noto Sans JP', sans-serif;
 	color: #826712;
 	padding: 0 2px;
 	margin-top: -2px;

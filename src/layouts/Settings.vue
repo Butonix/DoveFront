@@ -18,7 +18,7 @@
 					mdi-menu-open
 				</v-icon>
 			</v-app-bar-nav-icon>
-			<v-toolbar-title style="font-size: 1rem;">
+			<v-toolbar-title style="font-size: 1rem; font-weight: 500;">
 				{{ $route.name }}
 			</v-toolbar-title>
 			<v-spacer />

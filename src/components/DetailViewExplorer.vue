@@ -78,6 +78,5 @@ export default {
 	margin-top: 48px
 #explore-toolbar-title
 	font-size: 18px
-	font-family: Roboto, sans-serif
-	font-weight: 300
+	font-weight: 500
 </style>

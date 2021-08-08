@@ -480,7 +480,6 @@ export default {
 	border-radius: 10px
 	font-size: 2.1rem
 	line-height: 2.5rem
-	font-family: 'Quicksand', sans-serif
 	font-weight: 600
 	padding: 2px 4px
 	min-height: 70px
@@ -513,7 +512,6 @@ export default {
 	max-width: 600px
 .start-writing
 	color: dimgrey
-	font-family: "Pacifico",sans-serif
 	font-size: 1rem
 	line-height: 1.4rem
 	min-height: 1.6rem
