@@ -2,63 +2,45 @@
 	<v-card
 		flat
 		class="ma-0 pa-0 rounded-0"
-		height="1000"
+		dark
+		color="#284564"
+		height="120vh"
+		img="https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/155794206_3777657255636996_7526777727332740545_n.jpg?_nc_cat=102&ccb=1-4&_nc_sid=8631f5&_nc_ohc=vPjfaGs0-T0AX9Lc_co&_nc_ht=scontent.fpkr1-1.fna&oh=0bdbf1df05668c71cb61df393b6509c6&oe=61379A3C"
 	>
-		<v-row
-			class="ma-0 pa-0 fill-height"
-			align="center"
+		<div style="height: 200px;" />
+		<v-card class="py-4 find-us-title mx-auto"
+			max-width="1000"
 		>
-			<v-col
-				cols="12"
-				class="text-center"
-			>
-				<div class="ma-0 pa-0 find-us-title">
-					<v-avatar v-show="$vuetify.breakpoint.smAndUp"
-						class="mr-2 find-us-av"
-						size="60"
-						color="white"
+			<div class="text-center">
+				<v-avatar v-show="$vuetify.breakpoint.smAndUp"
+					class="mr-2 find-us-av"
+					size="60"
+					color="white"
+				>
+					<v-icon x-large
+						color="blue darken-2"
 					>
-						<v-icon x-large
-							color="blue darken-2"
-						>
-							mdi-map-legend
-						</v-icon>
-					</v-avatar>
-					{{ mapInfo.title }}
-				</div>
-				<p class="find-us-subtitle">
-					{{ mapInfo.description }}
-				</p>
-				<div class="">
-					<v-btn
-						min-width="16"
-						max-width="200"
-						:min-height="
-							$vuetify.breakpoint.width < 100
-								? 16
-								: 50
-						"
-						depressed
-						x-large
-						class="py-8 "
-					>
-						<v-icon>mdi-home-map-marker</v-icon>
-						<span v-show="$vuetify.breakpoint.smAndUp">View Branches</span>
-					</v-btn>
-				</div>
-			</v-col>
-			<v-col
-				id="map-column"
-				class="d-flex justify-center"
-				cols="12"
-			>
-				<iframe
-					id="branch-iframe"
-					src="https://www.google.com/maps/d/embed?mid=1gQSVr7mErgYHo00oSpVGv5oIdklxJqPc"
-					width="1000" height="600"
-				/>
-			</v-col>
-		</v-row>
+						mdi-map-legend
+					</v-icon>
+				</v-avatar>
+				{{ mapInfo.title }}
+			</div>
+			<p class="find-us-subtitle text-center pt-4">
+				{{ mapInfo.description }}
+			</p>
+		</v-card>
+		<div class="py-4" />
+		<v-card height="600"
+			width="1000" class="mx-auto"
+		>
+			<iframe
+				id="branch-iframe"
+				style="z-index: 2"
+				src="https://www.google.com/maps/d/embed?mid=1gQSVr7mErgYHo00oSpVGv5oIdklxJqPc"
+				width="1000" height="600"
+			/>
+		</v-card>
+		<div class="py-14" />
 	</v-card>
 </template>
 

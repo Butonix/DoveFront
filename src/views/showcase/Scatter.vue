@@ -1,24 +1,36 @@
 <template>
 	<v-card
 		:loading="loading"
-		max-width="1000"
-		class="mx-auto"
+		max-width="100vw"
 		flat
-		color="transparent rounded-0"
+		tile
+		color="rgb(201 201 201)"
 	>
-		<div style="padding: 200px;" />
-		<div v-if="gallery"
-			class="demo-wrapper"
+		<div
+			class="custom-shape-divider-bottom"
+		>
+			<svg data-name="Layer 1"
+				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+				preserveAspectRatio="none"
+			>
+				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+					class="shape-fill"
+				/>
+			</svg>
+		</div>
+		<v-divider />
+		<v-card v-if="gallery"
+			class="demo-wrapper mx-auto"
+			max-width="1200" color="transparent"
+			flat tile
 		>
 			<section class="scatter-section demo-text">
-				<div class="wrapper text">
+				<div class="wrapper text py-12">
 					LOVEDGALLERYFROMUS
 				</div>
 			</section>
 			<section class="scatter-section demo-gallery">
-				<v-card class="wrapper"
-					height="340" flat
-				>
+				<ul class="wrapper">
 					<li v-for="img in gallery.slice(0, 4)"
 						:key="img.id"
 					>
@@ -27,7 +39,7 @@
 							:src="$helper.replaceBackendHost(img.image)"
 						/>
 					</li>
-				</v-card>
+				</ul>
 			</section>
 			<section class="scatter-section demo-gallery">
 				<ul class="wrapper">
@@ -66,12 +78,12 @@
 				</ul>
 			</section>
 			<section class="scatter-section demo-text">
-				<div class="wrapper text">
+				<div class="wrapper text py-12 grey--text text--lighten-4">
 					SACHCHAIKENDRANEPAL
 				</div>
 			</section>
 			<div style="padding: 100px;" />
-		</div>
+		</v-card>
 	</v-card>
 </template>
 <script>
@@ -176,5 +188,26 @@ footer {height: 50vh}
 }
 .scatter-image {
 	border-radius: 4px;
+}
+.custom-shape-divider-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 500px;
+	transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom .shape-fill {
+	fill: #060c28;
 }
 </style>

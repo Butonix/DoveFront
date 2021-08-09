@@ -1,5 +1,9 @@
 <template>
-	<div class="peek-services-wrapper">
+	<v-card
+		dark color="#060C28"
+		width="100vw"
+		tile flat
+	>
 		<v-card id="peek-services-card"
 			:loading="loading"
 			flat
@@ -7,11 +11,8 @@
 			max-width="1200"
 			class="mx-auto"
 			color="transparent"
+			style="z-index: 2"
 		>
-			<v-card-title class="text-uppercase pt-0">
-				Our Services
-			</v-card-title>
-			<v-divider />
 			<p class="pb-0 quote">
 				"The essence of all religions is one. Only their approaches are different."
 			</p>
@@ -31,10 +32,14 @@
 					xl="4" lg="4"
 					md="4" sm="4"
 				>
-					<v-card class="pa-2 service-card d-flex justify-center align-start"
+					<v-card
+						color="primary darken-3"
+						class="pa-2 service-card d-flex justify-center align-start"
 						:min-height="(index % 2 === 0) ? 700 : 680"
+						outlined
 					>
 						<div>
+							<div class="py-4" />
 							<v-avatar
 								color="grey"
 								size="200"
@@ -50,7 +55,7 @@
 							</p>
 							<v-card
 								class="ma-2 mx-auto pa-4"
-								flat
+								flat color="transparent"
 								outlined
 								max-width="450"
 							>
@@ -63,7 +68,8 @@
 				</v-col>
 			</v-row>
 		</v-card>
-	</div>
+		<div style="height: 250px;" />
+	</v-card>
 </template>
 <script>
 import {mapGetters} from "vuex";
@@ -112,7 +118,7 @@ export default {
 			width: 60em
 	.quote
 		margin: 0
-		padding: 150px 80px 0 80px !important
+		padding: 0px 80px 0 80px !important
 		font-size: 3rem
 		line-height: 3.3rem
 		font-weight: 700

@@ -1,6 +1,11 @@
 <template>
-	<v-card flat
+	<v-card
+		rounded
+		style="border: 1px solid whitesmoke !important;"
 		color="transparent" loading="!loading"
+		height="400"
+		max-width="300"
+		width="300"
 	>
 		<v-list-item dark>
 			<v-list-item-avatar :color="$constants.pickBackgroundColor()"

@@ -1,5 +1,8 @@
 <template>
-	<div>
+	<div style="
+    background: #f4f4f5;
+"
+	>
 		<show-case-slider />
 		<event-highlights />
 		<kendra-info-box />

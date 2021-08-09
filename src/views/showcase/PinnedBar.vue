@@ -1,118 +1,136 @@
 <template>
-	<v-row
-		class="ma-0 pa-0"
-		align="center"
-		justify="space-around"
+	<v-card width="100vw"
+		flat tile
+		dark color="rgb(6 12 40)"
+		style="position: relative"
 	>
-		<v-col
-			class="ma-0 pa-0"
+		<div
+			class="custom-shape-divider-bottom"
+			style="z-index: 1"
 		>
-			<v-card
-				:loading="loading"
-				flat
-				class="pin-bg-card rounded-0 fill-height"
-				min-height="800"
+			<svg data-name="Layer 1"
+				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+				preserveAspectRatio="none"
 			>
-				<v-row no-gutters
-					justify="center" align="center"
+				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+					class="shape-fill"
+				/>
+			</svg>
+		</div>
+		<div class="custom-shape-divider-top"
+			style="z-index: 1"
+		>
+			<svg data-name="Layer 1"
+				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+				preserveAspectRatio="none"
+			>
+				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+					class="shape-fill"
+				/>
+			</svg>
+		</div>
+		<v-card
+			style="z-index: 2"
+			dark
+			:loading="loading"
+			flat tile
+			class="transparent"
+		>
+			<v-row no-gutters
+				justify="center" align="center"
+			>
+				<v-col
+					cols="12"
 				>
-					<v-col
-						cols="12"
+					<v-card-text class="pin-header py-4">
+						Become a part of something great!
+					</v-card-text>
+				</v-col>
+				<v-col
+					cols="12"
+					class="text-center py-4"
+				>
+					<v-avatar
+						color="white"
+						size="90"
+						class="elevation-14 bulls-eye-avatar"
 					>
-						<v-card-text class="pin-header py-4 showcase-blue-color">
-							Become a part of something great!
-						</v-card-text>
-					</v-col>
-					<v-col
-						cols="12"
-						class="text-center py-4"
-					>
-						<v-avatar
-							color="white"
-							size="90"
-							class="elevation-14 bulls-eye-avatar"
+						<v-icon
+							size="80"
+							color="red darken-2"
 						>
-							<v-icon
-								size="80"
-								color="red darken-2"
-							>
-								mdi-bullseye-arrow
+							mdi-bullseye-arrow
+						</v-icon>
+					</v-avatar>
+				</v-col>
+				<v-col v-show="$vuetify.breakpoint.mdAndUp"
+					cols="12"
+				>
+					<v-card-text
+						class="d-flex justify-center pb-0 font-weight-bold"
+					>
+						We provide a nice feeds management for our followers.
+						We can post our thoughts, events or any inspirations as Sachchai Nepal Post.
+					</v-card-text>
+				</v-col>
+				<v-col v-show="$vuetify.breakpoint.smAndUp"
+					cols="12"
+				>
+					<v-card-text class="view-top-pins text-center blue--text text--lighten-2">
+						<h3>
+							See our top pinned items here. <v-icon large>
+								mdi-arrow-right
 							</v-icon>
-						</v-avatar>
-					</v-col>
-					<v-col v-show="$vuetify.breakpoint.mdAndUp"
-						cols="12"
-					>
-						<v-card-text
-							class="d-flex justify-center pb-0 grey--text text--darken-2 font-weight-bold"
+						</h3>
+					</v-card-text>
+				</v-col>
+				<v-col cols="12">
+					<v-card-actions class="py-0 d-flex justify-center mt-4 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0">
+						<v-btn large
+							dark
+							height="55"
+							outlined
+							rounded
 						>
-							We provide a nice feeds management for our followers.
-							We can post our thoughts, events or any inspirations as Sachchai Nepal Post.
-						</v-card-text>
-					</v-col>
-					<v-col v-show="$vuetify.breakpoint.smAndUp"
-						cols="12"
-					>
-						<v-card-text class="view-top-pins text-center blue--text text--darken-2">
-							<h3>
-								See our top pinned items here. <v-icon large>
-									mdi-arrow-right
-								</v-icon>
-							</h3>
-						</v-card-text>
-					</v-col>
-					<v-col cols="12">
-						<v-card-actions class="py-0 d-flex justify-center mt-4 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0">
-							<v-btn large
-								elevation="4"
-								dark
-								class="explore-pin-btn"
-								color="showcase-blue-bg"
-							>
-								<v-icon>mdi-eye-circle</v-icon>
-								<span v-show="$vuetify.breakpoint.smAndUp"
-									class="ml-4"
-								>Explore All</span>
-							</v-btn>
-						</v-card-actions>
-					</v-col>
-				</v-row>
-			</v-card>
-		</v-col>
-		<v-col
-			v-if="articles"
-			cols="12"
-			class="ma-0 pa-0 pin-column"
-		>
-			<v-card v-if="articles.count === 0"
-				flat color="transparent"
-				class="text-center"
+							<v-icon>mdi-eye-circle</v-icon>
+							<span v-show="$vuetify.breakpoint.smAndUp"
+								class="ml-4"
+							>Explore All</span>
+						</v-btn>
+					</v-card-actions>
+				</v-col>
+			</v-row>
+			<div class="py-6" />
+			<v-col
+				v-if="articles"
+				cols="12"
+				class="ma-0 pa-0 rounded"
 			>
-				<div class="grey--text">
-					No pins yet!
-				</div>
-			</v-card>
-			<div v-else
-				class="swiper-container"
-			>
-				<div class="swiper-wrapper">
-					<v-card
+				<v-card v-if="articles.count === 0"
+					flat color="transparent"
+					class="text-center"
+				>
+					<div class="grey--text">
+						No pins yet!
+					</div>
+				</v-card>
+				<div
+					v-else
+					class="rounded d-flex flex-wrap justify-center pa-2"
+					style="z-index: 2;"
+				>
+					<pinned-post
 						v-for="(item) in articles.results"
 						:key="item.id"
-						class="swiper-slide"
-						dark
-					>
-						<pinned-post :post="item"
-							is-article
-						/>
-					</v-card>
+						class="ma-2"
+						:post="item"
+						is-article
+					/>
 				</div>
-				<!-- If we need pagination -->
-				<div class="swiper-button-prev" />
-				<div class="swiper-button-next" />
-			</div>
-		</v-col>
-	</v-row>
+			</v-col>
+			<div style="height: 500px;" />
+		</v-card>
+	</v-card>
 </template>
 <script>
 import Swiper, { Navigation, Pagination } from "swiper"
@@ -262,6 +280,8 @@ export default {
 .pin-column
 	transition: all .2s
 	margin-top: -40px !important
+	@media only screen and (min-width: 1391px)
+		margin-top: -140px !important
 	@media only screen and (max-width: 1390px)  and (min-width: 960px)
 		margin-top: -100px !important
 		@media only screen and (max-width: 994px)
@@ -297,11 +317,12 @@ export default {
 .overline
 	font-size: 14px !important
 .pin-header
+	color: whitesmoke
 	text-align: center
 	font-weight: 700
 	@media only screen and (min-width: 1390px)
-		font-size: 52px
-		line-height: 52px
+		font-size: 60px
+		line-height: 65px
 	@media only screen and (min-width: 1119px) and (max-width: 1389px)
 		font-size: 48px
 		line-height: 40px
@@ -320,4 +341,47 @@ export default {
 	max-width: 800px
 	margin: 0 auto
 	text-align: center
+</style>
+<style lang="scss" scoped>
+.custom-shape-divider-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.custom-shape-divider-top svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 500px;
+	transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top .shape-fill {
+	fill: #060C28;
+}
+.custom-shape-divider-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 500px;
+	transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom .shape-fill {
+	fill: #c9c9c9;
+}
 </style>

@@ -1,16 +1,18 @@
 <template>
-	<v-row justify="center"
-		class="ma-0 pa-0"
+	<v-card width="100vw"
+		height="110vh"
 	>
 		<v-img
+			style="z-index: 1"
 			src="https://images.sadhguru.org/mahashivratri/wp-content/uploads/2020/02/Shiva-Wallpaper-Moon-on-his-head.jpg"
-			height="800"
+			height="110vh"
 			width="100vw"
 		>
 			<v-row
-				class="fill-height ma-0 pa-0"
+				class="fill-height ma-0 pa-0 mx-auto"
 				align="center"
 				justify="center"
+				style="max-width: 1100px"
 			>
 				<div id="stuff-content">
 					<h1>
@@ -57,7 +59,7 @@
 				</div>
 			</v-row>
 		</v-img>
-	</v-row>
+	</v-card>
 </template>
 <script>
 export default {
@@ -128,4 +130,6 @@ export default {
 			font-size: 10px !important
 			line-height: 10px
 
+</style>
+<style lang="scss">
 </style>

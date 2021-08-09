@@ -1,6 +1,9 @@
 <template>
-	<v-card class="footer" tile
-		min-height="80vh" color="#b163ab"
+	<v-card
+		class="footer" tile
+		min-height="80vh"
+		dark
+		color="grey darken-4"
 	>
 		<div class="custom-shape-divider-bottom-1620494480">
 			<svg data-name="Layer 1"
@@ -35,7 +38,6 @@
 			>
 				<v-col cols="12">
 					<v-card class="d-flex pa-4"
-						color="rgb(177 99 171 / 55%)"
 						min-height="120"
 					>
 						<div class="become-follower">
@@ -47,7 +49,7 @@
 								min-height="50"
 								min-width="120"
 								class="become-btn"
-								color="#d380ba"
+								color="grey darken-3"
 								@click="routeToRegisterPage"
 							>
 								Join Us
@@ -187,7 +189,7 @@
 			<v-card tile
 				min-height="35"
 				style="font-size: 14px;"
-				color="rgb(233 30 99 / 11%)"
+				color="grey darken-4"
 				class="d-flex justify-center align-center"
 			>
 				<div>
@@ -284,7 +286,7 @@ export default {
 }
 
 .custom-shape-divider-bottom-1620494480 .shape-fill {
-	fill: #f59dc9;
+	fill: #323232;
 }
 .love-text {
 	font-size: 12px;
