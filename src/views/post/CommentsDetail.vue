@@ -245,8 +245,9 @@ export default {
 .comment-headline
 	font-size: 16px
 .detail-code
-	font-size: .6rem
+	font-size: 11px
 	letter-spacing:  .5px
+	font-family: inherit
 .detail-icon
 	margin-top: -2px
 .comment-avatar

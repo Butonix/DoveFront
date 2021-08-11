@@ -1,13 +1,24 @@
 import $api from "@/handler/axios";
 import $helper from "@/Helper"
 
-const state = {}
+const state = {
+	routeBackTo: {}
+}
 
-const getters = {}
+const getters = {
+	routeBackTo: state => state.routeBackTo
+}
 
-const mutations = {}
+const mutations = {
+	SET_ROUTE_BACK_TO(state, value) {
+		state.routeBackTo = value
+	}
+}
 
 const actions = {
+	setRouteBackTo({commit}, value) {
+		commit("SET_ROUTE_BACK_TO", value)
+	},
 	async login({}, user) {
 		// always remove preserved/cached localStorage item at first
 		$helper.clearApplicationData()

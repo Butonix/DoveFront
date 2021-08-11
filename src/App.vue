@@ -17,10 +17,10 @@ export default {
 	font-family: Quicksand, sans-serif;
 }
 .v-label {
-	font-size: 14px !important;
+	font-size: 15px !important;
 }
 .v-input {
-	font-size: 14px !important;
+	font-size: 16px !important;
 }
 .cursor {
 	cursor: pointer
