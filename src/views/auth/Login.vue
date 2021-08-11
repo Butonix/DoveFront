@@ -107,6 +107,7 @@
 
 <script>
 import Snack from "@/mixins/Snack.js";
+let ROUTE_BACK_TO
 
 export default {
 	name: "LoginComponent",
@@ -114,8 +115,13 @@ export default {
 		AuthComponent: () => import("@/components/AuthComponent"),
 	},
 	mixins: [Snack],
+	beforeRouteEnter(to, from, next) {
+		ROUTE_BACK_TO = from
+		next()
+	},
 	data() {
 		return {
+			routeBackTo: null,
 			overlay: false,
 			loginPage: {
 				image: "https://i.ibb.co/HgJLWqX/IMG-8845.jpg",
@@ -140,7 +146,7 @@ export default {
 			try {
 				this.overlay = true
 				let response = await this.$store.dispatch("auth/login", this.user)
-				if (response === true) await this.$router.push({name: "SACHCHAI SHOWCASE"})
+				if (response === true) await this.$router.push({name: ROUTE_BACK_TO.name})
 				else if (response === false) await this.openSnack("Login failed.")
 				else if (response === 500) await this.openSnack("Internal server error.")
 				else await this.openSnack(response)
