@@ -243,6 +243,6 @@ export default {
 	border-radius: 4px;
 }
 .media-title {
-	font-size: 1.8rem;
+	font-size: 1.8rem !important;
 }
 </style>

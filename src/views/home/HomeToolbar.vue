@@ -72,7 +72,7 @@ export default {
 
 <style scoped lang="scss">
 .route-btn-active {
-	color: #9C27B0;
+	color: #9C27B0 !important;
 	pointer-events: none;
 }
 </style>

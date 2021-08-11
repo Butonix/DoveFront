@@ -79,6 +79,8 @@
 										height="100%"
 										width="100%"
 										:video-id="$youtube.getIdFromUrl(video.video_url)"
+										nocookie
+										:player-vars="playerVars"
 										@playing="playing"
 									/>
 								</v-carousel-item>
@@ -108,7 +110,8 @@ export default {
 	data() {
 		return {
 			carouselNavItemStyle: "height: 30px !important; width: 30px !important;",
-			dialog: false
+			dialog: false,
+			playerVars: {autoplay: 0, origin: window.location.href}
 		}
 	},
 	methods: {
