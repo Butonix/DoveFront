@@ -3,7 +3,7 @@
 		<vue-emoji
 			ref="emoji"
 			width="100%"
-			height="50"
+			height="100"
 			:value="value"
 			class="comment-input"
 			placeholder="Add a comment"
@@ -78,32 +78,23 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+
+<style lang="scss">
 .comment-box {
 	position: relative;
-	.comment-input {
-		width: 95%;
-		@media only screen and (max-width: 1460px) {
-			width: 92%;
-		}
-		@media only screen and (max-width: 730px) {
-			width: 90%;
-		}
-		@media only screen and (max-width: 530px) {
-			width: 88%;
-		}
-		@media only screen and (max-width: 412px) {
-			width: 85%;
-		}
-		@media only screen and (max-width: 300px) {
-			width: 80%;
-		}
+	.emoji-picker-container i {
+		z-index: 1 !important;
+		top: 10px;
+		right: 15px;
+	}
+	.emoji-vue-textarea:focus {
+		background-color: #f9f7fd;
 	}
 }
 
 .comment-btn {
 	position: absolute;
-	top: 0;
-	right: -6px;
+	top: 38px;
+	right: 2px;
 }
 </style>

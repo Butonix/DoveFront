@@ -6,7 +6,7 @@
 		<v-list-item>
 			<v-list-item-content>
 				<v-list-item-title
-					class="headline cursor"
+					class="cursor media-title"
 					@click="routeToPostDetail"
 				>
 					{{ post.title }}
@@ -60,7 +60,7 @@
 				<v-btn
 					v-if="extraStatus.loved"
 					icon
-					color="black"
+					color="purple"
 					@click="revokeLove"
 				>
 					<v-icon>
@@ -70,7 +70,7 @@
 				<v-btn
 					v-else
 					icon
-					color="black"
+					color="purple"
 					@click="love"
 				>
 					<v-icon>
@@ -80,14 +80,14 @@
 			</v-card-actions>
 			<v-card-actions class="ma-0 pa-0">
 				<v-btn icon
-					color="black"
+					color="green"
 				>
 					<v-icon>mdi-comment-outline</v-icon>
 				</v-btn>
 			</v-card-actions>
 			<v-card-actions class="ma-0 pa-0">
 				<v-btn icon
-					color="black"
+					color="primary"
 				>
 					<v-icon>mdi-share-variant-outline</v-icon>
 				</v-btn>
@@ -99,14 +99,18 @@
 					icon
 					@click="setBookmark"
 				>
-					<v-icon>mdi-bookmark-outline</v-icon>
+					<v-icon color="grey darken-4">
+						mdi-bookmark-outline
+					</v-icon>
 				</v-btn>
 				<v-btn
 					v-else
 					icon
 					@click="removeBookmark"
 				>
-					<v-icon>mdi-bookmark</v-icon>
+					<v-icon color="grey darken-4">
+						mdi-bookmark
+					</v-icon>
 				</v-btn>
 			</v-card-actions>
 		</v-row>
@@ -237,5 +241,8 @@ export default {
 	padding: 2px;
 	background-color: aliceblue;
 	border-radius: 4px;
+}
+.media-title {
+	font-size: 1.8rem;
 }
 </style>

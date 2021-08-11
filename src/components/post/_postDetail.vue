@@ -56,43 +56,54 @@
 						</v-text-field>
 					</v-slide-y-transition>
 					<v-divider />
-					<v-card-subtitle class="post-auth-subtitle">
-						<span>
+					<div class="post-auth-subtitle">
+						<div class="item">
 							<v-icon size="16"
 								color="primary"
 								class="post-auth-icon pr-1"
-							>mdi-account-circle</v-icon>
-						</span>
-						<span v-if="target['uploaded_by']">{{ writer }}</span>
-						<span>
+							>
+								mdi-account-circle
+							</v-icon>
+							<div v-if="target['uploaded_by']">
+								{{ writer }}
+							</div>
+						</div>
+						<div class="item">
 							<v-icon size="16"
 								color="teal"
 								class="post-auth-icon pl-1"
-							>mdi-calendar-plus</v-icon>
-						</span>
-						{{ formatDate(target['timestamp']) }}
-						<span>
+							>
+								mdi-calendar-plus
+							</v-icon>
+							<div>
+								{{ formatDate(target['timestamp']) }}
+							</div>
+						</div>
+						<div class="item">
 							<v-icon size="16"
 								color="green"
 								class="post-auth-icon"
-							>mdi-calendar-check</v-icon>
-						</span>
-						{{ formatDate(target.approved_at) }}
-					</v-card-subtitle>
+							>
+								mdi-calendar-check
+							</v-icon>
+							<div>
+								{{ formatDate(target.approved_at) }}
+							</div>
+						</div>
+					</div>
 					<v-card-text
 						v-if="target['uploaded_by']"
 						class="py-0 pb-2"
 					>
 						<span>
 							{{ target.description }}
-							<span v-if="!target.description && ifWriterIsCurrentUser">Add description</span>
+							<v-btn v-if="!target.description && ifWriterIsCurrentUser"
+								text
+								@click="openUpdateDescription"
+							>
+								Add description
+							</v-btn>
 						</span>
-						<span><v-btn
-							x-small
-							color="primary"
-							icon
-							@click="openUpdateDescription"
-						><v-icon>mdi-pencil</v-icon></v-btn></span>
 					</v-card-text>
 					<v-slide-y-transition>
 						<v-textarea
@@ -276,8 +287,17 @@ export default {
 .post-auth-icon
 	margin-top: -2px
 .post-auth-subtitle
-	font-size: 12px
-	padding-bottom: 5px
+	font-size: 14px
+	display: flex
+	flex-wrap: wrap
+	padding: 2px 16px 6px 16px
+	.item
+		padding: 2px 4px
+		border-radius: 8px
+		display: flex
+		justify-content: space-between
+		margin: 2px
+		background-color: #e0e0e0
 #go-back
 	top: 80px
 	left: 1%

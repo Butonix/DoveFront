@@ -130,6 +130,7 @@ export default {
 .comment-text {
 	font-weight: 500;
 	padding: 4px;
+	width: 100%;
 }
 .comment-writer {
 	font-family: inherit;
