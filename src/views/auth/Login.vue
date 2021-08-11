@@ -107,6 +107,8 @@
 
 <script>
 import Snack from "@/mixins/Snack.js";
+import store from "@/store/index.js"
+import {mapGetters, mapMutations} from "vuex";
 let ROUTE_BACK_TO
 
 export default {
@@ -116,12 +118,11 @@ export default {
 	},
 	mixins: [Snack],
 	beforeRouteEnter(to, from, next) {
-		ROUTE_BACK_TO = from
-		next()
+		if (from.name && from.name !== "LOG IN") store.dispatch("auth/setRouteBackTo", from).then(() => next())
+		else store.dispatch("auth/setRouteBackTo", { name: "SACHCHAI SHOWCASE"}).then(() => next())
 	},
 	data() {
 		return {
-			routeBackTo: null,
 			overlay: false,
 			loginPage: {
 				image: "https://i.ibb.co/HgJLWqX/IMG-8845.jpg",
@@ -141,12 +142,18 @@ export default {
 			},
 		}
 	},
+	computed: {
+		...mapGetters({
+			routeBackTo: "auth/routeBackTo"
+		})
+	},
 	methods: {
+		...mapMutations("auth", ["SET_ROUTE_BACK_TO"]),
 		async login() {
 			try {
 				this.overlay = true
 				let response = await this.$store.dispatch("auth/login", this.user)
-				if (response === true) await this.$router.push({name: ROUTE_BACK_TO.name})
+				if (response === true) await this.$router.push({name: this.routeBackTo.name})
 				else if (response === false) await this.openSnack("Login failed.")
 				else if (response === 500) await this.openSnack("Internal server error.")
 				else await this.openSnack(response)
