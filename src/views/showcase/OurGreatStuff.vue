@@ -3,8 +3,7 @@
 		height="110vh"
 	>
 		<v-img
-			style="z-index: 1"
-			src="https://images.sadhguru.org/mahashivratri/wp-content/uploads/2020/02/Shiva-Wallpaper-Moon-on-his-head.jpg"
+			src="https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/217925409_4176291999106851_5425382946537935816_n.jpg?_nc_cat=104&ccb=1-4&_nc_sid=b9115d&_nc_ohc=sEODI4QYG0AAX8VxTyX&_nc_oc=AQk9qqXvmWLX1IABbQzR81QIMnNAf_pgizsyUT4mdnI7JQQYsBI_h6GuYIlRB3GPX4s&_nc_ht=scontent.fpkr1-1.fna&oh=0d19ff4451bb3a7d1da4ef996044d723&oe=6138A7F6"
 			height="110vh"
 			width="100vw"
 		>
@@ -80,7 +79,7 @@ export default {
 	h1
 		text-align: center
 		font-size: 72px
-		background: -webkit-linear-gradient(#dfdff6, #f6dfeb, #afbecd)
+		background: -webkit-linear-gradient(#cdcdf5, #a2c675, #2680bd)
 		-webkit-background-clip: text
 		-webkit-text-fill-color: transparent
 		line-height: 75px
@@ -110,7 +109,7 @@ export default {
 		padding: 20px 0
 		text-align: center
 		font-weight: 500
-		color: white
+		color: #4b4b4b
 		text-transform: uppercase
 		font-size: 22px !important
 		line-height: 20px

@@ -1,7 +1,7 @@
 <template>
 	<v-card
 		flat
-		class="ma-0 pa-0 rounded-0"
+		class="ma-0 pa-0 rounded-0 px-4"
 		dark
 		color="#284564"
 		height="120vh"
@@ -31,13 +31,13 @@
 		</v-card>
 		<div class="py-4" />
 		<v-card height="600"
-			width="1000" class="mx-auto"
+			max-width="1000" class="mx-auto"
 		>
 			<iframe
 				id="branch-iframe"
 				style="z-index: 2"
 				src="https://www.google.com/maps/d/embed?mid=1gQSVr7mErgYHo00oSpVGv5oIdklxJqPc"
-				width="1000" height="600"
+				width="100%" height="600"
 			/>
 		</v-card>
 		<div class="py-14" />
