@@ -15,6 +15,8 @@
 			height="200"
 			width="200"
 			style="margin-top: -150px;"
+			flat
+			color="transparent"
 		>
 			<v-avatar
 				class="profile-avatar"
