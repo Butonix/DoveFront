@@ -94,7 +94,7 @@ export default {
 
 .comment-btn {
 	position: absolute;
-	top: 38px;
+	top: 38px !important;
 	right: 2px;
 }
 </style>
