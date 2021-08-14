@@ -95,27 +95,30 @@
 					</span>
 				</v-btn>
 				<v-spacer />
-				<v-menu close-on-click
-					offset-y nudge-bottom="5"
-					transition="slide-y-transition"
-				>
-					<template #activator="{on, attrs}">
-						<v-btn
-							icon
-							v-bind="attrs"
-							v-on="on"
-						>
-							<v-icon>mdi-dots-vertical</v-icon>
-						</v-btn>
-					</template>
-					<v-list dense
-						color="#ef93b3"
+				<div v-if="event['created_by']">
+					<v-menu
+						v-if="$helper.ifWriterIsCurrentUser(event['created_by']['username'])"
+						close-on-click
+						offset-y nudge-bottom="5"
+						transition="slide-y-transition"
 					>
-						<v-list-item-group
-							v-for="(item, index) in menuItems"
-							:key="item.icon"
+						<template #activator="{on, attrs}">
+							<v-btn
+								icon
+								v-bind="attrs"
+								v-on="on"
+							>
+								<v-icon>mdi-dots-vertical</v-icon>
+							</v-btn>
+						</template>
+						<v-list dense
+							color="red lighten-4"
 						>
-							<v-list-item>
+							<v-list-item
+								v-for="(item) in menuItems"
+								:key="item.icon"
+								@click="item.handler"
+							>
 								<v-list-item-icon>
 									<v-icon>{{ item.icon }}</v-icon>
 								</v-list-item-icon>
@@ -125,24 +128,25 @@
 									</v-list-item-title>
 								</v-list-item-content>
 							</v-list-item>
-							<v-divider v-if="index !== menuItems.length - 1"
-								class="mx-1"
-							/>
-						</v-list-item-group>
-					</v-list>
-				</v-menu>
+						</v-list>
+					</v-menu>
+				</div>
 			</v-card-actions>
 		</v-card>
+		<event-form-dialog :fullscreen="false" />
 	</v-col>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
 import Snack from "@/mixins/Snack.js";
+import LoadLocationFormMixin from "@/mixins/LoadLocationFormMixin.js";
+import EventFormDialog from "@/views/event/EventFormDialog.vue";
 
 export default {
 	name: "Actions",
-	mixins: [Snack],
+	components: {EventFormDialog},
+	mixins: [Snack, LoadLocationFormMixin],
 	props: {
 		event: {
 			type: Object,
@@ -160,12 +164,30 @@ export default {
 		}),
 		menuItems() {
 			return [
-				{icon: "mdi-pencil", text: "Edit"},
-				{icon: "mdi-delete", text: "Delete"}
+				{icon: "mdi-pencil", text: "Edit", handler: this.openEventEditDialog },
+				{icon: "mdi-delete", text: "Delete", handler: this.deleteEventConfirm}
 			]
 		}
 	},
 	methods: {
+		async deleteEvent() {
+			const deleted = await this.$store.dispatch("event/delete", this.event.id)
+			if (deleted) {
+				await this.openSnack("Event delete success.", "success")
+				await this.$router.push("/home/event")
+			}
+			else await this.openSnack("Event delete failed")
+		},
+		async deleteEventConfirm() {
+			confirm("Are you sure you want to remove this event?") && await this.deleteEvent()
+		},
+		async openEventEditDialog() {
+			await this.loadLocationItems(this.event)
+			this.$bus.emit("open-event-form-dialog-edit-item", {
+				editedIndex: this.event.id,
+				editedItem: Object.assign({}, this.event),
+			})
+		},
 		async toggleInterestedStatus() {
 			this.interestedLoading = true
 			const toggled = await this.$store.dispatch("event/toggleInterestedStatus", {id: this.event.id})

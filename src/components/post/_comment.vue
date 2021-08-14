@@ -72,8 +72,12 @@
 				</v-btn>
 			</v-list-item>
 		</v-list>
-		<v-divider class="my-2" />
+		<v-divider
+			v-if="mode"
+			class="my-2"
+		/>
 		<comment-box
+			v-if="mode"
 			:id="post.id"
 			model="multimedia"
 			@refresh="init()"
@@ -91,6 +95,10 @@ export default {
 		post: {
 			type: Object,
 			required: true
+		},
+		mode: {
+			type: Boolean,
+			default: false
 		}
 	},
 	data: () => ({

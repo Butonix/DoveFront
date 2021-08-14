@@ -5,54 +5,39 @@
 		flat
 	>
 		<div class="py-1" />
-		<v-row no-gutters>
-			<v-col cols="12"
-				xl="6" lg="6"
-				md="6" sm="6"
-			>
-				<v-text-field label="search"
-					name="search" class="ma-1"
-					solo hide-details="auto"
-					prepend-inner-icon="mdi-magnify"
-				/>
-			</v-col>
-			<v-col cols="12"
-				xl="6" lg="6"
-				md="6" sm="6"
-			>
-				<v-text-field label="filter"
-					name="filter" class="ma-1"
-					solo hide-details="auto"
-					prepend-inner-icon="mdi-filter"
-				/>
-			</v-col>
-		</v-row>
-		<div class="py-1" />
-		<no-multimedia-card
-			v-if="images.length === 0"
-			text="Image database is empty."
-		/>
-		<v-card v-for="p in images"
-			:key="p.id" class="my-2 mx-1"
-		>
-			<card-img :src="p.image"
-				height="45vh"
-				:contain="false"
-			/>
-			<v-card-title
-				v-if="p.subtitle"
-				class="pb-1 pt-2 subtitle-2"
-			>
-				{{ p.subtitle }}
-			</v-card-title>
-			<div v-else
-				class="py-1"
-			/>
-			<multimedia-action
-				v-if="$helper.isUserLoggedIn()"
-				@edit="editImage(p)"
-			/>
+		<v-card>
+			<v-card-title>Swipe through our photo gallery</v-card-title>
+			<v-card-subtitle>Moments captured on the camera</v-card-subtitle>
+			<v-card-subtitle>Share your experice with us.</v-card-subtitle>
 		</v-card>
+		<div class="py-1" />
+		<div class="pa-2">
+			<no-multimedia-card
+				v-if="images.length === 0"
+				text="Image database is empty."
+			/>
+			<v-card v-for="p in images"
+				:key="p.id" class="my-2 mx-1"
+			>
+				<card-img :src="p.image"
+					height="45vh"
+					:contain="false"
+				/>
+				<v-card-title
+					v-if="p.subtitle"
+					class="pb-1 pt-2 subtitle-2"
+				>
+					{{ p.subtitle }}
+				</v-card-title>
+				<div v-else
+					class="py-1"
+				/>
+				<multimedia-action
+					v-if="$helper.isUserLoggedIn()"
+					@edit="editImage(p)"
+				/>
+			</v-card>
+		</div>
 		<v-dialog v-model="edit">
 			<v-card>
 				<v-card-title class="dialog-header elevation-4">

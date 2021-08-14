@@ -1,39 +1,26 @@
 <template>
-	<v-card color="transparent">
+	<v-card color="transparent"
+		flat
+	>
 		<div class="py-1" />
-		<v-row no-gutters>
-			<v-col cols="12"
-				xl="6" lg="6"
-				md="6" sm="6"
-			>
-				<v-text-field label="search"
-					name="search" class="ma-1"
-					solo hide-details="auto"
-					prepend-inner-icon="mdi-magnify"
-				/>
-			</v-col>
-			<v-col cols="12"
-				xl="6" lg="6"
-				md="6" sm="6"
-			>
-				<v-text-field label="filter"
-					name="filter" class="ma-1"
-					solo hide-details="auto"
-					prepend-inner-icon="mdi-filter"
-				/>
-			</v-col>
-		</v-row>
+		<v-card>
+			<v-card-title>Watch our uploaded videos</v-card-title>
+			<v-card-subtitle>Enjoy moments with Sachchai Kendra Nepal</v-card-subtitle>
+			<v-card-subtitle>You can go to youtube and watch out videos directly from there.</v-card-subtitle>
+		</v-card>
 		<div class="py-1" />
-		<no-multimedia-card v-if="videos.length === 0"
-			text="Video database is empty."
-		/>
-		<multimedia-video
-			v-for="video in videos"
-			v-else
-			:key="video.id"
-			class="mx-1"
-			:video="video"
-		/>
+		<div class="pa-2">
+			<no-multimedia-card v-if="videos.length === 0"
+				text="Video database is empty."
+			/>
+			<multimedia-video
+				v-for="video in videos"
+				v-else
+				:key="video.id"
+				class="mx-1"
+				:video="video"
+			/>
+		</div>
 	</v-card>
 </template>
 

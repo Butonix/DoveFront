@@ -7,12 +7,14 @@
 			width="100%"
 			outlined
 		>
-			<v-card height="40vh"
-				tile
-				style="border-radius: 4px 4px 0 0 !important;"
+			<v-card
+				color="grey"
+				height="40vh"
+				class="ma-2"
 			>
 				<youtube
 					ref="yt"
+					class="rounded"
 					height="100%"
 					width="100%"
 					:video-id="$youtube.getIdFromUrl(y.video_url)"

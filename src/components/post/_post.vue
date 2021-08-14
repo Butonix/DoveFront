@@ -81,6 +81,7 @@
 			<v-card-actions class="ma-0 pa-0">
 				<v-btn icon
 					color="green"
+					@click="setCommentMode"
 				>
 					<v-icon>mdi-comment-outline</v-icon>
 				</v-btn>
@@ -120,7 +121,11 @@
 			<span>{{ extraStatus.love_count }}</span>&nbsp;Love {{ (extraStatus.love_count > 1) ? 'Reacts' : 'React' }}
 		</p>
 		<post-comment
+			:mode="commentMode"
 			:post="post"
+		/>
+		<div v-if="!commentMode"
+			class="py-1"
 		/>
 	</v-card>
 </template>
@@ -145,7 +150,8 @@ export default {
 		}
 	},
 	data: () => ({
-		extraStatus: {}
+		extraStatus: {},
+		commentMode: false,
 	}),
 	computed:{
 		currentUser() {
@@ -198,6 +204,13 @@ export default {
 		async revokePin() {
 			await this.$store.dispatch("multimedia/revokePinStatus", { id: this.post.id })
 			await this.$store.dispatch("multimedia/filter", {is_approved: true})
+		},
+		setCommentMode() {
+			if(this.commentMode) this.commentMode = false
+			else {
+				this.commentMode = true
+				console.log(this.$refs)
+			}
 		}
 	}
 }

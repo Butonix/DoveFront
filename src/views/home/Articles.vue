@@ -27,7 +27,7 @@
 				>
 					<v-chip v-for="tag in tags"
 						:key="tag"
-						small
+						style="font-size: 13px;"
 					>
 						{{ tag }}
 					</v-chip>

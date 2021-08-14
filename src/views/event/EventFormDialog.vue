@@ -406,6 +406,7 @@ export default {
 		],
 		eventTypeOptions: [
 			"Satsang",
+			"Fellowship",
 			"Board Meeting",
 			"General Meeting",
 		],

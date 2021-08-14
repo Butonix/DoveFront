@@ -34,18 +34,20 @@
 					<v-slide-y-transition>
 						<v-text-field
 							v-if="showTitleUpdate"
+							ref="eventName"
 							v-model="titleToUpdate"
 							class="px-2"
 							counter="255"
-							solo
+							outlined
+							dense
 							prepend-inner-icon="mdi-text"
 						>
 							<template #append>
 								<v-btn
+									style="margin-top: -6px;"
 									class="send-icon-button"
 									color="indigo"
 									icon
-									x-small
 									@click="updateName"
 								>
 									<v-icon>
@@ -97,28 +99,35 @@
 					>
 						<span>
 							{{ target.description }}
-							<v-btn v-if="!target.description && ifWriterIsCurrentUser"
-								text
+							<v-btn
+								v-if="!target.description && ifWriterIsCurrentUser"
+								depressed color="grey lighten-3"
 								@click="openUpdateDescription"
 							>
-								Add description
+								<v-fade-transition>
+									<span v-if="showDescriptionUpdate">
+										Cancel
+									</span>
+									<span v-else>Add description</span>
+								</v-fade-transition>
 							</v-btn>
 						</span>
 					</v-card-text>
 					<v-slide-y-transition>
 						<v-textarea
 							v-if="showDescriptionUpdate"
+							ref="description"
 							v-model="descriptionUpdate"
+							outlined
 							class="mx-3"
 							counter="10000"
-							auto-grow solo
+							auto-grow
 							prepend-inner-icon="mdi-text"
 						>
 							<template #append>
 								<v-btn icon
 									class="send-icon-button"
-									color="indigo"
-									x-small
+									color="primary"
 									@click="updateDescription"
 								>
 									<v-icon>
@@ -162,6 +171,7 @@
 				</div>
 				<PostDetailActionsComponent
 					v-if="target" :target="target"
+					@focus-comment="$refs.comment.focus()"
 				/>
 				<v-divider />
 			</v-col>
@@ -170,21 +180,28 @@
 			</v-col>
 			<v-col cols="12">
 				<v-text-field
+					ref="comment"
 					v-model="comment.comment"
 					class="comment"
-					filled
+					outlined
+					color="primary"
 					placeholder="Add your comment here..."
 					hide-details="auto"
 					clearable
 					prepend-inner-icon="mdi-comment"
 				>
 					<template #append>
-						<v-icon class="send-icon-button"
-							color="primary"
+						<v-btn
+							icon class="send-icon-button"
+							style="margin-top: -8px;"
 							@click="addCommentToPost"
 						>
-							mdi-send
-						</v-icon>
+							<v-icon
+								color="primary"
+							>
+								mdi-send
+							</v-icon>
+						</v-btn>
 					</template>
 				</v-text-field>
 			</v-col>
@@ -246,12 +263,23 @@ export default {
 	},
 	methods: {
 		openUpdateName() {
-			this.showTitleUpdate = !this.showTitleUpdate
+			// this.showTitleUpdate = !this.showTitleUpdate
 			this.titleToUpdate = this.target.title
+			if(!this.showTitleUpdate) {
+				this.showTitleUpdate = true
+				this.$nextTick(() => {
+					this.$refs.eventName.focus()
+				})
+			} else this.showTitleUpdate = false
 		},
 		openUpdateDescription() {
-			this.showDescriptionUpdate = !this.showDescriptionUpdate
 			this.descriptionUpdate = this.target.description
+			if (!this.showDescriptionUpdate) {
+				this.showDescriptionUpdate = true
+				this.$nextTick(() => {
+					this.$refs.description.focus()
+				})
+			} else this.showDescriptionUpdate = false
 		},
 		async updatePost(body) {
 			await this.$store.dispatch(
@@ -290,7 +318,7 @@ export default {
 	font-size: 14px
 	display: flex
 	flex-wrap: wrap
-	padding: 2px 16px 6px 16px
+	padding: 6px 16px
 	.item
 		padding: 2px 4px
 		border-radius: 8px

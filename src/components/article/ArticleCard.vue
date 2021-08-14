@@ -7,7 +7,7 @@
 	>
 		<v-card
 			v-if="article['is_pinned']"
-			dark
+			dark class="ma-2"
 		>
 			<v-img
 				class="cursor"
@@ -28,7 +28,7 @@
 		</v-card>
 		<v-list
 			color="transparent"
-			three-line
+			three-line class="py-0"
 		>
 			<v-list-item>
 				<v-list-item-avatar
@@ -64,62 +64,50 @@
 							#{{ tag }}
 						</div>
 					</v-list-item-subtitle>
-					<v-list-item-subtitle class="d-flex flex-wrap justify-start">
-						<v-chip color="grey lighten-3">
-							<v-icon size="20">
-								mdi-heart-multiple-outline
-							</v-icon>
-							<span class="pl-1">Reactions <span v-if="status['love_count']">({{ status['love_count'] }})</span></span>
-						</v-chip>
-						<v-chip
-							color="grey lighten-3"
-							class="mb-0"
-						>
-							<v-icon size="20">
-								mdi-comment-outline
-							</v-icon>
-							<span class="pl-1">Comments</span>
-						</v-chip>
-						<v-chip
-							v-if="status['bookmarked']"
-							color="grey lighten-3"
-							class="mb-1"
-							@click="revokeBookmark"
-						>
-							<v-icon size="20"
-								color="black"
-							>
-								mdi-bookmark
-							</v-icon>
-							<span class="pl-1">Bookmark</span>
-						</v-chip>
-						<v-chip v-else
-							@click="bookmark"
-						>
-							<v-icon
-								class="pr-1"
-								size="20"
-							>
-								mdi-bookmark-outline
-							</v-icon>
-							Bookmark
-						</v-chip>
-						<v-spacer />
-						<v-chip
-							color="grey lighten-2"
-							class="mb-1"
-						>
-							<v-icon class="pr-1"
-								size="20"
-							>
-								mdi-chevron-double-right
-							</v-icon>
-							{{ parseInt(article.description.length / (250 * 4)) }} mins read
-						</v-chip>
-					</v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
 		</v-list>
+		<v-card-actions class="flex-wrap justify-space-around">
+			<v-btn color="purple lighten-4"
+				class="ma-1" rounded
+			>
+				<v-icon size="20"
+					color="purple"
+				>
+					mdi-heart-multiple-outline
+				</v-icon>
+				<span class="pl-1">Reactions <span v-if="status['love_count']">({{ status['love_count'] }})</span></span>
+			</v-btn>
+			<v-btn
+				color="green lighten-4"
+				class="ma-1" rounded
+			>
+				<v-icon size="20"
+					color="green"
+				>
+					mdi-comment-outline
+				</v-icon>
+				<span class="pl-1">Comments</span>
+			</v-btn>
+			<v-btn color="primary lighten-2"
+				class="ma-1" rounded
+			>
+				<v-icon>mdi-share-variant-outline</v-icon>
+				<span class="pl-1">Share</span>
+			</v-btn>
+			<v-spacer v-if="$vuetify.breakpoint.smAndUp" />
+			<v-chip
+				color="grey lighten-2"
+				class="ma-1" rounded
+			>
+				<v-icon class="pr-1"
+					size="20"
+				>
+					mdi-chevron-double-right
+				</v-icon>
+				{{ parseInt(article.description.length / (250 * 4)) }} mins read
+			</v-chip>
+		</v-card-actions>
 	</v-card>
 </template>
 <script>

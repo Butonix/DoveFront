@@ -74,7 +74,7 @@
 							outlined
 							rounded
 							class="explore-pin-btn"
-							to="/home/articles"
+							to="/home/article"
 						>
 							<v-icon>mdi-eye-circle</v-icon>
 							<span v-show="$vuetify.breakpoint.smAndUp"

@@ -47,6 +47,7 @@
 					class="ma-2 py-6"
 					v-bind="attrs"
 					v-on="on"
+					@click="$emit('focus-comment')"
 				>
 					<v-icon>
 						mdi-comment-outline
@@ -137,6 +138,7 @@ export default {
 			required: true
 		}
 	},
+	emits: ["focus-comment"],
 	data() {
 		return {
 			extraStatus: {
@@ -184,7 +186,7 @@ export default {
 		},
 		async revokeLove() {
 			await this.performAction("revokeLove")
-		},
+		}
 	}
 }
 </script>
