@@ -38,7 +38,7 @@
 			<v-card-text>This is a second advertisement.</v-card-text>
 			<v-card-actions>
 				<v-btn depressed
-					color="green darken-3"
+					color="orange darken-3"
 				>
 					See More
 				</v-btn>

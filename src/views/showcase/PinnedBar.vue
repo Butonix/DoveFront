@@ -4,22 +4,7 @@
 		dark color="rgb(6 12 40)"
 		style="position: relative"
 	>
-		<div
-			class="custom-shape-divider-bottom"
-			style="z-index: 1"
-		>
-			<svg data-name="Layer 1"
-				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-				preserveAspectRatio="none"
-			>
-				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-					class="shape-fill"
-				/>
-			</svg>
-		</div>
-		<div class="custom-shape-divider-top"
-			style="z-index: 1"
-		>
+		<div class="custom-shape-divider-top">
 			<svg data-name="Layer 1"
 				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
 				preserveAspectRatio="none"
@@ -30,7 +15,6 @@
 			</svg>
 		</div>
 		<v-card
-			style="z-index: 2"
 			dark
 			:loading="loading"
 			flat tile
@@ -78,19 +62,19 @@
 				>
 					<v-card-text class="view-top-pins text-center blue--text text--lighten-2">
 						<h3>
-							See our top pinned items here. <v-icon large>
-								mdi-arrow-right
-							</v-icon>
+							See our top pinned items here.
 						</h3>
 					</v-card-text>
 				</v-col>
 				<v-col cols="12">
-					<v-card-actions class="py-0 d-flex justify-center mt-4 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0">
+					<v-card-actions class="justify-center">
 						<v-btn large
 							dark
 							height="55"
 							outlined
 							rounded
+							class="explore-pin-btn"
+							to="/home/articles"
 						>
 							<v-icon>mdi-eye-circle</v-icon>
 							<span v-show="$vuetify.breakpoint.smAndUp"
@@ -100,7 +84,7 @@
 					</v-card-actions>
 				</v-col>
 			</v-row>
-			<div class="py-6" />
+			<div class="py-4" />
 			<v-col
 				v-if="articles"
 				cols="12"
@@ -117,7 +101,6 @@
 				<div
 					v-else
 					class="rounded d-flex flex-wrap justify-center pa-2"
-					style="z-index: 2;"
 				>
 					<pinned-post
 						v-for="(item) in articles.results"
@@ -128,12 +111,11 @@
 					/>
 				</div>
 			</v-col>
-			<div style="height: 500px;" />
+			<div style="height: 50px;" />
 		</v-card>
 	</v-card>
 </template>
 <script>
-import Swiper, { Navigation, Pagination } from "swiper"
 import {mapGetters} from "vuex";
 import {gsap} from "gsap"
 import {ScrollTrigger} from "gsap/ScrollTrigger"
@@ -157,125 +139,62 @@ export default {
 			articles: "article/pins"
 		})
 	},
-	mounted() {
-		gsap.timeline({
-			scrollTrigger: {
-				trigger: ".pin-bg-card",
-				start: "top center",
-				end: "+=800",
-			},
-		})
-			.from(".pin-header", {
-				scale: 4,
-				opacity: 0,
-				color: "transparent",
-				duration: .5
-			})
-			.from(".bulls-eye-avatar", {
-				opacity: 20,
-				duration: 2,
-				ease: "ease",
-				rotation: 360*7,
-			})
-		gsap.timeline({
-			scrollTrigger: {
-				trigger: ".pin-bg-card",
-				start: "top center",
-				end: "+=400",
-			},
-		})
-			.from(".explore-pin-btn", {
-				y: 600,
-				opacity: 0,
-				ease: "bounce",
-			})
-			.from(".view-top-pins", {
-				scale: 1.3,
-				opacity: 0,
-				ease: "ease",
-			})
-		const slides = gsap.utils.toArray(".swiper-slide")
-		if (slides.length > 0) {
-			gsap.timeline({
-				scrollTrigger: {
-					trigger: ".pin-bg-card",
-					scrub: 1,
-					start: "top 400px",
-					end: "+=600"
-				}
-			})
-				.from(slides, {
-					opacity: 0,
-					scale: .5,
-					y: 400,
-					ease: "back.out(4)",
-					duration: 2.5
-				})
-		}
-	},
 	async created() {
 		await this.init()
-		await this.initSwiper()
+		await this.initGsap()
 	},
 	methods: {
 		async init() {
 			await this.$store.dispatch("article/fetchPinned")
 		},
-		initSwiper() {
-			Swiper.use([Navigation, Pagination]);
-
-			const pinSwiper = new Swiper(".swiper-container", {
-				direction: "horizontal",
-				loop: false,
-				freeMode: true,
-				centerInsufficientSlides: true,
-				slidesOffsetBefore: 10,
-				slidesOffsetAfter: 10,
-				spaceBetween: 25,
-				breakpoints: {
-					250: {
-						slidesPerView: 1,
-					},
-					500: {
-						slidesPerView: 2
-					},
-					750: {
-						slidesPerView: 3,
-					},
+		async initGsap() {
+			gsap.timeline({
+				scrollTrigger: {
+					trigger: ".pin-header",
+					end: "+=800",
 				},
-				grabCursor: true,
-				speed: 1500,
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
-				},
-				pagination: {
-					el: ".swiper-pagination",
-					dynamicBullets: false,
-					clickable: true,
-					type: "bullets"
-				},
+				yoyo: true
 			})
+				.from(".pin-header", {
+					scale: 2,
+					opacity: 0,
+					color: "transparent",
+					duration: .5,
+					ease: "ease"
+				}, 0)
+				.from(".bulls-eye-avatar", {
+					opacity: 20,
+					duration: .5,
+					ease: "ease",
+					rotation: 360*7,
+				}, 0)
+				.from(".view-top-pins", {
+					scale: 1.3,
+					opacity: 0,
+					ease: "ease",
+					duration: .5,
+				}, 0)
+			const slides = gsap.utils.toArray(".pinned-post")
+			if (slides.length > 0) {
+				gsap.timeline({
+					scrollTrigger: {
+						trigger: ".pin-bar",
+						scrub: 1,
+						start: "top top",
+						end: "+=600"
+					}
+				})
+					.from(slides, {
+						opacity: 0,
+						scale: .5,
+						y: 400,
+						duration: 2.5
+					})
+			}
 		}
 	}
 }
 </script>
-<style>
-.swiper-pagination {
-	bottom: -5px !important;
-}
-.swiper-pagination-bullet {
-	background-color: white;
-	width: 12px !important;
-	height: 12px !important;
-	opacity: .4;
-	transition: all .2s;
-}
-.swiper-pagination-bullet-active {
-	background-color: white !important;
-	opacity: 1;
-}
-</style>
 <style lang="sass" scoped>
 .pin-column
 	transition: all .2s
@@ -362,26 +281,5 @@ export default {
 
 .custom-shape-divider-top .shape-fill {
 	fill: #060C28;
-}
-.custom-shape-divider-bottom {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
-	transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom svg {
-	position: relative;
-	display: block;
-	width: calc(100% + 1.3px);
-	height: 500px;
-	transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom .shape-fill {
-	fill: #c9c9c9;
 }
 </style>

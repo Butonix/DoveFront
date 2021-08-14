@@ -11,6 +11,7 @@
 			<v-icon>mdi-menu</v-icon>
 		</v-app-bar-nav-icon>
 		<v-card
+			v-if="$vuetify.breakpoint.width > 360"
 			class="mx-4"
 			:class="$route.name === 'HOME' ? '' : 'cursor'"
 			flat
@@ -26,7 +27,9 @@
 				@click="routeToFeeds"
 			/>
 		</v-card>
-		<div class="px-4" />
+		<div v-if="$vuetify.breakpoint.width > 700"
+			class="px-4"
+		/>
 		<v-btn v-for="(item, index) in homeTabItems"
 			:key="index"
 			:to="item.to"
@@ -34,8 +37,16 @@
 			text
 			height="60"
 			tile
+			class="route-btn"
 		>
-			{{ item.text }}
+			<v-icon v-if="$vuetify.breakpoint.width < 600"
+				:size="($vuetify.breakpoint.width < 460) ? 20 : 24"
+			>
+				{{ item.icon }}
+			</v-icon>
+			<div v-else>
+				{{ item.text }}
+			</div>
 		</v-btn>
 		<v-spacer />
 		<div class="px-1" />
@@ -74,5 +85,20 @@ export default {
 .route-btn-active {
 	color: #9C27B0 !important;
 	pointer-events: none;
+}
+.route-btn {
+	@media only screen and (max-width: 700px) {
+		font-size: 14px;
+		max-width: 110px;
+	}
+	@media only screen and (max-width: 600px) {
+		font-size: 14px;
+		max-width: 110px;
+	}
+	@media only screen and (max-width: 460px) {
+		font-size: 14px;
+		width: 40px;
+		min-width: 40px !important;
+	}
 }
 </style>

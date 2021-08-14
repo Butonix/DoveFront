@@ -87,19 +87,14 @@
 							<v-card-actions
 								v-for="(item, index) in socialMediaButtonIcons"
 								:key="index"
-								class="ma-0 pa-0"
+								class="ma-0 py-1 px-0"
 							>
-								<v-btn
-									class="mx-2"
-									icon
-								>
-									<v-icon
-										size="24px"
-										:color="item.color"
-									>
-										{{ item.icon }}
-									</v-icon>
-								</v-btn>
+								<link-icon-with-tooltip
+									:color="item.color"
+									:icon="item.icon"
+									:tooltip="item.tooltip"
+									:to="item.to"
+								/>
 							</v-card-actions>
 						</v-row>
 						<h5 class="flex text-start">
@@ -116,61 +111,43 @@
 					</div>
 				</v-col>
 				<v-col>
-					<v-list dense
-						max-width="120"
-						color="transparent"
+					<v-list-item
+						v-for="(item, i) in firstList"
+						:key="i"
+						class="footer-item"
 					>
-						<v-list-item-group
-							color="black"
-						>
-							<v-list-item
-								v-for="(item, i) in firstList"
-								:key="i"
-							>
-								<v-list-item-content>
-									<v-list-item-title>{{ item.text }}</v-list-item-title>
-								</v-list-item-content>
-							</v-list-item>
-						</v-list-item-group>
-					</v-list>
+						<v-list-item-content>
+							<v-list-item-title class="item-title">
+								{{ item.text }}
+							</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
 				</v-col>
 				<v-col>
-					<v-list dense
-						max-width="130"
-						color="transparent"
+					<v-list-item
+						v-for="(item, i) in secondList"
+						:key="i"
+						class="footer-item"
 					>
-						<v-list-item-group
-							color="black"
-						>
-							<v-list-item
-								v-for="(item, i) in secondList"
-								:key="i"
-							>
-								<v-list-item-content>
-									<v-list-item-title>{{ item.text }}</v-list-item-title>
-								</v-list-item-content>
-							</v-list-item>
-						</v-list-item-group>
-					</v-list>
+						<v-list-item-content>
+							<v-list-item-title class="item-title">
+								{{ item.text }}
+							</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
 				</v-col>
 				<v-col>
-					<v-list dense
-						max-width="120"
-						color="transparent"
+					<v-list-item
+						v-for="(item, i) in thirdList"
+						:key="i"
+						class="footer-item"
 					>
-						<v-list-item-group
-							color="black"
-						>
-							<v-list-item
-								v-for="(item, i) in thirdList"
-								:key="i"
-							>
-								<v-list-item-content>
-									<v-list-item-title>{{ item.text }}</v-list-item-title>
-								</v-list-item-content>
-							</v-list-item>
-						</v-list-item-group>
-					</v-list>
+						<v-list-item-content>
+							<v-list-item-title class="item-title">
+								{{ item.text }}
+							</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
 				</v-col>
 				<v-col
 					cols="12"
@@ -202,17 +179,34 @@
 
 <script>
 import router from "@/router";
+import LinkIconWithTooltip from "@/components/button/LinkIconWithTooltip.vue";
 
 export default {
 	name: "HomeFooter",
 	components: {
+		LinkIconWithTooltip,
 		FacebookWidget: () => import("@/views/showcase/Facebook")
 	},
 	data: () => ({
 		socialMediaButtonIcons: [
-			{color: "indigo darken-2", icon: "mdi-facebook"},
-			{color: "#f71701", icon: "mdi-youtube"},
-			{color: "#bb2d71", icon: "mdi-instagram"},
+			{
+				color: "primary",
+				icon: "mdi-facebook",
+				tooltip: "Facebook Page",
+				to: "https://www.facebook.com/sachchaikendranepal"
+			},
+			{
+				color: "#7774d7",
+				icon: "mdi-facebook",
+				tooltip: "Facebook Group",
+				to: "https://www.facebook.com/groups/2553480628235742/"
+			},
+			{
+				color: "red darken-2",
+				icon: "mdi-youtube",
+				tooltip: "Youtube Channel",
+				to: "https://www.youtube.com/channel/UCJciQdMbWCr-hPmVWu9HVyw"
+			},
 		],
 		firstList: [
 			{text: "Home"},
@@ -243,7 +237,6 @@ export default {
 	}
 }
 </script>
-
 <style lang="sass" scoped>
 #footer
 	position: relative
@@ -314,6 +307,22 @@ export default {
 	.become-btn {
 		padding: 10px;
 		font-weight: 500 !important;
+	}
+}
+.footer-item {
+	border-radius: 4px;
+	text-align: center;
+	cursor: pointer;
+	.item-title {
+		font-size: 14px;
+		font-weight: 500;
+		color: #b4b4b4
+	}
+	&:hover {
+		background-color: #313131;
+		.item-title {
+			color: whitesmoke;
+		}
 	}
 }
 </style>

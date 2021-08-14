@@ -5,10 +5,21 @@
 		flat tile
 		style="position: relative;"
 	>
+		<div
+			class="custom-shape-divider-bottom"
+		>
+			<svg data-name="Layer 1"
+				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+				preserveAspectRatio="none"
+			>
+				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+					class="shape-fill"
+				/>
+			</svg>
+		</div>
 		<v-card class="mx-auto elevation-0 rounded-0"
 			max-width="1000"
 			color="transparent"
-			style="z-index: 2"
 		>
 			<v-card-subtitle
 				id="kendra_name"
@@ -28,7 +39,7 @@
 				<v-card
 					v-for="(item, index) in kendra"
 					:key="index"
-					class="elevation-0 text-center py-6 ma-2"
+					class="elevation-0 text-center py-6 ma-2 kendra-card"
 					dark
 					color="#024b84"
 					max-width="300"
@@ -58,19 +69,6 @@
 				</v-card>
 			</v-row>
 		</v-card>
-		<div
-			style="z-index: 1"
-			class="custom-shape-divider-bottom"
-		>
-			<svg data-name="Layer 1"
-				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-				preserveAspectRatio="none"
-			>
-				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-					class="shape-fill"
-				/>
-			</svg>
-		</div>
 	</v-card>
 </template>
 <script>
@@ -103,19 +101,6 @@ export default {
 	mounted() {
 		gsap.timeline({
 			scrollTrigger: {
-				trigger: ".showcase-img-wrapper",
-				start: "top center",
-				// end: "-=600",
-			},
-			yoyo: true
-		})
-			.from(".repeating-gradient", {
-				duration: 1.5,
-				scale: .5,
-				opacity: 0
-			})
-		gsap.timeline({
-			scrollTrigger: {
 				trigger: "#kendra_motto",
 				start: "bottom bottom",
 				end: "+=300",
@@ -134,14 +119,11 @@ export default {
 				duration: .5,
 				x: 500
 			}, 0)
-			.from(".kendra-col-0", {
-				x: -500,
-				duration: 1,
-			}, 1)
-			.from(".kendra-col-1", {
-				x: 500,
-				duration: 1
-			}, 1)
+			.from(".kendra-card", {
+				duration: 1.5,
+				scale: .5,
+				opacity: 0
+			})
 	}
 }
 </script>
@@ -193,10 +175,6 @@ export default {
 <style lang="scss" scoped>
 .kendra-info-bg-img{
 	margin-top: -70px;
-}
-.repeating-gradient {
-	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 100px);
-	overflow: hidden;
 }
 .custom-shape-divider-bottom {
 	position: absolute;

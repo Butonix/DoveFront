@@ -4,8 +4,18 @@
 		max-width="100vw"
 		flat
 		tile
-		color="rgb(201 201 201)"
+		style="background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );"
 	>
+		<div class="custom-shape-divider-top">
+			<svg data-name="Layer 1"
+				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+				preserveAspectRatio="none"
+			>
+				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+					class="shape-fill"
+				/>
+			</svg>
+		</div>
 		<div
 			class="custom-shape-divider-bottom"
 		>
@@ -25,7 +35,7 @@
 			flat tile
 		>
 			<section class="scatter-section demo-text">
-				<div class="wrapper text py-12">
+				<div class="wrapper text py-12 grey--text text--lighten-2">
 					LOVEDGALLERYFROMUS
 				</div>
 			</section>
@@ -209,5 +219,25 @@ footer {height: 50vh}
 
 .custom-shape-divider-bottom .shape-fill {
 	fill: #060c28;
+}
+.custom-shape-divider-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.custom-shape-divider-top svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 500px;
+	transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top .shape-fill {
+	fill: #060C28;
 }
 </style>

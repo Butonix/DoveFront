@@ -5,7 +5,7 @@
 		dark
 		color="#284564"
 		height="120vh"
-		img="https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/155794206_3777657255636996_7526777727332740545_n.jpg?_nc_cat=102&ccb=1-4&_nc_sid=8631f5&_nc_ohc=vPjfaGs0-T0AX9Lc_co&_nc_ht=scontent.fpkr1-1.fna&oh=0bdbf1df05668c71cb61df393b6509c6&oe=61379A3C"
+		img="https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/167952492_3860024914066896_971188920796482199_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=b9115d&_nc_ohc=_7zy0XXtiqUAX_6xDht&_nc_ht=scontent.fpkr1-1.fna&oh=dd3227552c1f42c49125b9e911fafd23&oe=613CC232"
 	>
 		<div style="height: 200px;" />
 		<v-card class="py-4 find-us-title mx-auto"
