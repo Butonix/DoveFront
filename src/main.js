@@ -17,11 +17,14 @@ import constants from "@/./constants"
 import "video.js/dist/video-js.css"
 import VueYoutube from "vue-youtube"
 import vueScrollBehavior from "vue-scroll-behavior"
+import VueObserveVisibility from "vue-observe-visibility"
+
 
 Vue.use(vueScrollBehavior, { router: router })
 Vue.use(VueBus)
 Vue.use(moment)
 Vue.use(VueYoutube)
+Vue.use(VueObserveVisibility)
 
 Vue.component(APlayer)
 Vue.component("ProfileNoContent", () =>

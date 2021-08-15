@@ -5,7 +5,7 @@
 	>
 		<home-toolbar @toggle="homeDrawer = !homeDrawer" />
 
-		<v-main>
+		<v-main style="background-color: #f3edff">
 			<v-container
 				fluid
 				class="home-router-container"
@@ -35,7 +35,6 @@
 					</transition>
 				</v-card>
 			</v-container>
-			<home-simple-footer />
 			<facebook-chat />
 			<scroll-up color="#91348e" />
 		</v-main>
@@ -46,7 +45,6 @@
 export default {
 	name: "SacchaiHomeLayout",
 	components: {
-		HomeSimpleFooter: () => import("@/views/home/HomeFooter.vue"),
 		TheSnackbar: () => import("@/components/utils/TheSnackbar"),
 		HomeToolbar: () => import("@/views/home/HomeToolbar"),
 		QuickLinks: () => import("@/views/home/QuickLinks"),

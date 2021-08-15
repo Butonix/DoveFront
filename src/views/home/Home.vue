@@ -5,26 +5,16 @@
 		:width="criticalScreenWidth ? 600: 800"
 	>
 		<div class="py-1" />
-		<v-overlay :value="loading">
-			<v-progress-circular indeterminate
-				size="64"
-			/>
-		</v-overlay>
 		<v-card flat
 			class="transparent"
 		>
 			<add-post-box />
-			<no-home-data v-if="multimedias.count === 0 || !multimedias.results"
-				:image="require('@/assets/noPostsImg.jpg')"
-			/>
-			<v-card v-else
-				flat :loading="loading"
+			<v-card
+				flat
 				class="transparent"
 				rounded
 			>
-				<multimedia-list
-					:posts="multimedias.results"
-				/>
+				<multimedia-list />
 			</v-card>
 			<v-navigation-drawer
 				right
@@ -51,53 +41,20 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
-import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
 
 export default {
 	name: "HomeComponent",
 	components: {
 		MultimediaList: () => import("@/components/multimedia/MultimediaList.vue"),
-		NoHomeData: () => import("@/components/feeds/NoHomeData.vue"),
 		AddPostBox: () => import("@/views/home/AddPostBox"),
 		Facebook: () => import("@/views/showcase/Facebook.vue"),
 		FacebookGroup: () => import("@/components/utils/FacebookGroup"),
 		HomeAds: () => import("@/views/home/Ads"),
 	},
-	mixins: [HtmlVideoMixin],
-	data: () => ({
-		loading: true,
-	}),
 	computed: {
-		...mapGetters({
-			multimedias: "multimedia/list"
-		}),
 		criticalScreenWidth() {
 			return this.$vuetify.breakpoint.width > 1260 && this.$vuetify.breakpoint.width < 1620;
 		}
-	},
-	async created() {
-		if (!this.multimedias.count) {
-			await this.$store.dispatch("multimedia/filter", {is_approved: true})
-		}
-		this.loading = false
-	},
+	}
 }
 </script>
-<!--<style lang="scss" scoped>-->
-<!--.router-column {-->
-<!--	overflow-x: hidden;-->
-<!--	overflow-y: auto !important;-->
-<!--	height: 150vh;-->
-<!--}-->
-<!--/* Hide scrollbar for Chrome, Safari and Opera */-->
-<!--.router-column::-webkit-scrollbar {-->
-<!--	display: none;-->
-<!--}-->
-
-<!--/* Hide scrollbar for IE, Edge and Firefox */-->
-<!--.router-column {-->
-<!--	-ms-overflow-style: none;  /* IE and Edge */-->
-<!--	scrollbar-width: none;  /* Firefox */-->
-<!--}-->
-<!--</style>-->
