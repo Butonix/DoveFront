@@ -25,7 +25,7 @@
 				id="kendra_name"
 				class="text-center nepali-font"
 			>
-				ईश्वरीय मार्ग भजन मंडल सच्चाई केन्द्र नेपाल
+				ईश्वरीय मार्ग भजन मण्डल सच्चाई केन्द्र नेपाल
 			</v-card-subtitle>
 			<v-card-subtitle
 				id="kendra_motto"

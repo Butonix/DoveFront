@@ -53,7 +53,7 @@ export default {
 		loading: null,
 		item: {
 			context: "Sachchai kendra nepal presents",
-			title: "ईश्वरीय मार्ग भजन मंडल सच्चाई केन्द्र नेपाल",
+			title: "ईश्वरीय मार्ग भजन मण्डल सच्चाई केन्द्र नेपाल",
 			subtitle: "हिमाल पहाड तराई, कोहि छैन पराई, सबैलाई समेट्ने एक मात्र सच्चाई"
 		}
 	}),
