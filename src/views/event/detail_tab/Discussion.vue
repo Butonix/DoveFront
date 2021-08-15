@@ -41,7 +41,6 @@
 				placeholder="Add your comment here..."
 				hide-details="auto"
 				auto-grow
-				autofocus
 			>
 				<template #append>
 					<v-icon class="send-icon-button"

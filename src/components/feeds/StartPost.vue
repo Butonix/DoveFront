@@ -124,6 +124,7 @@
 					<v-text-field
 						id="title"
 						v-model="post.title"
+						autofocus
 						class="ma-0 pa-0 mt-4"
 						name="title"
 						outlined
@@ -141,7 +142,7 @@
 				>
 					<v-fab-transition>
 						<v-btn v-if="!addDescription"
-							@click="addDescription = true"
+							@click="addDescriptionAndFocus"
 						>
 							<v-icon>mdi-image-text</v-icon>
 							<span v-if="$vuetify.breakpoint.width > 400"
@@ -167,6 +168,7 @@
 					>
 						<v-textarea
 							id="description"
+							ref="description"
 							v-model="post.description"
 							class="ma-0 pa-0"
 							name="description"
@@ -593,6 +595,12 @@ export default {
 					"success"
 				)
 			}
+		},
+		addDescriptionAndFocus() {
+			this.addDescription = true
+			this.$nextTick(() => {
+				this.$refs.description.focus()
+			})
 		}
 	}
 }
