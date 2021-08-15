@@ -334,7 +334,18 @@ export default {
 	}
 }
 </script>
+<style lang="scss" scoped>
+::v-deep.v-card__text > div > blockquote {
+	padding: 20px;
+	background-color: whitesmoke;
+	font-size: 1.1rem;
 
+	border-radius: 0 10px 10px 0;
+	border-left: 3px solid slategrey;
+	font-style: italic;
+}
+
+</style>
 <style scoped lang="sass">
 .article-container
 	/*margin-top: 60px;*/
@@ -342,14 +353,7 @@ export default {
 ::v-deep.v-card__text p
 	margin-bottom: 0 !important
 	font-size: 1rem
-::v-deep.v-card__text blockquote
-	padding: 20px
-	background-color: whitesmoke
-	font-size: 1.1rem
-	border-radius: 10px
-	border: 2px dashed slategrey
-::v-deep.v-card-text #text
-	color: #7affcf !important
+
 </style>
 <style>
 .v-card__text > blockquote {

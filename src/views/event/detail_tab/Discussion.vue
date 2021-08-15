@@ -30,15 +30,18 @@
 		<div v-if="$helper.isUserLoggedIn()"
 			class="pa-2"
 		>
-			<v-text-field
+			<v-textarea
 				v-model="myComment"
 				class="pa-4"
-				solo
+				outlined
 				background-color="transparent"
 				prepend-inner-icon="mdi-comment"
 				clearable
-				label="Add your comment..."
+				label="Comment"
+				placeholder="Add your comment here..."
 				hide-details="auto"
+				auto-grow
+				autofocus
 			>
 				<template #append>
 					<v-icon class="send-icon-button"
@@ -48,7 +51,7 @@
 						mdi-send
 					</v-icon>
 				</template>
-			</v-text-field>
+			</v-textarea>
 		</div>
 		<v-list
 			v-if="discussions.count > 0"
@@ -59,19 +62,33 @@
 				:key="index"
 			>
 				<v-avatar size="48"
+					:color="$constants.pickBackgroundColor()"
 					class="d-flex justify-content-center ma-2"
 				>
 					<span class="white--text headline">{{ $helper.getCurrentUserInitials(item.writer) }}</span>
 				</v-avatar>
 
 				<v-list-item-content>
-					<v-list-item-title style="white-space: normal;">
-						<code>{{ item.writer.username }}</code>
-						<span class="comment-date">{{ $moment(item.created_at).fromNow() }}</span>
-						<span v-if="$helper.ifWriterIsCurrentUser(item.writer.username)"><v-icon x-small
-							color="primary"
-							@click="openUpdateComment(item.comment, item.id)"
-						>mdi-pencil</v-icon></span>
+					<v-list-item-title class="d-flex">
+						<div class="comment-date">
+							{{ item.writer.username }}
+						</div>
+						<div class="comment-date">
+							{{ $moment(item.created_at).fromNow() }}
+						</div>
+						<v-btn
+							v-if="$helper.ifWriterIsCurrentUser(item.writer.username)"
+							icon
+							small
+						>
+							<v-icon
+								small
+								color="primary"
+								@click="openUpdateComment(item.comment, item.id)"
+							>
+								mdi-pencil
+							</v-icon>
+						</v-btn>
 					</v-list-item-title>
 					<v-list-item-subtitle class="comment">
 						{{ item.comment }}
@@ -148,6 +165,7 @@ export default {
 			})
 			if (posted) {
 				await this.init()
+				this.myComment = null
 			}
 			else await this.openSnack("Comment post failed")
 		},
@@ -177,16 +195,17 @@ export default {
 </script>
 <style scoped lang="scss">
 .comment {
-	background-color: #e6bdfc;
+	background-color: #f7edff;
+	color: #242424 !important;
 	border-radius: 10px;
 	padding: 10px;
 	-webkit-line-clamp: unset !important;
 }
 .comment-date {
-	font-size: 10px;
-	padding: 2px;
+	font-size: 12px;
+	padding: 4px;
 	margin: 2px;
-	background: aliceblue;
+	background: #efdffc;
 	border-radius: 5px;
 }
 </style>

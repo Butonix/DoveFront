@@ -8,47 +8,51 @@
 			dense
 		>
 			<v-list-item
-				v-if="comments.results.length === 0"
+				v-if="comments.count === 0"
 				class="rounded"
 			>
-				Be the first to comment!
+				<div class="be-first-to-comment">
+					Be the first to comment!
+				</div>
 			</v-list-item>
 			<v-list-item v-for="(item) in comments.results" v-else
 				:key="item.id"
 			>
 				<v-avatar size="45"
-					tile
-					class="d-flex justify-content-center ma-2 elevation-4 comment-avatar"
 					:color="avColor"
-					:style="'border: ' + avColor"
 				>
-					<span class="white--text headline">
-						{{ $helper.getCurrentUserInitials(item.writer) }}
+					<span v-if="item.writer"
+						class="white--text writer-avatar"
+					>
+						{{ item.writer.username[0].toUpperCase() }}
 					</span>
+					<span v-else
+						class="white--text writer-avatar"
+					>A</span>
 				</v-avatar>
 				<v-list-item-content class="pl-0">
-					<v-list-item-title>
-						<code v-if="item.writer"
-							class="comment-writer mx-1"
+					<v-list-item-title class="d-flex">
+						<div v-if="item.writer"
+							class="code"
 						>
 							{{ item.writer.username }}
-						</code>
-						<code
-							class="comment-created-at mx-1"
+						</div>
+						<div v-else
+							class="code"
+						>
+							Anonymous
+						</div>
+						<div
+							class="code"
 						>
 							{{ $moment(item.created_at).fromNow() }}
-						</code>
-						<v-icon small>
-							mdi-reply-circle
-						</v-icon>
+						</div>
 					</v-list-item-title>
 					<v-list-item-subtitle class="comment-text">
 						{{ item.comment }}
 					</v-list-item-subtitle>
 				</v-list-item-content>
-				<v-list-item-action
-					v-if="$helper.ifWriterIsCurrentUser(item.writer.username)"
-				>
+				<v-list-item-action>
 					<v-btn icon
 						color="red lighten-1"
 						@click="deleteConfirmMyComment(item)"
@@ -60,23 +64,27 @@
 		</v-list>
 		<v-divider class="my-2" />
 		<div class="comment-box pb-2">
-			<v-text-field
+			<v-textarea
 				v-model="comment.comment"
 				class="comment"
-				solo
-				hide-details="auto"
+				outlined auto-grow
+				hide-details="auto" label="Comment"
 				placeholder="Add a comment"
 				@keydown.enter="postComment"
 			>
 				<template #append>
-					<v-icon class="send-icon-button"
-						color="primary"
+					<v-btn icon
+						small
 						@click="postComment"
 					>
-						mdi-send
-					</v-icon>
+						<v-icon class="send-icon-button"
+							color="primary"
+						>
+							mdi-send
+						</v-icon>
+					</v-btn>
 				</template>
-			</v-text-field>
+			</v-textarea>
 		</div>
 	</v-card>
 </template>
@@ -88,7 +96,7 @@ export default {
 	name: "ArticleCommentsView",
 	mixins: [Snack],
 	data: () => ({
-		loading: false,
+		loading: true,
 		comment: {
 			comment: null,
 			article: null
@@ -105,13 +113,13 @@ export default {
 	},
 	methods: {
 		async init() {
-			this.loading = true
 			let response
 			response = await this.$store.dispatch(
 				"article/fetchCommentsForId",
 				{ id: this.$route.params.id }
 			)
 			this.comments = response
+			console.log(this.comments)
 			this.loading = false
 		},
 		async postComment() {
@@ -149,18 +157,22 @@ export default {
 	padding: 10px;
 	background: aliceblue;
 	border-radius: 10px;
-	margin: 5px;
+	margin: 3px;
 }
-.comment-writer {
+.code {
 	font-weight: bold;
-	color: #686868 !important;
+	background-color: #eaeaea;
+	color: #686868;
+	padding: 3px;
+	margin: 2px;
+	border-radius: 8px;
 }
-.comment-created-at {
-	font-weight: bold;
-	color: #686868 !important;
-	background: #eaeaea !important;
+.writer-avatar {
+	font-size: 22px;
+	font-weight: 500;
 }
-.comment-avatar {
-	border-radius: 5px !important;
+
+.be-first-to-comment {
+	font-size: 1rem;
 }
 </style>
