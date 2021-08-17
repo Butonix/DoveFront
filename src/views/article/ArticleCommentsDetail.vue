@@ -119,7 +119,6 @@ export default {
 				{ id: this.$route.params.id }
 			)
 			this.comments = response
-			console.log(this.comments)
 			this.loading = false
 		},
 		async postComment() {

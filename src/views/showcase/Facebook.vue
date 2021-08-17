@@ -3,12 +3,13 @@
 		<div class="sidebar-social-media-title">
 			<span><u>Follow Us On Facebook</u></span>
 		</div>
-		<v-card :height="($vuetify.breakpoint.width < 900) ? 600 : 350"
+		<v-card :height="height"
 			class="overflow-hidden"
+			dark
 		>
 			<div class="fb-page"
 				data-href="https://www.facebook.com/Sachhaikendra-Nepal-2186630364921086" data-tabs="timeline,messages"
-				:data-height="($vuetify.breakpoint.width < 900) ? 600 : 350"
+				:data-height="height"
 				data-width="500"
 				data-small-header="false" data-adapt-container-width="true"
 				data-hide-cover="false" data-show-facepile="true"
@@ -17,7 +18,9 @@
 				<blockquote cite="https://www.facebook.com/Sachhaikendra-Nepal-2186630364921086"
 					class="fb-xfbml-parse-ignore"
 				>
-					<a href="https://www.facebook.com/Sachhaikendra-Nepal-2186630364921086">Sachhai Kendra Nepal</a>
+					<a href="https://www.facebook.com/Sachhaikendra-Nepal-2186630364921086"
+						class="pa-2"
+					>Sachhai Kendra Nepal</a>
 				</blockquote>
 			</div>
 		</v-card>
@@ -25,6 +28,12 @@
 </template>
 <script>
 export default {
+	props: {
+		height: {
+			type: [String, Number],
+			required: true
+		}
+	},
 	computed: {
 		getWidth() {
 			const width = window.innerWidth;
@@ -37,10 +46,10 @@ export default {
 <style lang="sass" scoped>
 .sidebar-social-media
 	.sidebar-social-media-title
-		color: white
+		color: #16679e
 		font-size: 18px
 		margin: 0 0 15px 0
-		font-weight: 500
+		font-weight: 600
 		u
 			border-bottom: 5px dotted grey
 		@media only screen and (max-width: 600px)

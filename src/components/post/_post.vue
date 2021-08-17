@@ -209,7 +209,6 @@ export default {
 			if(this.commentMode) this.commentMode = false
 			else {
 				this.commentMode = true
-				console.log(this.$refs)
 			}
 		}
 	}

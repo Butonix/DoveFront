@@ -175,8 +175,7 @@ export default {
 				items: [
 					{ title: "About Us", icon: "mdi-information" },
 					{ title: "Contact Us", icon: "mdi-phone" },
-					{ title: "Kendra Message", icon: "mdi-message" },
-					{ title: "Write Feedback", icon: "mdi-comment-quote" },
+					{ title: "Feedback", icon: "mdi-comment-quote" },
 				],
 				title: "Office",
 			},

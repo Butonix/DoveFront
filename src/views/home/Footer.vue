@@ -156,7 +156,9 @@
 					md="4"
 					sm="6"
 				>
-					<facebook-widget />
+					<facebook-widget
+						:height="($vuetify.breakpoint.width < 900) ? 600 : 350"
+					/>
 				</v-col>
 			</v-row>
 		</v-card>

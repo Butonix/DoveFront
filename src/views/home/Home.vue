@@ -33,7 +33,7 @@
 				<div class="py-1" />
 				<facebook-group />
 				<div class="py-1" />
-				<facebook />
+				<facebook height="400" />
 				<div class="py-1" />
 			</v-navigation-drawer>
 		</v-card>
@@ -45,9 +45,9 @@
 export default {
 	name: "HomeComponent",
 	components: {
-		MultimediaList: () => import("@/components/multimedia/MultimediaList.vue"),
+		MultimediaList: () => import("@/components/multimedia/MultimediaList"),
 		AddPostBox: () => import("@/views/home/AddPostBox"),
-		Facebook: () => import("@/views/showcase/Facebook.vue"),
+		Facebook: () => import("@/views/showcase/Facebook"),
 		FacebookGroup: () => import("@/components/utils/FacebookGroup"),
 		HomeAds: () => import("@/views/home/Ads"),
 	},
