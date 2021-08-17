@@ -165,7 +165,9 @@ export default {
 		async handleScrollToBottom(isVisible) {
 			if(isVisible) {
 				if(this.next.count === 0) {
-					this.next.next = this.multimedias.next
+					this.next.next = (this.multimedias.next)
+						? this.multimedias.next.replace("http://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np")
+						: this.multimedias.next
 					this.next.count ++
 					return
 				}
