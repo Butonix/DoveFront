@@ -6,12 +6,15 @@
 		<home-footer />
 		<facebook-chat />
 		<scroll-top color="blue darken-3" />
+		<to-feeds-page-btn />
 	</v-card>
 </template>
 <script>
+import ToFeedsPageBtn from "@/components/button/ToFeedsPageBtn.vue";
 export default {
 	name: "ShowCaseLayout",
 	components: {
+		ToFeedsPageBtn,
 		TheSnackbar: () => import("@/components/utils/TheSnackbar.vue"),
 		FacebookChat: () => import("@/components/utils/FacebookChat.vue"),
 		AuthPanel: () => import("@/views/showcase/AuthPanel"),

@@ -1,18 +1,21 @@
 <template>
 	<v-tooltip left>
 		<template #activator="{ on, attrs }">
-			<v-btn
-				fab
-				:color="color"
-				small
-				v-bind="attrs"
-				@click="$router.push({name: 'HOME'})"
-				v-on="on"
-			>
-				<v-icon size="20">
-					mdi-post
-				</v-icon>
-			</v-btn>
+			<v-fab-transition>
+				<v-btn
+					v-show="show"
+					fab
+					fixed
+					small
+					color="primary"
+					class="to-feeds"
+					to="/home/feeds"
+					v-bind="attrs"
+					v-on="on"
+				>
+					<v-icon>mdi-post</v-icon>
+				</v-btn>
+			</v-fab-transition>
 		</template>
 		<span>Feeds Page</span>
 	</v-tooltip>
@@ -26,6 +29,27 @@ export default {
 			type: String,
 			default: "grey darken-3"
 		}
+	},
+	data: () => ({
+		show: false
+	}),
+	mounted() {
+		window.addEventListener("scroll", this.handleScroll);
+	},
+	methods: {
+		handleScroll(e) {
+			if (document.documentElement.scrollTop > 400) {
+				this.show = true
+			} else {
+				this.show = false
+			}
+		}
 	}
 }
 </script>
+<style scoped lang="scss">
+.to-feeds {
+	top: 20px !important;
+	right: 70px !important;
+}
+</style>

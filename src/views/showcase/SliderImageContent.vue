@@ -20,7 +20,7 @@
 							:loading="loading"
 							dark
 							height="55"
-							class="showcase-blue-bg"
+							class="primary"
 							v-bind="attrs"
 							v-on="on"
 							@click="routeToFeedsPage()"
