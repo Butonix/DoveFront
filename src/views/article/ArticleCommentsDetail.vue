@@ -1,21 +1,33 @@
 <template>
 	<v-card color="transparent"
-		flat
+		flat rounded="xl"
 		:loading="loading"
 	>
 		<v-list v-if="comments"
 			two-line
-			dense
+			dense rounded
 		>
+			<v-divider v-if="comments.count > 0"
+				class="mb-2"
+			/>
 			<v-list-item
 				v-if="comments.count === 0"
-				class="rounded"
+				class="rounded-xl"
 			>
 				<div class="be-first-to-comment">
 					Be the first to comment!
 				</div>
 			</v-list-item>
-			<v-list-item v-for="(item) in comments.results" v-else
+			<div v-else
+				class="pa-2 pt-0"
+			>
+				<v-list-item-title>
+					Comments
+				</v-list-item-title>
+			</div>
+			<v-divider v-if="comments.count > 0" />
+			<v-list-item
+				v-for="(item) in comments.results"
 				:key="item.id"
 			>
 				<v-avatar size="45"
@@ -62,19 +74,17 @@
 				</v-list-item-action>
 			</v-list-item>
 		</v-list>
-		<v-divider class="my-2" />
+		<v-divider class="mx-2 mb-4 mt-0" />
 		<div class="comment-box pb-2">
 			<v-textarea
 				v-model="comment.comment"
-				class="comment"
+				class="comment" rounded
 				outlined auto-grow
 				hide-details="auto" label="Comment"
 				placeholder="Add a comment"
-				@keydown.enter="postComment"
 			>
 				<template #append>
 					<v-btn icon
-						small
 						@click="postComment"
 					>
 						<v-icon class="send-icon-button"
@@ -164,7 +174,7 @@ export default {
 	color: #686868;
 	padding: 3px;
 	margin: 2px;
-	border-radius: 8px;
+	border-radius: 24px;
 }
 .writer-avatar {
 	font-size: 22px;

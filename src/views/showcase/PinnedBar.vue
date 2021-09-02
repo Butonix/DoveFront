@@ -4,16 +4,7 @@
 		dark color="rgb(6 12 40)"
 		style="position: relative"
 	>
-		<div class="custom-shape-divider-top">
-			<svg data-name="Layer 1"
-				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-				preserveAspectRatio="none"
-			>
-				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-					class="shape-fill"
-				/>
-			</svg>
-		</div>
+		<div style="height: 150px;" />
 		<v-card
 			dark
 			:loading="loading"
@@ -23,13 +14,6 @@
 			<v-row no-gutters
 				justify="center" align="center"
 			>
-				<v-col
-					cols="12"
-				>
-					<v-card-text class="pin-header py-4">
-						Become a part of something great!
-					</v-card-text>
-				</v-col>
 				<v-col
 					cols="12"
 					class="text-center py-4"
@@ -47,6 +31,13 @@
 						</v-icon>
 					</v-avatar>
 				</v-col>
+				<v-col
+					cols="12"
+				>
+					<v-card-text class="pin-header py-4">
+						Become a part of something great!
+					</v-card-text>
+				</v-col>
 				<v-col v-show="$vuetify.breakpoint.mdAndUp"
 					cols="12"
 				>
@@ -62,7 +53,7 @@
 				>
 					<v-card-text class="view-top-pins text-center blue--text text--lighten-2">
 						<h3>
-							See our top pinned items here.
+							See our top pinned stories from here.
 						</h3>
 					</v-card-text>
 				</v-col>
@@ -100,15 +91,18 @@
 				</v-card>
 				<div
 					v-else
-					class="rounded d-flex flex-wrap justify-center pa-2"
+					class="rounded"
 				>
-					<pinned-post
-						v-for="(item) in articles.results"
-						:key="item.id"
-						class="ma-2"
-						:post="item"
-						is-article
-					/>
+					<horizontal-slider>
+						<pinned-post
+							v-for="(item) in articles.results"
+							:key="item.id"
+							class="ma-2"
+							:post="item"
+							is-article
+							style="display: inline-block;"
+						/>
+					</horizontal-slider>
 				</div>
 			</v-col>
 			<div style="height: 50px;" />
@@ -119,6 +113,7 @@
 import {mapGetters} from "vuex";
 import {gsap} from "gsap"
 import {ScrollTrigger} from "gsap/ScrollTrigger"
+import HorizontalSlider from "@/components/utils/HorizontalSlider.vue";
 
 ScrollTrigger.defaults({
 	toggleActions: "restart pause resume pause",
@@ -128,6 +123,7 @@ ScrollTrigger.defaults({
 export default {
 	name: "PinnedBarView",
 	components: {
+		HorizontalSlider,
 		PinnedPost: () => import("@/views/showcase/PinnedPost"),
 	},
 	data: () => ({

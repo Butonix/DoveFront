@@ -4,7 +4,10 @@
 		class="start-post-dialog"
 		max-width="600"
 	>
-		<v-card v-if="$helper.isUserLoggedIn()">
+		<v-card v-if="$helper.isUserLoggedIn()"
+			rounded="xl"
+			elevation="0"
+		>
 			<input
 				v-show="false"
 				id="image-input"
@@ -35,7 +38,9 @@
 				accept=".webm,.mp4,.mpeg,.flv,.mov,.MOV"
 				@change="videoInputChanged"
 			>
-			<v-toolbar color="#be75bd">
+			<v-toolbar color="#be75bd"
+				rounded="xl"
+			>
 				<v-icon>mdi-pencil-box</v-icon>
 				<v-spacer />
 				<v-toolbar-title class="title-toolbar">
@@ -58,7 +63,8 @@
 				<v-col cols="12"
 					class="py-0"
 				>
-					<v-list two-line
+					<v-list
+						two-line
 						class="py-0"
 					>
 						<v-list-item class="text-start pa-0">
@@ -84,7 +90,7 @@
 									<v-chip
 										dense
 										label
-										class="small-bold"
+										class="small-bold rounded-xl"
 									>
 										<span v-if="currentUser.member">
 											Member
@@ -132,6 +138,7 @@
 						label="Post Title"
 						hide-details="auto"
 						counter="255"
+						rounded
 						placeholder="Give your activity a title, Kiran!"
 						:error-messages="postCreationFormErrors.title"
 					/>
@@ -142,6 +149,7 @@
 				>
 					<v-fab-transition>
 						<v-btn v-if="!addDescription"
+							rounded
 							@click="addDescriptionAndFocus"
 						>
 							<v-icon>mdi-image-text</v-icon>
@@ -151,6 +159,7 @@
 						</v-btn>
 						<v-btn v-else
 							style="position: absolute; right: 3%; top: -20%;"
+							rounded
 							@click="removeDescription"
 						>
 							<v-icon color="red lighten-1">
@@ -173,6 +182,7 @@
 							class="ma-0 pa-0"
 							name="description"
 							label="Description"
+							rounded
 							outlined
 							clearable
 							auto-grow
@@ -195,6 +205,7 @@
 							label="Video URL"
 							clearable
 							multiple
+							rounded
 							outlined
 							small-chips
 							hide-selected
@@ -275,7 +286,7 @@
 					>
 						<v-card height="30vh"
 							max-width="500"
-							class="mx-auto"
+							class="mx-auto" rounded
 						>
 							<v-btn fab
 								x-small class="right-corner"
@@ -283,7 +294,9 @@
 							>
 								<v-icon>mdi-close</v-icon>
 							</v-btn>
-							<v-card height="30vh">
+							<v-card height="30vh"
+								rounded
+							>
 								<youtube
 									ref="yt"
 									height="100%"
@@ -377,7 +390,7 @@
 				<v-btn
 					id="post-submit"
 					:loading="posting"
-					block
+					block rounded
 					dark
 					color="rgb(221 103 241)"
 					@click="makeMultimedia"
@@ -607,6 +620,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+$dialog-border-radius: 24px
+
 #title
 	font-size: 20px
 	font-weight: 500
@@ -623,7 +638,7 @@ export default {
 #add-resources-row
 	padding: 8px !important
 	border: 2px solid #008db6
-	border-radius: 4px
+	border-radius: 24px
 	p
 		font-size: 18px
 	.v-btn

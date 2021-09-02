@@ -4,36 +4,14 @@
 		max-width="100vw"
 		flat
 		tile
-		style="background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );"
+		class="scatter-bg"
 	>
-		<div class="custom-shape-divider-top">
-			<svg data-name="Layer 1"
-				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-				preserveAspectRatio="none"
-			>
-				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-					class="shape-fill"
-				/>
-			</svg>
-		</div>
-		<div
-			class="custom-shape-divider-bottom"
-		>
-			<svg data-name="Layer 1"
-				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-				preserveAspectRatio="none"
-			>
-				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-					class="shape-fill"
-				/>
-			</svg>
-		</div>
-		<v-divider />
 		<v-card v-if="gallery"
 			class="demo-wrapper mx-auto"
 			max-width="1200" color="transparent"
 			flat tile
 		>
+			<div style="height: 150px;" />
 			<section class="scatter-section demo-text">
 				<div class="wrapper text py-12 grey--text text--lighten-2">
 					LOVEDGALLERYFROMUS
@@ -146,24 +124,10 @@ export default {
 </script>
 
 <style scoped>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
 ::selection {
 	background: #87cd33;
 	color: white;
 }
-
-body {
-	overflow: hidden;
-	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-}
-
-h1 { font-size: 5rem }
-h2 { font-size: 2rem }
 
 li {
 	flex-shrink: 0;
@@ -192,52 +156,14 @@ footer {height: 50vh}
 }
 
 .demo-text .text {
-	font-size: clamp(4rem, 15vw, 8rem);
+	font-size: clamp(3rem, 15vw, 6rem);
 	line-height: 1;
 	font-weight: 900;
 }
 .scatter-image {
-	border-radius: 4px;
+	border-radius: 16px;
 }
-.custom-shape-divider-bottom {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
-	transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom svg {
-	position: relative;
-	display: block;
-	width: calc(100% + 1.3px);
-	height: 500px;
-	transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom .shape-fill {
-	fill: #060c28;
-}
-.custom-shape-divider-top {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
-}
-
-.custom-shape-divider-top svg {
-	position: relative;
-	display: block;
-	width: calc(100% + 1.3px);
-	height: 500px;
-	transform: rotateY(180deg);
-}
-
-.custom-shape-divider-top .shape-fill {
-	fill: #060C28;
+.scatter-bg {
+	background-image: linear-gradient( 96.5deg,  rgba(39,103,187,1) 10.4%, rgba(16,72,144,1) 87.7% );
 }
 </style>

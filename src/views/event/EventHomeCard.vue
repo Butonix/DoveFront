@@ -1,49 +1,55 @@
 <template>
-	<v-card :loading="loading">
-		<v-img
+	<v-card :loading="loading"
+		rounded="xl"
+	>
+		<v-card
 			v-if="event['banner_images']['image']"
-			dark
-			:src="$helper.replaceBackendHost(event['banner_images']['image'])"
-			class="event-banner"
-			max-height="400"
+			rounded="xl"
 		>
-			<v-card-subtitle class="pb-0">
-				<span class="chip-like">
-					<v-icon class="detail-icon"
-						size="16"
-						color="grey lighten-4"
-					>
-						mdi-account-circle
-					</v-icon>
-					{{ getEventCreatorFullName(event.created_by) }}
-				</span>
-				<span class="chip-like">
-					<v-icon class="detail-icon"
-						size="16"
-						color="grey lighten-4"
-					>
-						mdi-clock
-					</v-icon>
-					{{ formatDate(event.created_at) }}
-				</span>
-			</v-card-subtitle>
-			<v-card-title
-				class="display-1 cursor-pointer pt-0 pb-1"
-				@click="routeToEventDetail(event.id)"
-				v-text="event.title"
-			/>
-			<v-divider class="mx-3" />
-			<v-card-subtitle class="pt-1">
-				<span class="chip-like transparent">
-					<v-icon size="16"
-						class="detail-icon"
-					>
-						mdi-city
-					</v-icon>
-					<span class="white--text pl-2">{{ event.branch.name }}</span>
-				</span>
-			</v-card-subtitle>
-		</v-img>
+			<v-img
+				dark
+				:src="$helper.replaceBackendHost(event['banner_images']['image'])"
+				class="event-banner"
+				max-height="400"
+			>
+				<v-card-subtitle class="pb-0">
+					<span class="chip-like">
+						<v-icon class="detail-icon"
+							size="16"
+							color="grey lighten-4"
+						>
+							mdi-account-circle
+						</v-icon>
+						{{ getEventCreatorFullName(event.created_by) }}
+					</span>
+					<span class="chip-like">
+						<v-icon class="detail-icon"
+							size="16"
+							color="grey lighten-4"
+						>
+							mdi-clock
+						</v-icon>
+						{{ formatDate(event.created_at) }}
+					</span>
+				</v-card-subtitle>
+				<v-card-title
+					class="display-1 cursor-pointer pt-0 pb-1"
+					@click="routeToEventDetail(event.id)"
+					v-text="event.title"
+				/>
+				<v-divider class="mx-3" />
+				<v-card-subtitle class="pt-1">
+					<span class="chip-like transparent">
+						<v-icon size="16"
+							class="detail-icon"
+						>
+							mdi-city
+						</v-icon>
+						<span class="white--text pl-2">{{ event.branch.name }}</span>
+					</span>
+				</v-card-subtitle>
+			</v-img>
+		</v-card>
 		<div v-else>
 			<v-card-subtitle class="pb-0">
 				<span class="chip-like">
@@ -93,6 +99,7 @@
 				<v-list two-line
 					class="pa-0"
 					color="transparent"
+					rounded
 				>
 					<v-list-item>
 						<v-list-item-icon><v-icon>mdi-calendar</v-icon></v-list-item-icon>
@@ -153,6 +160,7 @@
 		>
 			<v-card-actions>
 				<v-btn
+					rounded
 					depressed
 					@click="routeToEventDetail(event.id)"
 				>
@@ -163,7 +171,7 @@
 			<v-card-actions>
 				<v-btn
 					:loading="interestedLoading"
-					depressed
+					depressed rounded
 					@click="toggleInterestedStatus(event.id)"
 				>
 					<v-icon>mdi-star-circle</v-icon>
@@ -179,7 +187,7 @@
 			<v-card-actions>
 				<v-btn
 					:loading="goingStatusLoading"
-					depressed
+					depressed rounded
 					@click="toggleGoingStatus(event.id)"
 				>
 					<v-icon>mdi-walk</v-icon>
@@ -314,8 +322,8 @@ export default {
 .chip-like {
 	background-color: #535353;
 	margin: 0 2px;
-	padding: 2px;
-	border-radius: 2px;
+	padding: 4px;
+	border-radius: 24px;
 	.detail-icon {
 		margin-top: -2px;
 		padding: 0;

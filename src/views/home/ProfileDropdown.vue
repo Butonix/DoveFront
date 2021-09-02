@@ -1,10 +1,11 @@
 <template>
 	<v-menu
 		transition="slide-y-transition"
-		bottom
+		bottom rounded="xl"
 		offset-y
 		nudge-bottom="5"
 		nudge-right="5"
+		nudge-left="5"
 		close-on-click
 		close-delay="1"
 	>
@@ -55,7 +56,7 @@
 				<v-card
 					v-for="(item, i) in items"
 					:key="i"
-					rounded
+					rounded="xl"
 					:to="item.to"
 					height="90"
 					width="90"
@@ -75,7 +76,7 @@
 				</v-card>
 				<v-card
 					v-if="$helper.isUserLoggedIn()"
-					rounded
+					rounded="xl"
 					height="90" width="90"
 					outlined class="ma-2 app-item"
 					@click="logout"
@@ -90,7 +91,7 @@
 				<v-card
 					v-else
 					height="90" width="90"
-					rounded outlined
+					rounded="xl" outlined
 					:to="loginItem.to"
 					class="ma-2 app-item"
 				>
@@ -168,6 +169,7 @@ export default {
 .item-title {
 	text-align: center;
 	font-size: 12px;
+	font-weight: 500;
 	text-transform: uppercase;
 	padding: 10px 0;
 }

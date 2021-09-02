@@ -2,6 +2,7 @@
 	<!--	TODO: make dark implementation too -->
 	<v-card
 		outlined
+		rounded="xl"
 	>
 		<v-list-item>
 			<v-list-item-content>
@@ -14,6 +15,7 @@
 				<v-list-item-subtitle v-if="post['uploaded_by']">
 					<span class="subtitle-chip">{{ post['uploaded_by']['username'] }}</span>
 					<span class="subtitle-chip">{{ $moment(post['uploaded_at']).format("MMMM Do YYYY") }}</span>
+					<span class="subtitle-chip">{{ post['type'] }}</span>
 				</v-list-item-subtitle>
 			</v-list-item-content>
 			<v-list-item-action v-if="$helper.isCurrentUserSuperAdmin()">
@@ -252,7 +254,7 @@ export default {
 	margin: 2px;
 	padding: 2px;
 	background-color: aliceblue;
-	border-radius: 4px;
+	border-radius: 24px;
 }
 .media-title {
 	font-size: 1.4rem !important;

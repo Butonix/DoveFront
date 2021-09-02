@@ -1,6 +1,6 @@
 <template>
 	<v-card
-		dark color="#060C28"
+		dark class="peek"
 		width="100vw"
 		tile flat
 	>
@@ -11,14 +11,12 @@
 			max-width="1200"
 			class="mx-auto"
 			color="transparent"
-			style="z-index: 2"
 		>
-			<p class="pb-0 quote">
-				"The essence of all religions is one. Only their approaches are different."
+			<div style="height: 200px" />
+			<p class="pb-0 quote nepali-font">
+				"जब संसारको हरेक बाटोहरु बन्द हुन्छन् तब पर्मेश्वरले तपाईँको निम्ति एउटा नयाँ बाटो तयार गर्नुहुन्छ।"
 			</p>
-			<p class="text-center quoter">
-				- Mahatma Gandhi
-			</p>
+			<div class="py-6" />
 			<v-row
 				v-if="services"
 				align="center"
@@ -29,28 +27,27 @@
 					:id="item.id"
 					:key="index"
 					cols="12"
-					xl="4" lg="4"
-					md="4" sm="4"
+					xl="3" lg="3"
+					md="3" sm="3"
 				>
 					<v-card
-						color="primary darken-3"
-						class="pa-2 service-card d-flex justify-center align-start"
-						:min-height="(index % 2 === 0) ? 700 : 680"
-						outlined
+						color="primary darken-2"
+						class="pa-2 service-card d-flex justify-center align-start rounded-xl"
+						height="450"
+						style="z-index: 2; border: 2px solid white !important;"
 					>
 						<div>
 							<div class="py-4" />
 							<v-avatar
-								color="grey"
-								size="200"
+								color="white"
+								size="180"
 								class="rounded-circle service-img"
 							>
 								<v-img
-									v-if="item.images.length"
-									:src="$helper.replaceBackendHost(item.images[0].image)"
+									:src="item.image"
 								/>
 							</v-avatar>
-							<p class="peek-title">
+							<p class="peek-title nepali-font">
 								{{ item.title }}
 							</p>
 							<v-card
@@ -60,7 +57,7 @@
 								max-width="450"
 							>
 								<div style="font-size: 16px !important;">
-									{{ getPeekDescription(item.description) }}
+									{{ item.description }}
 								</div>
 							</v-card>
 						</div>
@@ -72,17 +69,20 @@
 	</v-card>
 </template>
 <script>
-import {mapGetters} from "vuex";
-
 export default {
 	name: "PeekServicesBox",
 	data: () => ({
 		loading: null,
 	}),
 	computed: {
-		...mapGetters({
-			services: "utilities/serviceList"
-		})
+		services() {
+			return [
+				{title: "Satsang", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.W4-9_74BBVjGIuFCP_KNWwHaF6%26pid%3DApi&f=1", description: "Various activities are performed"},
+				{title: "Bhajan", image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/167952492_3860024914066896_971188920796482199_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=b9115d&_nc_ohc=_7zy0XXtiqUAX_6xDht&_nc_ht=scontent.fpkr1-1.fna&oh=dd3227552c1f42c49125b9e911fafd23&oe=613CC232", description: "Hymns and songs about remembering the God"},
+				{title: "Testimonials", image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/161431072_3821070014629053_8484418797796328352_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=b9115d&_nc_ohc=o6LUWAz4LesAX_x2rAt&_nc_ht=scontent.fpkr1-1.fna&oh=113641676866469b1ecbeb7f5766d593&oe=615703A8", description: "Truth inside our believers are shared among each-other"},
+				{title: "Bachans", image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/161385550_3821070131295708_6805721549267122156_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=b9115d&_nc_ohc=QiCz8mpI4VQAX955AIt&tn=JRGX9gVI-Xw0IFMi&_nc_ht=scontent.fpkr1-1.fna&oh=344e6454b54cc4c4d5820d1d7a25db63&oe=6155D95B", description: "How we create our way following true words from the God"},
+			]
+		}
 	},
 	async created() {
 		await this.init()
@@ -90,17 +90,20 @@ export default {
 	methods: {
 		async init() {
 			this.loading = true
-			await this.$store.dispatch("utilities/fetchServices")
+			// await this.$store.dispatch("utilities/fetchServices")
 			this.loading = false
-		},
-		getPeekDescription(text) {
-			if (this.$vuetify.breakpoint.width > 400) return text
-			else return text.toString().substr(0, 100) + "<span>...</span><br/><a href='#' class='see-more'>See More</a>"
 		}
 	}
 }
 </script>
+<style>
+.peek {
+	background-image: linear-gradient( 109.6deg,  rgba(45,116,213,1) 11.2%, rgba(121,137,212,1) 91.2% );
+}
+</style>
 <style lang="sass" scoped>
+.service-img
+	border: 2px solid white
 .peek-services-wrapper
 	padding: 80px 0
 #peek-services-card
@@ -118,44 +121,24 @@ export default {
 			width: 60em
 	.quote
 		margin: 0
-		padding: 0px 80px 0 80px !important
 		font-size: 3rem
-		line-height: 3.3rem
+		line-height: 4rem
 		font-weight: 700
 		letter-spacing: 1px
 		text-align: center
 		transition: all .3s
 		@media only screen and (max-width: 895px) and (min-width: 436px)
 			font-size: 2.4rem
-			line-height: 2.6rem
+			line-height: 3rem
 			padding: 80px 40px 0 40px !important
 		@media only screen and (max-width: 435px) and (min-width: 185px)
 			font-size: 1.5rem
-			line-height: 1.6rem
+			line-height: 2rem
 			padding: 15px !important
 		@media only screen and (max-width: 184px)
 			font-size: 1.1rem
-			line-height: 1.3rem
+			line-height: 1.6rem
 			padding: 15px !important
-	.quoter
-		margin: 0
-		padding: 15px 0
-		font-size: 1.9rem
-		line-height: 1.9rem
-		font-weight: 500
-		transition: all .3s
-		@media only screen and (max-width: 895px) and (min-width: 436px)
-			font-size: 1.5rem
-			line-height: 1.5rem
-			padding: 20px 0
-		@media only screen and (max-width: 435px) and (min-width: 185px)
-			font-size: 1.2rem
-			line-height: 1.2rem
-			padding-bottom: 10px
-		@media only screen and (max-width: 184px)
-			font-size: 1rem
-			line-height: 1rem
-			padding-bottom: 10px
 	::v-deep.v-avatar
 		transition: ease-in-out .2s
 		animation-name: reverse

@@ -31,7 +31,7 @@ const routes = [
 				}
 			},
 			{
-				path: "feeds",
+				path: "feeds:type?",
 				name: "HOME",
 				component: () => import("@/views/home/Home"),
 				meta: {

@@ -10,6 +10,7 @@
 		<div style="height: 200px;" />
 		<v-card class="py-4 find-us-title mx-auto"
 			max-width="1000"
+			rounded="xl"
 		>
 			<div class="text-center">
 				<v-avatar v-show="$vuetify.breakpoint.smAndUp"
@@ -32,6 +33,7 @@
 		<div class="py-4" />
 		<v-card height="600"
 			max-width="1000" class="mx-auto"
+			rounded="xl"
 		>
 			<iframe
 				id="branch-iframe"

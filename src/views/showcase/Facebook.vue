@@ -5,7 +5,7 @@
 		</div>
 		<v-card :height="height"
 			class="overflow-hidden"
-			dark
+			dark rounded="xl"
 		>
 			<div class="fb-page"
 				data-href="https://www.facebook.com/Sachhaikendra-Nepal-2186630364921086" data-tabs="timeline,messages"
@@ -19,7 +19,7 @@
 					class="fb-xfbml-parse-ignore"
 				>
 					<a href="https://www.facebook.com/Sachhaikendra-Nepal-2186630364921086"
-						class="pa-2"
+						class="pa-7"
 					>Sachhai Kendra Nepal</a>
 				</blockquote>
 			</div>

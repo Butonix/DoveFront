@@ -76,6 +76,31 @@
 			<template #item.approver="{ item }">
 				{{ (item.approved_by) ? item.approved_by.username : '-' }}
 			</template>
+			<!-- eslint-disable-next-line-->
+			<template v-slot:item.type="props">
+				<!-- eslint-disable-next-line-->
+				<v-edit-dialog :return-value.sync="props.item.type"
+					large persistent
+					@save="saveType"
+					@open="openUpdateType(props.item)"
+				>
+					{{ props.item.type }}
+					<template #input>
+						<div class="mt-4 text-h6">
+							Update Multimedia Type
+						</div>
+						<v-divider class="mb-4" />
+						<v-select
+							v-model="updateItemType"
+							label="Multimedia Type"
+							hide-details
+							filled
+							single-line
+							:items="['satsang', 'bhajan', 'testimonial', 'prayer', 'bachan']"
+						/>
+					</template>
+				</v-edit-dialog>
+			</template>
 			<!-- eslint-disable-next-line vue/valid-v-slot-->
 			<template #item.actions="{ item }">
 				<v-icon
@@ -136,13 +161,16 @@ export default {
 	],
 	data() {
 		return {
+			updateItemType: null,
+			itemForUpdate: null,
 			model: "multimedia",
 			headers: [
 				{ text: "ACTIONS", value: "actions", sortable: false },
 				{ text: "ID", value: "id" },
 				{ text: "TITLE", value: "title" },
+				{ text: "TYPE", value: "type" },
 				{ text: "WRITER", value: "uploaded_by.username" },
-				{ text: "STATUS", value: "approval_status" },
+				{ text: "STATUS"            , value: "approval_status" },
 				{ text: "APPROVER", value: "approver" },
 				{ text: "TIMESTAMP", value: "timestamp" },
 			],
@@ -158,6 +186,18 @@ export default {
 	},
 	methods: {
 		...mapMutations("multimedia", ["SET_MULTIMEDIA_TO_VIEW"]),
+		async saveType() {
+			this.loading = true
+			console.log("save", this.updateItemType, this.itemForUpdate)
+			await this.$store.dispatch("multimedia/patch", {id: this.itemForUpdate.id, body: {
+				type: this.updateItemType
+			}})
+			await this.initialize()
+		},
+		openUpdateType(item) {
+			this.updateItemType = item.type
+			this.itemForUpdate = item
+		},
 		async initialize(val) {
 			this.loading = true
 			if (!val) val = 1

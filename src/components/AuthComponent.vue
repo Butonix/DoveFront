@@ -28,6 +28,7 @@
 						color="primary"
 						dark
 						v-bind="attrs"
+						rounded
 						v-on="on"
 					>
 						<div v-show="$vuetify.breakpoint.smAndUp">

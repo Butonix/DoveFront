@@ -22,6 +22,7 @@
 							height="55"
 							class="primary"
 							v-bind="attrs"
+							rounded
 							v-on="on"
 							@click="routeToFeedsPage()"
 						>

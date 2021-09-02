@@ -31,6 +31,7 @@
 							background-color="white"
 							type="text"
 							autocomplete="username"
+							rounded
 						/>
 					</v-col>
 					<v-col
@@ -47,6 +48,7 @@
 							prepend-inner-icon="mdi-lock-question"
 							background-color="white"
 							autocomplete="new-password"
+							rounded
 							@keydown.enter="login"
 						/>
 					</v-col>
@@ -86,6 +88,7 @@
 				</v-row>
 				<v-card-actions class="justify-center my-0 pt-0 pb-3">
 					<v-btn
+						rounded
 						class="my-0 px-8"
 						color="primary"
 						@click="login"

@@ -3,7 +3,7 @@
 		class="footer" tile
 		min-height="80vh"
 		dark
-		color="grey darken-4"
+		color="#2b86cf"
 	>
 		<div class="custom-shape-divider-bottom-1620494480">
 			<svg data-name="Layer 1"
@@ -30,6 +30,7 @@
 			dark
 			flat
 			max-width="1000"
+			rounded="xl"
 		>
 			<v-row
 				class="ma-0 pa-0"
@@ -38,7 +39,8 @@
 			>
 				<v-col cols="12">
 					<v-card class="d-flex pa-4"
-						min-height="120"
+						min-height="120" color="transparent"
+						rounded="xl"
 					>
 						<div class="become-follower">
 							<div class="become-text">
@@ -49,7 +51,7 @@
 								min-height="50"
 								min-width="120"
 								class="become-btn"
-								color="grey darken-3"
+								color="primary darken-1"
 								@click="routeToRegisterPage"
 							>
 								Join Us
@@ -103,11 +105,14 @@
 						<h6 id="built-info"
 							class="flex text-start"
 						/>
-						<a style="font-size: .7rem; color: aliceblue">
+						<div style="font-size: .7rem; color: white;">
 							Made with love by <a href="https://github.com/kiranparajuli589"
 								target="_blank"
-							>Kiran Parajuli</a>
-						</a>
+								style="text-decoration: none; color: navajowhite;"
+							>
+								<b>Kiran Parajuli</b>
+							</a>
+						</div>
 					</div>
 				</v-col>
 				<v-col>
@@ -168,7 +173,7 @@
 			<v-card tile
 				min-height="35"
 				style="font-size: 14px;"
-				color="grey darken-4"
+				color="primary"
 				class="d-flex justify-center align-center"
 			>
 				<div>
@@ -281,7 +286,7 @@ export default {
 }
 
 .custom-shape-divider-bottom-1620494480 .shape-fill {
-	fill: #323232;
+	fill: #559be7;
 }
 .love-text {
 	font-size: 12px;
@@ -312,16 +317,16 @@ export default {
 	}
 }
 .footer-item {
-	border-radius: 4px;
+	border-radius: 22px;
 	text-align: center;
 	cursor: pointer;
 	.item-title {
 		font-size: 14px;
 		font-weight: 500;
-		color: #b4b4b4
+		color: #181818;
 	}
 	&:hover {
-		background-color: #313131;
+		background-color: #3c5d95;
 		.item-title {
 			color: whitesmoke;
 		}

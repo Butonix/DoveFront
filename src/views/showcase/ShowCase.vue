@@ -6,10 +6,11 @@
 		<show-case-slider />
 		<event-highlights />
 		<kendra-info-box />
-		<pin-bar />
+		<what-is-sachchai />
 		<scatter />
 		<services-peek />
 		<our-great-stuff />
+		<pin-bar />
 		<showcase-map />
 	</div>
 </template>
@@ -18,6 +19,7 @@
 export default {
 	name: "ShowcaseView",
 	components: {
+		WhatIsSachchai: () => import("@/views/showcase/WhatIsSachchai.vue"),
 		ShowCaseSlider: () => import("@/views/showcase/Slider"),
 		KendraInfoBox: () => import("@/views/showcase/KendraInfo"),
 		PinBar: () => import("@/views/showcase/PinnedBar"),

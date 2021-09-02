@@ -8,6 +8,7 @@
 				v-bind="attrs"
 				:disabled="isDisabled"
 				:to="to"
+				rounded
 				v-on="on"
 				@click="$emit('click', $event)"
 			>

@@ -1,7 +1,7 @@
 <template>
 	<div class="ads-container">
 		<v-card color="teal"
-			dark
+			dark rounded="xl"
 		>
 			<v-card-title>
 				Ads One<v-icon class="pl-3"
@@ -17,13 +17,14 @@
 			<v-card-actions>
 				<v-btn depressed
 					color="teal darken-3"
+					rounded
 				>
 					See More
 				</v-btn>
 			</v-card-actions>
 		</v-card>
 		<v-card class="mt-3" color="orange darken-4"
-			dark
+			dark rounded="xl"
 		>
 			<v-card-title>
 				Ads Two<v-icon class="pl-3"
@@ -39,6 +40,7 @@
 			<v-card-actions>
 				<v-btn depressed
 					color="orange darken-3"
+					rounded
 				>
 					See More
 				</v-btn>

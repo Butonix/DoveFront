@@ -17,7 +17,7 @@
 			<v-sheet
 				color="transparent"
 				elevation="2"
-				rounded
+				rounded="xl"
 				class="py-1 pl-4 pr-1 mx-auto"
 			>
 				<v-chip-group

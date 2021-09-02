@@ -3,11 +3,12 @@
 		v-if="article"
 		:loading="loading"
 		class="list-card"
-		outlined
+		outlined rounded="xl"
 	>
 		<v-card
 			v-if="article['is_pinned']"
 			dark class="ma-2"
+			rounded="xl"
 		>
 			<v-img
 				class="cursor"
@@ -145,7 +146,7 @@ export default {
 .writer-subtitle {
 	padding: 4px 6px;
 	margin: 2px 0;
-	border-radius: 6px
+	border-radius: 24px
 }
 .list-card {
 	background-color: whitesmoke;

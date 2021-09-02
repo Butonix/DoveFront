@@ -83,11 +83,11 @@
 					max-width="900"
 					color="transparent"
 					class="overflow-hidden mx-auto my-4"
-					tile
+					rounded="xl"
 				>
 					<v-card
 						v-if="coverImg"
-						tile
+						rounded="xl"
 						height="450"
 						width="100%"
 					>
@@ -165,7 +165,9 @@
 							<template
 								v-if="h.includes('iframe') && h.includes('youtube.com/embed')"
 							>
-								<v-card dark>
+								<v-card dark
+									rounded="xl"
+								>
 									<youtube-iframe
 										height="400"
 										:video-url="getIframeSrc(h)"
@@ -185,6 +187,7 @@
 									>
 										<v-card dark
 											height="350"
+											rounded="xl"
 										>
 											<v-img
 												width="100%"
@@ -216,7 +219,7 @@
 								height="80"
 								dark
 								eager
-								style="border-radius: 4px;"
+								style="border-radius: 24px;"
 							>
 								<div class="headline text-center align-center">
 									<v-col class="pt-lg-6 pt-sm-6 pt-lg-6 pt-xl-6">
@@ -340,7 +343,7 @@ export default {
 	background-color: whitesmoke;
 	font-size: 1.1rem;
 
-	border-radius: 0 10px 10px 0;
+	border-radius: 0 24px 24px 0;
 	border-left: 3px solid slategrey;
 	font-style: italic;
 }

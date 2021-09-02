@@ -20,7 +20,7 @@
 							class="pt-0 px-2"
 						>
 							<v-card height="40vh"
-								dark
+								dark rounded="xl"
 							>
 								<v-carousel
 									height="40vh"
@@ -137,13 +137,26 @@ export default {
 			multimedias: "multimedia/list"
 		}),
 	},
+	watch: {
+		"$route.query.type": {
+			async handler(val) {
+				await this.$store.dispatch("multimedia/filter", {
+					is_approved: true,
+					type: val
+				})
+				this.posts = []
+				this.posts.push(...this.multimedias.results)
+			},
+			immediate: true
+		}
+	},
 	async created() {
 		await this.init()
 	},
 	methods: {
 		async init() {
 			if (!this.multimedias.count) {
-				await this.$store.dispatch("multimedia/filter", {is_approved: true})
+				await this.$store.dispatch("multimedia/filter", {is_approved: true, type: this.$route.query.type})
 			}
 			this.posts.push(...this.multimedias.results)
 			this.loading = false

@@ -29,11 +29,13 @@
 				style="height: 60px;"
 			/>
 			<div class="py-1" />
-			<v-card outlined>
+			<v-card outlined
+				style="border-radius: 24px !important;"
+			>
 				<v-card-title>
 					This is multimedia sidebar
 				</v-card-title>
-				<v-list>
+				<v-list rounded>
 					<v-list-item v-for="(item, index) in items"
 						:key="index"
 						:to="item.to"
@@ -46,6 +48,14 @@
 						</v-list-item-content>
 					</v-list-item>
 				</v-list>
+				<v-divider />
+				<v-card-title>
+					Contribute to Sachchai Kendra Nepal by adding your truthful testimonies.
+				</v-card-title>
+				<v-divider />
+				<div class="pa-2">
+					<home-ads-column />
+				</div>
 			</v-card>
 		</v-navigation-drawer>
 	</v-card>
@@ -53,10 +63,12 @@
 <script>
 import {mapGetters} from "vuex";
 import NoHomeData from "@/components/feeds/NoHomeData.vue";
+import HomeAdsColumn from "@/views/home/Ads.vue";
 
 export default {
 	name: "Multimedias",
 	components: {
+		HomeAdsColumn
 	},
 	data: () => ({
 		posts: [],

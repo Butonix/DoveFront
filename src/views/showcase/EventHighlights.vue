@@ -55,7 +55,7 @@
 						</v-list-item-avatar>
 						<v-fade-transition>
 							<v-list-item-content
-								class="highlights-content elevation-4"
+								class="highlights-content elevation-4 rounded-xl"
 								:class="colors[index%3]"
 							>
 								<v-list-item-title
@@ -197,7 +197,6 @@ export default {
 	position: absolute
 	top: 70px
 	padding: 70px 20px 20px 20px
-	border-radius: 4px
 .small-title
 	font-size: 22px
 	line-height: 22px

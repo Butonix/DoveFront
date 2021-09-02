@@ -3,9 +3,9 @@
 	<v-card
 		id="start-post-card"
 		color="white"
-		class="mx-auto mb-3 elevation-2"
+		class="mx-auto mb-3 elevation-2 mt-2"
 		max-width="1000"
-		outlined
+		outlined rounded="xl"
 	>
 		<div
 			id="start-post-box"
@@ -22,7 +22,7 @@
 			</v-avatar>
 			<p class="pa-0 ma-0 start-a-post">
 				<span v-if="$helper.isUserLoggedIn()">
-					Start a post
+					Add your testimonial
 				</span>
 				<span v-else>
 					Become a follower

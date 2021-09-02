@@ -1,5 +1,7 @@
 <template>
-	<v-list class="px-2 pt-0 rounded">
+	<v-list class="px-2 pt-0"
+		rounded
+	>
 		<v-list-item two-line>
 			<v-list-item-avatar color="grey">
 				<v-img v-if="$helper.getCurrentProfileImage()"
@@ -95,6 +97,18 @@
 				</v-list-item-content>
 			</v-list-item>
 		</v-list-group>
+		<v-list-item>
+			<v-list-item-icon><v-icon>mdi-delta</v-icon></v-list-item-icon>
+			<v-list-item-content>
+				<v-list-item-title>A Brief History</v-list-item-title>
+			</v-list-item-content>
+		</v-list-item>
+		<v-list-item>
+			<v-list-item-icon><v-icon>mdi-help-circle</v-icon></v-list-item-icon>
+			<v-list-item-content>
+				<v-list-item-title>FAQs</v-list-item-title>
+			</v-list-item-content>
+		</v-list-item>
 	</v-list>
 </template>
 <script>
@@ -123,45 +137,45 @@ export default {
 				],
 				title: "My Links",
 			},
-			{
-				action: "mdi-calendar-clock",
-				active: false,
-				items: [
-					{ title: "All Events", icon: "mdi-calendar-multiple", to: "/home/event" },
-					{ title: "Satsang", icon: "mdi-heart" },
-					{ title: "General Meets", icon: "mdi-account-supervisor-circle" },
-					{ title: "Kendra Events", icon: "mdi-calendar-star" },
-					{ title: "Branch Events", icon: "mdi-calendar-text" },
-				],
-				title: "Events",
-			},
-			{
-				action: "mdi-post",
-				items: [
-					{ title: "Photos", icon: "mdi-image" }
-				],
-				title: "Articles",
-			},
-			{
-				action: "mdi-video-vintage",
-				items: [
-					{ title: "Sounds", icon: "mdi-music-box" },
-					{ title: "Photos", icon: "mdi-image", to: "/home/multimedia/images" },
-					{ title: "Videos", icon: "mdi-video-box", to: "/home/multimedia/videos" },
-					{ title: "Youtube", icon: "mdi-youtube", to: "/home/multimedia/youtube" },
-				],
-				title: "Multimedia",
-			},
-			{
-				action: "mdi-earth",
-				items: [
-					{ title: "Social", icon: "mdi-run" },
-					{ title: "Health", icon: "mdi-bottle-tonic-plus" },
-					{ title: "Peace", icon: "mdi-peace" },
-					{ title: "Satsang", icon: "mdi-dance-ballroom" },
-				],
-				title: "Services",
-			},
+			// {
+			// 	action: "mdi-calendar-clock",
+			// 	active: false,
+			// 	items: [
+			// 		{ title: "All Events", icon: "mdi-calendar-multiple", to: "/home/event" },
+			// 		{ title: "Satsang", icon: "mdi-heart" },
+			// 		{ title: "General Meets", icon: "mdi-account-supervisor-circle" },
+			// 		{ title: "Kendra Events", icon: "mdi-calendar-star" },
+			// 		{ title: "Branch Events", icon: "mdi-calendar-text" },
+			// 	],
+			// 	title: "Events",
+			// },
+			// {
+			// 	action: "mdi-post",
+			// 	items: [
+			// 		{ title: "Photos", icon: "mdi-image" }
+			// 	],
+			// 	title: "Articles",
+			// },
+			// {
+			// 	action: "mdi-video-vintage",
+			// 	items: [
+			// 		{ title: "Sounds", icon: "mdi-music-box" },
+			// 		{ title: "Photos", icon: "mdi-image", to: "/home/multimedia/images" },
+			// 		{ title: "Videos", icon: "mdi-video-box", to: "/home/multimedia/videos" },
+			// 		{ title: "Youtube", icon: "mdi-youtube", to: "/home/multimedia/youtube" },
+			// 	],
+			// 	title: "Multimedia",
+			// },
+			// {
+			// 	action: "mdi-earth",
+			// 	items: [
+			// 		{ title: "Social", icon: "mdi-run" },
+			// 		{ title: "Health", icon: "mdi-bottle-tonic-plus" },
+			// 		{ title: "Peace", icon: "mdi-peace" },
+			// 		{ title: "Satsang", icon: "mdi-dance-ballroom" },
+			// 	],
+			// 	title: "Services",
+			// },
 			{
 				action: "mdi-google-maps",
 				items: [
@@ -183,7 +197,7 @@ export default {
 				action: "mdi-tag",
 				items: [{ title: "Our Partners", icon: "mdi-handshake" }],
 				title: "Promotions",
-			},
+			}
 		]
 	}),
 	computed: {

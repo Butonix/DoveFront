@@ -12,18 +12,20 @@
 			color="transparent"
 			height="60"
 			class="mx-3 event-toolbar"
+			rounded="xl"
 		>
 			<v-toolbar-title class="events-home-title">
 				Events Home
 			</v-toolbar-title>
 			<v-spacer />
 			<v-card class="ma-0 pa-0 mx-4"
-				width="500"
+				width="500" rounded="xl"
+				elevation="0"
 			>
 				<v-text-field
 					v-model="searchEvents"
 					color="red lighten-2"
-					solo
+					solo rounded
 					height="36"
 					hide-details
 					label="Search events"
@@ -51,7 +53,9 @@
 				</v-list>
 			</v-menu>
 
-			<v-menu offset-y>
+			<v-menu offset-y
+				rounded="xl"
+			>
 				<template #activator="{ on, attrs }">
 					<v-btn
 						icon
@@ -61,7 +65,7 @@
 						<v-icon>mdi-sort</v-icon>
 					</v-btn>
 				</template>
-				<v-list>
+				<v-list rounded>
 					<v-list-item
 						v-for="(item, index) in sortMenuItems"
 						:key="index"
@@ -99,7 +103,7 @@
 				style="height: 60px;"
 			/>
 			<div class="py-1" />
-			<v-card>
+			<v-card rounded="xl">
 				<v-card-title>
 					This is events sidebar
 				</v-card-title>

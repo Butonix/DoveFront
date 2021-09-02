@@ -8,6 +8,7 @@
 			:loading="loading"
 			max-width="300"
 			width="300"
+			rounded="xl"
 		>
 			<v-list-item dark>
 				<v-list-item-avatar :color="$constants.pickBackgroundColor()"
@@ -129,10 +130,10 @@ export  default {
 	from
 		transform: scale(1)
 	to
-		transform: scale(1.2)
+		transform: scale(1.1)
 @keyframes pinBoxReverse
 	from
-		transform: scale(1.2)
+		transform: scale(1.1)
 	to
 		transform: scale(1)
 </style>

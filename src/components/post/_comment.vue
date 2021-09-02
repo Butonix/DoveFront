@@ -133,7 +133,9 @@ export default {
 .comment-item-box {
 	position: relative;
 	background-color: #eaeaea;
-	border-radius: 8px;
+	border-radius: 24px;
+	padding-left: 8px !important;
+	padding-right: 8px !important;
 }
 .comment-text {
 	font-weight: 500;
@@ -145,11 +147,13 @@ export default {
 	font-weight: 500;
 	color: #686868 !important;
 	font-size: 12px;
+	border-radius: 24px;
 }
 .comment-created-at {
 	font-family: inherit;
 	font-weight: 500;
 	color: #686868 !important;
 	font-size: 12px;
+	border-radius: 24px;
 }
 </style>

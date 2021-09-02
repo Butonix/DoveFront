@@ -5,18 +5,6 @@
 		flat tile
 		style="position: relative;"
 	>
-		<div
-			class="custom-shape-divider-bottom"
-		>
-			<svg data-name="Layer 1"
-				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-				preserveAspectRatio="none"
-			>
-				<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-					class="shape-fill"
-				/>
-			</svg>
-		</div>
 		<v-card class="mx-auto elevation-0 rounded-0"
 			max-width="1000"
 			color="transparent"
@@ -44,7 +32,8 @@
 					color="#024b84"
 					max-width="300"
 					width="300"
-					style="border: 2px solid white !important;"
+					rounded="xl"
+					style="border: 2px solid white !important; z-index: 2;"
 				>
 					<v-avatar
 						size="200"

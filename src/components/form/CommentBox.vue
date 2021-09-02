@@ -1,26 +1,34 @@
 <template>
 	<div class="comment-box pb-2">
-		<vue-emoji
-			ref="emoji"
-			width="100%"
-			height="100"
-			:value="value"
-			class="comment-input"
-			placeholder="Add a comment"
-			@input="onInput"
-			@clearTextArea="clearTextArea"
-		/>
-		<v-btn icon
-			large
-			class="comment-btn"
+		<v-textarea v-model="comment.comment"
+			auto-grow placeholder="Add a comment"
+			solo rounded
+			hide-details
 		>
-			<v-icon class="send-icon-button"
-				color="primary"
-				@click="addCommentTo"
-			>
-				mdi-send
-			</v-icon>
-		</v-btn>
+			<template #append>
+				<v-btn icon
+					large
+					class="comment-btn"
+				>
+					<v-icon class="send-icon-button"
+						color="primary"
+						@click="addCommentTo"
+					>
+						mdi-send
+					</v-icon>
+				</v-btn>
+			</template>
+		</v-textarea>
+		<!--		<vue-emoji-->
+		<!--			ref="emoji"-->
+		<!--			width="100%"-->
+		<!--			height="100"-->
+		<!--			:value="value"-->
+		<!--			class="comment-input"-->
+		<!--			placeholder="Add a comment"-->
+		<!--			@input="onInput"-->
+		<!--			@clearTextArea="clearTextArea"-->
+		<!--		/>-->
 	</div>
 </template>
 
@@ -31,7 +39,7 @@ import Snack from "@/mixins/Snack.js";
 export default {
 	name: "CommentBox",
 	components: {
-		VueEmoji
+		// VueEmoji
 	},
 	mixins: [Snack],
 	props: {
@@ -82,6 +90,10 @@ export default {
 <style lang="scss">
 .comment-box {
 	position: relative;
+	border-radius: 24px !important;
+	.emoji-picker-container {
+		border-radius: 24px !important;
+	}
 	.emoji-picker-container i {
 		z-index: 1 !important;
 		top: 10px;
