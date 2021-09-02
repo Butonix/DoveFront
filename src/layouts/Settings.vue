@@ -4,7 +4,7 @@
 			app
 			dark
 			color="admin-nav"
-			height="50"
+			height="60"
 		>
 			<v-app-bar-nav-icon @click="toggleSettingsDrawer">
 				<v-icon v-if="mini"

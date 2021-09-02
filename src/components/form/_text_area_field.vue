@@ -3,7 +3,7 @@
 		<v-textarea
 			:value="value"
 			auto-grow
-			solo
+			solo rounded
 			clearable
 			hide-details="auto"
 			:label="label.toUpperCase()"

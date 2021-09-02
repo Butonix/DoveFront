@@ -18,7 +18,7 @@
 			>
 				<v-card
 					:color="item.color"
-					dark
+					dark rounded="xl"
 					class="summary-card"
 				>
 					<div class="d-flex flex-no-wrap justify-space-between">
@@ -29,7 +29,7 @@
 							/>
 
 							<v-card-subtitle v-text="item.artist" />
-							<v-card-actions class="pa-0">
+							<v-card-actions>
 								<v-btn
 									fab
 									icon
@@ -54,7 +54,6 @@
 
 						<v-avatar
 							class="elevation-4 count-avatar"
-							tile
 							color="grey"
 						>
 							<span class="white--text">
@@ -191,8 +190,8 @@ export default {
 
 .count-avatar
 	margin: 10px
-	font-size: 2.4rem !important
-	border-radius: 10px !important
+	font-size: 2rem !important
+	border-radius: 16px !important
 
 .summary-card-col:hover
 	.count-avatar

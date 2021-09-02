@@ -5,7 +5,7 @@
 			:value="value"
 			:items="municipalities.results"
 			:loading="municipalitiesLoading"
-			solo
+			solo rounded
 			:clearable="(ward === null)"
 			:disabled="(ward !== null || district === null || vdc !== null)"
 			attach=""

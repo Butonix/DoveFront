@@ -27,7 +27,7 @@
 						<v-text-field
 							id="username"
 							v-model="user.username"
-							solo
+							solo rounded
 							clearable
 							hide-details
 							label="Username/Email"
@@ -40,7 +40,7 @@
 				<v-card-actions class="justify-center my-0 pt-0 pb-3">
 					<v-btn
 						class="my-0"
-						color="primary"
+						color="primary" rounded
 						@click="requestReset"
 					>
 						Forget Password

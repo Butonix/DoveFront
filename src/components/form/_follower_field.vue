@@ -8,7 +8,7 @@
 			:items="followers.results"
 			:loading="followersLoading"
 			attach=""
-			solo
+			solo rounded
 			clearable
 			item-text="username"
 			item-value="id"

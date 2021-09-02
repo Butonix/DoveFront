@@ -5,7 +5,7 @@
 			:value="value"
 			:items="municipalityWards.results"
 			:loading="municipalityWardsLoading"
-			solo
+			solo rounded
 			clearable
 			attach=""
 			item-text="name"

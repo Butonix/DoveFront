@@ -1,6 +1,6 @@
 <template>
 	<v-list color="transparent"
-		dense
+		dense rounded
 	>
 		<v-list-item class="pl-2">
 			<v-list-item-avatar

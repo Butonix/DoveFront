@@ -7,7 +7,7 @@
 			:label="label.toUpperCase()"
 			placeholder="Start typing"
 			:type="type"
-			:hint="hint"
+			:hint="hint" rounded
 			:counter="counter"
 			hide-details="auto"
 			:error-messages="getErrorMessage"

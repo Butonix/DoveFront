@@ -8,7 +8,7 @@
 			:items="branches.results"
 			:loading="branchesLoading"
 			attach=""
-			solo
+			solo rounded
 			clearable
 			item-text="name"
 			item-value="id"

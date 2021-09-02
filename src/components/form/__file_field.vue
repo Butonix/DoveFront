@@ -4,7 +4,7 @@
 	>
 		<v-file-input
 			:value="value"
-			solo
+			solo rounded
 			small-chips
 			show-size
 			:accept="accept"

@@ -1,12 +1,14 @@
 <template>
 	<v-card
-		dark
+		dark rounded="xl"
 		color="green"
 		max-width="500"
 		class="text-center"
 	>
 		<v-card-text>
-			<v-sheet color="rgba(0, 0, 0, .12)">
+			<v-sheet color="rgba(0, 0, 0, .12)"
+				rounded="xl"
+			>
 				<v-sparkline
 					:value="value"
 					color="rgba(255, 255, 255, .7)"

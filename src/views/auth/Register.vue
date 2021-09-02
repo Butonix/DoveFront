@@ -126,7 +126,7 @@
 						:loading="loading"
 						dark
 						depressed
-						large
+						large rounded
 						color="primary"
 						class="px-xl-12 px-lg-8 px-md-6 px-sm-2 px-xs-0"
 						@click="registerFollower()"

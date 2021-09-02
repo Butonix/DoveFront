@@ -6,7 +6,7 @@
 			:items="vdcWards.results"
 			:loading="vdcWardsLoading"
 			attach=""
-			solo
+			solo rounded
 			clearable
 			item-text="name"
 			item-value="id"

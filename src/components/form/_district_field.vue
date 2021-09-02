@@ -6,7 +6,7 @@
 			:items="districts.results"
 			:loading="districtsLoading"
 			attach=""
-			solo
+			solo rounded
 			:clearable="((municipality === null) && (vdc === null))"
 			:disabled="((municipality !== null) || (vdc !== null) || (province === null))"
 			item-text="name"

@@ -6,7 +6,7 @@
 			:items="vdcs.results"
 			:loading="vdcsLoading"
 			attach=""
-			solo
+			solo rounded
 			:clearable="(ward === null)"
 			item-text="name"
 			item-value="id"

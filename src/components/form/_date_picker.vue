@@ -7,7 +7,7 @@
 			transition="scale-transition"
 			offset-y
 			:attach="attach"
-			min-width="auto"
+			min-width="auto" rounded
 		>
 			<template #activator="{ on, attrs }">
 				<v-text-field
@@ -17,7 +17,7 @@
 					:name="name"
 					:hint="hint"
 					readonly
-					solo
+					solo rounded
 					clearable
 					v-bind="attrs"
 					hide-details="auto"

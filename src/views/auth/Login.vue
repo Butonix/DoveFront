@@ -112,7 +112,6 @@
 import Snack from "@/mixins/Snack.js";
 import store from "@/store/index.js"
 import {mapGetters, mapMutations} from "vuex";
-let ROUTE_BACK_TO
 
 export default {
 	name: "LoginComponent",

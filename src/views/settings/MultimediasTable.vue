@@ -94,7 +94,7 @@
 							v-model="updateItemType"
 							label="Multimedia Type"
 							hide-details
-							filled
+							filled rounded
 							single-line
 							:items="['satsang', 'bhajan', 'testimonial', 'prayer', 'bachan']"
 						/>
@@ -170,7 +170,7 @@ export default {
 				{ text: "TITLE", value: "title" },
 				{ text: "TYPE", value: "type" },
 				{ text: "WRITER", value: "uploaded_by.username" },
-				{ text: "STATUS"            , value: "approval_status" },
+				{ text: "STATUS", value: "approval_status" },
 				{ text: "APPROVER", value: "approver" },
 				{ text: "TIMESTAMP", value: "timestamp" },
 			],

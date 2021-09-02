@@ -2,7 +2,9 @@
 	<v-col
 		cols="12"
 	>
-		<v-card class="d-flex align-center">
+		<v-card class="d-flex align-center"
+			rounded="xl"
+		>
 			<v-checkbox
 				class="checkbox-field"
 				:value="value"

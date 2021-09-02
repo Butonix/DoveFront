@@ -4,7 +4,7 @@
 			:value="value"
 			class="ma-0"
 			attach=""
-			solo
+			solo rounded
 			:label="label.toUpperCase()"
 			:items="selectItems"
 			clearable

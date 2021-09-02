@@ -5,7 +5,7 @@
 			:value="value"
 			:items="provinces.results"
 			:loading="provincesLoading"
-			solo
+			solo rounded
 			:clearable="(district === null)"
 			:disabled="(district !== null || country === null)"
 			item-text="name"

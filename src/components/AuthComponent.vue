@@ -22,7 +22,10 @@
 				{{ $route.name }}
 			</v-toolbar-title>
 			<v-spacer />
-			<v-menu offset-y>
+			<v-menu offset-y
+				rounded="xl"
+				nudge-top="-5"
+			>
 				<template #activator="{ on, attrs }">
 					<v-btn
 						color="primary"
@@ -37,7 +40,7 @@
 						<v-icon>mdi-help</v-icon>
 					</v-btn>
 				</template>
-				<v-list>
+				<v-list rounded>
 					<v-list-item
 						v-for="(item, index) in menuItems"
 						:key="index"
