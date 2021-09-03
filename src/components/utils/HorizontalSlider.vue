@@ -1,6 +1,6 @@
 <template>
 	<div class="slider-wrapper">
-		<div class="slide-left">
+		<div class="left-panel slider-panel">
 			<v-btn fab
 				class="previous"
 				color="grey lighten-4"
@@ -12,7 +12,7 @@
 				</v-icon>
 			</v-btn>
 		</div>
-		<div class="slide-right">
+		<div class="right-panel slider-panel">
 			<v-btn fab
 				class="next"
 				color="grey lighten-4"
@@ -61,59 +61,54 @@ export default {
 <style scoped lang="scss">
 .slider-wrapper {
 	position: relative;
-}
-.scroll-menu {
-	overflow: auto;
-	white-space: nowrap;
-}
-.scroll-menu::-webkit-scrollbar {
-	display: none;
-}
-.scroll-menu {
-	-ms-overflow-style: none;  /* IE and Edge */
-	scrollbar-width: none;  /* Firefox */
+
+	.scroll-menu {
+		overflow: auto;
+		white-space: nowrap;
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+	}
+	.scroll-menu::-webkit-scrollbar {
+		display: none;
+	}
+	.slider-panel {
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 70px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		background-color: transparent;
+		visibility: hidden;
+		border-radius: 24px;
+	}
+	.left-panel {
+		left: 0;
+		@media only screen and (max-width: 1450px) {
+			border-radius: 0 16px 16px 0 !important;
+		}
+	}
+	.left-panel:hover {
+		background-color: rgba(75, 74, 72, 0.45);
+	}
+	.right-panel:hover {
+		background-color: rgba(75, 74, 72, 0.45);
+	}
+	.right-panel {
+		right: 0;
+		@media only screen and (max-width: 1450px) {
+			border-radius: 16px 0 0 16px !important;
+		}
+	}
 }
 .slider-wrapper:hover {
-	.slide-left {
+	.left-panel {
 		visibility: visible;
 	}
-	.slide-right {
+	.right-panel {
 		visibility: visible;
 	}
-}
-
-.slide-left {
-	z-index: 1;
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 70px;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	background-color: transparent;
-	visibility: hidden;
-	border-radius: 0 16px 16px 0;
-}
-.slide-left:hover {
-	background-color: rgba(75, 74, 72, 0.45);
-}
-.slide-right:hover {
-	background-color: rgba(75, 74, 72, 0.45);
-}
-.slide-right {
-	z-index: 2;
-	position: absolute;
-	right: 0;
-	top: 0;
-	height: 100%;
-	width: 70px;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	background-color: transparent;
-	visibility: hidden;
-	border-radius: 16px 0 0 16px;
 }
 </style>

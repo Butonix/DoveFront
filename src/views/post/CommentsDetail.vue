@@ -1,5 +1,7 @@
 <template>
-	<v-card :loading="loading">
+	<v-card :loading="loading"
+		rounded="xl"
+	>
 		<v-toolbar height="50">
 			<v-toolbar-title class="comment-headline">
 				Comments
@@ -45,7 +47,9 @@
 							v-model="updateCommentDialog"
 							max-width="500"
 						>
-							<v-card class="edit-comment-card">
+							<v-card class="edit-comment-card"
+								rounded="xl"
+							>
 								<v-card-title class="headline grey lighten-2">
 									Update your comment
 								</v-card-title>
@@ -54,7 +58,7 @@
 								<v-card-text>
 									<v-textarea
 										v-model="updateComment.comment"
-										filled
+										filled rounded
 										label="Comment"
 									/>
 								</v-card-text>
@@ -62,7 +66,7 @@
 								<v-divider />
 
 								<v-card-actions>
-									<v-btn
+									<v-btn rounded
 										color="grey"
 										text
 										@click="updateCommentDialog = false"
@@ -70,7 +74,7 @@
 										Cancel
 									</v-btn>
 									<v-spacer />
-									<v-btn
+									<v-btn rounded
 										color="primary"
 										text
 										@click="updateMyComment(item.id)"
@@ -225,16 +229,10 @@ export default {
 <style lang="sass" scoped>
 .comment
 	background-color: #e8e8e8
-	font-size: .87rem
-	border-radius: 4px
+	font-size: .875rem
+	border-radius: 24px
 	padding: 10px
 	white-space: normal
-.comment-text-box
-	background-color: #d2e4f5
-	border-radius: 10px
-	font-size: 14px
-	padding: 5px
-	text-align: justify
 ::v-deep .v-subheader
 	height: 15px
 ::v-deep.v-list-item__title
@@ -245,6 +243,7 @@ export default {
 .comment-headline
 	font-size: 16px
 .detail-code
+	border-radius: 24px
 	font-size: 11px
 	letter-spacing:  .5px
 	font-family: inherit

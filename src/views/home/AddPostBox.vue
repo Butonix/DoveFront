@@ -15,14 +15,14 @@
 			<v-avatar
 				id="start-post-av"
 				tile
-				size="38"
+				size="32"
 				class="mx-4"
 			>
 				<v-img src="@/assets/dove-solid.svg" />
 			</v-avatar>
 			<p class="pa-0 ma-0 start-a-post">
 				<span v-if="$helper.isUserLoggedIn()">
-					Add your testimonial
+					Add your testimony
 				</span>
 				<span v-else>
 					Become a follower
@@ -175,7 +175,7 @@ export default {
 	span
 		font-family: "Acme", sans-serif
 	transition: all .3s
-	font-size: 28px
+	font-size: 24px
 	font-weight: 400
 	letter-spacing: 1px
 	color: #4f5151

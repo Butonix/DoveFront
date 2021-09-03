@@ -50,10 +50,6 @@
 						<div class="position nepali-font">
 							{{ item.position }}
 						</div>
-						<div class="contact nepali-font py-2">
-							<span><v-icon size="18">mdi-phone</v-icon></span>
-							<span class="px-2">{{ item.contact }}</span>
-						</div>
 					</div>
 				</v-card>
 			</v-row>

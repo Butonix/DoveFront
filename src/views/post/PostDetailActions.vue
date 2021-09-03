@@ -13,7 +13,7 @@
 				<v-btn
 					v-if="!extraStatus.loved"
 					depressed
-					small
+					small rounded
 					class="ma-2 py-6"
 					v-bind="attrs"
 					v-on="on"
@@ -26,7 +26,7 @@
 				<v-btn
 					v-else
 					depressed
-					small
+					small rounded
 					class="ma-2 py-6"
 					v-bind="attrs"
 					v-on="on"
@@ -43,7 +43,7 @@
 			<template #activator="{ on, attrs }">
 				<v-btn
 					depressed
-					small
+					small rounded
 					class="ma-2 py-6"
 					v-bind="attrs"
 					v-on="on"
@@ -59,7 +59,7 @@
 		<v-tooltip bottom>
 			<template #activator="{on, attrs}">
 				<v-btn depressed
-					small
+					small rounded
 					v-bind="attrs"
 					class="ma-2 py-6"
 					v-on="on"
@@ -76,7 +76,7 @@
 				<v-btn
 					v-if="$helper.ifWriterIsCurrentUser(target['uploaded_by']['username'])"
 					depressed
-					small
+					small rounded
 					v-bind="attrs"
 					class="ma-2 py-6"
 					v-on="on"
@@ -95,7 +95,7 @@
 			<template #activator="{on, attrs}">
 				<v-btn
 					v-if="extraStatus.bookmarked"
-					small
+					small rounded
 					depressed
 					class="ma-2 py-6"
 					v-bind="attrs"
@@ -108,7 +108,7 @@
 				</v-btn>
 				<v-btn
 					v-else
-					small
+					small rounded
 					depressed
 					class="ma-2 py-6"
 					v-bind="attrs"

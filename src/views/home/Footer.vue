@@ -3,7 +3,7 @@
 		class="footer" tile
 		min-height="80vh"
 		dark
-		color="#2b86cf"
+		color="rgb(75 93 195)"
 	>
 		<div class="custom-shape-divider-bottom-1620494480">
 			<svg data-name="Layer 1"
@@ -173,7 +173,7 @@
 			<v-card tile
 				min-height="35"
 				style="font-size: 14px;"
-				color="primary"
+				color="rgb(75 93 195)"
 				class="d-flex justify-center align-center"
 			>
 				<div>
@@ -286,7 +286,7 @@ export default {
 }
 
 .custom-shape-divider-bottom-1620494480 .shape-fill {
-	fill: #559be7;
+	fill: #81abff;
 }
 .love-text {
 	font-size: 12px;
@@ -317,7 +317,7 @@ export default {
 	}
 }
 .footer-item {
-	border-radius: 22px;
+	border-radius: 24px;
 	text-align: center;
 	cursor: pointer;
 	.item-title {
@@ -326,7 +326,7 @@ export default {
 		color: #181818;
 	}
 	&:hover {
-		background-color: #3c5d95;
+		background-color: rgb(75 93 195);
 		.item-title {
 			color: whitesmoke;
 		}

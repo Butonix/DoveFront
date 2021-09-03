@@ -11,6 +11,7 @@
 		<services-peek />
 		<our-great-stuff />
 		<pin-bar />
+		<equity-equality />
 		<showcase-map />
 	</div>
 </template>
@@ -27,6 +28,7 @@ export default {
 		Scatter: () => import("@/views/showcase/Scatter"),
 		EventHighlights: () => import("@/views/showcase/EventHighlights"),
 		OurGreatStuff: () => import("@/views/showcase/OurGreatStuff"),
+		EquityEquality: () => import("@/views/showcase/EquityEquality"),
 		ShowcaseMap: () => import("@/views/showcase/Map")
 	}
 }

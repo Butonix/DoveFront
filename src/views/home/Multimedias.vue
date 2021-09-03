@@ -6,10 +6,33 @@
 		color="transparent"
 		:width="criticalScreenWidth ? 700: 1000"
 	>
-		<div v-if="$vuetify.breakpoint.smAndUp"
-			class="py-1"
-		/>
-
+		<v-scale-transition>
+			<div v-if="$vuetify.breakpoint.mdAndDown"
+				class="py-2"
+			>
+				<v-card
+					rounded="xl"
+					class="mx-2"
+				>
+					<v-card-text class="d-flex flex-wrap pa-2">
+						<v-chip
+							v-for="(item, index) in items"
+							:key="index"
+							class="ma-1"
+							:to="item.to"
+						>
+							<v-icon left>
+								{{ item.icon }}
+							</v-icon>
+							{{ item.title }}
+						</v-chip>
+					</v-card-text>
+				</v-card>
+			</div>
+			<div v-else
+				class="py-1"
+			/>
+		</v-scale-transition>
 		<v-tabs-items v-model="tab"
 			style="background-color: transparent"
 			class="px-2"
@@ -22,20 +45,16 @@
 			:temporary="$vuetify.breakpoint.mdAndDown"
 			:width="criticalScreenWidth ? 250: 300"
 			color="#f6f4fc"
-			class="px-2"
-			style="position: fixed; right: 0; border-radius: 0; top: 0; height: 100vh"
+			class="px-2 multimedia-sidebar"
 		>
 			<div v-if="!$vuetify.breakpoint.mdAndDown"
 				style="height: 60px;"
 			/>
 			<div class="py-1" />
-			<v-card outlined
-				style="border-radius: 24px !important;"
+			<v-card rounded="xl"
+				outlined
 			>
-				<v-card-title>
-					This is multimedia sidebar
-				</v-card-title>
-				<v-list rounded>
+				<v-list rounded="xl">
 					<v-list-item v-for="(item, index) in items"
 						:key="index"
 						:to="item.to"
@@ -48,15 +67,17 @@
 						</v-list-item-content>
 					</v-list-item>
 				</v-list>
-				<v-divider />
+			</v-card>
+			<div class="py-1" />
+			<v-card outlined
+				rounded="xl"
+			>
 				<v-card-title>
 					Contribute to Sachchai Kendra Nepal by adding your truthful testimonies.
 				</v-card-title>
-				<v-divider />
-				<div class="pa-2">
-					<home-ads-column />
-				</div>
 			</v-card>
+			<div class="py-1" />
+			<home-ads-column />
 		</v-navigation-drawer>
 	</v-card>
 </template>
@@ -115,5 +136,8 @@ export default {
 	@media only screen and (max-width: 255px) {
 		font-size: 1.6rem;
 	}
+}
+.multimedia-sidebar {
+	position: fixed; right: 0; border-radius: 0; top: 0; height: 100vh
 }
 </style>

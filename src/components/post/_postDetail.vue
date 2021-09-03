@@ -39,7 +39,7 @@
 							class="px-2"
 							counter="255"
 							outlined
-							dense
+							dense rounded
 							prepend-inner-icon="mdi-text"
 						>
 							<template #append>
@@ -102,7 +102,7 @@
 							<v-btn
 								v-if="!target.description && ifWriterIsCurrentUser"
 								depressed color="grey lighten-3"
-								@click="openUpdateDescription"
+								rounded @click="openUpdateDescription"
 							>
 								<v-fade-transition>
 									<span v-if="showDescriptionUpdate">
@@ -118,7 +118,7 @@
 							v-if="showDescriptionUpdate"
 							ref="description"
 							v-model="descriptionUpdate"
-							outlined
+							outlined rounded
 							class="mx-3"
 							counter="10000"
 							auto-grow
@@ -179,15 +179,15 @@
 				<div class="py-12" />
 			</v-col>
 			<v-col cols="12">
-				<v-text-field
+				<v-textarea
 					ref="comment"
 					v-model="comment.comment"
 					class="comment"
-					outlined
+					outlined rounded
 					color="primary"
 					placeholder="Add your comment here..."
 					hide-details="auto"
-					clearable
+					clearable auto-grow
 					prepend-inner-icon="mdi-comment"
 				>
 					<template #append>
@@ -203,7 +203,7 @@
 							</v-icon>
 						</v-btn>
 					</template>
-				</v-text-field>
+				</v-textarea>
 			</v-col>
 			<v-col cols="12">
 				<div class="py-4" />
@@ -321,7 +321,7 @@ export default {
 	padding: 6px 16px
 	.item
 		padding: 2px 4px
-		border-radius: 8px
+		border-radius: 24px
 		display: flex
 		justify-content: space-between
 		margin: 2px

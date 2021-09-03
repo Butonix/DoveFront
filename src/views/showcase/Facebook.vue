@@ -1,8 +1,5 @@
 <template>
 	<div class="sidebar-social-media">
-		<div class="sidebar-social-media-title">
-			<span><u>Follow Us On Facebook</u></span>
-		</div>
 		<v-card :height="height"
 			class="overflow-hidden"
 			dark rounded="xl"
@@ -34,26 +31,11 @@ export default {
 			required: true
 		}
 	},
-	computed: {
-		getWidth() {
-			const width = window.innerWidth;
-			return width < 500 ? 280 : 300;
-		},
-	}
 };
 </script>
 
 <style lang="sass" scoped>
 .sidebar-social-media
-	.sidebar-social-media-title
-		color: #16679e
-		font-size: 18px
-		margin: 0 0 15px 0
-		font-weight: 600
-		u
-			border-bottom: 5px dotted grey
-		@media only screen and (max-width: 600px)
-			padding: 0 0 10px 20px
 	.facebook-container
 		margin-top: 5px
 		display: block

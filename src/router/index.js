@@ -23,6 +23,21 @@ const routes = [
 		component: HomeLayout,
 		children: [
 			{
+				path: "feedbacks",
+				name: "Feedback",
+				component: () => import("@/views/home/Feedback"),
+			},
+			{
+				path: "a-brief-history",
+				name: "ABriefHistory",
+				component: () => import("@/views/home/ABriefHistory"),
+			},
+			{
+				path: "faqs",
+				name: "FAQs",
+				component: () => import("@/views/home/FAQs"),
+			},
+			{
 				path: "start-article",
 				name: "Editor",
 				component: () => import("@/components/ArticleEditor.vue"),
@@ -107,15 +122,7 @@ const routes = [
 				meta: {
 					authentication: true
 				}
-			},
-			{
-				path: "map/kendra",
-				name: "KENDRA MAP",
-				component: () => import("@/views/map/Kendra"),
-				meta: {
-					authentication: true
-				}
-			},
+			}
 		]
 	},
 	// Detail Views (Requires Full Page)

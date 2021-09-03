@@ -7,13 +7,36 @@
 		color="transparent"
 		:width="criticalScreenWidth ? 680: 900"
 	>
-		<div v-if="$vuetify.breakpoint.smAndUp"
-			class="py-1"
+		<div
+			class="py-2"
 		/>
-		<div :class="{
-			'mx-2': $vuetify.breakpoint.width > 600
-		}"
+		<v-card rounded="xl"
+			color="rgb(249 246 255)"
+			class="mx-4"
 		>
+			<v-card-title>Pinned Articles</v-card-title>
+			<v-divider />
+			<v-card-text class="d-flex pa-2">
+				<v-card width="250"
+					rounded="xl" class="ma-2"
+				>
+					<v-card-title>The first pin</v-card-title>
+					<v-card-text>
+						Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat.
+					</v-card-text>
+				</v-card>
+				<v-card width="250"
+					rounded="xl" class="ma-2"
+				>
+					<v-card-title>The first pin</v-card-title>
+					<v-card-text>
+						Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat.
+					</v-card-text>
+				</v-card>
+			</v-card-text>
+		</v-card>
+		<div class="py-2" />
+		<div class="mx-4">
 			<v-sheet
 				color="transparent"
 				elevation="2"
@@ -60,7 +83,7 @@
 				style="height: 60px;"
 			/>
 			<div class="py-1" />
-			<v-card>
+			<v-card rounded="xl">
 				<v-card-title>
 					This is article sidebar
 				</v-card-title>

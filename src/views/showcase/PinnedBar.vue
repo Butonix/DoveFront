@@ -89,9 +89,10 @@
 						No pins yet!
 					</div>
 				</v-card>
-				<div
-					v-else
-					class="rounded"
+				<v-card
+					v-else rounded="xl"
+					class="rounded transparent mx-auto"
+					max-width="1450"
 				>
 					<horizontal-slider>
 						<pinned-post
@@ -103,7 +104,7 @@
 							style="display: inline-block;"
 						/>
 					</horizontal-slider>
-				</div>
+				</v-card>
 			</v-col>
 			<div style="height: 50px;" />
 		</v-card>

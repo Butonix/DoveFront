@@ -3,7 +3,7 @@
 		:dark="isAdminRoute"
 		:max-width="isAdminRoute ? '1000' : '100vw'"
 		width="100vw"
-		flat
+		flat tile
 	>
 		<v-app-bar height="50">
 			<v-app-bar-nav-icon
@@ -45,7 +45,7 @@
 								hide-delimiters
 								height="77vh"
 								show-arrows-on-hover
-								style="border-radius: 4px;"
+								style="border-radius: 24px;"
 							>
 								<template #next="{ on, attrs }">
 									<v-btn dark

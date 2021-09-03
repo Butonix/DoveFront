@@ -97,18 +97,6 @@
 				</v-list-item-content>
 			</v-list-item>
 		</v-list-group>
-		<v-list-item>
-			<v-list-item-icon><v-icon>mdi-delta</v-icon></v-list-item-icon>
-			<v-list-item-content>
-				<v-list-item-title>A Brief History</v-list-item-title>
-			</v-list-item-content>
-		</v-list-item>
-		<v-list-item>
-			<v-list-item-icon><v-icon>mdi-help-circle</v-icon></v-list-item-icon>
-			<v-list-item-content>
-				<v-list-item-title>FAQs</v-list-item-title>
-			</v-list-item-content>
-		</v-list-item>
 	</v-list>
 </template>
 <script>
@@ -137,59 +125,19 @@ export default {
 				],
 				title: "My Links",
 			},
-			// {
-			// 	action: "mdi-calendar-clock",
-			// 	active: false,
-			// 	items: [
-			// 		{ title: "All Events", icon: "mdi-calendar-multiple", to: "/home/event" },
-			// 		{ title: "Satsang", icon: "mdi-heart" },
-			// 		{ title: "General Meets", icon: "mdi-account-supervisor-circle" },
-			// 		{ title: "Kendra Events", icon: "mdi-calendar-star" },
-			// 		{ title: "Branch Events", icon: "mdi-calendar-text" },
-			// 	],
-			// 	title: "Events",
-			// },
-			// {
-			// 	action: "mdi-post",
-			// 	items: [
-			// 		{ title: "Photos", icon: "mdi-image" }
-			// 	],
-			// 	title: "Articles",
-			// },
-			// {
-			// 	action: "mdi-video-vintage",
-			// 	items: [
-			// 		{ title: "Sounds", icon: "mdi-music-box" },
-			// 		{ title: "Photos", icon: "mdi-image", to: "/home/multimedia/images" },
-			// 		{ title: "Videos", icon: "mdi-video-box", to: "/home/multimedia/videos" },
-			// 		{ title: "Youtube", icon: "mdi-youtube", to: "/home/multimedia/youtube" },
-			// 	],
-			// 	title: "Multimedia",
-			// },
-			// {
-			// 	action: "mdi-earth",
-			// 	items: [
-			// 		{ title: "Social", icon: "mdi-run" },
-			// 		{ title: "Health", icon: "mdi-bottle-tonic-plus" },
-			// 		{ title: "Peace", icon: "mdi-peace" },
-			// 		{ title: "Satsang", icon: "mdi-dance-ballroom" },
-			// 	],
-			// 	title: "Services",
-			// },
 			{
 				action: "mdi-google-maps",
 				items: [
 					{ title: "Branches", icon: "mdi-city", to: "/home/map/branch" },
-					{ title: "Kendra Branch", icon: "mdi-map-marker-star", to: "/home/map/kendra" },
 				],
 				title: "Maps",
 			},
 			{
 				action: "mdi-office-building",
 				items: [
-					{ title: "About Us", icon: "mdi-information" },
-					{ title: "Contact Us", icon: "mdi-phone" },
-					{ title: "Feedback", icon: "mdi-comment-quote" },
+					{ title: "FAQs", icon: "mdi-help-circle", to: "/home/faqs" },
+					{ title: "Feedback", icon: "mdi-comment-quote", to: "/home/feedbacks" },
+					{ title: "A Brief History", icon: "mdi-delta", to: "/home/a-brief-history" },
 				],
 				title: "Office",
 			},
@@ -224,7 +172,8 @@ export default {
 	font-weight: 500;
 }
 .link-subtitle {
-	font-size: .875rem;
+	font-size: 14px;
+	font-weight: 500;
 }
 .link {
 	text-decoration: none;

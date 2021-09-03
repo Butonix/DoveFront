@@ -34,7 +34,6 @@
 						color="primary darken-2"
 						class="pa-2 service-card d-flex justify-center align-start rounded-xl"
 						height="450"
-						style="z-index: 2; border: 2px solid white !important;"
 					>
 						<div>
 							<div class="py-4" />
@@ -56,7 +55,7 @@
 								outlined
 								max-width="450"
 							>
-								<div style="font-size: 16px !important;">
+								<div class="service-description">
 									{{ item.description }}
 								</div>
 							</v-card>
@@ -160,11 +159,15 @@ export default {
 		animation-name: scaleAnimation
 		animation-fill-mode: forwards
 	.service-card
+		z-index: 2
+		border: 2px solid white !important
 		.peek-title
 			margin: 0
 			padding: 20px 0
 			font-weight: 500
 			font-size: 24px
+.service-description
+	font-size: 16px !important
 @keyframes scaleAnimation
 	from
 		transform: scale(1)
