@@ -22,7 +22,7 @@
 						<v-card-text class="nepali-font question">
 							के हो त सच्चाई ?
 						</v-card-text>
-						<v-divider />
+						<div class="hr-divider" />
 						<v-card-text />
 						<v-card-text class="nepali-font answer">
 							सच्चाई शब्दको अर्थ सत्य हो।
@@ -62,19 +62,32 @@ export default {
 	name: "WhatIsSachchai",
 	mounted() {
 		const section = document.querySelector(".what-is-sachchai")
-		const question = section.querySelector(".question")
 		gsap.timeline({
 			scrollTrigger: {
 				trigger: section,
-				start: "top bottom",
+				start: "top top", // center of trigger element hits top of the viewport
+				end: "+=50",
 				yoyo: true
 			}
 		})
-			.from(question, {
-				scale: 4,
-				y: -200,
-				duration: .5
-			});
+			.from(".question", {
+				scaleX: 0,
+				scaleY: 0,
+				duration: 100,
+			})
+			.from(".hr-divider", {
+				width: 0,
+				duration: 100,
+				delay: 200,
+				ease: "rough"
+			}, 0)
+			.from(".answer", {
+				scaleY: 0,
+				duration: 100,
+				delay: 400,
+				ease: "slow(￼0.7, 0.7, 0.7, 0.7, ￼false)",
+				// ease: "slow",
+			}, 8)
 	}
 }
 </script>
@@ -90,9 +103,10 @@ export default {
 	line-height: 35px;
 	font-weight: 600;
 }
-.service {
-	font-size: 20px;
-	line-height: 25px;
-	font-weight: 600;
+.hr-divider {
+	height: 2px;
+	width: 100%;
+	border-radius: 50px;
+	background-color: #51595e;
 }
 </style>
