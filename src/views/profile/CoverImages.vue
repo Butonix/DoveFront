@@ -15,7 +15,7 @@
 			:loading="cover_input_loading"
 			filled
 			show-size
-			chips
+			chips rounded
 			clear-icon="mdi-close"
 			clearable
 			accept="image/*"
@@ -25,9 +25,8 @@
 		>
 			<template #append>
 				<v-btn
-					style="margin-top: -4px !important;"
+					style="margin-top: -8px !important;"
 					icon
-					small
 					class="ma-0 pa-0"
 					@click="uploadImage"
 				>
@@ -44,7 +43,9 @@
 		<profile-no-content v-if="coverImages.length === 0"
 			text="No cover image found for you. Please upload a new one and set background for your profile picture!"
 		/>
-		<v-card v-else>
+		<v-card v-else
+			flat
+		>
 			<v-row no-gutters>
 				<v-col v-for="img in coverImages"
 					:key="img.id"

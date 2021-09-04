@@ -3,7 +3,7 @@
 		<header-toolbar />
 		<v-list
 			v-if="isApprovedMember"
-			two-line
+			two-line disabled
 		>
 			<v-card
 				v-if="currentUser['member']['member_branches'].length === 0"
@@ -21,7 +21,7 @@
 				v-else
 				:key="i"
 			>
-				<v-chip label
+				<v-chip
 					color="indigo lighten-4"
 					class="ma-2"
 				>
@@ -79,7 +79,6 @@
 					>
 						<v-list-item-group>
 							<v-chip class="ma-2"
-								label
 								color="teal lighten-4"
 							>
 								Role ({{ index + 1 }}) <span><v-icon right>mdi-chevron-right</v-icon></span>

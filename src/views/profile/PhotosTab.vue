@@ -2,7 +2,7 @@
 	<div>
 		<v-card-title class="text-center justify-center pt-0">
 			<h1 class="font-weight-bold display-3 teal--text">
-				GaLLeRy
+				ImaGe GaLLeRy
 			</h1>
 		</v-card-title>
 		<v-tabs

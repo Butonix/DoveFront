@@ -33,30 +33,6 @@
 				</v-list-item-action>
 			</v-list-item>
 			<v-divider />
-			<v-list-group>
-				<template #activator>
-					<v-list-item-icon>
-						<v-icon>mdi-account-circle</v-icon>
-					</v-list-item-icon>
-					<v-list-item-content class="nav-link">
-						Profile
-					</v-list-item-content>
-				</template>
-				<v-list-item v-for="(p, index) in personalInformation"
-					:key="index"
-					:to="p.to"
-					@click="$bus.emit('close-sidebar')"
-				>
-					<v-list-item-icon>
-						<v-icon size="22">
-							{{ p.icon }}
-						</v-icon>
-					</v-list-item-icon>
-					<v-list-item-title class="nav-link">
-						{{ p.text }}
-					</v-list-item-title>
-				</v-list-item>
-			</v-list-group>
 			<v-list-item
 				v-for="item in items"
 				:key="item.text"
@@ -83,16 +59,13 @@ export default {
 	emits: ["toggle"],
 	data: () => ({
 		items: [
+			{text: "About Me", icon: "mdi-information-variant", to: "/profile/home"},
+			{text: "Edit Profile", icon: "mdi-pencil", to: "/profile/edit-detail"},
+			{text: "Password", icon: "mdi-lock-reset", to: "/profile/change-password"},
 			{text: "Location", icon: "mdi-map-marker", to: "/profile/location"},
 			{text: "Branches", icon: "mdi-city", to: "/profile/branch"},
 			{text: "Membership", icon: "mdi-camera-front-variant", to: "/profile/membership"},
 			{text: "Feedbacks", icon: "mdi-surround-sound", to: "/profile/feedback"},
-			{text: "Contributions", icon: "mdi-bird", to: "/profile/contribution"},
-		],
-		personalInformation: [
-			{text: "About", icon: "mdi-information-variant", to: "/profile/home"},
-			{text: "Edit", icon: "mdi-pencil", to: "/profile/edit-detail"},
-			{text: "Password", icon: "mdi-lock-reset", to: "/profile/change-password"},
 		]
 	})
 }

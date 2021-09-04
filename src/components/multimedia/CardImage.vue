@@ -1,6 +1,6 @@
 <template>
 	<v-card
-		dark
+		dark rounded="xl"
 		:height="height"
 		:max-width="maxWidth"
 	>

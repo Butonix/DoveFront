@@ -3,12 +3,7 @@
 		<profile-row />
 		<header-toolbar />
 
-		<v-card id="about-follower-card"
-			class="ma-2"
-			color="transparent"
-		>
-			<my-personal-info />
-		</v-card>
+		<my-personal-info class="ma-2" />
 	</div>
 </template>
 <script>

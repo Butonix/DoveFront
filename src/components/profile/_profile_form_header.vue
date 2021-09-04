@@ -2,7 +2,7 @@
 	<v-toolbar
 		class="profile-form-header elevation-1"
 		height="50"
-		flat tile
+		flat rounded="xl"
 	>
 		<v-app-bar-nav-icon>
 			<v-icon>

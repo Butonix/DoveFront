@@ -4,8 +4,7 @@
 		bottom rounded="xl"
 		offset-y
 		nudge-bottom="5"
-		nudge-right="5"
-		nudge-left="5"
+		nudge-right="15"
 		close-on-click
 		close-delay="1"
 	>

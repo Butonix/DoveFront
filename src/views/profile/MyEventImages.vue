@@ -1,15 +1,19 @@
 <template>
-	<v-card flat>
+	<v-card flat
+		class="mx-2"
+	>
 		<div class="py-2" />
 		<event-form-dialog :fullscreen="false" />
-		<v-btn block
+		<v-btn block rounded
 			height="45"
 			@click="$bus.emit('open-event-form-dialog-add-item')"
 		>
 			<v-icon>mdi-calender-plus</v-icon>
 			add new event
 		</v-btn>
-		<v-card v-if="myEvents.length === 0">
+		<v-card v-if="myEvents.length === 0"
+			rounded="xl"
+		>
 			<v-chip>No events uploaded yet.</v-chip>
 		</v-card>
 		<v-row v-else
@@ -22,8 +26,8 @@
 			>
 				<v-toolbar
 					color="green lighten-4"
-					height="40"
-					class="my-4 elevation-2 rounded"
+					height="40" rounded="xl"
+					class="my-4 elevation-2"
 				>
 					<v-app-bar-nav-icon>
 						<v-avatar
@@ -45,18 +49,7 @@
 						{{ (event.is_approved) ? 'mdi-check-decagram': 'mdi-check-decagram-outline' }}
 					</v-icon>
 				</v-toolbar>
-				<v-col v-if="event['images'].length === 0"
-					cols="12"
-				>
-					<v-card class="mx-auto">
-						<div class="d-flex justify-center align-center py-4">
-							<v-chip>No images for this event</v-chip>
-						</div>
-					</v-card>
-				</v-col>
-				<v-row v-else
-					no-gutters
-				>
+				<v-row no-gutters>
 					<v-col
 						v-for="img in event['multimedia_images']"
 						:key="img.id"

@@ -4,7 +4,7 @@
 		color="transparent"
 		class="mx-auto"
 		height="55"
-		style="border-radius: 4px;"
+		rounded="xl"
 	>
 		<v-app-bar-nav-icon>
 			<v-avatar

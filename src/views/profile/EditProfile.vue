@@ -9,7 +9,7 @@
 			class="ma-0 pa-0"
 		>
 			<profile-form-header icon="mdi-account-circle"
-				title="Update Your Information"
+				title="Personal Information"
 			/>
 			<text-field
 				v-model="currentUser.first_name"
@@ -45,7 +45,7 @@
 				@change="patchFollower({ email: currentUser.email })"
 			/>
 			<profile-form-header icon="mdi-face"
-				title="Update Profile Information"
+				title="Profile Information"
 			/>
 			<text-field
 				v-model="currentUser.profile.contact"

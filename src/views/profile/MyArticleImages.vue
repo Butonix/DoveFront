@@ -1,8 +1,10 @@
 <template>
-	<v-card>
+	<v-card class="mx-2"
+		rounded="xl" flat
+	>
 		<div class="py-2" />
 		<v-btn to="/home/start-article"
-			block
+			block rounded
 			height="auto"
 		>
 			<v-avatar>
@@ -26,7 +28,7 @@
 			>
 				<v-toolbar
 					:color="(article.completed_writing) ? 'green lighten-4': 'orange lighten-4'"
-					height="40"
+					height="40" rounded="xl"
 					class="my-4 elevation-2 rounded"
 				>
 					<v-app-bar-nav-icon>
@@ -52,11 +54,7 @@
 						{{ (article.is_approved) ? 'mdi-check-decagram': 'mdi-check-decagram-outline' }}
 					</v-icon>
 				</v-toolbar>
-				<profile-no-content
-					v-if="article['images'].length === 0 && article['image_urls'].length === 0"
-					text="No images found for this article"
-				/>
-				<v-row v-else
+				<v-row
 					no-gutters
 				>
 					<v-col

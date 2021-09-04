@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<StartAPostComponent />
-		<v-btn block
+		<v-btn block rounded
 			height="45"
 			@click="$bus.emit('open-start-post-dialog')"
 		>

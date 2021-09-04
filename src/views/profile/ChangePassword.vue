@@ -6,7 +6,6 @@
 			flat
 		>
 			<header-toolbar />
-			<v-divider />
 			<v-form>
 				<div class="py-2" />
 				<v-row no-gutters>
@@ -16,7 +15,7 @@
 						<v-text-field
 							v-model="changePassword.password"
 							prepend-inner-icon="mdi-lock-open"
-							outlined
+							outlined rounded
 							autocomplete="current-password"
 							label="Current password"
 							type="password"
@@ -29,7 +28,7 @@
 						<v-text-field
 							v-model="changePassword.new_password"
 							prepend-inner-icon="mdi-lock-question"
-							outlined
+							outlined rounded
 							autocomplete="new-password"
 							label="New password"
 							type="password"
@@ -44,7 +43,7 @@
 								changePassword.new_password_confirmation
 							"
 							prepend-inner-icon="mdi-lock-check"
-							outlined
+							outlined rounded
 							autocomplete="confirm-new-password"
 							label="Confirm new password"
 							type="password"
@@ -54,7 +53,9 @@
 					<v-col cols="12"
 						class="d-flex justify-center pa-4"
 					>
-						<v-btn depressed>
+						<v-btn depressed
+							rounded
+						>
 							Update Password
 						</v-btn>
 					</v-col>

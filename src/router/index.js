@@ -498,14 +498,6 @@ const routes = [
 				}
 			},
 			{
-				path: "contribution",
-				name: "MY CONTRIBUTIONS",
-				component: () => import("@/views/profile/MyContributions"),
-				meta: {
-					authentication: true
-				}
-			},
-			{
 				path: "edit-detail",
 				name: "EDIT DETAIL",
 				component: () => import("@/views/profile/EditProfile"),

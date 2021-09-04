@@ -2,8 +2,9 @@
 	<div>
 		<header-toolbar />
 
+		<div class="py-2" />
 		<v-card id="about-follower-card"
-			class="ma-2"
+			rounded="xl" class="ma-2"
 			color="transparent"
 		>
 			<profile-list :items="locationInfoItems" />

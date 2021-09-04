@@ -1,15 +1,19 @@
 <template>
-	<v-card>
+	<v-card class="mx-2"
+		flat
+	>
 		<StartAPostComponent />
 		<div class="py-2" />
-		<v-btn block
+		<v-btn block rounded
 			height="45"
 			@click="$bus.emit('open-start-post-dialog')"
 		>
 			<v-icon>mdi-video-vintage</v-icon>
 			add new multimedia
 		</v-btn>
-		<v-card v-if="myMultimedias.length === 0">
+		<v-card v-if="myMultimedias.length === 0"
+			rounded="xl"
+		>
 			<v-chip>No multimedia uploaded yet.</v-chip>
 		</v-card>
 		<v-row v-else
@@ -22,7 +26,7 @@
 			>
 				<v-toolbar
 					color="green lighten-4"
-					height="40"
+					height="40" rounded="xl"
 					class="my-4 elevation-2 rounded"
 				>
 					<v-app-bar-nav-icon>
@@ -45,18 +49,7 @@
 						{{ (multimedia.is_approved) ? 'mdi-check-decagram': 'mdi-check-decagram-outline' }}
 					</v-icon>
 				</v-toolbar>
-				<v-col v-if="multimedia['multimedia_images'].length === 0"
-					cols="12"
-				>
-					<v-card class="mx-auto">
-						<div class="d-flex justify-center align-center py-4">
-							<v-chip>No images for this multimedia</v-chip>
-						</div>
-					</v-card>
-				</v-col>
-				<v-row v-else
-					no-gutters
-				>
+				<v-row no-gutters>
 					<v-col
 						v-for="img in multimedia['multimedia_images']"
 						:key="img.id"

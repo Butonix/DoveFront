@@ -2,9 +2,11 @@
 	<div>
 		<header-toolbar />
 		<v-card v-if="isApprovedMember"
-			class="mt-4"
+			class="mt-4" rounded="xl"
 		>
-			<v-list two-line>
+			<v-list two-line
+				disabled
+			>
 				<v-list-item-group
 					v-for="(item, i) in branchItems"
 					:key="i"

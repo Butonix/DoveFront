@@ -1,9 +1,8 @@
 <template>
 	<div>
 		<v-card
-			tile
 			height="300"
-			class="mx-auto cover-photo"
+			class="mx-auto cover-photo rounded-b-xl"
 		>
 			<v-img
 				height="300"

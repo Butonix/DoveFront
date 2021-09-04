@@ -1,5 +1,7 @@
 <template>
-	<v-list two-line>
+	<v-list two-line
+		rounded="xl"
+	>
 		<v-list-item-group
 			v-for="(item, i) in items"
 			:key="i"

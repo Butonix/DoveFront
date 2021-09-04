@@ -1,5 +1,7 @@
 <template>
-	<v-card flat>
+	<v-card
+		rounded="xl"
+	>
 		<profile-list :items="personalItems" />
 	</v-card>
 </template>

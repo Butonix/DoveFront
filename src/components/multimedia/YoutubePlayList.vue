@@ -2,14 +2,16 @@
 	<v-col
 		v-if="nowPlaying"
 		cols="12"
-		class="ma-0 pa-0"
+		class="ma-0 pa-2"
 	>
-		<v-card height="400">
+		<v-card height="400"
+			rounded="xl"
+		>
 			<youtube-iframe :video-url="nowPlaying"
 				height="400"
 			/>
 		</v-card>
-		<v-list>
+		<v-list rounded>
 			<v-list-item v-for="(videoUrl) in videoUrls"
 				:key="videoUrl.id"
 				@click="1"
