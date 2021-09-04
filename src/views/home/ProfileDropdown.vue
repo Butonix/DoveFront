@@ -1,12 +1,9 @@
 <template>
 	<v-menu
 		transition="slide-y-transition"
-		bottom rounded="xl"
-		offset-y
-		nudge-bottom="5"
-		nudge-right="15"
+		rounded="xl"
+		absolute
 		close-on-click
-		close-delay="1"
 	>
 		<template #activator="{ attrs, on }">
 			<div v-if="$helper.getCurrentUser()">
