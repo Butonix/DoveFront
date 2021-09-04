@@ -1,9 +1,11 @@
 <template>
-	<v-list class="pa-0">
+	<v-list class="pa-0"
+		rounded
+	>
 		<v-list-item-group>
 			<v-list-item
-				class="px-2"
-				style="height: 80px;"
+				disabled
+				class="px-2 mb-0"
 			>
 				<v-list-item-avatar v-if="$helper.getCurrentProfileImage()">
 					<v-img
@@ -32,23 +34,25 @@
 					</v-btn>
 				</v-list-item-action>
 			</v-list-item>
-			<v-divider />
-			<v-list-item
-				v-for="item in items"
-				:key="item.text"
-				link
-				:to="item.to"
-			>
-				<v-list-item-icon>
-					<v-icon>{{ item.icon }}</v-icon>
-				</v-list-item-icon>
+			<v-divider class="my-1" />
+			<div>
+				<v-list-item
+					v-for="item in items"
+					:key="item.text"
+					link
+					:to="item.to"
+				>
+					<v-list-item-icon>
+						<v-icon>{{ item.icon }}</v-icon>
+					</v-list-item-icon>
 
-				<v-list-item-content>
-					<v-list-item-title class="nav-link">
-						{{ item.text }}
-					</v-list-item-title>
-				</v-list-item-content>
-			</v-list-item>
+					<v-list-item-content>
+						<v-list-item-title class="nav-link">
+							{{ item.text }}
+						</v-list-item-title>
+					</v-list-item-content>
+				</v-list-item>
+			</div>
 		</v-list-item-group>
 	</v-list>
 </template>
