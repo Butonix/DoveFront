@@ -5,7 +5,8 @@
 	>
 		<v-list
 			v-if="commentsToShow.length"
-			class="comment-histories"
+			rounded
+			class="comment-histories pa-0"
 			two-line
 			dense
 		>

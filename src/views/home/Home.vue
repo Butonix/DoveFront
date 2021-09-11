@@ -17,6 +17,7 @@
 						active-class="active-side-nav"
 						exact-active-class="active-side-nav"
 						:class="{'active-side-nav': sideNavActive['All']}"
+						:disabled="sideNavActive['All']"
 						@click="$router.push({ name: 'HOME'})"
 					>
 						All
@@ -27,6 +28,7 @@
 						active-class="active-side-nav"
 						exact-active-class="active-side-nav"
 						:class="{'active-side-nav': sideNavActive[item.title]}"
+						:disabled="sideNavActive[item.title]"
 						@click="$router.push({ name: 'HOME', query: { type: item.to } })"
 					>
 						{{ item.title }}
@@ -60,6 +62,7 @@
 						active-class="active-side-nav"
 						exact-active-class="active-side-nav"
 						:class="{'active-side-nav': sideNavActive['All']}"
+						:disabled="sideNavActive['All']"
 						@click="$router.push({ name: 'HOME'})"
 					>
 						<v-list-item-content>
@@ -72,6 +75,7 @@
 						active-class="active-side-nav"
 						exact-active-class="active-side-nav"
 						:class="{'active-side-nav': sideNavActive[item.title]}"
+						:disabled="sideNavActive[item.title]"
 						@click="$router.push({ name: 'HOME', query: { type: item.to } })"
 					>
 						<v-list-item-content>

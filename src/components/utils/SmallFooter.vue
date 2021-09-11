@@ -1,5 +1,6 @@
 <template>
-	<v-footer padless
+	<v-footer
+		padless
 		:color="color"
 	>
 		<v-col

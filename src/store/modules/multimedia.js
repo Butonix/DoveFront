@@ -4,9 +4,6 @@ import urls from "@/urls.json"
 const multimediaUrl = urls.multimedia
 const util = require("util")
 
-export const SET_MULTIMEDIAS = "SET_MULTIMEDIAS"
-export const SET_FORM_ERRORS = "SET_FORM_ERRORS"
-
 
 const defaultFormErrors = {
 	video: null,
@@ -14,11 +11,12 @@ const defaultFormErrors = {
 	image: null,
 	video_url: null,
 	title: null,
-	description: null
+	description: null,
+	next: null
 }
 
 const state = {
-	multimedias: {},
+	multimedias: [],
 	multimedia: {},
 	formErrors: {
 		... defaultFormErrors
@@ -28,17 +26,31 @@ const state = {
 }
 
 const mutations = {
-	[SET_MULTIMEDIAS](state, value) {
+	SET_MULTIMEDIAS(state, value) {
 		state.multimedias = value
 	},
 	SET_MULTIMEDIA(state, value) {
 		state.multimedia = value
 	},
-	[SET_FORM_ERRORS](state, value) {
+	SET_FORM_ERRORS(state, value) {
 		state.formErrors = value
 	},
 	SET_MULTIMEDIA_TO_VIEW(state, value) {
 		state.toView = value
+	},
+	MERGE_MULTIMEDIAS(state, value) {
+		state.multimedias.push(...value)
+		// making set unique
+		const temp = []
+		state.multimedias.forEach(item => {
+			if(!temp.find(element => element.id === item.id)) {
+				temp.push(item)
+			}
+		})
+		state.multimedias = temp
+	},
+	SET_NEXT(state, value) {
+		state.next = value
 	}
 }
 
@@ -46,7 +58,8 @@ const getters = {
 	list: state => state.multimedias,
 	formErrors: state => state.formErrors,
 	multimediaDetail: state => state.multimedia,
-	inView: state => state.toView
+	inView: state => state.toView,
+	next: state => state.next
 }
 
 const actions = {
@@ -56,7 +69,8 @@ const actions = {
 
 	async filter({commit}, payload) {
 		const response = await $api.getWithPayload(multimediaUrl.set, payload)
-		commit("SET_MULTIMEDIAS", response)
+		commit("SET_MULTIMEDIAS", response.results)
+		commit("SET_NEXT", {count: response.count, previous: response.previous, next: response.next})
 	},
 
 	async getSingle({commit}, {id: id}) {

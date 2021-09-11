@@ -54,7 +54,7 @@
 			<v-card rounded="xl"
 				outlined
 			>
-				<v-list rounded="xl">
+				<v-list rounded>
 					<v-list-item v-for="(item, index) in items"
 						:key="index"
 						:to="item.to"

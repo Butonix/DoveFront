@@ -3,7 +3,6 @@
 		color="rgb(241 241 242)"
 		class="d-flex align-center"
 		flat tile
-		style="position: relative;"
 	>
 		<v-card class="mx-auto elevation-0 rounded-0"
 			max-width="1000"
@@ -53,6 +52,11 @@
 					</div>
 				</v-card>
 			</v-row>
+			<v-fade-transition>
+				<div v-show="$vuetify.breakpoint.width < 648"
+					style="height: 200px;"
+				/>
+			</v-fade-transition>
 		</v-card>
 	</v-card>
 </template>

@@ -14,8 +14,6 @@
 				Part Four
 			</section>
 		</div>
-
-		<div class="center-marker" />
 	</div>
 </template>
 <script>
@@ -39,7 +37,7 @@ export default {
 				scrub: 1,
 				snap: 1 / (sections.length - 1),
 				start: "top top",
-				end: "+=5000"
+				end: "+=5000",
 			}
 		})
 		tl.to(sections, {

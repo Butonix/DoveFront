@@ -2,9 +2,31 @@
 	<v-card width="100vw"
 		flat tile
 		dark color="rgb(6 12 40)"
-		style="position: relative"
+		style="margin-top: -60px;"
 	>
-		<div style="height: 150px;" />
+		<v-card color="transparent"
+			style="z-index: 1;"
+			flat tile
+		>
+			<v-col
+				cols="12"
+				class="text-center py-4"
+			>
+				<v-avatar
+					color="white"
+					size="90"
+					class="elevation-14 bulls-eye-avatar"
+				>
+					<v-icon
+						size="80"
+						color="red darken-2"
+					>
+						mdi-bullseye-arrow
+					</v-icon>
+				</v-avatar>
+			</v-col>
+		</v-card>
+		<div style="height: 50px;" />
 		<v-card
 			dark
 			:loading="loading"
@@ -16,25 +38,8 @@
 			>
 				<v-col
 					cols="12"
-					class="text-center py-4"
 				>
-					<v-avatar
-						color="white"
-						size="90"
-						class="elevation-14 bulls-eye-avatar"
-					>
-						<v-icon
-							size="80"
-							color="red darken-2"
-						>
-							mdi-bullseye-arrow
-						</v-icon>
-					</v-avatar>
-				</v-col>
-				<v-col
-					cols="12"
-				>
-					<v-card-text class="pin-header py-4">
+					<v-card-text class="pin-header py-4 text-uppercase">
 						Become a part of something great!
 					</v-card-text>
 				</v-col>
@@ -90,23 +95,35 @@
 					</div>
 				</v-card>
 				<v-card
-					v-else rounded="xl"
-					class="rounded transparent mx-auto"
-					max-width="1450"
+					v-else tile
+					class="mx-auto py-6"
+					color="white"
+					style="position: relative"
 				>
-					<horizontal-slider>
+					<div class="custom-shape-divider-top-1631291856">
+						<svg data-name="Layer 1"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+							preserveAspectRatio="none"
+						>
+							<path d="M600,16.8c0-8.11-8.88-13.2-19.92-13.2H0V120H1200V3.6H619.92C608.88,3.6,600,8.66,600,16.8Z"
+								class="shape-fill"
+							/>
+						</svg>
+					</div>
+					<horizontal-slider class="pl-4 mx-auto"
+						style="max-width: 1450px; z-index: 2"
+					>
 						<pinned-post
 							v-for="(item) in articles.results"
 							:key="item.id"
 							class="ma-2"
 							:post="item"
 							is-article
-							style="display: inline-block;"
+							style="display: inline-block; z-index: 44;"
 						/>
 					</horizontal-slider>
 				</v-card>
 			</v-col>
-			<div style="height: 50px;" />
 		</v-card>
 	</v-card>
 </template>
@@ -259,24 +276,24 @@ export default {
 	text-align: center
 </style>
 <style lang="scss" scoped>
-.custom-shape-divider-top {
+.custom-shape-divider-top-1631291856 {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	overflow: hidden;
 	line-height: 0;
+	transform: rotate(180deg);
 }
 
-.custom-shape-divider-top svg {
+.custom-shape-divider-top-1631291856 svg {
 	position: relative;
 	display: block;
-	width: calc(100% + 1.3px);
-	height: 500px;
-	transform: rotateY(180deg);
+	width: calc(139% + 1.3px);
+	height: 219px;
 }
 
-.custom-shape-divider-top .shape-fill {
-	fill: #060C28;
+.custom-shape-divider-top-1631291856 .shape-fill {
+	fill: #030d27;
 }
 </style>

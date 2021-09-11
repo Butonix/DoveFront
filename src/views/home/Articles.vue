@@ -10,31 +10,7 @@
 		<div
 			class="py-2"
 		/>
-		<v-card rounded="xl"
-			color="rgb(249 246 255)"
-			class="mx-4"
-		>
-			<v-card-title>Pinned Articles</v-card-title>
-			<v-divider />
-			<v-card-text class="d-flex pa-2">
-				<v-card width="250"
-					rounded="xl" class="ma-2"
-				>
-					<v-card-title>The first pin</v-card-title>
-					<v-card-text>
-						Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat.
-					</v-card-text>
-				</v-card>
-				<v-card width="250"
-					rounded="xl" class="ma-2"
-				>
-					<v-card-title>The first pin</v-card-title>
-					<v-card-text>
-						Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla quis lorem ut libero malesuada feugiat.
-					</v-card-text>
-				</v-card>
-			</v-card-text>
-		</v-card>
+		<article-pin-bar />
 		<div class="py-2" />
 		<div class="mx-4">
 			<v-sheet
@@ -95,10 +71,12 @@
 <script>
 import {mapGetters} from "vuex";
 import NoHomeData from "@/components/feeds/NoHomeData.vue";
+import ArticlePinBar from "@/views/home/ArticlePinBar.vue";
 
 export default {
 	name: "Articles",
 	components: {
+		ArticlePinBar,
 		NoHomeData,
 		ArticleCard: () => import("@/components/article/ArticleCard.vue"),
 	},

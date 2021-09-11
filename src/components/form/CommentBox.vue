@@ -2,8 +2,10 @@
 	<div class="comment-box pb-2">
 		<v-textarea v-model="comment.comment"
 			auto-grow placeholder="Add a comment"
-			solo rounded
+			outlined rounded
+			label="Comment"
 			hide-details
+			color="primary"
 		>
 			<template #append>
 				<v-btn icon
@@ -51,6 +53,10 @@ export default {
 			type: [String, Number],
 			required: true
 		},
+		filter: {
+			type: Boolean,
+			default: true
+		}
 	},
 	emits: ["refresh"],
 	data: () => ({
@@ -63,9 +69,6 @@ export default {
 		onInput(e) {
 			this.comment.comment = e.data
 		},
-		clearTextArea() {
-			this.$refs.emoji.clear()
-		},
 		async addCommentTo() {
 			if (!this.comment.comment) return
 			this.comment[this.model] = this.id
@@ -73,8 +76,8 @@ export default {
 			if (posted === true) {
 				this.comment.comment = ""
 				this.value = null
-				this.clearTextArea()
-				await this.$store.dispatch(`${this.model}/filter`, {is_approved: true})
+				if (this.filter) await this.$store.dispatch(`${this.model}/filter`, {is_approved: true})
+				else await this.$store.dispatch(`${this.model}/getSingle`, {id: this.id})
 				this.$emit("refresh")
 			} else if (posted === 500) {
 				await this.openSnack("Internal server error. Please try again later")

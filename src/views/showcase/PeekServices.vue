@@ -17,29 +17,30 @@
 				"जब संसारको हरेक बाटोहरु बन्द हुन्छन् तब पर्मेश्वरले तपाईँको निम्ति एउटा नयाँ बाटो तयार गर्नुहुन्छ।"
 			</p>
 			<div class="py-6" />
-			<v-row
+			<v-card
 				v-if="services"
-				align="center"
-				class="text-center ma-0 pa-0"
+				color="transparent"
+				style="z-index: 2"
+				flat tile
+				class="text-center"
 			>
-				<v-col
-					v-for="(item, index) in services"
-					:id="item.id"
-					:key="index"
-					cols="12"
-					xl="3" lg="3"
-					md="3" sm="3"
+				<v-card class="d-flex justify-center align-center flex-wrap transparent"
+					flat
 				>
 					<v-card
-						color="primary darken-2"
-						class="pa-2 service-card d-flex justify-center align-start rounded-xl"
+						v-for="item in services"
+						:key="item.id"
+						rounded="xl"
 						height="450"
+						width="260"
+						color="primary darken-2"
+						class="ma-2 service-card"
 					>
 						<div>
 							<div class="py-4" />
 							<v-avatar
 								color="white"
-								size="180"
+								size="150"
 								class="rounded-circle service-img"
 							>
 								<v-img
@@ -61,8 +62,8 @@
 							</v-card>
 						</div>
 					</v-card>
-				</v-col>
-			</v-row>
+				</v-card>
+			</v-card>
 		</v-card>
 		<div style="height: 250px;" />
 	</v-card>
@@ -70,6 +71,9 @@
 <script>
 export default {
 	name: "PeekServicesBox",
+	components: {
+		// HorizontalSlider: () => import("@/components/utils/HorizontalSlider.vue")
+	},
 	data: () => ({
 		loading: null,
 	}),
@@ -159,7 +163,7 @@ export default {
 		animation-name: scaleAnimation
 		animation-fill-mode: forwards
 	.service-card
-		z-index: 2
+		display: inline-block
 		border: 2px solid white !important
 		.peek-title
 			margin: 0

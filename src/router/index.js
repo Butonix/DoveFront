@@ -7,6 +7,10 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
+		path: "/history",
+		component: () => import("@/views/showcase/HistorySlider.vue"),
+	},
+	{
 		path: "/",
 		component: () => import("@/layouts/ShowCaseLayout"),
 		children: [{

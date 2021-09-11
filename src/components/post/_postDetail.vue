@@ -170,15 +170,20 @@
 					<v-divider />
 				</div>
 				<PostDetailActionsComponent
-					v-if="target" :target="target"
+					v-if="$vuetify.breakpoint.smAndDown && target" :target="target"
 					@focus-comment="$refs.comment.focus()"
 				/>
+			</v-col>
+			<v-col v-if="$vuetify.breakpoint.smAndDown"
+				cols="12"
+			>
+				<slot name="comments" />
 				<v-divider />
 			</v-col>
-			<v-col cols="12">
-				<div class="py-12" />
-			</v-col>
-			<v-col cols="12">
+			<v-col
+				v-if="$vuetify.breakpoint.smAndDown"
+				cols="12" class="pa-2"
+			>
 				<v-textarea
 					ref="comment"
 					v-model="comment.comment"
@@ -204,12 +209,6 @@
 						</v-btn>
 					</template>
 				</v-textarea>
-			</v-col>
-			<v-col cols="12">
-				<div class="py-4" />
-			</v-col>
-			<v-col cols="12">
-				<slot name="comments" />
 			</v-col>
 		</v-row>
 	</v-card>
@@ -303,7 +302,7 @@ export default {
 		async addCommentToPost() {
 			this.comment.multimedia = this.target.id
 			await this.$store.dispatch("multimedia/postComment", {body: this.comment})
-			this.$bus.emit("refresh-comment-in-details-page")
+			await this.$store.dispatch("multimedia/getSingle", {id: this.target.id})
 			this.comment.comment = ""
 		}
 	}

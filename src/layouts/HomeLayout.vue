@@ -52,9 +52,18 @@ export default {
 		ScrollUp: () => import("@/components/utils/ScrollTop.vue")
 	},
 	data: () => ({
-		homeDrawer: true,
-		mini: true,
-	})
+		homeDrawer: null,
+	}),
+	watch: {
+		"$vuetify.breakpoint.width": {
+			handler() {
+				this.homeDrawer = this.$vuetify.breakpoint.mdAndUp;
+			}
+		}
+	},
+	created() {
+		this.homeDrawer = this.$vuetify.breakpoint.mdAndUp
+	}
 }
 </script>
 <style lang="sass" scoped>

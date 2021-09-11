@@ -1,17 +1,19 @@
 <template>
-	<div v-if="posts">
-		<v-overlay :value="loading">
-			<v-progress-circular indeterminate
-				size="64"
-			/>
-		</v-overlay>
-		<no-home-data v-if="posts.length === 0"
+	<div v-if="multimedias">
+		<v-fade-transition>
+			<v-overlay :value="loading">
+				<skeleton-home-loader />
+			</v-overlay>
+		</v-fade-transition>
+		<no-home-data v-if="multimedias.length === 0"
 			:image="require('@/assets/noPostsImg.jpg')"
 		/>
-		<div v-else
-			style="min-height: 100vh"
+		<v-card v-else
+			flat tile
+			min-height="100vh"
+			color="transparent"
 		>
-			<div v-for="post in posts"
+			<div v-for="post in multimedias"
 				:key="post.id" class="mb-2"
 			>
 				<base-post-card :post="post">
@@ -101,20 +103,18 @@
 					</template>
 				</base-post-card>
 			</div>
-			<div
-				v-if="!loading && posts.length > 0"
-				v-observe-visibility="handleScrollToBottom"
-			/>
-		</div>
+			<div v-observe-visibility="handleScrollToBottom" />
+		</v-card>
 	</div>
 </template>
 <script>
 import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
 	name: "MultimediaList",
 	components: {
+		SkeletonHomeLoader: () => import("@/components/utils/SkeletonHomeLoader.vue"),
 		BasePostCard: () => import("@/components/post/_post.vue"),
 		NoHomeData: () => import("@/components/feeds/NoHomeData.vue"),
 	},
@@ -126,6 +126,7 @@ export default {
 			playerVars: {autoplay: 0, origin: window.location.href},
 			loading: true,
 			posts: [],
+			occ: 0,
 			next: {
 				next: null,
 				count: 0
@@ -134,33 +135,26 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			multimedias: "multimedia/list"
+			multimedias: "multimedia/list",
+			nextInfo: "multimedia/next"
 		}),
 	},
 	watch: {
 		"$route.query.type": {
 			async handler(val) {
+				this.loading = true
 				await this.$store.dispatch("multimedia/filter", {
 					is_approved: true,
 					type: val
 				})
-				this.posts = []
-				this.posts.push(...this.multimedias.results)
+				this.next = this.nextInfo
+				this.loading = false
 			},
 			immediate: true
 		}
 	},
-	async created() {
-		await this.init()
-	},
 	methods: {
-		async init() {
-			if (!this.multimedias.count) {
-				await this.$store.dispatch("multimedia/filter", {is_approved: true, type: this.$route.query.type})
-			}
-			this.posts.push(...this.multimedias.results)
-			this.loading = false
-		},
+		...mapMutations("multimedia", ["MERGE_MULTIMEDIAS", "SET_NEXT"]),
 		async pauseAllPlaying() {
 			await this.pauseAllYt()
 			await this.pauseAllPlayingHTMLVideos()
@@ -177,18 +171,14 @@ export default {
 		},
 		async handleScrollToBottom(isVisible) {
 			if(isVisible) {
-				if(this.next.count === 0) {
-					this.next.next = (this.multimedias.next)
-						? this.multimedias.next.replace("http://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np")
-						: this.multimedias.next
-					this.next.count ++
-					return
-				}
-				if (this.next.next && this.next.count >=1) {
-					this.next.count ++
-					const res = await this.$api.getWithPayload(this.next.next)
-					this.posts.push(...res.results)
-					this.next.next = res.next
+				this.occ ++
+				if (this.occ > 1) {
+					console.log(this.nextInfo)
+					if (this.nextInfo.next && this.nextInfo.count >=1) {
+						const res = await this.$api.getWithPayload(this.next.next.replace("http://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np"))
+						this.MERGE_MULTIMEDIAS(res.results)
+						this.SET_NEXT({next: res.next, previous: res.previous, count: res.count})
+					}
 				}
 			}
 		}

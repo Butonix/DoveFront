@@ -16,16 +16,7 @@
 				:src="$helper.replaceBackendHost(article['cover_image']['image'])"
 				height="250"
 				@click="routeToArticleDetail(article.id)"
-			>
-				<v-icon
-					class="ma-2"
-					color="white"
-					size="20"
-					style="transform: rotate(30deg)"
-				>
-					mdi-pin
-				</v-icon>
-			</v-img>
+			/>
 		</v-card>
 		<v-list
 			color="transparent"

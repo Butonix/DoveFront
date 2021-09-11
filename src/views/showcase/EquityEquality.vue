@@ -1,31 +1,28 @@
 <template>
-	<div>
-		<v-card
-			tile
-			flat
-			height="100vh"
-			color="primary lighten-1"
+	<div style="margin-top: -270px; z-index: 1">
+		<v-parallax
+			height="1000"
+			dark
+			:src="require('@/assets/equity.jpg')"
 		>
-			<div style="position: relative">
-				<v-img :src="require('@/assets/equality.gif')"
-					height="100vh"
-					max-width="50vw"
-					style="position: absolute;"
-				/>
-				<v-img :src="require('@/assets/equity.gif')"
-					height="100vh"
-					max-width="50vw"
-					style="position: absolute; right: 0"
-				/>
-			</div>
-		</v-card>
-		<v-card flat
-			tile class="foot"
-		>
-			<div class="text-center pa-4 font-weight-bold heading">
-				SACHCHAI IS ALL ABOUT EQUITY
-			</div>
-		</v-card>
+			<v-row
+				align="center"
+				justify="center"
+			>
+				<v-col
+					class="text-center"
+					cols="12"
+				>
+					<v-card flat
+						rounded="xl" class="foot"
+					>
+						<div class="text-center pa-4 font-weight-bold heading">
+							SACHCHAI IS ALL ABOUT EQUITY
+						</div>
+					</v-card>
+				</v-col>
+			</v-row>
+		</v-parallax>
 	</div>
 </template>
 

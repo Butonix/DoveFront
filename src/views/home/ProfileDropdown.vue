@@ -49,55 +49,63 @@
 				justify="space-around"
 				align="center"
 			>
-				<v-card
+				<v-btn
 					v-for="(item, i) in items"
 					:key="i"
-					rounded="xl"
+					rounded
 					:to="item.to"
 					height="90"
 					width="90"
-					outlined
-					class="ma-2 app-item"
+					color="white"
+					class="ma-2 app-item elevation-0 thin-border"
 					:class="{
-						'app-item-active': appItemActive[item.text]
+						'app-item-disabled': appItemActive[item.text]
 					}"
 					:disabled="appItemActive[item.text]"
 				>
-					<div class="text-center pt-4">
-						<v-icon v-text="item.icon" />
+					<div>
+						<div class="text-center pt-4">
+							<v-icon v-text="item.icon" />
+						</div>
+						<div class="item-title">
+							{{ item.text }}
+						</div>
 					</div>
-					<div class="item-title">
-						{{ item.text }}
-					</div>
-				</v-card>
-				<v-card
+				</v-btn>
+				<v-btn
 					v-if="$helper.isUserLoggedIn()"
-					rounded="xl"
+					rounded color="white"
 					height="90" width="90"
-					outlined class="ma-2 app-item"
+					class="ma-2 app-item elevation-0 thin-border"
 					@click="logout"
 				>
-					<div class="text-center pt-4">
-						<v-icon v-text="logoutItem.icon" />
+					<div>
+						<div class="text-center pt-4">
+							<v-icon
+								v-text="logoutItem.icon"
+							/>
+						</div>
+						<div class="item-title">
+							{{ logoutItem.text }}
+						</div>
 					</div>
-					<div class="item-title">
-						{{ logoutItem.text }}
-					</div>
-				</v-card>
-				<v-card
+				</v-btn>
+				<v-btn
 					v-else
 					height="90" width="90"
-					rounded="xl" outlined
+					rounded color="white"
 					:to="loginItem.to"
-					class="ma-2 app-item"
+					class="ma-2 app-item elevation-0 thin-border"
 				>
-					<div class="text-center pt-4">
-						<v-icon v-text="loginItem.icon" />
+					<div>
+						<div class="text-center pt-4">
+							<v-icon v-text="loginItem.icon" />
+						</div>
+						<div class="item-title">
+							{{ loginItem.text }}
+						</div>
 					</div>
-					<div class="item-title">
-						{{ loginItem.text }}
-					</div>
-				</v-card>
+				</v-btn>
 			</v-row>
 		</v-card>
 	</v-menu>
@@ -169,11 +177,10 @@ export default {
 	text-transform: uppercase;
 	padding: 10px 0;
 }
-.app-item-active {
-	background-color: #f5f5f5 !important;
+.app-item-disabled {
+	background-color: green !important;
 }
-.app-item:hover {
-	background-color: #f5f5f5;
+.thin-border {
+	border: thin solid rgba(0, 0, 0, 0.12) !important;
 }
-
 </style>

@@ -1,49 +1,57 @@
 <template>
-	<v-parallax
-		height="120vh"
-		src="https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/167952492_3860024914066896_971188920796482199_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=b9115d&_nc_ohc=_7zy0XXtiqUAX_6xDht&_nc_ht=scontent.fpkr1-1.fna&oh=dd3227552c1f42c49125b9e911fafd23&oe=613CC232"
-	>
-		<v-card dark flat
-			color="transparent"
+	<div>
+		<v-img
+			dark
+			height="120vh"
+			:src="require('@/assets/mass_clap.jpg')"
 		>
-			<div style="height: 200px;" />
-			<v-card class="py-4 find-us-title mx-auto"
-				max-width="1000"
-				rounded="xl"
+			<v-row
+				align="center"
+				justify="center"
 			>
-				<div class="text-center">
-					<v-avatar v-show="$vuetify.breakpoint.smAndUp"
-						class="mr-2 find-us-av"
-						size="60"
-						color="white"
+				<v-card dark flat
+					color="transparent"
+				>
+					<div style="height: 200px;" />
+					<v-card class="py-4 find-us-title mx-auto"
+						max-width="1000"
+						rounded="xl"
 					>
-						<v-icon x-large
-							color="blue darken-2"
-						>
-							mdi-map-legend
-						</v-icon>
-					</v-avatar>
-					{{ mapInfo.title }}
-				</div>
-				<p class="find-us-subtitle text-center pt-4">
-					{{ mapInfo.description }}
-				</p>
-			</v-card>
-			<div class="py-4" />
-			<v-card height="600"
-				max-width="1000" class="mx-auto"
-				rounded="xl"
-			>
-				<iframe
-					id="branch-iframe"
-					style="z-index: 2"
-					src="https://www.google.com/maps/d/embed?mid=1gQSVr7mErgYHo00oSpVGv5oIdklxJqPc"
-					width="100%" height="600"
-				/>
-			</v-card>
-			<div class="py-14" />
-		</v-card>
-	</v-parallax>
+						<div class="text-center">
+							<v-avatar v-show="$vuetify.breakpoint.smAndUp"
+								class="mr-2 find-us-av"
+								size="60"
+								color="white"
+							>
+								<v-icon x-large
+									color="blue darken-2"
+								>
+									mdi-map-legend
+								</v-icon>
+							</v-avatar>
+							{{ mapInfo.title }}
+						</div>
+						<p class="find-us-subtitle text-center pt-4">
+							{{ mapInfo.description }}
+						</p>
+					</v-card>
+					<div class="py-4" />
+					<v-card height="600"
+						max-width="1000" class="mx-auto"
+						rounded="xl"
+					>
+						<iframe
+							id="branch-iframe"
+							style="z-index: 2"
+							src="https://www.google.com/maps/d/embed?mid=1gQSVr7mErgYHo00oSpVGv5oIdklxJqPc"
+							width="100%" height="600"
+						/>
+					</v-card>
+					<div class="py-14" />
+				</v-card>
+			</v-row>
+		</v-img>
+	</div>
 </template>
 
 <script>

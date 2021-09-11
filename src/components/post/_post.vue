@@ -1,5 +1,4 @@
 <template>
-	<!--	TODO: make dark implementation too -->
 	<v-card
 		outlined
 		rounded="xl"
@@ -82,7 +81,7 @@
 			</v-card-actions>
 			<v-card-actions class="ma-0 pa-0">
 				<v-btn icon
-					color="green"
+					color="primary"
 					@click="setCommentMode"
 				>
 					<v-icon>mdi-comment-outline</v-icon>
@@ -90,7 +89,7 @@
 			</v-card-actions>
 			<v-card-actions class="ma-0 pa-0">
 				<v-btn icon
-					color="primary"
+					color="success"
 				>
 					<v-icon>mdi-share-variant-outline</v-icon>
 				</v-btn>
@@ -126,7 +125,7 @@
 			:mode="commentMode"
 			:post="post"
 		/>
-		<div v-if="!commentMode"
+		<div v-if="!commentMode && $helper.isUserLoggedIn()"
 			class="py-1"
 		/>
 	</v-card>

@@ -2,7 +2,7 @@
 	<div class="sidebar-social-media">
 		<v-card :height="height"
 			class="overflow-hidden"
-			dark rounded="xl"
+			dark rounded="lg"
 		>
 			<div class="fb-page"
 				data-href="https://www.facebook.com/Sachhaikendra-Nepal-2186630364921086" data-tabs="timeline,messages"

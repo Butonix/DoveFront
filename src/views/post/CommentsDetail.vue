@@ -1,163 +1,171 @@
 <template>
-	<v-card :loading="loading"
-		rounded="xl"
+	<v-card
+		v-if="multimedia"
+		tile flat
 	>
-		<v-toolbar height="50">
+		<v-divider />
+		<v-toolbar height="50"
+			elevation="0"
+		>
 			<v-toolbar-title class="comment-headline">
 				Comments
 			</v-toolbar-title>
 		</v-toolbar>
-		<v-list v-if="comments.count > 0"
-			two-line
-		>
-			<template v-for="(item, index) in comments.results">
-				<v-subheader
-					v-if="item.header"
-					:key="index"
-					v-text="item.header"
-				/>
+		<v-divider />
+		<div v-if="multimedia.comments">
+			<v-list v-if="multimedia.comments.length > 0"
+				two-line
+			>
+				<template v-for="(item, index) in multimedia.comments">
+					<v-subheader
+						v-if="item.header"
+						:key="index"
+						v-text="item.header"
+					/>
 
-				<v-divider
-					v-else-if="item.divider"
-					:key="index"
-					:inset="item.inset"
-				/>
+					<v-divider
+						v-else-if="item.divider"
+						:key="index"
+						:inset="item.inset"
+					/>
 
-				<v-list-item
-					v-else
-					:key="index"
-					class="pl-3 pr-1 comment-item"
-				>
-					<div>
-						<v-avatar size="45"
-							tile
-							class="d-flex justify-content-center ma-2 elevation-4 comment-avatar"
-							:color="$constants.pickBackgroundColor()"
-						>
-							<span v-if="item.writer"
-								class="white--text headline"
+					<v-list-item
+						v-else
+						:key="index"
+						class="pl-3 pr-1 comment-item"
+					>
+						<div>
+							<v-avatar size="45"
+								tile
+								class="d-flex justify-content-center ma-2 elevation-4 comment-avatar"
+								:color="$constants.pickBackgroundColor()"
 							>
-								{{ $helper.getUsernameInitials(item.writer) }}
-							</span>
-							<span v-else
-								class="white--text headline"
-							>A</span>
-						</v-avatar>
-						<v-dialog
-							v-model="updateCommentDialog"
-							max-width="500"
-						>
-							<v-card class="edit-comment-card"
-								rounded="xl"
+								<span v-if="item.writer"
+									class="white--text headline"
+								>
+									{{ $helper.getUsernameInitials(item.writer) }}
+								</span>
+								<span v-else
+									class="white--text headline"
+								>A</span>
+							</v-avatar>
+							<v-dialog
+								v-model="updateCommentDialog"
+								max-width="500"
 							>
-								<v-card-title class="headline grey lighten-2">
-									Update your comment
-								</v-card-title>
-								<div class="py-4" />
-
-								<v-card-text>
-									<v-textarea
-										v-model="updateComment.comment"
-										filled rounded
-										label="Comment"
-									/>
-								</v-card-text>
-
-								<v-divider />
-
-								<v-card-actions>
-									<v-btn rounded
-										color="grey"
-										text
-										@click="updateCommentDialog = false"
-									>
-										Cancel
-									</v-btn>
-									<v-spacer />
-									<v-btn rounded
-										color="primary"
-										text
-										@click="updateMyComment(item.id)"
-									>
-										Update
-									</v-btn>
-								</v-card-actions>
-							</v-card>
-						</v-dialog>
-					</div>
-					<v-list-item-content>
-						<v-list-item-title v-if="item.writer"
-							class="d-flex align-items-center"
-						>
-							<code class="detail-code">
-								<v-icon size="16"
-									class="detail-icon"
+								<v-card class="edit-comment-card"
+									rounded="xl"
 								>
-									mdi-account-circle
-								</v-icon>
-								{{ item.writer.username }}
-							</code>
-							<span class="detail-icon px-1">
-								<v-btn
-									x-small
-									icon
-									@click="openUpdateCommentDialog(item.comment)"
-								>
-									<v-icon color="primary">
-										mdi-pencil
+									<v-card-title class="headline grey lighten-2">
+										Update your comment
+									</v-card-title>
+									<div class="py-4" />
+
+									<v-card-text>
+										<v-textarea
+											v-model="updateComment.comment"
+											filled rounded
+											label="Comment"
+										/>
+									</v-card-text>
+
+									<v-divider />
+
+									<v-card-actions>
+										<v-btn rounded
+											color="grey"
+											text
+											@click="updateCommentDialog = false"
+										>
+											Cancel
+										</v-btn>
+										<v-spacer />
+										<v-btn rounded
+											color="primary"
+											text
+											@click="updateMyComment(item.id)"
+										>
+											Update
+										</v-btn>
+									</v-card-actions>
+								</v-card>
+							</v-dialog>
+						</div>
+						<v-list-item-content>
+							<v-list-item-title v-if="item.writer"
+								class="d-flex align-items-center"
+							>
+								<code class="detail-code">
+									<v-icon size="16"
+										class="detail-icon"
+									>
+										mdi-account-circle
 									</v-icon>
-								</v-btn>
-							</span>
-							<v-spacer />
-							<code class="detail-code">
-								<v-icon
-									color="grey darken-4"
-									size="16"
-									class="detail-icon"
-								>
-									mdi-history
-								</v-icon>
-								{{ $moment(item.created_at).fromNow() }}
-							</code>
-						</v-list-item-title>
-						<v-list-item-title v-else>
-							<code class="detail-code">
-								<v-icon size="16"
-									class="detail-icon"
-								>
-									mdi-account-circle
-								</v-icon>
-								Anonymous
-							</code>
-						</v-list-item-title>
-						<v-list-item-subtitle class="comment">
-							{{ item.comment }}
-						</v-list-item-subtitle>
-					</v-list-item-content>
-					<v-list-item-action class="comment-actions">
-						<v-btn v-if="ifWriterIsCurrentUser(item.writer) || $helper.isCurrentUserSuperAdmin() "
-							icon
-							@click="removeComment(item.id)"
-						>
-							<v-icon
-								color="red darken-1"
+									{{ item.writer.username }}
+								</code>
+								<span class="detail-icon px-1">
+									<v-btn
+										x-small
+										icon
+										@click="openUpdateCommentDialog(item.comment)"
+									>
+										<v-icon color="primary">
+											mdi-pencil
+										</v-icon>
+									</v-btn>
+								</span>
+								<v-spacer />
+								<code class="detail-code">
+									<v-icon
+										color="grey darken-4"
+										size="16"
+										class="detail-icon"
+									>
+										mdi-history
+									</v-icon>
+									{{ $moment(item.created_at).fromNow() }}
+								</code>
+							</v-list-item-title>
+							<v-list-item-title v-else>
+								<code class="detail-code">
+									<v-icon size="16"
+										class="detail-icon"
+									>
+										mdi-account-circle
+									</v-icon>
+									Anonymous
+								</code>
+							</v-list-item-title>
+							<v-list-item-subtitle class="comment">
+								{{ item.comment }}
+							</v-list-item-subtitle>
+						</v-list-item-content>
+						<v-list-item-action class="comment-actions">
+							<v-btn v-if="ifWriterIsCurrentUser(item.writer) || $helper.isCurrentUserSuperAdmin() "
+								icon
+								@click="removeComment(item.id)"
 							>
-								mdi-delete
-							</v-icon>
-						</v-btn>
-					</v-list-item-action>
-				</v-list-item>
-			</template>
-		</v-list>
-		<div v-else
-			class="fill-height empty-comment-message"
-		>
-			<i>Be the first to comment.</i>
+								<v-icon
+									color="red darken-1"
+								>
+									mdi-delete
+								</v-icon>
+							</v-btn>
+						</v-list-item-action>
+					</v-list-item>
+				</template>
+			</v-list>
+			<div v-else
+				class="fill-height empty-comment-message"
+			>
+				<i>Be the first to comment.</i>
+			</div>
 		</div>
 	</v-card>
 </template>
 <script>
 import Snack from "@/mixins/Snack";
+import {mapGetters} from "vuex";
 
 export default {
 	name: "CommentsDetailComponent",
@@ -167,15 +175,12 @@ export default {
 		updateComment: {
 			comment: null
 		},
-		comments: [],
 		loading: false
 	}),
-	async created() {
-		await this.init()
-		this.$bus.on("refresh-comment-in-details-page", this.init)
-	},
-	beforeUnmount() {
-		this.$bus.off("refresh-comment-in-details-page")
+	computed: {
+		...mapGetters({
+			multimedia: "multimedia/multimediaDetail"
+		})
 	},
 	methods: {
 		ifWriterIsCurrentUser(writer){
@@ -193,14 +198,8 @@ export default {
 		async init() {
 			this.loading = true
 			this.postId = parseInt(this.$route.params.id)
-			const response = await this.$store.dispatch(
-				"multimedia/fetchCommentsForId",
-				{ id: this.postId }
-			)
-			if (response) {
-				this.comments = response
-				this.loading = false
-			}
+			await this.$store.dispatch("multimedia/getSingle", {id: this.postId})
+			this.loading = false
 		},
 		async updateMyComment(commentId) {
 			const updated = await this.$store.dispatch("multimedia/updateComment", {

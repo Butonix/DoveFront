@@ -1,14 +1,15 @@
 <template>
 	<v-card
 		class="what-is-sachchai"
-		width="100vw" max-height="160vh"
+		width="100vw"
 		dark tile
-		color="rgb(6 12 40)"
 		style="margin-top: -400px;"
 	>
-		<v-img
+		<v-parallax
 			:src="require('@/assets/light_sky.jpg')"
-			height="160vh"
+			:height="$vuetify.breakpoint.mdAndUp
+				? 1800
+				: $vuetify.breakpoint.width < 365 ? 3000 : 2000"
 		>
 			<div style="height: 400px" />
 			<v-row no-gutters
@@ -16,9 +17,10 @@
 			>
 				<v-col cols="8">
 					<v-card flat
-						class="text-center mx-auto transparent"
+						class="text-center mx-auto transparent overflow-hidden"
 						max-width="600" light
 					>
+						<div style="height: 200px" />
 						<v-card-text class="nepali-font question">
 							के हो त सच्चाई ?
 						</v-card-text>
@@ -48,7 +50,8 @@
 					</v-card>
 				</v-col>
 			</v-row>
-		</v-img>
+			<div style="height: 400px" />
+		</v-parallax>
 	</v-card>
 </template>
 
@@ -67,7 +70,8 @@ export default {
 				trigger: section,
 				start: "top top", // center of trigger element hits top of the viewport
 				end: "+=50",
-				yoyo: true
+				yoyo: true,
+				scrub: 1
 			}
 		})
 			.from(".question", {
@@ -105,7 +109,7 @@ export default {
 }
 .hr-divider {
 	height: 2px;
-	width: 100%;
+	width: 100% !important;
 	border-radius: 50px;
 	background-color: #51595e;
 }

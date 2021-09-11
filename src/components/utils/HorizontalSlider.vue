@@ -38,7 +38,7 @@ export default {
 	props: {},
 	data: () => ({}),
 	mounted() {
-		$(".previous").click(function (e) {
+		$(".previous").click(function () {
 			$(this)
 				.closest(".slider-wrapper")
 				.find(".scroll-menu")
@@ -46,7 +46,7 @@ export default {
 					scrollLeft: "-=200px"
 				}, "slow");
 		})
-		$(".next").click(function (e) {
+		$(".next").click(function () {
 			$(this)
 				.closest(".slider-wrapper")
 				.find(".scroll-menu")
@@ -61,8 +61,11 @@ export default {
 <style scoped lang="scss">
 .slider-wrapper {
 	position: relative;
+	width: 100%;
+	height: 100%;
 
 	.scroll-menu {
+		height: 100%;
 		overflow: auto;
 		white-space: nowrap;
 		-ms-overflow-style: none;  /* IE and Edge */
@@ -72,7 +75,6 @@ export default {
 		display: none;
 	}
 	.slider-panel {
-		z-index: 1;
 		position: absolute;
 		top: 0;
 		height: 100%;
@@ -83,6 +85,7 @@ export default {
 		background-color: transparent;
 		visibility: hidden;
 		border-radius: 24px;
+		z-index: 3;
 	}
 	.left-panel {
 		left: 0;

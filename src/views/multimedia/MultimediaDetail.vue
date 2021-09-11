@@ -1,11 +1,9 @@
 <template>
-	<v-card
-		:dark="isAdminRoute"
-		:max-width="isAdminRoute ? '1000' : '100vw'"
-		width="100vw"
-		flat tile
-	>
-		<v-app-bar height="50">
+	<v-app id="app">
+		<v-app-bar app
+			height="50"
+			elevation="0"
+		>
 			<v-app-bar-nav-icon
 				@click="$router.go(-1)"
 			>
@@ -22,20 +20,52 @@
 			</v-icon>
 			<div class="px-1" />
 		</v-app-bar>
-		<v-main
-			:class="{'pa-0': isAdminRoute}"
+		<v-navigation-drawer
+			v-if="multimedia"
+			right
+			app
+			width="350"
+			:temporary="$vuetify.breakpoint.smAndDown"
 		>
-			<v-container fluid>
+			<div id="postDetail">
+				<div class="py-2" />
+				<v-card-title
+					v-if="multimedia['uploaded_by']"
+					class="pt-0 heading"
+				>
+					{{ multimedia.title }}
+				</v-card-title>
+			</div>
+			<v-divider />
+			<PostDetailActionsComponent
+				v-if="multimedia" :target="multimedia"
+				@focus-comment="$refs.comment.focus()"
+			/>
+			<v-divider />
+			<div class="comments_detail">
+				<comments-detail />
+			</div>
+			<v-divider />
+			<div
+				class="pa-2"
+			>
+				<comment-box
+					v-if="multimedia.id"
+					:id="multimedia.id"
+					model="multimedia"
+					:filter="false"
+				/>
+			</div>
+		</v-navigation-drawer>
+		<v-main>
+			<v-container fluid
+				class="pa-0"
+			>
 				<not-found v-if="postNotAvailable" />
 				<v-card v-else
-					max-width="1000"
 					:loading="loading"
-					class="mx-auto"
 					flat tile
 				>
-					<div v-if="!$route.fullPath.includes('admin/multimedia')"
-						class="ma-3"
-					/>
 					<base-post-detail
 						v-if="multimediaId"
 						:target="multimedia"
@@ -45,26 +75,39 @@
 								hide-delimiters
 								height="77vh"
 								show-arrows-on-hover
-								style="border-radius: 24px;"
 							>
 								<template #next="{ on, attrs }">
 									<v-btn dark
-										icon
+										fab
 										v-bind="attrs"
+										color="white"
+										height="45"
+										width="45"
 										v-on="on"
 										@click="pauseAllPlaying()"
 									>
-										<v-icon>mdi-chevron-right</v-icon>
+										<v-icon size="30"
+											color="grey darken-4"
+										>
+											mdi-chevron-right
+										</v-icon>
 									</v-btn>
 								</template>
 								<template #prev="{ on, attrs }">
-									<v-btn dark
-										icon
+									<v-btn
+										fab
 										v-bind="attrs"
+										color="white"
+										height="45"
+										width="45"
 										v-on="on"
 										@click="pauseAllPlaying()"
 									>
-										<v-icon>mdi-chevron-left</v-icon>
+										<v-icon color="grey darken-4"
+											size="30"
+										>
+											mdi-chevron-left
+										</v-icon>
 									</v-btn>
 								</template>
 								<v-carousel-item
@@ -171,16 +214,20 @@
 			</v-container>
 		</v-main>
 		<small-footer v-if="!isAdminRoute" />
-	</v-card>
+	</v-app>
 </template>
 <script>
 import {mapGetters, mapMutations} from "vuex";
 import SmallFooter from "@/components/utils/SmallFooter.vue";
 import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
+import PostDetailActionsComponent from "@/views/post/PostDetailActions.vue";
+import CommentBox from "@/components/form/CommentBox.vue";
 
 export default {
 	name: "MultimediaDetailView",
 	components: {
+		CommentBox,
+		PostDetailActionsComponent,
 		SmallFooter,
 		BasePostDetail: () => import("@/components/post/_postDetail"),
 		CommentsDetail: () => import("@/views/post/CommentsDetail"),
@@ -193,7 +240,6 @@ export default {
 	data: () => ({
 		multimediaId: null,
 		loading: false,
-		nowPlaying: null,
 		postNotAvailable: false
 	}),
 	computed: {
@@ -214,11 +260,6 @@ export default {
 			this.multimediaId = parseInt(this.$route.params.id)
 			const fetched = await this.$store.dispatch("multimedia/getSingle", {id: this.multimediaId})
 			this.postNotAvailable = !fetched;
-			if (fetched) {
-				if (this.multimedia["multimedia_video_urls"].length > 0) {
-					this.nowPlaying = this.multimedia["multimedia_video_urls"][0].video_url
-				}
-			}
 			this.loading=false
 		},
 		async deleteImage(itemId) {

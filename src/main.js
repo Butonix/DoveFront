@@ -94,6 +94,7 @@ Vue.prototype.$jq = $
 Vue.prototype.$moment = moment
 Vue.prototype.$helper = helper
 Vue.prototype.$constants = constants
+Vue.prototype.$urls = require("@/urls.json")
 
 Vue.config.productionTip = false
 
