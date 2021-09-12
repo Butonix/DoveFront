@@ -21,11 +21,11 @@
 						<v-col cols="12"
 							class="pt-0 px-2"
 						>
-							<v-card height="40vh"
+							<v-card height="45vh"
 								dark rounded="xl"
 							>
 								<v-carousel
-									height="40vh"
+									height="45vh"
 									hide-delimiters
 									show-arrows-on-hover
 								>
@@ -59,9 +59,9 @@
 										v-for="image in post['multimedia_images']"
 										:key="$helper.replaceBackendHost(image.image)"
 									>
-										<v-card height="40vh">
+										<v-card height="45vh">
 											<v-img :src="$helper.replaceBackendHost(image.image)"
-												height="40vh"
+												height="45vh"
 											/>
 										</v-card>
 									</v-carousel-item>
@@ -69,7 +69,7 @@
 										:key="$helper.replaceBackendHost(video.video)"
 									>
 										<v-card
-											height="40vh"
+											height="45vh"
 											max-width="100%"
 											dark
 											class="ma-0 pa-0"
@@ -142,7 +142,6 @@ export default {
 	watch: {
 		"$route.query.type": {
 			async handler(val) {
-				this.loading = true
 				await this.$store.dispatch("multimedia/filter", {
 					is_approved: true,
 					type: val
@@ -173,7 +172,6 @@ export default {
 			if(isVisible) {
 				this.occ ++
 				if (this.occ > 1) {
-					console.log(this.nextInfo)
 					if (this.nextInfo.next && this.nextInfo.count >=1) {
 						const res = await this.$api.getWithPayload(this.next.next.replace("http://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np"))
 						this.MERGE_MULTIMEDIAS(res.results)
