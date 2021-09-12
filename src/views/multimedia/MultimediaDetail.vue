@@ -50,7 +50,7 @@
 				class="pa-2"
 			>
 				<comment-box
-					v-if="multimedia.id"
+					v-if="multimedia.id && $vuetify.breakpoint.mdAndUp"
 					:id="multimedia.id"
 					model="multimedia"
 					:filter="false"

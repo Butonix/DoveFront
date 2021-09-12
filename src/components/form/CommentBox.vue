@@ -1,15 +1,20 @@
 <template>
-	<div class="comment-box pb-2">
-		<v-textarea v-model="comment.comment"
-			auto-grow placeholder="Add a comment"
-			outlined rounded
+	<div v-if="id"
+		class="comment-box pb-2"
+	>
+		<v-textarea
+			:id="'comment-input-' + id"
+			v-model="comment.comment"
+			outlined auto-grow
+			color="primary" hide-details
 			label="Comment"
-			hide-details
-			color="primary"
+			placeholder="Add your comment"
+			contenteditable="true"
+			style="border-radius: 16px"
+			@focus="focused = true"
 		>
 			<template #append>
 				<v-btn icon
-					large
 					class="comment-btn"
 				>
 					<v-icon class="send-icon-button"
@@ -21,27 +26,79 @@
 				</v-btn>
 			</template>
 		</v-textarea>
-		<!--		<vue-emoji-->
-		<!--			ref="emoji"-->
-		<!--			width="100%"-->
-		<!--			height="100"-->
-		<!--			:value="value"-->
-		<!--			class="comment-input"-->
-		<!--			placeholder="Add a comment"-->
-		<!--			@input="onInput"-->
-		<!--			@clearTextArea="clearTextArea"-->
-		<!--		/>-->
+
+		<v-btn
+			class="clear-button" icon
+			@click="comment.comment = ''"
+		>
+			<v-icon>
+				mdi-close
+			</v-icon>
+		</v-btn>
+
+		<emoji-picker :search="search"
+			@emoji="insert"
+		>
+			<!-- eslint-disable-next-line  -->
+			<div slot="emoji-invoker" slot-scope="{ events: { click: clickEvent } }"
+				style="position:absolute; right: 7px; top: 7px;"
+				@click.stop="clickEvent"
+			>
+				<v-btn icon
+					class="emoji-btn"
+				>
+					<v-icon color="orange">
+						mdi-emoticon
+					</v-icon>
+				</v-btn>
+			</div>
+			<!-- eslint-disable-next-line  -->
+			<div slot="emoji-picker" slot-scope="{ emojis, insert, display }"
+			>
+				<div class="emoji-picker">
+					<div class="pa-2 emoji-picker__search">
+						<v-text-field v-model="search"
+							type="text"
+							rounded
+							dense
+							hide-details
+							outlined
+							label="Search"
+							placeholder="Search emojis"
+						/>
+					</div>
+					<div>
+						<div v-for="(emojiGroup, category) in emojis"
+							:key="category"
+						>
+							<h5 class="pa-2">
+								{{ category }}
+							</h5>
+							<v-divider />
+							<div class="pa-2 emojis">
+								<span
+									v-for="(emoji, emojiName) in emojiGroup"
+									:key="emojiName"
+									:title="emojiName"
+									@click="insert(emoji)"
+								>{{ emoji }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</emoji-picker>
 	</div>
 </template>
 
 <script>
-import VueEmoji from "emoji-vue"
-import Snack from "@/mixins/Snack.js";
+import Snack from "@/mixins/Snack.js"
+import EmojiPicker from "vue-emoji-picker"
 
 export default {
 	name: "CommentBox",
 	components: {
-		// VueEmoji
+		EmojiPicker
 	},
 	mixins: [Snack],
 	props: {
@@ -60,14 +117,27 @@ export default {
 	},
 	emits: ["refresh"],
 	data: () => ({
-		value: null,
+		search: "",
 		comment: {
-			comment: null
+			comment: ""
 		}
 	}),
 	methods: {
 		onInput(e) {
 			this.comment.comment = e.data
+		},
+		insert(emoji) {
+			const commentTextarea = document.querySelector(".comment-box #comment-input-" + this.id)
+			const cursorPosition = commentTextarea.selectionStart
+			console.log(commentTextarea, cursorPosition)
+
+			if (cursorPosition === this.comment.comment.length) {
+				this.comment.comment += emoji
+			} else {
+				const firstPart = this.comment.comment.substring(0, cursorPosition)
+				const secondPart = this.comment.comment.substring(cursorPosition, this.comment.comment.length)
+				this.comment.comment = firstPart + emoji + secondPart
+			}
 		},
 		async addCommentTo() {
 			if (!this.comment.comment) return
@@ -75,7 +145,6 @@ export default {
 			const posted = await this.$store.dispatch(`${this.model}/postComment`, { body: this.comment })
 			if (posted === true) {
 				this.comment.comment = ""
-				this.value = null
 				if (this.filter) await this.$store.dispatch(`${this.model}/filter`, {is_approved: true})
 				else await this.$store.dispatch(`${this.model}/getSingle`, {id: this.id})
 				this.$emit("refresh")
@@ -90,26 +159,71 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .comment-box {
 	position: relative;
-	border-radius: 24px !important;
-	.emoji-picker-container {
-		border-radius: 24px !important;
+	.clear-button {
+		position:absolute;
+		right: 7px !important;
+		top: 81px !important;
 	}
-	.emoji-picker-container i {
-		z-index: 1 !important;
-		top: 10px;
-		right: 15px;
+	.comment-btn {
+		position: absolute;
+		top: 44px !important;
+		right: 4px !important;
 	}
-	.emoji-vue-textarea:focus {
-		background-color: #f9f7fd;
+
+	.emoji-picker {
+		position: absolute;
+		top: 55px !important;
+		right: 5px !important;
+		z-index: 1;
+		border: 1px solid #ccc;
+		width: 15rem;
+		height: 20rem;
+		overflow: scroll;
+		box-sizing: border-box;
+		border-radius: 24px;
+		background: aliceblue;
+		box-shadow: 1px 1px 8px #c7dbe6;
+
+		.emoji-picker__search {
+			display: flex;
+		}
+		.emoji-picker__search > input {
+			flex: 1;
+			border-radius: 10rem;
+			border: 1px solid #ccc;
+			padding: 0.5rem 1rem;
+			outline: none;
+		}
+		h5 {
+			margin-bottom: 0;
+			color: #b1b1b1;
+			text-transform: uppercase;
+			font-size: 0.8rem;
+			cursor: default;
+		}
+		.emojis {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			span {
+				padding: 0.2rem;
+				cursor: pointer;
+				border-radius: 8px;
+				font-size: 20px;
+			}
+			span:hover {
+				background: #ececec;
+				cursor: pointer;
+			}
+		}
+		.emojis:after {
+			content: "";
+			flex: auto;
+		}
 	}
 }
 
-.comment-btn {
-	position: absolute;
-	top: 38px !important;
-	right: 2px;
-}
 </style>

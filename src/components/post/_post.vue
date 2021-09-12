@@ -207,10 +207,7 @@ export default {
 			await this.$store.dispatch("multimedia/filter", {is_approved: true})
 		},
 		setCommentMode() {
-			if(this.commentMode) this.commentMode = false
-			else {
-				this.commentMode = true
-			}
+			this.commentMode = !this.commentMode;
 		}
 	}
 }
