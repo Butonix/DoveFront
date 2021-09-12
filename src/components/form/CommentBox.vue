@@ -7,9 +7,10 @@
 			v-model="comment.comment"
 			outlined auto-grow
 			color="primary" hide-details
-			label="Comment" rounded
+			label="Comment"
 			placeholder="Add your comment"
 			contenteditable="true"
+			style="border-radius: 16px"
 			@focus="focused = true"
 		>
 			<template #append>
@@ -128,6 +129,7 @@ export default {
 		insert(emoji) {
 			const commentTextarea = document.querySelector(".comment-box #comment-input-" + this.id)
 			const cursorPosition = commentTextarea.selectionStart
+			console.log(commentTextarea, cursorPosition)
 
 			if (cursorPosition === this.comment.comment.length) {
 				this.comment.comment += emoji

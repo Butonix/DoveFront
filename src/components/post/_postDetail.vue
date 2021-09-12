@@ -184,31 +184,12 @@
 				v-if="$vuetify.breakpoint.smAndDown"
 				cols="12" class="pa-2"
 			>
-				<v-textarea
-					ref="comment"
-					v-model="comment.comment"
-					class="comment"
-					outlined rounded
-					color="primary"
-					placeholder="Add your comment here..."
-					hide-details="auto"
-					clearable auto-grow
-					prepend-inner-icon="mdi-comment"
-				>
-					<template #append>
-						<v-btn
-							icon class="send-icon-button"
-							style="margin-top: -8px;"
-							@click="addCommentToPost"
-						>
-							<v-icon
-								color="primary"
-							>
-								mdi-send
-							</v-icon>
-						</v-btn>
-					</template>
-				</v-textarea>
+				<comment-box
+					v-if="target.id"
+					:id="target.id"
+					model="multimedia"
+					:filter="false"
+				/>
 			</v-col>
 		</v-row>
 	</v-card>
@@ -219,6 +200,7 @@ import Snack from "@/mixins/Snack.js";
 export default {
 	name: "BasePostDetailComponent",
 	components: {
+		CommentBox: () => import("@/components/form/CommentBox.vue"),
 		IconWithTooltip: () => import("@/components/button/IconWithTooltip.vue"),
 		PostDetailActionsComponent: () => import("@/views/post/PostDetailActions")
 	},
