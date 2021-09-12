@@ -1,7 +1,9 @@
 <template>
-	<div class="comment-box pb-2">
+	<div v-if="id"
+		class="comment-box pb-2"
+	>
 		<v-textarea
-			id="comment-input"
+			:id="'comment-input-' + id"
 			v-model="comment.comment"
 			outlined auto-grow
 			color="primary" hide-details
@@ -12,7 +14,6 @@
 		>
 			<template #append>
 				<v-btn icon
-					large
 					class="comment-btn"
 				>
 					<v-icon class="send-icon-button"
@@ -25,16 +26,24 @@
 			</template>
 		</v-textarea>
 
+		<v-btn
+			class="clear-button" icon
+			@click="comment.comment = ''"
+		>
+			<v-icon>
+				mdi-close
+			</v-icon>
+		</v-btn>
+
 		<emoji-picker :search="search"
 			@emoji="insert"
 		>
 			<!-- eslint-disable-next-line  -->
 			<div slot="emoji-invoker" slot-scope="{ events: { click: clickEvent } }"
-				style="position:absolute; right: 7px; top: 8px;"
+				style="position:absolute; right: 7px; top: 7px;"
 				@click.stop="clickEvent"
 			>
 				<v-btn icon
-					large
 					class="emoji-btn"
 				>
 					<v-icon color="orange">
@@ -69,7 +78,6 @@
 								<span
 									v-for="(emoji, emojiName) in emojiGroup"
 									:key="emojiName"
-									style="font-size: 20px !important;"
 									:title="emojiName"
 									@click="insert(emoji)"
 								>{{ emoji }}</span>
@@ -118,8 +126,8 @@ export default {
 			this.comment.comment = e.data
 		},
 		insert(emoji) {
-			const commentTextarea = document.querySelectorAll(".comment-box #comment-input")
-			const cursorPosition = commentTextarea[commentTextarea.length - 1].selectionStart
+			const commentTextarea = document.querySelector(".comment-box #comment-input-" + this.id)
+			const cursorPosition = commentTextarea.selectionStart
 
 			if (cursorPosition === this.comment.comment.length) {
 				this.comment.comment += emoji
@@ -152,62 +160,68 @@ export default {
 <style lang="scss" scoped>
 .comment-box {
 	position: relative;
-}
+	.clear-button {
+		position:absolute;
+		right: 7px !important;
+		top: 81px !important;
+	}
+	.comment-btn {
+		position: absolute;
+		top: 44px !important;
+		right: 4px !important;
+	}
 
-.comment-btn {
-	position: absolute;
-	top: 45px !important;
-	right: 2px;
-}
+	.emoji-picker {
+		position: absolute;
+		top: 55px !important;
+		right: 5px !important;
+		z-index: 1;
+		border: 1px solid #ccc;
+		width: 15rem;
+		height: 20rem;
+		overflow: scroll;
+		box-sizing: border-box;
+		border-radius: 24px;
+		background: aliceblue;
+		box-shadow: 1px 1px 8px #c7dbe6;
 
-.emoji-picker {
-	position: absolute;
-	top: 55px;
-	right: 5px;
-	z-index: 1;
-	border: 1px solid #ccc;
-	width: 15rem;
-	height: 20rem;
-	overflow: scroll;
-	box-sizing: border-box;
-	border-radius: 24px;
-	background: aliceblue;
-	box-shadow: 1px 1px 8px #c7dbe6;
-}
-.emoji-picker__search {
-	display: flex;
-}
-.emoji-picker__search > input {
-	flex: 1;
-	border-radius: 10rem;
-	border: 1px solid #ccc;
-	padding: 0.5rem 1rem;
-	outline: none;
-}
-.emoji-picker h5 {
-	margin-bottom: 0;
-	color: #b1b1b1;
-	text-transform: uppercase;
-	font-size: 0.8rem;
-	cursor: default;
-}
-.emoji-picker .emojis {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-.emoji-picker .emojis:after {
-	content: "";
-	flex: auto;
-}
-.emoji-picker .emojis span {
-	padding: 0.2rem;
-	cursor: pointer;
-	border-radius: 5px;
-}
-.emoji-picker .emojis span:hover {
-	background: #ececec;
-	cursor: pointer;
+		.emoji-picker__search {
+			display: flex;
+		}
+		.emoji-picker__search > input {
+			flex: 1;
+			border-radius: 10rem;
+			border: 1px solid #ccc;
+			padding: 0.5rem 1rem;
+			outline: none;
+		}
+		h5 {
+			margin-bottom: 0;
+			color: #b1b1b1;
+			text-transform: uppercase;
+			font-size: 0.8rem;
+			cursor: default;
+		}
+		.emojis {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			span {
+				padding: 0.2rem;
+				cursor: pointer;
+				border-radius: 8px;
+				font-size: 20px;
+			}
+			span:hover {
+				background: #ececec;
+				cursor: pointer;
+			}
+		}
+		.emojis:after {
+			content: "";
+			flex: auto;
+		}
+	}
 }
 
 </style>
