@@ -1,23 +1,20 @@
 <template>
-	<v-sheet
-		color="transparent"
-		elevation="2"
-		rounded="xl"
-		class="py-1 pl-4 pr-1 mx-auto"
-	>
-		<v-chip-group
-			multiple
-			active-class="primary--text"
-			show-arrows
-		>
-			<v-chip v-for="tag in tags"
-				:key="tag"
-				style="font-size: 13px;"
+	<v-card rounded="xl">
+		<v-card-actions class="pa-1">
+			<v-chip-group
+				multiple
+				active-class="purple--text"
+				show-arrows
 			>
-				{{ tag }}
-			</v-chip>
-		</v-chip-group>
-	</v-sheet>
+				<v-chip v-for="tag in tags"
+					:key="tag"
+					style="font-size: 13px;"
+				>
+					{{ tag }}
+				</v-chip>
+			</v-chip-group>
+		</v-card-actions>
+	</v-card>
 </template>
 
 <script>

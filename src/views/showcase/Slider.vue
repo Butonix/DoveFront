@@ -117,7 +117,7 @@ export default {
 		const tl = gsap.timeline()
 		tl
 			.to(".center-logo", {
-				delay: 2,
+				delay: 3,
 				width: 120,
 				maxWidth: 120,
 				height: 120,
@@ -135,7 +135,7 @@ export default {
 			})
 		setTimeout(() => {
 			this.loading = false
-		}, 5000)
+		}, 8000)
 	},
 	methods: {
 		async routeToFeedsPage() {

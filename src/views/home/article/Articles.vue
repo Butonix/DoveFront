@@ -7,10 +7,9 @@
 		color="transparent"
 		max-width="1000"
 	>
-		<div
-			class="py-2"
-		/>
-		<div class="mx-4">
+		<div v-if="$vuetify.breakpoint.smAndDown"
+			class="pa-4"
+		>
 			<chip-filter />
 		</div>
 		<article-pin-bar />

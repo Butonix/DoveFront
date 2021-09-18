@@ -1,21 +1,24 @@
 <template>
-	<v-card
-		rounded="xl"
-		class="mx-2"
-	>
-		<v-card-text class="d-flex flex-wrap pa-2">
-			<v-chip
-				v-for="(item, index) in items"
-				:key="index"
-				class="ma-1"
-				:to="item.to"
+	<v-card rounded="xl">
+		<v-card-actions class="pa-1">
+			<v-chip-group
+				multiple
+				show-arrows
 			>
-				<v-icon left>
-					{{ item.icon }}
-				</v-icon>
-				{{ item.title }}
-			</v-chip>
-		</v-card-text>
+				<v-chip
+					v-for="(item, index) in items"
+					:key="index"
+					class="ma-1"
+					exact-path
+					:to="item.to"
+				>
+					<v-icon left>
+						{{ item.icon }}
+					</v-icon>
+					{{ item.title }}
+				</v-chip>
+			</v-chip-group>
+		</v-card-actions>
 	</v-card>
 </template>
 

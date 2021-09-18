@@ -1,29 +1,32 @@
 <template>
-	<v-card v-if="$vuetify.breakpoint.mdAndDown"
-		rounded="xl" class="mt-2 mb-4"
-	>
+	<v-card rounded="xl">
 		<v-card-actions class="pa-1">
-			<v-chip
-				class="ma-1"
-				active-class="active-side-nav"
-				exact-active-class="active-side-nav"
-				:class="{'active-side-nav': sideNavActive['All']}"
-				:disabled="sideNavActive['All']"
-				@click="$router.push({ name: 'HOME'})"
+			<v-chip-group
+				multiple
+				show-arrows
 			>
-				All
-			</v-chip>
-			<v-chip v-for="(item, index) in homeSideNavItems"
-				:key="index"
-				class="ma-1"
-				active-class="active-side-nav"
-				exact-active-class="active-side-nav"
-				:class="{'active-side-nav': sideNavActive[item.title]}"
-				:disabled="sideNavActive[item.title]"
-				@click="$router.push({ name: 'HOME', query: { type: item.to } })"
-			>
-				{{ item.title }}
-			</v-chip>
+				<v-chip
+					class="ma-1"
+					active-class="active-side-nav"
+					exact-active-class="active-side-nav"
+					:class="{'active-side-nav': sideNavActive['All']}"
+					:disabled="sideNavActive['All']"
+					@click="$router.push({ name: 'HOME'})"
+				>
+					All
+				</v-chip>
+				<v-chip v-for="(item, index) in homeSideNavItems"
+					:key="index"
+					class="ma-1"
+					active-class="active-side-nav"
+					exact-active-class="active-side-nav"
+					:class="{'active-side-nav': sideNavActive[item.title]}"
+					:disabled="sideNavActive[item.title]"
+					@click="$router.push({ name: 'HOME', query: { type: item.to } })"
+				>
+					{{ item.title }}
+				</v-chip>
+			</v-chip-group>
 		</v-card-actions>
 	</v-card>
 </template>

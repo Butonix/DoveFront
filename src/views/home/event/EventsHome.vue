@@ -6,7 +6,10 @@
 		style="background: transparent !important;"
 		max-width="1000"
 	>
-		<v-card-text>
+		<div v-if="$vuetify.breakpoint.smAndUp"
+			class="pa-1"
+		/>
+		<v-card-text class="pa-2">
 			<v-toolbar
 				color="transparent"
 				height="60"
@@ -77,7 +80,9 @@
 			</v-toolbar>
 		</v-card-text>
 		<v-fade-transition>
-			<v-card-text v-if="events.count > 0">
+			<v-card-text v-if="events.count > 0"
+				class="pa-2"
+			>
 				<event-home-card
 					v-for="(item, index) in events.results"
 					:key="index"

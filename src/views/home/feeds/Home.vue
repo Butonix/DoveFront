@@ -8,7 +8,7 @@
 			flat max-width="800"
 			class="transparent mx-auto"
 		>
-			<chip-filter />
+			<chip-filter v-if="$vuetify.breakpoint.xs" />
 			<add-post-box />
 			<v-card
 				flat

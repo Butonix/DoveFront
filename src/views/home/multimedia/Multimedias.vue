@@ -5,14 +5,15 @@
 		class="mx-auto"
 		color="purple home-multimedias"
 	>
+		<div class="py-1" />
 		<v-scale-transition>
-			<div v-if="$vuetify.breakpoint.mdAndDown"
-				class="py-2"
+			<div v-if="$vuetify.breakpoint.xs"
+				class="pa-2"
 			>
 				<chip-filter />
 			</div>
 		</v-scale-transition>
-		<v-card-text>
+		<v-card-text class="pa-2">
 			<v-card flat
 				tile color="transparent"
 				class="mx-auto"
