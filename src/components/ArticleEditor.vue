@@ -1,7 +1,9 @@
 <template>
-	<v-card :loading="loading"
+	<v-card
+		:loading="loading"
 		flat rounded
-		class="transparent"
+		class="transparent mx-auto"
+		max-width="1000"
 	>
 		<editor
 			v-if="onGoingArticle"
@@ -12,7 +14,7 @@
 </template>
 
 <script>
-import Editor from "@/views/home/Editor.vue";
+import Editor from "@/views/home/article/Editor.vue";
 import {mapGetters} from "vuex";
 export default {
 	name: "ArticleEditor",

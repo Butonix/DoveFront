@@ -1,12 +1,10 @@
 <template>
 	<v-card
 		flat
-		class="mx-auto transparent"
-		min-height="87vh"
+		class="mx-auto transparent pa-4"
 	>
 		<v-card
 			v-if="onGoingArticle"
-			class="ma-2 mx-auto"
 		>
 			<v-toolbar
 				flat
@@ -27,11 +25,11 @@
 					<template #activator="{on, attrs}">
 						<v-btn
 							color="indigo lighten-2"
-							dark
+							fab small
 							class="mr-1"
 							v-bind="attrs"
-							@click="saveDraft"
-							v-on="on"
+							dark
+							@click="saveDraft" v-on="on"
 						>
 							<v-icon class="px-1">
 								mdi-content-save
@@ -44,8 +42,8 @@
 					<template #activator="{on, attrs}">
 						<v-btn
 							color="primary"
-							dark
-							class="post-article"
+							dark fab
+							small class="post-article"
 							v-bind="attrs"
 							@click="postArticle"
 							v-on="on"
@@ -199,7 +197,6 @@
 				id="editorjs"
 				class="article-editor rounded"
 			/>
-			<div class="py-6" />
 		</v-card>
 	</v-card>
 </template>
@@ -486,7 +483,7 @@ export default {
 .article-editor
 	background-color: #f6fafe
 	max-width: 800px
-	min-height: 80vh
+	min-height: 50vh
 	margin: auto
 	padding-top: 40px
 .article-headline

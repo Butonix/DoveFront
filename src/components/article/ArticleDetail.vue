@@ -245,7 +245,7 @@ import {mapGetters, mapMutations} from "vuex";
 import ArticleActions from "@/mixins/ArticleActions.js";
 import Snack from "@/mixins/Snack.js";
 import SmallFooter from "@/components/utils/SmallFooter.vue";
-import Editor from "@/views/home/Editor.vue";
+import Editor from "@/views/home/article/Editor.vue";
 import TheSnackbar from "@/components/utils/TheSnackbar.vue";
 const editorJsHtml = require("editorjs-html");
 

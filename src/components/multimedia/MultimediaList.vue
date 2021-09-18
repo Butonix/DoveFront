@@ -1,110 +1,108 @@
 <template>
 	<div v-if="multimedias">
-		<v-fade-transition>
-			<v-overlay :value="loading">
-				<skeleton-home-loader />
-			</v-overlay>
-		</v-fade-transition>
-		<no-home-data v-if="multimedias.length === 0"
-			:image="require('@/assets/noPostsImg.jpg')"
-		/>
-		<v-card v-else
-			flat tile
-			min-height="100vh"
-			color="transparent"
-		>
-			<div v-for="post in multimedias"
-				:key="post.id" class="mb-2"
+		<list-skeleton v-if="loading" />
+		<div v-else>
+			<no-home-data v-if="multimedias.length === 0"
+				:image="require('@/assets/noPostsImg.jpg')"
+			/>
+			<v-card v-else
+				flat tile
+				min-height="100vh"
+				color="transparent"
 			>
-				<base-post-card :post="post">
-					<template #media>
-						<v-col cols="12"
-							class="pt-0 px-2"
-						>
-							<v-card height="45vh"
-								dark rounded="xl"
+				<div v-for="post in multimedias"
+					:key="post.id" class="mb-2"
+				>
+					<base-post-card :post="post">
+						<template #media>
+							<v-col cols="12"
+								class="pt-0 px-2"
 							>
-								<v-carousel
-									height="45vh"
-									hide-delimiters
-									show-arrows-on-hover
+								<v-card height="45vh"
+									dark rounded="xl"
 								>
-									<template #next="{ on, attrs }">
-										<v-btn
-											v-show="moreThanOneItem(post)"
-											dark
-											v-bind="attrs"
-											:style="carouselNavItemStyle"
-											icon
-											v-on="on"
-											@click="pauseAllPlaying()"
-										>
-											<v-icon>mdi-chevron-right</v-icon>
-										</v-btn>
-									</template>
-									<template #prev="{ on, attrs }">
-										<v-btn
-											v-show="moreThanOneItem(post)"
-											dark
-											icon
-											:style="carouselNavItemStyle"
-											v-bind="attrs"
-											v-on="on"
-											@click="pauseAllPlaying()"
-										>
-											<v-icon>mdi-chevron-left</v-icon>
-										</v-btn>
-									</template>
-									<v-carousel-item
-										v-for="image in post['multimedia_images']"
-										:key="$helper.replaceBackendHost(image.image)"
+									<v-carousel
+										height="45vh"
+										hide-delimiters
+										show-arrows-on-hover
 									>
-										<v-card height="45vh">
-											<v-img :src="$helper.replaceBackendHost(image.image)"
+										<template #next="{ on, attrs }">
+											<v-btn
+												v-show="moreThanOneItem(post)"
+												dark
+												v-bind="attrs"
+												:style="carouselNavItemStyle"
+												icon
+												v-on="on"
+												@click="pauseAllPlaying()"
+											>
+												<v-icon>mdi-chevron-right</v-icon>
+											</v-btn>
+										</template>
+										<template #prev="{ on, attrs }">
+											<v-btn
+												v-show="moreThanOneItem(post)"
+												dark
+												icon
+												:style="carouselNavItemStyle"
+												v-bind="attrs"
+												v-on="on"
+												@click="pauseAllPlaying()"
+											>
+												<v-icon>mdi-chevron-left</v-icon>
+											</v-btn>
+										</template>
+										<v-carousel-item
+											v-for="image in post['multimedia_images']"
+											:key="$helper.replaceBackendHost(image.image)"
+										>
+											<v-card height="45vh">
+												<v-img :src="$helper.replaceBackendHost(image.image)"
+													height="45vh"
+												/>
+											</v-card>
+										</v-carousel-item>
+										<v-carousel-item v-for="video in post['multimedia_videos']"
+											:key="$helper.replaceBackendHost(video.video)"
+										>
+											<v-card
 												height="45vh"
-											/>
-										</v-card>
-									</v-carousel-item>
-									<v-carousel-item v-for="video in post['multimedia_videos']"
-										:key="$helper.replaceBackendHost(video.video)"
-									>
-										<v-card
-											height="45vh"
-											max-width="100%"
-											dark
-											class="ma-0 pa-0"
+												max-width="100%"
+												dark
+												class="ma-0 pa-0"
+											>
+												<video
+													:poster="$helper.replaceBackendHost(video.poster)"
+													controls
+													height="100%"
+													width="100%"
+													:src="$helper.replaceBackendHost(video.video)"
+													@play="onPlay"
+												/>
+											</v-card>
+										</v-carousel-item>
+										<v-carousel-item v-for="video in post['multimedia_video_urls']"
+											:key="video.video_url"
 										>
-											<video
-												:poster="$helper.replaceBackendHost(video.poster)"
-												controls
+											<youtube
+												ref="yt"
 												height="100%"
 												width="100%"
-												:src="$helper.replaceBackendHost(video.video)"
-												@play="onPlay"
+												:video-id="$youtube.getIdFromUrl(video.video_url)"
+												nocookie
+												:player-vars="playerVars"
+												@playing="playing"
 											/>
-										</v-card>
-									</v-carousel-item>
-									<v-carousel-item v-for="video in post['multimedia_video_urls']"
-										:key="video.video_url"
-									>
-										<youtube
-											ref="yt"
-											height="100%"
-											width="100%"
-											:video-id="$youtube.getIdFromUrl(video.video_url)"
-											nocookie
-											:player-vars="playerVars"
-											@playing="playing"
-										/>
-									</v-carousel-item>
-								</v-carousel>
-							</v-card>
-						</v-col>
-					</template>
-				</base-post-card>
-			</div>
-			<div v-observe-visibility="handleScrollToBottom" />
-		</v-card>
+										</v-carousel-item>
+									</v-carousel>
+								</v-card>
+							</v-col>
+						</template>
+					</base-post-card>
+				</div>
+				<div v-observe-visibility="handleScrollToBottom" />
+			</v-card>
+		</div>
 	</div>
 </template>
 <script>
@@ -114,9 +112,9 @@ import {mapGetters, mapMutations} from "vuex";
 export default {
 	name: "MultimediaList",
 	components: {
-		SkeletonHomeLoader: () => import("@/components/utils/SkeletonHomeLoader.vue"),
-		BasePostCard: () => import("@/components/post/_post.vue"),
-		NoHomeData: () => import("@/components/feeds/NoHomeData.vue"),
+		ListSkeleton: () => import("@/components/skeletons/MultimediaList.vue"),
+		BasePostCard: () => import("@/components/post/_post"),
+		NoHomeData: () => import("@/components/feeds/NoHomeData"),
 	},
 	mixins: [HtmlVideoMixin],
 	data() {
@@ -126,7 +124,7 @@ export default {
 			playerVars: {autoplay: 0, origin: window.location.href},
 			loading: true,
 			posts: [],
-			occ: 0,
+			occurrence: 0,
 			next: {
 				next: null,
 				count: 0
@@ -170,8 +168,8 @@ export default {
 		},
 		async handleScrollToBottom(isVisible) {
 			if(isVisible) {
-				this.occ ++
-				if (this.occ > 1) {
+				this.occurrence ++
+				if (this.occurrence > 1) {
 					if (this.nextInfo.next && this.nextInfo.count >=1) {
 						const res = await this.$api.getWithPayload(this.next.next.replace("http://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np"))
 						this.MERGE_MULTIMEDIAS(res.results)
@@ -208,5 +206,8 @@ export default {
 		top: 2%;
 		right: 2%;
 	}
+}
+.skeleton-overlay {
+	z-index: 7 !important;
 }
 </style>

@@ -4,11 +4,11 @@
 			v-if="$helper.isCurrentUserSuperAdmin()"
 			:icon="ifScreenWidthIsLessThanSmall"
 			:small="!ifScreenWidthIsLessThanSmall"
-			height="40"
+			height="45"
 			class="ma-1"
 			depressed
 			color="#953b93"
-			dark
+			dark rounded
 			@click="$emit('edit')"
 		>
 			<v-icon>
@@ -19,7 +19,7 @@
 			class="ma-1"
 			:icon="ifScreenWidthIsLessThanSmall"
 			:small="!ifScreenWidthIsLessThanSmall"
-			height="40"
+			height="45" rounded
 		>
 			<v-icon>
 				mdi-heart-outline
@@ -29,7 +29,7 @@
 			class="ma-1"
 			:icon="ifScreenWidthIsLessThanSmall"
 			:small="!ifScreenWidthIsLessThanSmall"
-			height="40"
+			height="45" rounded
 		>
 			<v-icon>
 				mdi-comment-outline
@@ -39,7 +39,7 @@
 			class="ma-1"
 			:icon="ifScreenWidthIsLessThanSmall"
 			:small="!ifScreenWidthIsLessThanSmall"
-			height="40"
+			height="45" rounded
 		>
 			<v-icon>
 				mdi-share
@@ -50,7 +50,7 @@
 			class="ma-1"
 			:icon="ifScreenWidthIsLessThanSmall"
 			:small="!ifScreenWidthIsLessThanSmall"
-			height="40"
+			height="45" rounded
 		>
 			<v-icon>
 				mdi-bookmark-outline

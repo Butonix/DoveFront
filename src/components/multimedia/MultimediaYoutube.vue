@@ -6,15 +6,17 @@
 			min-height="40vh"
 			width="100%"
 			outlined
+			rounded="xl"
 		>
 			<v-card
 				color="grey"
 				height="40vh"
 				class="ma-2"
+				rounded="xl"
 			>
 				<youtube
 					ref="yt"
-					class="rounded"
+					class="rounded-xl"
 					height="100%"
 					width="100%"
 					:video-id="$youtube.getIdFromUrl(y.video_url)"
@@ -31,9 +33,11 @@
 				@edit="editVideoUrl(y)"
 			/>
 		</v-card>
-		<v-dialog v-model="edit">
-			<v-card>
-				<v-card-title class="elevation-4">
+		<v-dialog v-model="edit"
+			max-width="600"
+		>
+			<v-card rounded="xl">
+				<v-card-title class="elevation-4 rounded-xl grey lighten-3">
 					Update youtube url
 				</v-card-title>
 				<div class="py-3" />
@@ -47,15 +51,18 @@
 				/>
 				<div class="py-3" />
 				<v-divider />
-				<v-card-actions>
-					<v-btn color="error lighten-3"
-						depressed
+				<v-card-actions class="grey lighten-3">
+					<v-btn
+						color="error lighten-3"
+						depressed rounded
 						@click="edit = false"
 					>
 						Cancel
 					</v-btn>
-					<v-btn color="primary"
-						@click="updateVideoUrl()"
+					<v-btn
+						:loading="updating"
+						color="primary"
+						rounded @click="updateVideoUrl()"
 					>
 						Save
 					</v-btn>
@@ -80,6 +87,7 @@ export default {
 		}
 	},
 	data: () => ({
+		updating: false,
 		edit: false,
 		editedItem: {
 			video_url: null
@@ -93,6 +101,7 @@ export default {
 			this.editedItem["id"] = item.id
 		},
 		async updateVideoUrl() {
+			this.updating = true
 			try {
 				await this.$api.patch("multimedia-video-url/" + this.editedItem.id + "/", {
 					video_url: this.editedItem.video_url
@@ -105,6 +114,7 @@ export default {
 					this.formErrors = e.response.body
 				}
 			}
+			this.updating = false
 		}
 	}
 }

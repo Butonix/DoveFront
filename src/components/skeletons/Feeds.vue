@@ -125,7 +125,7 @@
 
 <script>
 export default {
-	name: "SkeletonHomeLoader"
+	name: "FeedsSkeleton"
 }
 </script>
 

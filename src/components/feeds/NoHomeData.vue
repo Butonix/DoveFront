@@ -1,8 +1,11 @@
 <template>
-	<v-card class="no-post"
+	<v-card
+		rounded="xl"
+		class="no-post"
 		max-height="300"
 	>
-		<v-img :src="image"
+		<v-img
+			:src="image"
 			height="300"
 		>
 			<template #default>
