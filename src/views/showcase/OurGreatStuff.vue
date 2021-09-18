@@ -131,6 +131,7 @@ export default {
 .stuff-headline {
 	background-color: #8080807a;
 	border-radius: 24px;
+	border: 2px solid white;
 	color: white !important;
 }
 .great-stuff-card {

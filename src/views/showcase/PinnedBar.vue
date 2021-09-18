@@ -67,15 +67,15 @@
 						<v-btn large
 							dark
 							height="55"
-							outlined
-							rounded
 							class="explore-pin-btn"
 							to="/home/article"
 						>
-							<v-icon>mdi-eye-circle</v-icon>
-							<span v-show="$vuetify.breakpoint.smAndUp"
-								class="ml-4"
-							>Explore All</span>
+							Explore All
+							<v-icon right
+								size="20"
+							>
+								mdi-eye-circle
+							</v-icon>
 						</v-btn>
 					</v-card-actions>
 				</v-col>
@@ -274,6 +274,10 @@ export default {
 	max-width: 800px
 	margin: 0 auto
 	text-align: center
+
+.explore-pin-btn
+	border: 2px solid white
+	border-radius: 20px
 </style>
 <style lang="scss" scoped>
 .custom-shape-divider-top-1631291856 {

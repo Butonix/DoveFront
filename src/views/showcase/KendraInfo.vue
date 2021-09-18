@@ -92,7 +92,7 @@ export default {
 			scrollTrigger: {
 				trigger: "#kendra_motto",
 				start: "bottom bottom",
-				end: "+=300",
+				end: "+=300"
 			},
 			yoyo: true
 		})

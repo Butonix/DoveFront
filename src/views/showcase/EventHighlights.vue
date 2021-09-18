@@ -2,7 +2,6 @@
 	<v-card
 		class="highlights-wrapper mx-1 transparent"
 		flat
-		:loading="loading"
 		dark
 	>
 		<v-carousel
@@ -55,8 +54,8 @@
 						</v-list-item-avatar>
 						<v-fade-transition>
 							<v-list-item-content
-								class="highlights-content elevation-4 rounded-xl"
-								:class="colors[index%3]"
+								class="highlights-content rounded-xl"
+								:style="{backgroundColor: colors[index%3]}"
 							>
 								<v-list-item-title
 									class="py-2"
@@ -115,13 +114,21 @@
 </template>
 <script>
 import {mapGetters} from "vuex";
+import {gsap} from "gsap"
+import {ScrollTrigger} from "gsap/ScrollTrigger"
+
+ScrollTrigger.defaults({
+	toggleActions: "restart pause resume pause",
+	scrub: 1
+});
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
 	name: "EventHighlights",
 	data: () => ({
 		loading: null,
 		colors: [
-			"light-blue darken-4",
+			"#01579b",
 			"cyan darken-4",
 			"purple darken-4",
 		],
@@ -146,6 +153,18 @@ export default {
 	},
 	async created() {
 		await this.init()
+		gsap.timeline({
+			scrollTrigger: {
+				trigger: ".showcase-img-section",
+				start: "top top",
+				end: "+=200"
+			},
+			yoyo: true
+		})
+			.from(".highlights-wrapper", {
+				scale: 0,
+				ease: "back.out(1.7)",
+			})
 	},
 	methods: {
 		async init() {
@@ -185,8 +204,6 @@ export default {
 	top: 0
 	left: 5%
 	z-index: 2
-	@media only screen and (max-width: 600px)
-		border: 2px solid white !important
 .highlights-wrapper
 	margin-top: -18vh
 .highlights-carousel
@@ -197,6 +214,7 @@ export default {
 	position: absolute
 	top: 70px
 	padding: 70px 20px 20px 20px
+	border: 3px solid white!important
 .small-title
 	font-size: 22px
 	line-height: 22px
@@ -205,7 +223,6 @@ export default {
 	line-height: 26px
 .month-column
 	padding-top: 4px !important
-	border-top: 3px solid white
 	@media only screen and (max-width: 600px)
 		padding-top: 4px !important
 		border-top: 2px solid white

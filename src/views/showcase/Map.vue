@@ -1,57 +1,50 @@
 <template>
-	<div>
-		<v-img
-			dark
-			height="120vh"
-			:src="require('@/assets/mass_clap.jpg')"
-		>
-			<v-row
-				align="center"
-				justify="center"
+	<v-card
+		dark flat
+		tile :img="require('@/assets/mass_clap.jpg')"
+	>
+		<div style="height: 200px;" />
+		<v-card-text>
+			<v-card class="py-4 find-us-title mx-auto"
+				max-width="1000"
+				rounded="xl"
 			>
-				<v-card dark flat
-					color="transparent"
-				>
-					<div style="height: 200px;" />
-					<v-card class="py-4 find-us-title mx-auto"
-						max-width="1000"
-						rounded="xl"
+				<div class="text-center">
+					<v-avatar v-show="$vuetify.breakpoint.smAndUp"
+						class="mr-2 find-us-av"
+						size="60"
+						color="white"
 					>
-						<div class="text-center">
-							<v-avatar v-show="$vuetify.breakpoint.smAndUp"
-								class="mr-2 find-us-av"
-								size="60"
-								color="white"
-							>
-								<v-icon x-large
-									color="blue darken-2"
-								>
-									mdi-map-legend
-								</v-icon>
-							</v-avatar>
-							{{ mapInfo.title }}
-						</div>
-						<p class="find-us-subtitle text-center pt-4">
-							{{ mapInfo.description }}
-						</p>
-					</v-card>
-					<div class="py-4" />
-					<v-card height="600"
-						max-width="1000" class="mx-auto"
-						rounded="xl"
-					>
-						<iframe
-							id="branch-iframe"
-							style="z-index: 2"
-							src="https://www.google.com/maps/d/embed?mid=1gQSVr7mErgYHo00oSpVGv5oIdklxJqPc"
-							width="100%" height="600"
-						/>
-					</v-card>
-					<div class="py-14" />
-				</v-card>
-			</v-row>
-		</v-img>
-	</div>
+						<v-icon x-large
+							color="blue darken-2"
+						>
+							mdi-map-legend
+						</v-icon>
+					</v-avatar>
+					{{ mapInfo.title }}
+				</div>
+				<v-card-text>
+					<p class="find-us-subtitle text-center pt-4">
+						{{ mapInfo.description }}
+					</p>
+				</v-card-text>
+			</v-card>
+		</v-card-text>
+		<v-card-text>
+			<v-card height="600"
+				max-width="1000" class="mx-auto"
+				rounded="xl"
+			>
+				<iframe
+					id="branch-iframe"
+					style="z-index: 2"
+					src="https://www.google.com/maps/d/embed?mid=1gQSVr7mErgYHo00oSpVGv5oIdklxJqPc"
+					width="100%" height="600"
+				/>
+			</v-card>
+		</v-card-text>
+		<div style="height: 100px;" />
+	</v-card>
 </template>
 
 <script>

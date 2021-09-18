@@ -1,8 +1,5 @@
 <template>
-	<div style="
-    background: #f4f4f5;
-"
-	>
+	<div style="background: #f4f4f5;">
 		<show-case-slider />
 		<event-highlights />
 		<kendra-info-box />
@@ -13,6 +10,7 @@
 		<pin-bar />
 		<equity-equality />
 		<showcase-map />
+		<home-footer />
 	</div>
 </template>
 
@@ -20,16 +18,17 @@
 export default {
 	name: "ShowcaseView",
 	components: {
-		WhatIsSachchai: () => import("@/views/showcase/WhatIsSachchai.vue"),
 		ShowCaseSlider: () => import("@/views/showcase/Slider"),
 		KendraInfoBox: () => import("@/views/showcase/KendraInfo"),
+		WhatIsSachchai: () => import("@/views/showcase/WhatIsSachchai.vue"),
 		PinBar: () => import("@/views/showcase/PinnedBar"),
 		ServicesPeek: () => import("@/views/showcase/PeekServices"),
 		Scatter: () => import("@/views/showcase/Scatter"),
 		EventHighlights: () => import("@/views/showcase/EventHighlights"),
 		OurGreatStuff: () => import("@/views/showcase/OurGreatStuff"),
 		EquityEquality: () => import("@/views/showcase/EquityEquality"),
-		ShowcaseMap: () => import("@/views/showcase/Map")
+		ShowcaseMap: () => import("@/views/showcase/Map"),
+		HomeFooter: () => import("@/views/home/Footer")
 	}
 }
 </script>

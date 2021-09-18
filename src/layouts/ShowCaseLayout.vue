@@ -3,7 +3,6 @@
 		<the-snackbar />
 		<auth-panel />
 		<router-view />
-		<home-footer />
 		<facebook-chat />
 		<scroll-top color="blue darken-3" />
 		<to-feeds-page-btn />
@@ -19,7 +18,6 @@ export default {
 		FacebookChat: () => import("@/components/utils/FacebookChat.vue"),
 		AuthPanel: () => import("@/views/showcase/AuthPanel"),
 		ScrollTop: () => import("@/components/utils/ScrollTop.vue"),
-		HomeFooter: () => import("@/views/home/Footer")
 	}
 }
 </script>

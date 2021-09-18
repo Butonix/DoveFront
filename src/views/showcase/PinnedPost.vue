@@ -3,14 +3,16 @@
 		class="pin-post-card pa-6"
 	>
 		<v-card
-			outlined
 			dark
 			:loading="loading"
 			max-width="300"
 			width="300"
 			rounded="xl"
+			class="pin-post"
 		>
-			<v-list-item dark>
+			<v-list-item dark
+				class="header-item"
+			>
 				<v-list-item-avatar :color="$constants.pickBackgroundColor()"
 					class="d-flex justify-center align-center"
 				>
@@ -34,7 +36,9 @@
 					>
 						<v-icon v-ripple
 							color="grey darken-4"
-						>mdi-bullseye-arrow</v-icon>
+						>
+							mdi-bullseye-arrow
+						</v-icon>
 					</v-avatar>
 				</span>
 			</v-list-item>
@@ -46,7 +50,7 @@
 				style="position: relative"
 			>
 				<v-card
-					style="position: absolute; bottom: 0"
+					style="position: absolute; bottom: 0;border-top: 1px solid white"
 					width="100%"
 					tile flat
 					class="pa-2"
@@ -121,6 +125,10 @@ export  default {
 .pin-post-card
 	animation-duration: .3s
 	animation-name: pinBoxReverse
+	.pin-post
+		border: 2px solid white!important
+		.header-item
+			border-bottom: 1px solid white
 
 .pin-post-card:hover
 	animation-duration: .3s

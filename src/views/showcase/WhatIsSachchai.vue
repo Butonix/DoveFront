@@ -56,43 +56,9 @@
 </template>
 
 <script>
-import {gsap} from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger"
-gsap.registerPlugin(ScrollTrigger);
-
 
 export default {
 	name: "WhatIsSachchai",
-	mounted() {
-		const section = document.querySelector(".what-is-sachchai")
-		gsap.timeline({
-			scrollTrigger: {
-				trigger: section,
-				start: "top top", // center of trigger element hits top of the viewport
-				end: "+=50",
-				yoyo: true,
-				scrub: 1
-			}
-		})
-			.from(".question", {
-				scaleX: 0,
-				scaleY: 0,
-				duration: 100,
-			})
-			.from(".hr-divider", {
-				width: 0,
-				duration: 100,
-				delay: 200,
-				ease: "rough"
-			}, 0)
-			.from(".answer", {
-				scaleY: 0,
-				duration: 100,
-				delay: 400,
-				ease: "slow(￼0.7, 0.7, 0.7, 0.7, ￼false)",
-				// ease: "slow",
-			}, 8)
-	}
 }
 </script>
 
