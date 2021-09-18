@@ -1,12 +1,10 @@
 <template>
 	<v-card
 		:loading="loading"
-		rounded="xl"
-		color="purple"
-		class="mx-4"
-		style="background-color: rgb(249 246 255) !important;"
+		color="transparent"
+		flat tile
 	>
-		<v-card-title>
+		<v-card-title class="pb-0">
 			<v-icon
 				size="22"
 				style="transform: rotate(30deg)"
@@ -16,15 +14,20 @@
 			<span class="px-2" />
 			<span>Pinned Articles</span>
 		</v-card-title>
-		<v-divider />
 		<v-card-text class="d-flex py-2 px-0 overflow-hidden">
 			<horizontal-slider>
+				<div class="px-2"
+					style="display: inline-block"
+				/>
 				<v-card
 					v-for="pin in pins"
 					:key="pin.id"
+					dark
 					width="250"
+					height="200"
 					rounded="xl" class="ma-2"
-					style="display: inline-block;"
+					style="display: inline-block; position:relative;"
+					:img="$helper.replaceBackendHost(pin.cover_image.image)"
 				>
 					<v-card-title
 						class="cursor pin-headline"
@@ -32,10 +35,10 @@
 					>
 						{{ pin.title }}
 					</v-card-title>
-					<v-img v-if="pin.cover_image"
-						:src="$helper.replaceBackendHost(pin.cover_image.image)"
-					/>
 				</v-card>
+				<div class="px-2"
+					style="display: inline-block"
+				/>
 			</horizontal-slider>
 		</v-card-text>
 	</v-card>
@@ -60,6 +63,12 @@ export default {
 </script>
 
 <style scoped>
+.pin-headline {
+	position:absolute; bottom: 0; left: 0;
+	line-height: 1rem;
+	font-size: 1rem;
+	background: #000000ab;
+}
 .pin-headline:hover {
 	background-color: #e5e5e5;
 }

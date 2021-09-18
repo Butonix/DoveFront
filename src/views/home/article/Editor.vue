@@ -219,8 +219,8 @@ const Embed = require("@editorjs/embed");
 import Undo from "editorjs-undo";
 const urls = require("@/urls.json")
 import DragDrop from "editorjs-drag-drop";
-import {getAccessToken} from "@/Helper";
-import Snack from "@/mixins/Snack";
+import {getAccessToken} from "@/Helper.js";
+import Snack from "@/mixins/Snack.js";
 import Table from "@editorjs/table";
 import AlignmentBlockTune from "editorjs-text-alignment-blocktune";
 import SocialPost from "editorjs-social-post-plugin";

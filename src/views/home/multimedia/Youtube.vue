@@ -1,11 +1,10 @@
 <template>
 	<v-card
-		flat
-		min-height="82vh"
+		flat tile
 		color="transparent"
 	>
 		<div class="py-1" />
-		<v-card>
+		<v-card rounded="xl">
 			<v-card-title>Watch our videos from youtube</v-card-title>
 			<v-card-subtitle>All of these videos are also available in youtube</v-card-subtitle>
 			<v-card-subtitle>You can go to youtube and watch out videos directly from there.</v-card-subtitle>
@@ -39,9 +38,8 @@ export default {
 		}),
 		youtube_medias() {
 			if(!this.multimedias) return []
-			if(!this.multimedias.results) return []
 			let temp = []
-			this.multimedias.results.forEach(media => {
+			this.multimedias.forEach(media => {
 				temp = temp.concat(media["multimedia_video_urls"])
 			})
 			return temp

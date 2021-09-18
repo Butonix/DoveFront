@@ -1,6 +1,5 @@
 <template>
-	<v-card class="mb-8 mt-2"
-		min-height="77vh"
+	<v-card
 		flat
 		color="transparent"
 	>
@@ -31,9 +30,8 @@ export default {
 		}),
 		pins() {
 			if (!this.multimedias) return []
-			if (!this.multimedias.results) return []
 			let temp = []
-			this.multimedias.results.forEach(media => {
+			this.multimedias.forEach(media => {
 				if (media.is_pinned) {
 					temp.push(media)
 				}

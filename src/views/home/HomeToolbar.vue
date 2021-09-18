@@ -1,5 +1,6 @@
 <template>
 	<v-app-bar
+		clipped-right
 		app
 		fixed
 		height="60"
@@ -30,14 +31,17 @@
 		<div v-if="$vuetify.breakpoint.width > 700"
 			class="px-4"
 		/>
-		<v-btn v-for="(item, index) in homeTabItems"
+		<v-btn
+			v-for="(item, index) in homeTabItems"
 			:key="index"
 			:to="item.to"
-			active-class="route-btn-active"
-			text
+			text tile
 			height="60"
-			tile
 			class="route-btn"
+			exact-path
+			active-class="route-btn-active"
+			exact-active-class="route-btn-active"
+			:class="{'route-btn-active': toolbarItemsActive[item.text]}"
 		>
 			<v-icon v-if="$vuetify.breakpoint.width < 600"
 				:size="($vuetify.breakpoint.width < 460) ? 20 : 24"
@@ -67,10 +71,20 @@ export default {
 		homeTabItems: [
 			{icon: "mdi-home", text: "Home", to: "/home/feeds"},
 			{icon: "mdi-post", text: "Articles", to: "/home/article"},
-			{icon: "mdi-video-vintage", text: "Multimedia", to: "/home/multimedia"},
+			{icon: "mdi-video-vintage", text: "Multimedias", to: "/home/multimedia"},
 			{icon: "mdi-calendar-clock", text: "Events", to: "/home/event"},
 		],
 	}),
+	computed: {
+		toolbarItemsActive() {
+			return {
+				Home: this.$route.path === "/home/feeds",
+				Articles: this.$route.path === "/home/article",
+				Multimedias: this.$route.path === "/home/multimedia",
+				Events: this.$route.path === "/home/event",
+			}
+		}
+	},
 	methods: {
 		routeToFeeds() {
 			if (this.$route.name !== "HOME") {

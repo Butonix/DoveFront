@@ -105,9 +105,8 @@ export default {
 		}),
 		images() {
 			if(!this.multimedias) return []
-			if(!this.multimedias.results) return []
 			let temp = []
-			this.multimedias.results.forEach(media => {
+			this.multimedias.forEach(media => {
 				temp = temp.concat(media["multimedia_images"])
 			})
 			return temp

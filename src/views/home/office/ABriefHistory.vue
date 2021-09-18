@@ -1,9 +1,15 @@
 <template>
-	<div class="pa-4">
+	<v-card
+		flat tile
+		class="mx-auto pa-4"
+		color="transparent"
+		:width="criticalScreenWidth"
+	>
 		<v-card rounded="xl">
 			<v-card-title>
 				A Brief History of Sachchai Kendra Nepal
 			</v-card-title>
+			<v-divider />
 			<v-card-text>
 				Anxious to know how the organization got into this position now? Please go through our brief history timeline.
 				Here we share the idea behind this movement and the struggles behind the showcase.
@@ -37,13 +43,15 @@
 				</v-card>
 			</v-timeline-item>
 		</v-timeline>
-	</div>
+	</v-card>
 </template>
 
 <script>
+import HomeCriticalWidth from "@/mixins/HomeCriticalWidth.js";
+
 export default {
 	name: "ABriefHistory",
-	props: {},
+	mixins: [HomeCriticalWidth],
 	data: () => ({
 		items: [
 			{
@@ -78,7 +86,7 @@ export default {
 				color: "blue darken-2",
 				icon: "mdi-buffer",
 				opposite: "2069",
-				title: "More Participation and Believers",
+				title: "More Participation of Believers",
 				description: "Peoples are now participating in our Satsangs and Bhajans. We also share how our life is impacted by this belief system and get motivated among ourselves with our own stories. Peoples are more than happy to being heard and motivated."
 			},
 			{

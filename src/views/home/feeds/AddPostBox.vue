@@ -1,5 +1,4 @@
 <template>
-	<!--	TODO: make dark implementation too -->
 	<v-card
 		id="start-post-card"
 		color="white"
@@ -113,7 +112,7 @@ import {gsap} from "gsap"
 export default {
 	name: "AddPostBoxComponent",
 	components: {
-		EventFormDialog: () => import("@/views/event/EventFormDialog"),
+		EventFormDialog: () => import("@/views/event/EventFormDialog.vue"),
 		StartPostBox: () => import("@/components/feeds/StartPost.vue"),
 		DepressedButton: () => import("@/components/button/DepressedTooltipButton.vue")
 	},

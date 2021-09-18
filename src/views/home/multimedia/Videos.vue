@@ -3,7 +3,7 @@
 		flat
 	>
 		<div class="py-1" />
-		<v-card>
+		<v-card rounded="xl">
 			<v-card-title>Watch our uploaded videos</v-card-title>
 			<v-card-subtitle>Enjoy moments with Sachchai Kendra Nepal</v-card-subtitle>
 			<v-card-subtitle>You can go to youtube and watch out videos directly from there.</v-card-subtitle>
@@ -39,9 +39,8 @@ export default {
 		}),
 		videos() {
 			if(!this.multimedias) return []
-			if(!this.multimedias.results) return []
 			let temp = []
-			this.multimedias.results.forEach(media => {
+			this.multimedias.forEach(media => {
 				temp = temp.concat(media["multimedia_videos"])
 			})
 			return temp
