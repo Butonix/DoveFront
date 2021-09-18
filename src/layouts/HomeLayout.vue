@@ -1,34 +1,44 @@
 <template>
-	<v-card
-		tile flat
+	<v-app
 		class="overflow-hidden"
 	>
 		<home-toolbar @toggle="homeDrawer = !homeDrawer" />
+		<v-navigation-drawer
+			v-model="homeDrawer"
+			app
+			:permanent="!$vuetify.breakpoint.mdAndDown"
+			:temporary="$vuetify.breakpoint.mdAndDown"
+			width="280"
+			color="#f6f4fc"
+		>
+			<div class="py-2" />
+			<quick-links />
+		</v-navigation-drawer>
+		<v-navigation-drawer
+			v-model="homeDrawer"
+			app
+			:permanent="!$vuetify.breakpoint.mdAndDown"
+			:temporary="$vuetify.breakpoint.mdAndDown"
+			width="280"
+			clipped
+			right
+			color="#f6f4fc"
+		>
+			<router-view name="sidebar" />
+		</v-navigation-drawer>
 
-		<v-main style="background-color: #f3edff">
+		<v-main
+			style="background-color: #f3edff"
+		>
 			<v-container
 				fluid
 				class="home-router-container"
 			>
 				<the-snackbar />
-				<v-navigation-drawer
-					v-model="homeDrawer"
-					:permanent="!$vuetify.breakpoint.mdAndDown"
-					:temporary="$vuetify.breakpoint.mdAndDown"
-					width="280"
-					color="#f6f4fc"
-					style="position: fixed; left: 0;"
-					:style="(!$vuetify.breakpoint.mdAndDown) ? 'top: 60px;': ''"
-				>
-					<div class="py-2" />
-					<quick-links />
-				</v-navigation-drawer>
 				<v-card
 					flat
 					color="transparent"
-					class="mx-auto pa-0"
-					max-width="1000"
-					min-height="90vh"
+					min-height="calc(100vh-60px)"
 				>
 					<transition name="view">
 						<router-view />
@@ -38,7 +48,7 @@
 			<facebook-chat />
 			<scroll-up color="#91348e" />
 		</v-main>
-	</v-card>
+	</v-app>
 </template>
 
 <script>
