@@ -29,7 +29,7 @@ module.exports = {
 		if (this.isUserLoggedIn()) {
 			if (!this.getCurrentUser()) return false
 			const currentUser = this.getCurrentUser()
-			return currentUser["is_superuser"]
+			return currentUser["is_superuser"] || currentUser["admin"]
 		}
 		return false
 	},

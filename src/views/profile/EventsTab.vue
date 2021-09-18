@@ -38,11 +38,10 @@
 	</div>
 </template>
 <script>
-import EventHomeCard from "@/views/event/EventHomeCard.vue";
 export default {
 	name: "ProfilePostsTabView",
 	components: {
-		EventHomeCard
+		EventHomeCard: () => import("@/views/home/event/EventHomeCard")
 	},
 	data: () => ({
 		loading: false,

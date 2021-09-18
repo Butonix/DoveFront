@@ -32,7 +32,7 @@ import {mapGetters, mapMutations} from "vuex";
 export default {
 	name: "ArticleDetail",
 	components: {
-		Editor: () => import("@/views/home/Editor.vue")
+		Editor: () => import("@/views/home/article/Editor.vue")
 	},
 	beforeRouteLeave(to, from, next) {
 		this.SET_ARTICLE(null)
