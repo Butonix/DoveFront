@@ -39,7 +39,7 @@
 			>
 				<v-col cols="12">
 					<v-card class="d-flex pa-4"
-						min-height="120" color="transparent"
+						min-height="120" color="#3F51B5"
 						rounded="xl"
 					>
 						<div class="become-follower">
