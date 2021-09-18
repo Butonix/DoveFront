@@ -5,24 +5,21 @@
 		<home-toolbar @toggle="homeDrawer = !homeDrawer" />
 		<v-navigation-drawer
 			v-model="homeDrawer"
-			app
+			app width="280"
+			color="#f6f4fc"
 			:permanent="!$vuetify.breakpoint.mdAndDown"
 			:temporary="$vuetify.breakpoint.mdAndDown"
-			width="280"
-			color="#f6f4fc"
 		>
 			<div class="py-2" />
 			<quick-links />
 		</v-navigation-drawer>
 		<v-navigation-drawer
-			v-model="homeDrawer"
-			app
-			:permanent="!$vuetify.breakpoint.mdAndDown"
-			:temporary="$vuetify.breakpoint.mdAndDown"
-			width="280"
-			clipped
-			right
-			color="#f6f4fc"
+			v-model="homeSidebar"
+			app clipped
+			right color="#f6f4fc"
+			:permanent="$vuetify.breakpoint.smAndUp"
+			:temporary="!$vuetify.breakpoint.smAndUp"
+			:width="$vuetify.breakpoint.width > 1000 ? 280 : 220"
 		>
 			<router-view name="sidebar" />
 		</v-navigation-drawer>
@@ -63,16 +60,19 @@ export default {
 	},
 	data: () => ({
 		homeDrawer: null,
+		homeSidebar: null,
 	}),
 	watch: {
 		"$vuetify.breakpoint.width": {
 			handler() {
 				this.homeDrawer = this.$vuetify.breakpoint.mdAndUp;
+				this.homeSidebar = this.$vuetify.breakpoint.smAndUp
 			}
 		}
 	},
 	created() {
 		this.homeDrawer = this.$vuetify.breakpoint.mdAndUp
+		this.homeSidebar = this.$vuetify.breakpoint.smAndUp
 	}
 }
 </script>
