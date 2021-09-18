@@ -3,7 +3,7 @@
 		flat tile
 		class="mx-auto pa-4"
 		color="transparent"
-		:width="criticalScreenWidth"
+		max-width="900"
 	>
 		<v-card rounded="xl">
 			<v-card-title>
@@ -47,11 +47,9 @@
 </template>
 
 <script>
-import HomeCriticalWidth from "@/mixins/HomeCriticalWidth.js";
 
 export default {
 	name: "ABriefHistory",
-	mixins: [HomeCriticalWidth],
 	data: () => ({
 		items: [
 			{

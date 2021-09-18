@@ -3,7 +3,7 @@
 		flat tile
 		class="mx-auto"
 		color="transparent"
-		:width="criticalScreenWidth"
+		max-width="900"
 		min-height="calc(100vh - 60px)"
 		style="position:relative;"
 	>
@@ -67,11 +67,8 @@
 </template>
 
 <script>
-import HomeCriticalWidth from "@/mixins/HomeCriticalWidth.js";
-
 export default {
 	name: "Feedback",
-	mixins: [HomeCriticalWidth],
 	data: () => ({
 		feedback: {}
 	}),
