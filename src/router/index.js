@@ -29,17 +29,17 @@ const routes = [
 			{
 				path: "feedbacks",
 				name: "Feedback",
-				component: () => import("@/views/home/Feedback"),
+				component: () => import("@/views/home/office/Feedback.vue"),
 			},
 			{
 				path: "a-brief-history",
 				name: "ABriefHistory",
-				component: () => import("@/views/home/ABriefHistory"),
+				component: () => import("@/views/home/office/ABriefHistory.vue"),
 			},
 			{
 				path: "faqs",
 				name: "FAQs",
-				component: () => import("@/views/home/FAQs"),
+				component: () => import("@/views/home/office/FAQs.vue"),
 			},
 			{
 				path: "start-article",
@@ -52,7 +52,10 @@ const routes = [
 			{
 				path: "feeds:type?",
 				name: "HOME",
-				component: () => import("@/views/home/Home"),
+				components: {
+					default: () => import("@/views/home/feeds/Home.vue"),
+					sidebar: () => import("@/views/home/feeds/Sidebar")
+				},
 				meta: {
 					authentication: false
 				}
@@ -68,19 +71,25 @@ const routes = [
 			{
 				path: "article",
 				name: "SACHCHAI NEPAL ARTICLES",
-				component: () => import("@/views/home/Articles"),
+				components: {
+					default: () => import("@/views/home/article/Articles.vue"),
+					sidebar: () => import("@/views/home/article/Sidebar")
+				},
 				meta: {
 					authentication: false
 				}
 			},
 			{
 				path: "multimedia",
-				component: () => import("@/views/home/Multimedias"),
+				components: {
+					default: () => import("@/views/home/multimedia/Multimedias"),
+					sidebar: () => import("@/views/home/multimedia/Sidebar")
+				},
 				children: [
 					{
 						path: "",
 						name: "SACHCHAI NEPAL MULTIMEDIAS",
-						component: () => import("@/views/home/multimedia/Pins.vue"),
+						component: () => import("@/views/home/multimedia/Pins"),
 						meta: {
 							authentication: false
 						}
@@ -114,7 +123,10 @@ const routes = [
 			{
 				path: "event",
 				name: "SACHCHAI NEPAL EVENTS",
-				component: () => import("@/views/event/EventsHome"),
+				components: {
+					default: () => import("@/views/home/event/EventsHome.vue"),
+					sidebar: () => import("@/views/home/event/Sidebar")
+				},
 				meta: {
 					authentication: false
 				}
