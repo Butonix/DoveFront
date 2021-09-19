@@ -34,7 +34,7 @@
     "editorjs-text-alignment-blocktune": "^1.0.2",
     "editorjs-undo": "^0.1.6",
     "gsap": "^3.6.1",
-    "hls.js": "^1.0.5",
+    "hls.js": "^1.0.10",
     "jquery": "^3.5.1",
     "roboto-fontface": "*",
     "vue": "^2.6.14",
