@@ -45,12 +45,18 @@
 					</v-card-title>
 					<v-divider />
 					<v-row class="ma-0 pa-0">
-						<v-col cols="8">
+						<v-col cols="12"
+							xl="8" lg="8"
+							md="8" sm="12"
+						>
 							<v-card-text class="white--text">
 								{{ item.description }}
 							</v-card-text>
 						</v-col>
-						<v-col cols="4">
+						<v-col cols="12"
+							xl="4" lg="4"
+							md="4" sm="12"
+						>
 							<v-card rounded="xl"
 								class="transparent"
 							>
