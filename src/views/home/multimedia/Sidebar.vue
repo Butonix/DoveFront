@@ -1,7 +1,8 @@
 <template>
-	<div class="pa-4">
+	<div>
 		<v-card outlined
 			rounded="xl"
+			class="ma-4"
 		>
 			<v-card-text class="pa-0">
 				<v-list rounded>
@@ -27,25 +28,21 @@
 				</v-list>
 			</v-card-text>
 		</v-card>
-		<div class="py-1" />
 		<v-card outlined
 			rounded="xl"
+			class="ma-4"
 		>
 			<v-card-title>
 				Contribute to Sachchai Kendra Nepal by adding your truthful testimonies.
 			</v-card-title>
 		</v-card>
-		<div class="py-1" />
-		<home-ads-column />
+		<v-divider class="mt-4" />
 	</div>
 </template>
 
 <script>
 export default {
 	name: "Sidebar",
-	components: {
-		HomeAdsColumn: () => import("@/views/home/Ads.vue")
-	},
 	data: () => ({
 		items: [
 			{icon: "mdi-pin", title: "Pins", to: "/home/multimedia"},

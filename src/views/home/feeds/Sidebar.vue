@@ -29,15 +29,7 @@
 				</v-list-item-content>
 			</v-list-item>
 		</v-list>
-		<v-divider class="mb-4 mt-2" />
-		<div class="px-4">
-			<home-ads />
-		</div>
-		<v-divider class="my-4" />
-		<div class="px-4">
-			<facebook-group />
-			<div class="py-2" />
-		</div>
+		<v-divider class="mt-2" />
 	</div>
 </template>
 
@@ -46,10 +38,6 @@ import FeedsSidebar from "@/mixins/FeedsSidebar.js";
 
 export default {
 	name: "Sidebar",
-	components: {
-		FacebookGroup: () => import("@/components/utils/FacebookGroup"),
-		HomeAds: () => import("@/views/home/Ads"),
-	},
 	mixins: [FeedsSidebar]
 }
 </script>
