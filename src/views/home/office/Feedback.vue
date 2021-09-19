@@ -51,7 +51,7 @@
 		<v-card-actions class="justify-center">
 			<v-btn
 				rounded
-				height="40"
+				class="pa-8"
 			>
 				<span style="color: #9C27B0">
 					Submit your feedback

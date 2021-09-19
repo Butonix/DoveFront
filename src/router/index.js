@@ -1,6 +1,5 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import HomeLayout from "@/layouts/HomeLayout"
 import helper from "@/Helper.js";
 
 Vue.use(VueRouter)
@@ -8,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: "/history",
-		component: () => import("@/views/showcase/HistorySlider.vue"),
+		component: () => import("@/views/showcase/HistorySlider"),
 	},
 	{
 		path: "/",
@@ -24,27 +23,33 @@ const routes = [
 	},
 	{
 		path: "/home",
-		component: HomeLayout,
+		component: () => import("@/layouts/HomeLayout"),
 		children: [
 			{
 				path: "feedbacks",
 				name: "Feedback",
-				component: () => import("@/views/home/office/Feedback.vue"),
+				component: () => import("@/views/home/office/Feedback"),
 			},
 			{
 				path: "a-brief-history",
 				name: "ABriefHistory",
-				component: () => import("@/views/home/office/ABriefHistory.vue"),
+				components: {
+					default: () => import("@/views/home/office/ABriefHistory"),
+					sidebar: () => import("@/views/home/office/HistorySidebar")
+				},
 			},
 			{
 				path: "faqs",
 				name: "FAQs",
-				component: () => import("@/views/home/office/FAQs.vue"),
+				components: {
+					default: () => import("@/views/home/office/FAQs"),
+					sidebar: () => import("@/views/home/office/FAQsSidebar.vue")
+				},
 			},
 			{
 				path: "start-article",
 				name: "Editor",
-				component: () => import("@/components/ArticleEditor.vue"),
+				component: () => import("@/components/ArticleEditor"),
 				meta: {
 					authentication: true
 				}
@@ -53,7 +58,7 @@ const routes = [
 				path: "feeds:type?",
 				name: "HOME",
 				components: {
-					default: () => import("@/views/home/feeds/Home.vue"),
+					default: () => import("@/views/home/feeds/Home"),
 					sidebar: () => import("@/views/home/feeds/Sidebar")
 				},
 				meta: {
@@ -72,7 +77,7 @@ const routes = [
 				path: "article",
 				name: "SACHCHAI NEPAL ARTICLES",
 				components: {
-					default: () => import("@/views/home/article/Articles.vue"),
+					default: () => import("@/views/home/article/Articles"),
 					sidebar: () => import("@/views/home/article/Sidebar")
 				},
 				meta: {
@@ -124,7 +129,7 @@ const routes = [
 				path: "event",
 				name: "SACHCHAI NEPAL EVENTS",
 				components: {
-					default: () => import("@/views/home/event/EventsHome.vue"),
+					default: () => import("@/views/home/event/EventsHome"),
 					sidebar: () => import("@/views/home/event/Sidebar")
 				},
 				meta: {
@@ -145,7 +150,7 @@ const routes = [
 	{
 		path: "/home/article/:id",
 		name: "SACHCHAI NEPAL ARTICLE",
-		component: () => import("@/components/article/ArticleDetail.vue"),
+		component: () => import("@/components/article/ArticleDetail"),
 		meta: {
 			authentication: false
 		}
@@ -283,7 +288,7 @@ const routes = [
 			{
 				path: "country",
 				name: "COUNTRY ADMINISTRATION",
-				component: () => import("@/views/settings/CountriesTable.vue"),
+				component: () => import("@/views/settings/CountriesTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -292,7 +297,7 @@ const routes = [
 			{
 				path: "province",
 				name: "PROVINCE ADMINISTRATION",
-				component: () => import("@/views/settings/ProvincesTable.vue"),
+				component: () => import("@/views/settings/ProvincesTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -301,7 +306,7 @@ const routes = [
 			{
 				path: "district",
 				name: "DISTRICT ADMINISTRATION",
-				component: () => import("@/views/settings/DistrictsTable.vue"),
+				component: () => import("@/views/settings/DistrictsTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -310,7 +315,7 @@ const routes = [
 			{
 				path: "municipality",
 				name: "MUNICIPALITY ADMINISTRATION",
-				component: () => import("@/views/settings/MunicipalitiesTable.vue"),
+				component: () => import("@/views/settings/MunicipalitiesTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -319,7 +324,7 @@ const routes = [
 			{
 				path: "municipality-ward",
 				name: "MUNICIPALITY WARD ADMINISTRATION",
-				component: () => import("@/views/settings/MunicipalityWardsTable.vue"),
+				component: () => import("@/views/settings/MunicipalityWardsTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -328,7 +333,7 @@ const routes = [
 			{
 				path: "vdc",
 				name: "VDC ADMINISTRATION",
-				component: () => import("@/views/settings/VDCsTable.vue"),
+				component: () => import("@/views/settings/VDCsTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -337,7 +342,7 @@ const routes = [
 			{
 				path: "vdc-ward",
 				name: "VDC WARD ADMINISTRATION",
-				component: () => import("@/views/settings/VDCWardsTable.vue"),
+				component: () => import("@/views/settings/VDCWardsTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -346,7 +351,7 @@ const routes = [
 			{
 				path: "article",
 				name: "ARTICLES ADMINISTRATION",
-				component: () => import("@/views/settings/ArticlesTable.vue"),
+				component: () => import("@/views/settings/ArticlesTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -356,7 +361,7 @@ const routes = [
 			{
 				path: "article/:id",
 				name: "ARTICLE ADMINISTRATION",
-				component: () => import("@/views/settings/ArticleDetail.vue"),
+				component: () => import("@/views/settings/ArticleDetail"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -365,7 +370,7 @@ const routes = [
 			{
 				path: "multimedia",
 				name: "MULTIMEDIA ADMINISTRATION",
-				component: () => import("@/views/settings/MultimediasTable.vue"),
+				component: () => import("@/views/settings/MultimediasTable"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -374,7 +379,7 @@ const routes = [
 			{
 				path: "multimedia/:id",
 				name: "MULTIMEDIA DETAIL ADMINISTRATION",
-				component: () => import("@/views/multimedia/MultimediaDetail.vue"),
+				component: () => import("@/views/multimedia/MultimediaDetail"),
 				meta: {
 					authentication: true,
 					admin: true
@@ -392,7 +397,7 @@ const routes = [
 			{
 				path: "showcase-gallery",
 				name: "SHOWCASE GALLERY ADMINISTRATION",
-				component: () => import("@/views/settings/ShowcaseImage.vue"),
+				component: () => import("@/views/settings/ShowcaseImage"),
 				meta: {
 					authentication: true,
 					admin: true
