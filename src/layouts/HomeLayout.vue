@@ -5,6 +5,7 @@
 		<home-toolbar @toggle="homeDrawer = !homeDrawer" />
 		<v-navigation-drawer
 			v-model="homeDrawer"
+			clipped
 			app width="280"
 			color="#f6f4fc"
 			:permanent="!$vuetify.breakpoint.mdAndDown"

@@ -1,6 +1,7 @@
 <template>
 	<v-app-bar
 		clipped-right
+		clipped-left
 		app
 		fixed
 		height="60"
@@ -17,14 +18,14 @@
 			:class="$route.name === 'HOME' ? '' : 'cursor'"
 			flat
 			color="transparent"
-			height="45"
-			width="45"
+			height="50"
+			width="50"
 		>
 			<v-img
 				contain
-				height="45"
-				width="45"
-				:src="require('@/assets/peace-pegion.png')"
+				height="50"
+				width="50"
+				:src="logo"
 				@click="routeToFeeds"
 			/>
 		</v-card>
@@ -64,10 +65,9 @@ import ProfileDropdown from "@/views/home/ProfileDropdown.vue";
 export default {
 	name: "HomeToolbar",
 	components: {ProfileDropdown},
-	props: {},
 	emits: ["toggle"],
 	data: () => ({
-		logo: require("@/assets/showcase_logo_v1.png"),
+		logo: require("@/assets/sacchai_logo.png"),
 		homeTabItems: [
 			{icon: "mdi-home", text: "Home", to: "/home/feeds"},
 			{icon: "mdi-post", text: "Articles", to: "/home/article"},
