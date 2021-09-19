@@ -39,7 +39,7 @@
 			>
 				<v-col cols="12">
 					<v-card class="d-flex pa-4"
-						min-height="120" color="#3F51B5"
+						min-height="120" color="rgb(63 81 181 / 68%)"
 						rounded="xl"
 					>
 						<div class="become-follower">
@@ -51,7 +51,7 @@
 								min-height="50"
 								min-width="120"
 								class="become-btn"
-								color="primary darken-1"
+								color="rgb(63 81 210)"
 								@click="routeToRegisterPage"
 							>
 								Join Us
