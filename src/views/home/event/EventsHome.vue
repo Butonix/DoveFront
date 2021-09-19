@@ -1,9 +1,9 @@
 <template>
-	<v-card :loading="loading"
+	<v-card
+		:loading="loading"
 		flat tile
-		class="mx-auto"
+		class="mx-auto home-events"
 		color="purple"
-		style="background: transparent !important;"
 		max-width="1000"
 	>
 		<div v-if="$vuetify.breakpoint.smAndUp"
@@ -173,4 +173,6 @@ export default {
 	font-size: 1.1rem
 	font-weight: 600
 	color: #444444
+.home-events
+	background: transparent !important
 </style>

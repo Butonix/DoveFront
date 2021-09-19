@@ -7,7 +7,8 @@
 	>
 		<div class="py-1" />
 		<v-scale-transition>
-			<div v-if="$vuetify.breakpoint.xs"
+			<div
+				v-if="$vuetify.breakpoint.xs"
 				class="pa-2"
 			>
 				<chip-filter />

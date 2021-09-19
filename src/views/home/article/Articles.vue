@@ -3,8 +3,8 @@
 		:loading="loading"
 		flat
 		tile
-		class="mx-auto"
-		color="transparent"
+		color="purple"
+		class="mx-auto home-articles"
 		max-width="1000"
 	>
 		<div v-if="$vuetify.breakpoint.smAndDown"
@@ -15,7 +15,6 @@
 		<article-pin-bar />
 		<v-card
 			v-if="articles.results"
-			:loading="loading"
 			flat tile
 			class="transparent"
 		>
@@ -69,5 +68,8 @@ export default {
 	font-size: 2.6rem;
 	font-weight: 400;
 	padding: 20px 0;
+}
+.home-articles {
+	background-color: transparent !important;
 }
 </style>
