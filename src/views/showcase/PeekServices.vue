@@ -80,10 +80,26 @@ export default {
 	computed: {
 		services() {
 			return [
-				{title: "Satsang", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.W4-9_74BBVjGIuFCP_KNWwHaF6%26pid%3DApi&f=1", description: "Various activities are performed"},
-				{title: "Bhajan", image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/167952492_3860024914066896_971188920796482199_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=b9115d&_nc_ohc=_7zy0XXtiqUAX_6xDht&_nc_ht=scontent.fpkr1-1.fna&oh=dd3227552c1f42c49125b9e911fafd23&oe=613CC232", description: "Hymns and songs about remembering the God"},
-				{title: "Testimonials", image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/161431072_3821070014629053_8484418797796328352_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=b9115d&_nc_ohc=o6LUWAz4LesAX_x2rAt&_nc_ht=scontent.fpkr1-1.fna&oh=113641676866469b1ecbeb7f5766d593&oe=615703A8", description: "Truth inside our believers are shared among each-other"},
-				{title: "Bachans", image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/161385550_3821070131295708_6805721549267122156_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=b9115d&_nc_ohc=QiCz8mpI4VQAX955AIt&tn=JRGX9gVI-Xw0IFMi&_nc_ht=scontent.fpkr1-1.fna&oh=344e6454b54cc4c4d5820d1d7a25db63&oe=6155D95B", description: "How we create our way following true words from the God"},
+				{
+					title: "Satsang",
+					image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.W4-9_74BBVjGIuFCP_KNWwHaF6%26pid%3DApi&f=1",
+					description: "We help our believers to know their need and teach them to have faith in the God"
+				},
+				{
+					title: "Bhajan",
+					image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/167952492_3860024914066896_971188920796482199_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=b9115d&_nc_ohc=_7zy0XXtiqUAX_6xDht&_nc_ht=scontent.fpkr1-1.fna&oh=dd3227552c1f42c49125b9e911fafd23&oe=613CC232",
+					description: "Remembering the God singing hymns and songs"
+				},
+				{
+					title: "Testimonials",
+					image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/161431072_3821070014629053_8484418797796328352_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=b9115d&_nc_ohc=o6LUWAz4LesAX_x2rAt&_nc_ht=scontent.fpkr1-1.fna&oh=113641676866469b1ecbeb7f5766d593&oe=615703A8",
+					description: "Truth inside our believers are shared among each-other"
+				},
+				{
+					title: "Bachans",
+					image: "https://scontent.fpkr1-1.fna.fbcdn.net/v/t1.6435-9/161385550_3821070131295708_6805721549267122156_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=b9115d&_nc_ohc=QiCz8mpI4VQAX955AIt&tn=JRGX9gVI-Xw0IFMi&_nc_ht=scontent.fpkr1-1.fna&oh=344e6454b54cc4c4d5820d1d7a25db63&oe=6155D95B",
+					description: "How we create our way following true words from the God"
+				},
 			]
 		}
 	},
