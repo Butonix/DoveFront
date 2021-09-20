@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
+import HtmlVideoMixin from "@/mixins/HtmlVideoMixin.js";
 
 export default {
 	name: "VideoPlayer",

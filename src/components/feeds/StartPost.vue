@@ -403,7 +403,7 @@ import {getFormData} from "@/Helper.js";
 import APlayer from "vue-aplayer"
 import {mapGetters} from "vuex";
 import Snack from "@/mixins/Snack.js";
-import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
+import HtmlVideoMixin from "@/mixins/HtmlVideoMixin.js";
 
 export default {
 	name: "StartAPostComponent",

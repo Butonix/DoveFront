@@ -218,7 +218,7 @@
 <script>
 import {mapGetters, mapMutations} from "vuex";
 import SmallFooter from "@/components/utils/SmallFooter.vue";
-import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
+import HtmlVideoMixin from "@/mixins/HtmlVideoMixin.js";
 import PostDetailActionsComponent from "@/views/post/PostDetailActions.vue";
 import CommentBox from "@/components/form/CommentBox.vue";
 

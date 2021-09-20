@@ -72,7 +72,7 @@
 
 <script>
 import MultimediaAction from "@/components/multimedia/MultimediaAction.vue";
-import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
+import HtmlVideoMixin from "@/mixins/HtmlVideoMixin.js";
 
 export default {
 	name: "MultimediaYoutube",
