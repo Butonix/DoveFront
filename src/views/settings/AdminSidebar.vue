@@ -89,7 +89,7 @@ export default {
 			{ title: "Article", icon: "mdi-post", to: "/admin/article" },
 			{ title: "Multimedia", icon: "mdi-video-vintage", to: "/admin/multimedia" },
 			{ title: "Events", icon: "mdi-calendar-multiple", to: "/admin/event" },
-			{ title: "Advertisements", icon: "mdi-cash-usd", to: "/admin/ad" },
+			{ title: "Advertisements", icon: "mdi-cash-multiple", to: "/admin/ad" },
 			{ title: "About Us", icon: "mdi-information", to: "/admin/about-us" },
 			{ title: "Contact Us", icon: "mdi-phone", to: "/admin/contact-us" },
 			{ title: "Feedbacks", icon: "mdi-comment-quote", to: "/admin/feedback" },
