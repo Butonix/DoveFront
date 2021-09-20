@@ -12,7 +12,6 @@ const defaultFormErrors = {
 	video_url: null,
 	title: null,
 	description: null,
-	next: null
 }
 
 const state = {
@@ -23,6 +22,7 @@ const state = {
 	},
 	multimediaExtraStatus: {},
 	toView: null,
+	next: null
 }
 
 const mutations = {

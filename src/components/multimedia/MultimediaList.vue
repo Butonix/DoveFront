@@ -100,41 +100,52 @@
 						</template>
 					</base-post-card>
 				</div>
-				<div v-observe-visibility="handleScrollToBottom" />
 			</v-card>
+			<div
+				v-if="nextInfo.next"
+				v-observe-visibility="handleScrollToBottom"
+			/>
+			<div class="d-flex align-center">
+				<div class="px-1">
+					<v-progress-circular
+						v-if="nextInfo.next"
+						indeterminate
+						width="2"
+						size="12"
+						color="purple"
+					/>
+					<u v-else>Sachchai Kendra Nepal</u>
+				</div>
+				<v-divider />
+			</div>
 		</div>
 	</div>
 </template>
 <script>
-import HtmlVideoMixin from "@/mixins/HtmlVideoMixin..js";
+import HtmlVideoMixin from "@/mixins/HtmlVideoMixin.js";
 import {mapGetters, mapMutations} from "vuex";
 
 export default {
 	name: "MultimediaList",
 	components: {
-		ListSkeleton: () => import("@/components/skeletons/MultimediaList.vue"),
 		BasePostCard: () => import("@/components/post/_post"),
 		NoHomeData: () => import("@/components/feeds/NoHomeData"),
+		ListSkeleton: () => import("@/components/skeletons/MultimediaList"),
 	},
 	mixins: [HtmlVideoMixin],
 	data() {
 		return {
-			carouselNavItemStyle: "height: 30px !important; width: 30px !important;",
+			posts: [],
+			loading: true,
 			dialog: false,
 			playerVars: {autoplay: 0, origin: window.location.href},
-			loading: true,
-			posts: [],
-			occurrence: 0,
-			next: {
-				next: null,
-				count: 0
-			}
+			carouselNavItemStyle: "height: 30px !important; width: 30px !important;"
 		}
 	},
 	computed: {
 		...mapGetters({
-			multimedias: "multimedia/list",
-			nextInfo: "multimedia/next"
+			nextInfo: "multimedia/next",
+			multimedias: "multimedia/list"
 		}),
 	},
 	watch: {
@@ -144,7 +155,6 @@ export default {
 					is_approved: true,
 					type: val
 				})
-				this.next = this.nextInfo
 				this.loading = false
 			},
 			immediate: true
@@ -168,13 +178,10 @@ export default {
 		},
 		async handleScrollToBottom(isVisible) {
 			if(isVisible) {
-				this.occurrence ++
-				if (this.occurrence > 1) {
-					if (this.nextInfo.next && this.nextInfo.count >=1) {
-						const res = await this.$api.getWithPayload(this.next.next.replace("http://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np"))
-						this.MERGE_MULTIMEDIAS(res.results)
-						this.SET_NEXT({next: res.next, previous: res.previous, count: res.count})
-					}
+				if (this.nextInfo.next && this.nextInfo.count >=1) {
+					const res = await this.$api.getWithPayload(this.nextInfo.next.replace("http://sachchaikendranepal.org.np:8000", "https://backend.sachchaikendranepal.org.np"))
+					this.MERGE_MULTIMEDIAS(res.results)
+					this.SET_NEXT({next: res.next, previous: res.previous, count: res.count})
 				}
 			}
 		}
