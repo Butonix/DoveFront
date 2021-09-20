@@ -69,7 +69,7 @@
 							123
 						</p>
 						Loves
-						<v-icon style="color: darkred">
+						<v-icon color="red darken-2">
 							mdi-heart
 						</v-icon>
 					</v-chip>
@@ -82,7 +82,7 @@
 							123
 						</p>
 						Events
-						<v-icon style="color: darkgreen">
+						<v-icon color="green darken-2">
 							mdi-calendar-check
 						</v-icon>
 					</v-chip>

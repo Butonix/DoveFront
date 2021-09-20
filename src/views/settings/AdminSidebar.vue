@@ -1,23 +1,20 @@
 <template>
-	<v-list color="transparent"
-		dense rounded
-	>
-		<v-list-item class="pl-2">
-			<v-list-item-avatar
-				color="grey lighten-2"
-				class="ma-0 pa-0 d-flex justify-center align-center"
-			>
+	<div>
+		<v-list-item class="px-2"
+			two-line
+		>
+			<v-list-item-avatar color="grey lighten-2">
 				<span class="headline grey--text text--darken-1">
 					{{ $helper.getCurrentUserInitials() }}
 				</span>
 			</v-list-item-avatar>
-			<v-list-item-content class="py-0 pl-4">
+			<v-list-item-content>
 				<v-list-item-title class="title">
 					{{ currentUser.first_name }} {{ currentUser.last_name }}
 				</v-list-item-title>
 				<v-list-item-subtitle>{{ currentUser.email }}</v-list-item-subtitle>
 			</v-list-item-content>
-			<v-list-item-action v-if="!$vuetify.breakpoint.mdAndUp">
+			<v-list-item-action>
 				<v-btn x-small
 					fab
 					@click="$emit('toggle')"
@@ -27,39 +24,11 @@
 			</v-list-item-action>
 		</v-list-item>
 
-		<v-divider class="my-2 mx-4" />
-		<v-list-item
-			v-for="(item, index) in drawerItems"
-			:key="index"
-			:to="item.to"
-			link
-		>
-			<v-list-item-icon>
-				<v-icon size="20">
-					{{ item.icon }}
-				</v-icon>
-			</v-list-item-icon>
-			<v-list-item-content>
-				<v-list-item-title>{{ item.title }}</v-list-item-title>
-			</v-list-item-content>
-		</v-list-item>
-		<v-list-group
-			v-for="drawerGroup in drawerGroupItems"
-			:key="drawerGroup.name"
-			:value="false"
-		>
-			<template #prependIcon>
-				<v-icon size="20">
-					{{ drawerGroup.icon }}
-				</v-icon>
-			</template>
-			<template #activator>
-				<v-list-item-content>
-					<v-list-item-title>{{ drawerGroup.name }}</v-list-item-title>
-				</v-list-item-content>
-			</template>
-			<v-list-item v-for="(item) in drawerGroup.items"
-				:key="item.to"
+		<v-divider class="mx-2" />
+		<v-list dense>
+			<v-list-item
+				v-for="(item, index) in drawerItems"
+				:key="index"
 				:to="item.to"
 				link
 			>
@@ -72,8 +41,38 @@
 					<v-list-item-title>{{ item.title }}</v-list-item-title>
 				</v-list-item-content>
 			</v-list-item>
-		</v-list-group>
-	</v-list>
+			<v-list-group
+				v-for="drawerGroup in drawerGroupItems"
+				:key="drawerGroup.name"
+				:value="false"
+			>
+				<template #prependIcon>
+					<v-icon size="20">
+						{{ drawerGroup.icon }}
+					</v-icon>
+				</template>
+				<template #activator>
+					<v-list-item-content>
+						<v-list-item-title>{{ drawerGroup.name }}</v-list-item-title>
+					</v-list-item-content>
+				</template>
+				<v-list-item v-for="(item) in drawerGroup.items"
+					:key="item.to"
+					:to="item.to"
+					link
+				>
+					<v-list-item-icon>
+						<v-icon size="20">
+							{{ item.icon }}
+						</v-icon>
+					</v-list-item-icon>
+					<v-list-item-content>
+						<v-list-item-title>{{ item.title }}</v-list-item-title>
+					</v-list-item-content>
+				</v-list-item>
+			</v-list-group>
+		</v-list>
+	</div>
 </template>
 
 <script>

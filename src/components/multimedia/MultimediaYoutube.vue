@@ -23,9 +23,7 @@
 					@playing="playing"
 				/>
 			</v-card>
-			<v-card-title class="py-2"
-				style="font-size: 18px;"
-			>
+			<v-card-title class="py-2 yt-title">
 				{{ y.yt_info.title }}
 			</v-card-title>
 			<multimedia-action
@@ -121,5 +119,7 @@ export default {
 </script>
 
 <style scoped>
-
+.yt-title {
+	font-size: 18px;
+}
 </style>

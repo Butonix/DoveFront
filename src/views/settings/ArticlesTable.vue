@@ -106,7 +106,7 @@
 					v-if="!item['is_pinned']"
 					small
 					color="primary"
-					style="transform: rotate(30deg)"
+					class="pin-rotate"
 					@click="pin(item)"
 				>
 					mdi-pin-outline
@@ -115,7 +115,7 @@
 					v-else
 					small
 					color="primary"
-					style="transform: rotate(30deg)"
+					class="pin-rotate"
 					@click="unpin(item)"
 				>
 					mdi-pin
@@ -208,3 +208,8 @@ export default {
 	}
 }
 </script>
+<style scoped>
+.pin-rotate {
+	transform: rotate(30deg)
+}
+</style>

@@ -1,7 +1,5 @@
 <template>
-	<v-list class="pa-0"
-		rounded
-	>
+	<v-list class="pa-0">
 		<v-list-item-group>
 			<v-list-item
 				disabled

@@ -44,8 +44,7 @@
 					</v-row>
 					<div
 						v-else
-						class="d-flex align-center justify-center"
-						style="min-height: 360px;"
+						class="d-flex align-center justify-center min-height-360"
 					>
 						<v-chip label>
 							No article images
@@ -82,8 +81,7 @@
 					</v-row>
 					<div
 						v-else
-						class="d-flex align-center justify-center"
-						style="min-height: 360px;"
+						class="d-flex align-center justify-center min-height-360"
 					>
 						<v-chip>
 							No multimedia images
@@ -120,8 +118,7 @@
 					</v-row>
 					<div
 						v-else
-						class="d-flex align-center justify-center"
-						style="min-height: 360px;"
+						class="d-flex align-center justify-center min-height-360"
 					>
 						<v-chip label>
 							No cover images
@@ -158,8 +155,7 @@
 					</v-row>
 					<div
 						v-else
-						class="d-flex align-center justify-center"
-						style="min-height: 360px;"
+						class="d-flex align-center justify-center min-height-360"
 					>
 						<v-chip>
 							No profile images
@@ -196,8 +192,7 @@
 					</v-row>
 					<div
 						v-else
-						class="d-flex align-center justify-center"
-						style="min-height: 360px;"
+						class="d-flex align-center justify-center min-height-360"
 					>
 						<v-chip>
 							No event images
@@ -280,5 +275,7 @@ export default {
 </script>
 
 <style scoped>
-
+.min-height-360 {
+	min-height: 360px;
+}
 </style>

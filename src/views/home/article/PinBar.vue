@@ -7,7 +7,7 @@
 		<v-card-title class="pb-0">
 			<v-icon
 				size="22"
-				style="transform: rotate(30deg)"
+				class="pin-icon"
 			>
 				mdi-pin
 			</v-icon>
@@ -16,17 +16,15 @@
 		</v-card-title>
 		<v-card-text class="d-flex py-2 px-0 overflow-hidden">
 			<horizontal-slider>
-				<div class="px-2"
-					style="display: inline-block"
-				/>
+				<div class="px-2 d-inline-block" />
 				<v-card
 					v-for="pin in pins"
 					:key="pin.id"
 					dark
 					width="250"
 					height="200"
-					rounded="xl" class="ma-2"
-					style="display: inline-block; position:relative;"
+					rounded="xl"
+					class="ma-2 relative d-inline-block"
 					:img="$helper.replaceBackendHost(pin.cover_image.image)"
 				>
 					<v-card-title
@@ -36,9 +34,7 @@
 						{{ pin.title }}
 					</v-card-title>
 				</v-card>
-				<div class="px-2"
-					style="display: inline-block"
-				/>
+				<div class="px-2 d-inline-block" />
 			</horizontal-slider>
 		</v-card-text>
 	</v-card>
@@ -71,5 +67,8 @@ export default {
 }
 .pin-headline:hover {
 	background-color: #e5e5e5;
+}
+.pin-icon {
+	transform: rotate(30deg)
 }
 </style>

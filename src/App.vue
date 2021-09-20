@@ -68,4 +68,7 @@ export default {
 .dialog-header {
 	font-size: 16px;
 }
+.relative {
+	position: relative;
+}
 </style>

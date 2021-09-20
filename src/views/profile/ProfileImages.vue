@@ -27,7 +27,7 @@
 		>
 			<template #append>
 				<v-btn
-					style="margin-top: -8px !important;"
+					class="upload-image-btn"
 					icon
 					@click="uploadImage"
 				>
@@ -164,8 +164,7 @@ export default {
 </script>
 
 <style>
-.img-toolbar {
-	font-size: .875rem;
-	cursor: pointer !important;
+.upload-image-btn {
+	margin-top: -8px !important;
 }
 </style>

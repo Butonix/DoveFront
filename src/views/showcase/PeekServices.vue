@@ -20,9 +20,8 @@
 			<v-card
 				v-if="services"
 				color="transparent"
-				style="z-index: 2"
 				flat tile
-				class="text-center"
+				class="text-center services-card-wrapper"
 			>
 				<v-card class="d-flex justify-center align-center flex-wrap transparent"
 					flat
@@ -125,6 +124,8 @@ export default {
 	border: 2px solid white
 .peek-services-wrapper
 	padding: 80px 0
+.services-card-wrapper
+	z-index: 2
 #peek-services-card
 	background: aliceblue
 	::v-deep .v-card__title

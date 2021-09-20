@@ -32,7 +32,6 @@
 					max-width="300"
 					width="300"
 					rounded="xl"
-					style="border: 2px solid white !important; z-index: 2;"
 				>
 					<v-avatar
 						size="200"
@@ -165,25 +164,7 @@ export default {
 .kendra-info-bg-img{
 	margin-top: -70px;
 }
-.custom-shape-divider-bottom {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
-	transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom svg {
-	position: relative;
-	display: block;
-	width: calc(100% + 1.3px);
-	height: 500px;
-	transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom .shape-fill {
-	fill: #060c28;
+.kendra-card {
+	border: 2px solid white !important; z-index: 2;
 }
 </style>

@@ -47,13 +47,12 @@
 				:src="$helper.replaceBackendHost(pin.cover_image.image)"
 				transition="fade-transition"
 				reverse-transition="fade-transition"
-				style="position: relative"
+				class="relative"
 			>
 				<v-card
-					style="position: absolute; bottom: 0;border-top: 1px solid white"
 					width="100%"
 					tile flat
-					class="pa-2"
+					class="pa-2 pin-post-title"
 					color="#060c28cf"
 				>
 					<p
@@ -144,4 +143,8 @@ export  default {
 		transform: scale(1.1)
 	to
 		transform: scale(1)
+.pin-post-title
+	position: absolute
+	bottom: 0
+	border-top: 1px solid white
 </style>

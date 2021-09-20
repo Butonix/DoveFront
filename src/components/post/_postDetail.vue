@@ -44,7 +44,6 @@
 						>
 							<template #append>
 								<v-btn
-									style="margin-top: -6px;"
 									class="send-icon-button"
 									color="indigo"
 									icon
@@ -313,4 +312,6 @@ export default {
 .edit-icon
 	margin-top: -6px
 	padding: 0 4px 0 10px
+.send-icon-button
+	margin-top: -6px
 </style>

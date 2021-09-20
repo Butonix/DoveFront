@@ -108,7 +108,7 @@
 		<v-list
 			v-else
 			three-line
-			style="background-color: aliceblue;"
+			class="aliceblue"
 		>
 			<v-list-item>
 				<v-list-item-content>
@@ -206,5 +206,8 @@ export default {
 	margin: 2px;
 	background: #efdffc;
 	border-radius: 5px;
+}
+.aliceblue {
+	background-color: aliceblue;
 }
 </style>

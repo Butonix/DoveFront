@@ -81,9 +81,7 @@
 								/>
 							</v-list-item-avatar>
 							<v-list-item-content class="pa-0">
-								<v-list-item-title
-									style="white-space: normal;"
-								>
+								<v-list-item-title class="user-name">
 									{{ currentUser.first_name }} {{ currentUser.last_name }}
 								</v-list-item-title>
 								<v-list-item-subtitle v-show="$vuetify.breakpoint.width > 235">
@@ -144,8 +142,7 @@
 					/>
 				</v-col>
 				<v-col cols="12"
-					class="pt-4"
-					style="position: relative;"
+					class="pt-4 relative"
 				>
 					<v-fab-transition>
 						<v-btn v-if="!addDescription"
@@ -158,7 +155,7 @@
 							>Add description</span>
 						</v-btn>
 						<v-btn v-else
-							style="position: absolute; right: 3%; top: -20%;"
+							class="remove-desc-btn"
 							rounded
 							@click="removeDescription"
 						>
@@ -225,7 +222,6 @@
 					justify="space-around"
 					align="center"
 					class="pa-2"
-					style="background-color: aliceblue"
 				>
 					<v-col cols="12"
 						class="ma-0 pa-0"
@@ -262,8 +258,8 @@
 						<v-card height="30vh"
 							max-width="500" dark
 						>
-							<v-btn fab style="z-index: 1"
-								x-small class="right-corner"
+							<v-btn fab
+								x-small class="right-corner remove-video"
 								@click="removeVideo(index)"
 							>
 								<v-icon>mdi-close</v-icon>
@@ -289,7 +285,7 @@
 							class="mx-auto" rounded
 						>
 							<v-btn fab
-								x-small class="right-corner"
+								x-small class="right-corner remove-video"
 								@click="removeVideo_URL(index)"
 							>
 								<v-icon>mdi-close</v-icon>
@@ -342,8 +338,7 @@
 				align="center"
 			>
 				<v-col cols="12">
-					<p class="ma-0 pa-0 pb-sm-2 pb-md-2 text-center text-uppercase"
-						style="font-size: 14px; font-weight: 500;"
+					<p class="ma-0 pa-0 pb-sm-2 pb-md-2 text-center text-uppercase add-to-your-post"
 						@click="$refs.imageInput.click()"
 					>
 						add to your post
@@ -677,4 +672,17 @@ $dialog-border-radius: 24px
 	position: absolute
 	right: 1%
 	top: 1%
+.user-name
+	white-space: normal
+.remove-desc-btn
+	position: absolute
+	right: 3%
+	top: -20%
+#image-preview-pane
+	background-color: aliceblue
+.add-to-your-post
+	font-size: 14px
+	font-weight: 500
+.remove-video
+	z-index: 1
 </style>

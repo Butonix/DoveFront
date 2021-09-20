@@ -219,7 +219,7 @@
 								height="80"
 								dark
 								eager
-								style="border-radius: 24px;"
+								class="rounded-xl"
 							>
 								<div class="headline text-center align-center">
 									<v-col class="pt-lg-6 pt-sm-6 pt-lg-6 pt-xl-6">

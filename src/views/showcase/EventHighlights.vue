@@ -24,8 +24,7 @@
 					flat
 				>
 					<v-list
-						class="mx-auto"
-						style="position: relative;"
+						class="mx-auto relative"
 						color="transparent"
 					>
 						<v-list-item-avatar

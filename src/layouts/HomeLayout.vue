@@ -37,9 +37,7 @@
 			</div>
 		</v-navigation-drawer>
 
-		<v-main
-			style="background-color: #f3edff"
-		>
+		<v-main class="home-layout-main">
 			<v-container
 				fluid
 				class="home-router-container"
@@ -100,6 +98,8 @@ export default {
 	opacity: 0
 .view-enter-to, .view-leave
 	opacity: 1
+.home-layout-main
+	background-color: #f3edff
 .home-router-container
 	padding: 0
 	background-color: #f3edff

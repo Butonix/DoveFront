@@ -9,14 +9,13 @@
 		/>
 		<v-card-title
 			v-if="video.title"
-			class="pt-0"
-			style="font-size: 18px;"
+			class="pt-0 video-title"
 		>
 			{{ video.title }}
 		</v-card-title>
 		<v-card-subtitle
 			v-if="video.subtitle"
-			style="font-size: 14px;"
+			class="video-subtitle"
 		>
 			{{ video.subtitle }}
 		</v-card-subtitle>
@@ -64,7 +63,7 @@
 						>
 							<fab-button color="grey-darken-1"
 								icon="mdi-close"
-								style="position: absolute; right: 1%; top: 1%"
+								class="clear-poster-to-upload"
 								@click="clearPosterToUpload"
 							/>
 						</card-img>
@@ -158,3 +157,14 @@ export default {
 	}
 }
 </script>
+<style scoped>
+.video-title {
+	font-size: 18px;
+}
+.video-subtitle {
+	font-size: 14px;
+}
+.clear-poster-to-upload {
+	position: absolute; right: 1%; top: 1%
+}
+</style>

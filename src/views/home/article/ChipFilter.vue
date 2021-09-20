@@ -8,7 +8,7 @@
 			>
 				<v-chip v-for="tag in tags"
 					:key="tag"
-					style="font-size: 13px;"
+					class="chip-filter-item"
 				>
 					{{ tag }}
 				</v-chip>
@@ -36,5 +36,7 @@ export default {
 </script>
 
 <style scoped>
-
+.chip-filter-item {
+	font-size: 13px;
+}
 </style>

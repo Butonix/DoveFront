@@ -2,11 +2,11 @@
 	<v-tooltip bottom>
 		<template #activator="{ on, attrs }">
 			<a
-				style="text-decoration: none"
 				v-bind="attrs"
 				:color="color"
 				:href="to"
 				target="_blank"
+				class="text-decoration-none"
 				v-on="on"
 			>
 				<v-btn

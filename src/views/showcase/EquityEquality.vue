@@ -1,5 +1,5 @@
 <template>
-	<div style="margin-top: -270px; z-index: 1">
+	<div class="equity-wrapper">
 		<v-parallax
 			height="1000"
 			dark
@@ -43,5 +43,8 @@ export default {
 		font-size: 84px;
 	}
 	background-image: linear-gradient( 96.5deg,  rgba(39,103,187,1) 10.4%, rgba(16,72,144,1) 87.7% );
+}
+.equity-wrapper {
+	margin-top: -270px; z-index: 1
 }
 </style>

@@ -45,7 +45,7 @@
 					v-if="editedIndex !== -1"
 					:src="$helper.replaceBackendHost(getBannerImage)"
 					height="300"
-					style="border-radius: 0 0 10px 10px"
+					class="banner-image"
 				/>
 				<v-list
 					v-show="editedIndex !== -1"
@@ -527,4 +527,6 @@ export default {
 	margin-right: 4px
 .dialog-toolbar
 	background-color: #ab5aa9
+.banner-image
+	border-radius: 0 0 10px 10px
 </style>

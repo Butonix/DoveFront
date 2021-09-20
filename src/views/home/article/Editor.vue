@@ -9,7 +9,7 @@
 			<v-toolbar
 				flat
 			>
-				<v-app-bar-nav-icon style="font-size: 1.4rem;">
+				<v-app-bar-nav-icon class="editor-nav-icon">
 					<v-avatar>
 						<v-img :src="require('@/assets/start_writing.png')" />
 					</v-avatar>
@@ -536,5 +536,8 @@ export default {
 	border-radius: 4px;
 	border: 1px solid #e4e4ff;
 	padding: 4px;
+}
+.editor-nav-icon {
+	font-size: 1.4rem;
 }
 </style>

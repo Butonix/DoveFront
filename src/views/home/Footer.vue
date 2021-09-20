@@ -105,10 +105,11 @@
 						<h6 id="built-info"
 							class="flex text-start"
 						/>
-						<div style="font-size: .7rem; color: white;">
-							Made with love by <a href="https://github.com/kiranparajuli589"
+						<div class="dev-info">
+							Made with love by
+							<a href="https://github.com/kiranparajuli589"
 								target="_blank"
-								style="text-decoration: none; color: navajowhite;"
+								class="dev-link"
 							>
 								<b>Kiran Parajuli</b>
 							</a>
@@ -172,9 +173,8 @@
 		>
 			<v-card tile
 				min-height="35"
-				style="font-size: 14px;"
 				color="rgb(75 93 195)"
-				class="d-flex justify-center align-center"
+				class="d-flex justify-center align-center bottom-card"
 			>
 				<div>
 					{{ new Date().getFullYear() }} — <strong class="px-1">Ishworiya Bhajan Mandal Sachchai Kendra Nepal</strong>
@@ -331,5 +331,15 @@ export default {
 			color: whitesmoke;
 		}
 	}
+}
+.bottom-card {
+	font-size: 14px;
+}
+.dev-info {
+	font-size: .7rem; color: white;
+}
+.dev-link {
+	text-decoration: none;
+	color: navajowhite !important;
 }
 </style>

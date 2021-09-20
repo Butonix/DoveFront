@@ -7,10 +7,9 @@
 			v-model="comment.comment"
 			outlined auto-grow
 			color="primary" hide-details
-			label="Comment"
+			label="Comment" class="comment-input"
 			placeholder="Add your comment"
 			contenteditable="true"
-			style="border-radius: 16px"
 			@focus="focused = true"
 		>
 			<template #append>
@@ -41,7 +40,7 @@
 		>
 			<!-- eslint-disable-next-line  -->
 			<div slot="emoji-invoker" slot-scope="{ events: { click: clickEvent } }"
-				style="position:absolute; right: 7px; top: 7px;"
+				class="invoker"
 				@click.stop="clickEvent"
 			>
 				<v-btn icon
@@ -162,6 +161,9 @@ export default {
 <style lang="scss" scoped>
 .comment-box {
 	position: relative;
+	.comment-input {
+		border-radius: 16px;
+	}
 	.clear-button {
 		position:absolute;
 		right: 7px !important;
@@ -171,6 +173,10 @@ export default {
 		position: absolute;
 		top: 44px !important;
 		right: 4px !important;
+	}
+	.invoker {
+		position:absolute;
+		right: 7px; top: 7px;
 	}
 
 	.emoji-picker {

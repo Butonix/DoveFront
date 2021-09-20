@@ -96,9 +96,8 @@
 				</v-card>
 				<v-card
 					v-else tile
-					class="mx-auto py-6"
+					class="mx-auto py-6 relative"
 					color="white"
-					style="position: relative"
 				>
 					<div class="custom-shape-divider-top-1631291856">
 						<svg data-name="Layer 1"
@@ -110,16 +109,13 @@
 							/>
 						</svg>
 					</div>
-					<horizontal-slider class="pl-4 mx-auto"
-						style="max-width: 1450px; z-index: 2"
-					>
+					<horizontal-slider class="pl-4 mx-auto pin-bar-slider">
 						<pinned-post
 							v-for="(item) in articles.results"
 							:key="item.id"
-							class="ma-2"
+							class="ma-2 d-inline-block pin-post-item"
 							:post="item"
 							is-article
-							style="display: inline-block; z-index: 44;"
 						/>
 					</horizontal-slider>
 				</v-card>
@@ -299,5 +295,11 @@ export default {
 
 .custom-shape-divider-top-1631291856 .shape-fill {
 	fill: #030d27;
+}
+.pin-bar-slider {
+	max-width: 1450px; z-index: 2
+}
+.pin-post-item {
+	z-index: 44;
 }
 </style>

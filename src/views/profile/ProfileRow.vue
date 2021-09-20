@@ -2,7 +2,7 @@
 	<div>
 		<v-card
 			height="300"
-			class="mx-auto cover-photo rounded-b-xl"
+			class="mx-auto cover-photo rounded-b-xl rounded-t-0"
 		>
 			<v-img
 				height="300"
@@ -10,10 +10,9 @@
 			/>
 		</v-card>
 		<v-card
-			class="mx-auto"
+			class="mx-auto avatar-card"
 			height="200"
 			width="200"
-			style="margin-top: -150px;"
 			flat
 			color="transparent"
 		>
@@ -54,6 +53,9 @@ export default {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+}
+.avatar-card {
+	margin-top: -150px;
 }
 .profile-avatar {
 	border: 4px solid whitesmoke;

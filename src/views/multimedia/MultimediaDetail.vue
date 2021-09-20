@@ -11,7 +11,7 @@
 					mdi-arrow-left-circle
 				</v-icon>
 			</v-app-bar-nav-icon>
-			<v-toolbar-title style="font-size: 16px;">
+			<v-toolbar-title class="multimedia-title">
 				{{ (multimedia) ? multimedia.title : "Not Found" }}
 			</v-toolbar-title>
 			<v-spacer />
@@ -125,10 +125,9 @@
 										>
 											<v-btn
 												v-if="$helper.ifWriterIsCurrentUser(multimedia.uploaded_by.username) || $helper.isCurrentUserSuperAdmin()"
-												class="ma-2"
+												class="ma-2 delete-img-btn"
 												fab
 												x-small
-												style="position: absolute; right: 20px; top: 10px;"
 												@click="deleteImage(item.id)"
 											>
 												<v-icon color="error">
@@ -284,5 +283,11 @@ export default {
 }
 .thumbnail-radius {
 	border-radius: 5px;
+}
+.multimedia-title {
+	font-size: 16px;
+}
+.delete-img-btn {
+	position: absolute; right: 20px; top: 10px;
 }
 </style>

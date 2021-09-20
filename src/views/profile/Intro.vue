@@ -1,8 +1,6 @@
 <template>
 	<v-card class="ma-2 pa-0">
-		<div class="px-2"
-			style="background-color: darkgoldenrod"
-		>
+		<div class="px-2 goldenrod">
 			<div>
 				<v-chip
 					v-for="(tag, index) in tags"
@@ -66,4 +64,6 @@ export default {
 	top: 145px
 ::v-deep.v-list-item__subtitle
 	white-space: normal
+.goldenrod
+	background-color: darkgoldenrod
 </style>

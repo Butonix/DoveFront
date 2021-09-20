@@ -50,8 +50,7 @@
 						<div
 							v-for="tag in article.tags.split(',')"
 							:key="tag[0]"
-							class="pa-1 mr-1 mb-2 purple lighten-5"
-							style="border-radius: 4px; font-weight: 500"
+							class="pa-1 mr-1 mb-2 purple lighten-5 article-tag"
 						>
 							#{{ tag }}
 						</div>
@@ -153,5 +152,9 @@ export default {
 	cursor: pointer;
 	margin-top: -8px;
 	font-size: 1.8rem;
+}
+.article-tag {
+	border-radius: 4px;
+	font-weight: 500;
 }
 </style>

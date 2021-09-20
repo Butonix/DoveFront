@@ -4,9 +4,8 @@
 		:color="color"
 	>
 		<v-col
-			class="text-center"
+			class="text-center footer-bottom"
 			cols="12"
-			style="font-size: 12px"
 		>
 			©️ {{ new Date().getFullYear() }} — <strong>Ishworiya Marg Bhajan Mandal Sachchai Kendra Nepal</strong>
 		</v-col>
@@ -26,5 +25,7 @@ export default {
 </script>
 
 <style scoped>
-
+.footer-bottom {
+	font-size: 12px
+}
 </style>

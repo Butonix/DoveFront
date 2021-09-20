@@ -1,15 +1,14 @@
 <template>
 	<v-card
 		flat tile
-		class="mx-auto"
+		class="mx-auto relative"
 		color="transparent"
 		max-width="900"
 		min-height="calc(100vh - 60px)"
-		style="position:relative;"
 	>
 		<v-img
 			:src="require('@/assets/undraw_Personal_opinions.svg')"
-			style="position:absolute; bottom: 0; left: 0"
+			class="personal-opinion-img"
 			max-width="500"
 		/>
 		<v-card-text>
@@ -168,5 +167,7 @@ export default {
 </script>
 
 <style scoped>
-
+.personal-opinion-img {
+	position:absolute; bottom: 0; left: 0
+}
 </style>

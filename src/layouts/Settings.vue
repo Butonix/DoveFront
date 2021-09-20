@@ -18,7 +18,7 @@
 					mdi-menu-open
 				</v-icon>
 			</v-app-bar-nav-icon>
-			<v-toolbar-title style="font-size: 1rem; font-weight: 500;">
+			<v-toolbar-title class="setting-route-name">
 				{{ $route.name }}
 			</v-toolbar-title>
 			<v-spacer />
@@ -27,10 +27,9 @@
 		</v-app-bar>
 		<!-- eslint-disable-next-line vue/no-deprecated-v-bind-sync -->
 		<v-navigation-drawer v-model="adminDrawer" :mini-variant.sync="mini"
-			app
+			app dark
 			:permanent="$vuetify.breakpoint.mdAndUp"
 			:temporary="!$vuetify.breakpoint.mdAndUp"
-			dark
 			color="admin-nav"
 		>
 			<admin-sidebar @toggle="mini = !mini" />
@@ -53,7 +52,7 @@
 								<router-view />
 							</transition>
 							<scroll-top
-								style="z-index: 55;"
+								class="setting-scroll-top"
 								color="#12223b"
 							/>
 							<div class="py-2" />
@@ -133,6 +132,16 @@ export default {
 	background-color: #2d9494;
 }
 .admin-nav {
-	background-image: radial-gradient( circle 590px at 8.2% 13.8%,  rgba(18,35,60,1) 0%, #181818 90% );
+	background-image: radial-gradient(
+			circle 590px at 8.2% 13.8%,
+			rgba(18,35,60,1) 0%,
+			#181818 90%
+	);
+}
+.setting-route-name {
+	font-size: 1rem; font-weight: 500;
+}
+.setting-scroll-top {
+	z-index: 55;
 }
 </style>
