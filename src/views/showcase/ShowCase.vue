@@ -1,5 +1,5 @@
 <template>
-	<div style="background: #f4f4f5;">
+	<div class="showcase-wrapper-idx">
 		<show-case-slider />
 		<event-highlights />
 		<kendra-info-box />
@@ -32,3 +32,8 @@ export default {
 	}
 }
 </script>
+<style scoped>
+.showcase-wrapper-idx {
+	background: #f4f4f5;
+}
+</style>

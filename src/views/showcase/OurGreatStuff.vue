@@ -8,10 +8,9 @@
 			height="1400"
 		>
 			<v-row
-				class="fill-height ma-0 pa-0 mx-auto"
+				class="fill-height ma-0 pa-0 mx-auto stuff-row"
 				align="center"
 				justify="center"
-				style="max-width: 1100px"
 			>
 				<div id="stuff-content">
 					<h1>
@@ -135,6 +134,9 @@ export default {
 	color: white !important;
 }
 .great-stuff-card {
-	margin-top: -500px; z-index: 1
+	margin-top: -500px; z-index: 1;
+}
+.stuff-row {
+	max-width: 1100px;
 }
 </style>

@@ -11,7 +11,7 @@
 			max-width="1200" color="transparent"
 			flat tile
 		>
-			<div style="height: 150px;" />
+			<gap height="150" />
 			<section class="scatter-section demo-text">
 				<div class="wrapper text py-12 grey--text text--lighten-2">
 					LOVEDGALLERYFROMUS
@@ -70,7 +70,7 @@
 					SACHCHAIKENDRANEPAL
 				</div>
 			</section>
-			<div style="padding: 100px;" />
+			<gap height="200" />
 		</v-card>
 	</v-card>
 </template>

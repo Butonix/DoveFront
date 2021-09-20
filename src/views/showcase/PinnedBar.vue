@@ -2,11 +2,11 @@
 	<v-card width="100vw"
 		flat tile
 		dark color="rgb(6 12 40)"
-		style="margin-top: -60px;"
+		class="pin-bar-wrapper"
 	>
 		<v-card color="transparent"
-			style="z-index: 1;"
 			flat tile
+			class="pin-bar-wrapper-card"
 		>
 			<v-col
 				cols="12"
@@ -26,7 +26,7 @@
 				</v-avatar>
 			</v-col>
 		</v-card>
-		<div style="height: 50px;" />
+		<gap height="50" />
 		<v-card
 			dark
 			:loading="loading"
@@ -99,9 +99,10 @@
 					class="mx-auto py-6 relative"
 					color="white"
 				>
-					<div class="custom-shape-divider-top-1631291856">
+					<div class="shape-divider">
 						<svg data-name="Layer 1"
-							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 1200 120"
 							preserveAspectRatio="none"
 						>
 							<path d="M600,16.8c0-8.11-8.88-13.2-19.92-13.2H0V120H1200V3.6H619.92C608.88,3.6,600,8.66,600,16.8Z"
@@ -276,7 +277,7 @@ export default {
 	border-radius: 20px
 </style>
 <style lang="scss" scoped>
-.custom-shape-divider-top-1631291856 {
+.shape-divider {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -286,14 +287,14 @@ export default {
 	transform: rotate(180deg);
 }
 
-.custom-shape-divider-top-1631291856 svg {
+.shape-divider svg {
 	position: relative;
 	display: block;
 	width: calc(139% + 1.3px);
 	height: 219px;
 }
 
-.custom-shape-divider-top-1631291856 .shape-fill {
+.shape-divider .shape-fill {
 	fill: #030d27;
 }
 .pin-bar-slider {
@@ -301,5 +302,11 @@ export default {
 }
 .pin-post-item {
 	z-index: 44;
+}
+.pin-bar-wrapper {
+	margin-top: -60px;
+}
+.pin-bar-wrapper-card {
+	z-index: 1;
 }
 </style>

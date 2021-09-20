@@ -52,8 +52,8 @@
 				</v-card>
 			</v-row>
 			<v-fade-transition>
-				<div v-show="$vuetify.breakpoint.width < 648"
-					style="height: 200px;"
+				<gap v-show="$vuetify.breakpoint.width < 648"
+					height="200"
 				/>
 			</v-fade-transition>
 		</v-card>

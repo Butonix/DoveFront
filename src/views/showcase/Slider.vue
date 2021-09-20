@@ -53,7 +53,7 @@
 								max-width="1000"
 								color="transparent"
 							>
-								<div style="height: 150px;" />
+								<gap height="150" />
 								<v-card-text class="text-uppercase context">
 									{{ item.context }}
 								</v-card-text>

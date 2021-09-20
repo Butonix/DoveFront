@@ -1,5 +1,5 @@
 import Vue from "vue"
-import App from "./App.vue"
+import App from "./App"
 import router from "./router"
 import store from "./store"
 import vuetify from "./plugins/vuetify"
@@ -24,11 +24,14 @@ Vue.use(VueYoutube)
 Vue.use(VueObserveVisibility)
 
 Vue.component(APlayer)
+Vue.component("Gap", () =>
+	import("@/components/utils/Gap")
+);
 Vue.component("ProfileNoContent", () =>
-	import("@/components/profile/ProfileNoContent.vue")
+	import("@/components/profile/ProfileNoContent")
 );
 Vue.component("CardImg", () =>
-	import("@/components/multimedia/CardImage.vue")
+	import("@/components/multimedia/CardImage")
 );
 Vue.component("TextField", () =>
 	import("@/components/form/_text_field")
@@ -85,7 +88,7 @@ Vue.component("AdminFormDetailItem", () =>
 	import("@/components/adminForm/_admin_form_detail_item")
 );
 Vue.component("NotFound", () =>
-	import("@/components/utils/404NotFound.vue")
+	import("@/components/utils/404NotFound")
 );
 
 

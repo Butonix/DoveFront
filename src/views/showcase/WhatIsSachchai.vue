@@ -3,7 +3,6 @@
 		class="what-is-sachchai"
 		width="100vw"
 		dark tile
-		style="margin-top: -400px;"
 	>
 		<v-parallax
 			:src="require('@/assets/light_sky.jpg')"
@@ -11,7 +10,7 @@
 				? 1800
 				: $vuetify.breakpoint.width < 365 ? 3000 : 2000"
 		>
-			<div style="height: 400px" />
+			<gap height="400" />
 			<v-row no-gutters
 				justify="center" align="center"
 			>
@@ -20,7 +19,7 @@
 						class="text-center mx-auto transparent overflow-hidden"
 						max-width="600" light
 					>
-						<div style="height: 200px" />
+						<gap height="200" />
 						<v-card-text class="nepali-font question">
 							के हो त सच्चाई ?
 						</v-card-text>
@@ -50,7 +49,7 @@
 					</v-card>
 				</v-col>
 			</v-row>
-			<div style="height: 400px" />
+			<gap height="400" />
 		</v-parallax>
 	</v-card>
 </template>
@@ -63,6 +62,9 @@ export default {
 </script>
 
 <style scoped>
+.what-is-sachchai {
+	margin-top: -400px;
+}
 .question {
 	font-size: 40px;
 	line-height: 45px;

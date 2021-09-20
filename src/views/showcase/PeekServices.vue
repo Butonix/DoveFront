@@ -12,7 +12,7 @@
 			class="mx-auto"
 			color="transparent"
 		>
-			<div style="height: 200px" />
+			<gap height="200" />
 			<p class="pb-0 quote nepali-font">
 				"जब संसारको हरेक बाटोहरु बन्द हुन्छन् तब पर्मेश्वरले तपाईँको निम्ति एउटा नयाँ बाटो तयार गर्नुहुन्छ।"
 			</p>
@@ -64,7 +64,7 @@
 				</v-card>
 			</v-card>
 		</v-card>
-		<div style="height: 250px;" />
+		<gap height="250" />
 	</v-card>
 </template>
 <script>
