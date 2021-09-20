@@ -326,7 +326,7 @@ export default {
 		color: #181818;
 	}
 	&:hover {
-		background-color: rgb(75 93 195);
+		background-color: #3F51B5;
 		.item-title {
 			color: whitesmoke;
 		}

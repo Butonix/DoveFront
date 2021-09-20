@@ -28,7 +28,10 @@ const routes = [
 			{
 				path: "feedbacks",
 				name: "Feedback",
-				component: () => import("@/views/home/office/Feedback"),
+				components: {
+					default: () => import("@/views/home/office/Feedback"),
+					sidebar: () => import("@/views/home/office/FeedbackSidebar")
+				},
 			},
 			{
 				path: "a-brief-history",
