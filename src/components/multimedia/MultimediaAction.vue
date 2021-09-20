@@ -2,57 +2,52 @@
 	<v-card-actions class="pa-2 pt-0 flex-wrap justify-space-between">
 		<v-btn
 			v-if="$helper.isCurrentUserSuperAdmin()"
-			:icon="ifScreenWidthIsLessThanSmall"
-			:small="!ifScreenWidthIsLessThanSmall"
-			height="45"
+			fab
+			small
 			class="ma-1"
 			depressed
 			color="#953b93"
-			dark rounded
+			dark
 			@click="$emit('edit')"
 		>
-			<v-icon>
+			<v-icon size="18">
 				mdi-pencil
 			</v-icon>
 		</v-btn>
 		<v-btn depressed
 			class="ma-1"
-			:icon="ifScreenWidthIsLessThanSmall"
-			:small="!ifScreenWidthIsLessThanSmall"
-			height="45" rounded
+			fab
+			small
 		>
-			<v-icon>
+			<v-icon size="18">
 				mdi-heart-outline
 			</v-icon>
 		</v-btn>
 		<v-btn depressed
 			class="ma-1"
-			:icon="ifScreenWidthIsLessThanSmall"
-			:small="!ifScreenWidthIsLessThanSmall"
-			height="45" rounded
+			fab
+			small
 		>
-			<v-icon>
+			<v-icon size="18">
 				mdi-comment-outline
 			</v-icon>
 		</v-btn>
 		<v-btn depressed
 			class="ma-1"
-			:icon="ifScreenWidthIsLessThanSmall"
-			:small="!ifScreenWidthIsLessThanSmall"
-			height="45" rounded
+			fab
+			small
 		>
-			<v-icon>
+			<v-icon size="18">
 				mdi-share
 			</v-icon>
 		</v-btn>
 		<v-spacer />
 		<v-btn depressed
 			class="ma-1"
-			:icon="ifScreenWidthIsLessThanSmall"
-			:small="!ifScreenWidthIsLessThanSmall"
-			height="45" rounded
+			fab
+			small
 		>
-			<v-icon>
+			<v-icon size="18">
 				mdi-bookmark-outline
 			</v-icon>
 		</v-btn>
@@ -62,15 +57,7 @@
 <script>
 export default {
 	name: "MultimediaAction",
-	props: {},
 	emits: ["edit"],
-	data: () => ({}),
-	computed: {
-		ifScreenWidthIsLessThanSmall() {
-			return this.$vuetify.breakpoint.width < 500
-		}
-	},
-	methods: {}
 }
 </script>
 
