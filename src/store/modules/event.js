@@ -4,12 +4,6 @@ const util = require("util")
 
 const eventUrl = urls.event
 
-export const SET_EVENTS = "SET_EVENTS"
-export const SET_EVENT = "SET_EVENT"
-export const SET_EVENT_FORM_ERRORS = "SET_EVENT_FORM_ERRORS"
-export const SET_EVENT_STATISTICS = "SET_EVENT_STATISTICS"
-export const SET_EVENT_COMMENTS = "SET_EVENT_COMMENTS"
-
 const state = {
 	events: {},
 	lastCreatedEvent: {},
@@ -18,30 +12,35 @@ const state = {
 	eventVideoUrls: {},
 	statistics: {},
 	comments: {},
-	formErrors: {}
+	formErrors: {},
+	detailTab: null,
 }
 
 const mutations = {
-	[SET_EVENTS](state, value) {
+	SET_EVENTS(state, value) {
 		state.events = value
 	},
-	[SET_EVENT](state, value) {
+	SET_EVENT(state, value) {
 		state.event = value
 	},
-	[SET_EVENT_FORM_ERRORS](state, value) {
+	SET_EVENT_FORM_ERRORS(state, value) {
 		state.formErrors = value
 	},
-	[SET_EVENT_STATISTICS](state, value) {
+	SET_EVENT_STATISTICS(state, value) {
 		state.statistics = value
 	},
-	[SET_EVENT_COMMENTS](state, value) {
+	SET_EVENT_COMMENTS(state, value) {
 		state.comments = value
+	},
+	SET_DETAIL_TAB(state, value) {
+		state.detailTab = value
 	}
 }
 
 const getters = {
 	list: state => state.events,
 	detail: state => state.event,
+	detailTab: state => state.detailTab,
 	formErrorsList: state => state.formErrors,
 	statisticsDetail: state=> state.statistics,
 	commentsList: state=> state.comments

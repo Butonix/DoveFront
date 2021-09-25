@@ -8,7 +8,7 @@
 			<v-img
 				v-if="banners"
 				:src="$helper.replaceBackendHost(banners['image'])"
-				height="60vh"
+				height="250"
 				max-width="1000"
 				class="mx-auto event-banner"
 			>
@@ -40,7 +40,7 @@
 					v-if="bannerImageToUpload"
 					id="event-banner-to-upload"
 					:src="bannerImageUrl"
-					height="60vh"
+					height="250"
 					max-width="1000"
 					class="mx-auto event-banner"
 				>
@@ -84,7 +84,7 @@
 				<v-img
 					v-else
 					:src="require('@/assets/default_event_banner.png')"
-					height="60vh"
+					height="250"
 					max-width="1000"
 					class="mx-auto event-banner cursor"
 					@click="$refs.bannerInput.click()"

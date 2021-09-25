@@ -1,127 +1,80 @@
 <template>
-	<v-card width="100vw">
-		<v-toolbar
-			color="transparent"
-			class="mx-auto"
-			tile
-			height="60"
-		>
-			<v-btn icon
-				@click="$router.go(-1)"
+	<v-app>
+		<toolbar />
+		<v-main>
+			<v-container fluid
+				class="pa-0"
 			>
-				<v-icon size="24">
-					mdi-arrow-left
-				</v-icon>
-			</v-btn>
-			<v-spacer />
-			<v-card height="55">
-				<v-tabs
-					v-model="tab"
-					height="55"
-					background-color="transparent"
-					centered
-					icons-and-text
-					slider-size="3"
-					slider-color="primary"
-					show-arrows
-				>
-					<v-tab
-						v-for="(item, index) in eventTabItems"
-						:key="index"
-						:to="item.to"
-						active-class=""
-						exact-active-class="active-tab"
-					>
-						<span>{{ item.title }}</span>
-						<v-icon v-if="$vuetify.breakpoint.smAndUp">
-							{{ item.icon }}
-						</v-icon>
-					</v-tab>
-				</v-tabs>
-			</v-card>
-			<v-spacer />
-			<v-btn icon
-				to="/home/feeds"
-			>
-				<v-icon>
-					mdi-home
-				</v-icon>
-			</v-btn>
-		</v-toolbar>
-		<div v-if="event"
-			id="event-detail-container"
-		>
-			<v-row id="event-top-row"
-				class="ma-0 pa-0"
-			>
-				<banner-column :event="event"
-					@refresh-event="init"
+				<gap v-if="$vuetify.breakpoint.xs"
+					height="88"
 				/>
-				<date-column :event="event" />
-				<top-info-column :event="event" />
-				<actions
-					v-if="$helper.isUserLoggedIn()"
-					:event="event"
+				<gap v-else
+					height="60"
 				/>
-				<v-col cols="12"
-					class="pa-0"
-				>
-					<v-divider class="mx-auto" />
-				</v-col>
-				<v-col cols="12"
-					class="pa-0"
-				>
-					<div class="py-1" />
-				</v-col>
-				<v-col cols="12">
-					<v-card max-width="1000"
-						class="mx-auto"
-						color="transparent"
+				<v-card>
+					<div v-if="event"
+						id="event-detail-container"
 					>
-						<v-tabs-items v-model="tab">
-							<router-view />
-						</v-tabs-items>
-					</v-card>
-				</v-col>
-			</v-row>
-		</div>
-	</v-card>
+						<v-row id="event-top-row"
+							class="ma-0 pa-0"
+						>
+							<banner-column :event="event"
+								@refresh-event="init"
+							/>
+							<date-column :event="event" />
+							<top-info-column :event="event" />
+							<actions
+								v-if="$helper.isUserLoggedIn()"
+								:event="event"
+							/>
+							<v-col cols="12"
+								class="pa-0"
+							>
+								<v-divider class="mx-auto" />
+							</v-col>
+							<v-col cols="12"
+								class="pa-0"
+							>
+								<div class="py-1" />
+							</v-col>
+							<v-col cols="12">
+								<v-card max-width="1000"
+									class="mx-auto"
+									color="transparent"
+								>
+									<v-tabs-items v-model="tab">
+										<router-view />
+									</v-tabs-items>
+								</v-card>
+							</v-col>
+						</v-row>
+					</div>
+				</v-card>
+			</v-container>
+		</v-main>
+	</v-app>
 </template>
 <script>
 import {mapGetters} from "vuex";
-import BannerColumn from "@/views/event/detail_views/BannerColumn.vue";
-import DateColumn from "@/views/event/detail_views/DateColumn.vue";
-import TopInfoColumn from "@/views/event/detail_views/TopInfoColumn.vue";
-import Actions from "@/views/event/detail_views/Actions.vue";
 
 export default {
 	name: "EventDetailView",
 	components: {
-		Actions,
-		TopInfoColumn,
-		DateColumn,
-		BannerColumn
+		Toolbar: () => import("@/views/event/detail_views/Toolbar.vue"),
+		Actions: () => import("@/views/event/detail_views/Actions.vue"),
+		TopInfoColumn: () => import("@/views/event/detail_views/TopInfoColumn.vue"),
+		DateColumn: () => import("@/views/event/detail_views/DateColumn.vue"),
+		BannerColumn: () => import("@/views/event/detail_views/BannerColumn.vue")
 	},
 	data: () => ({
 		loading: true,
-		tab: null,
 	}),
 	computed: {
 		...mapGetters({
 			event: "event/detail",
+			tab: "event/detailTab",
 			comments: "event/commentsList"
-		}),
-		eventTabItems() {
-			if (!this.$route) return  []
-			if (!this.$route.params) return  []
-			if (!this.$route.params.id) return  []
-			return [
-				{title: "about", icon: "mdi-information-variant", to: `/home/event/${this.$route.params.id}/about`},
-				{title: "discussion", icon: "mdi-account-multiple", to: `/home/event/${this.$route.params.id}/discussion`},
-				{title: "photos", icon: "mdi-image", to: `/home/event/${this.$route.params.id}/images`},
-				{title: "multimedia", icon: "mdi-video-vintage", to: `/home/event/${this.$route.params.id}/multimedias`},
-			]
-		},
+		})
 	},
 	async created() {
 		this.$bus.on("reload", async () => await this.init())
@@ -132,7 +85,6 @@ export default {
 	},
 	methods: {
 		async init() {
-			this.loading=true
 			if (this.$route.params) {
 				const eventId = this.$route.params.id
 				await this.$store.dispatch("event/fetchSingle", {id: eventId})
