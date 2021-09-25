@@ -60,11 +60,11 @@ import {mapGetters} from "vuex";
 export default {
 	name: "EventDetailView",
 	components: {
-		Toolbar: () => import("@/views/event/detail_views/Toolbar.vue"),
-		Actions: () => import("@/views/event/detail_views/Actions.vue"),
-		TopInfoColumn: () => import("@/views/event/detail_views/TopInfoColumn.vue"),
-		DateColumn: () => import("@/views/event/detail_views/DateColumn.vue"),
-		BannerColumn: () => import("@/views/event/detail_views/BannerColumn.vue")
+		Toolbar: () => import("@/views/event/detail_views/Toolbar"),
+		Actions: () => import("@/views/event/detail_views/Actions"),
+		TopInfoColumn: () => import("@/views/event/detail_views/TopInfoColumn"),
+		DateColumn: () => import("@/views/event/detail_views/DateColumn"),
+		BannerColumn: () => import("@/views/event/detail_views/BannerColumn")
 	},
 	data: () => ({
 		loading: true,
