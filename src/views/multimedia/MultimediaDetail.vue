@@ -1,5 +1,5 @@
 <template>
-	<v-app id="app">
+	<v-app>
 		<v-app-bar app
 			height="50"
 			elevation="0"

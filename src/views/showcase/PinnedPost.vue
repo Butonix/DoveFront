@@ -75,15 +75,10 @@ export  default {
 			type: Object,
 			required: true
 		},
-		isArticle: {
-			type: Boolean,
-			required: false,
-			default: false
-		}
 	},
 	data: () =>({
 		pin: null,
-		loading: false,
+		loading: true,
 	}),
 	computed: {
 		userHasProfileImage() {
@@ -97,19 +92,14 @@ export  default {
 	},
 	methods: {
 		init() {
-			this.loading = true
-			if (this.post) {
-				this.pin = this.post
-				if(!this.post["uploaded_by"] && this.post.created_by) {
-					this.pin["uploaded_by"] = this.post.created_by
-				}
+			this.pin = this.post
+			if(!this.post["uploaded_by"] && this.post.created_by) {
+				this.pin["uploaded_by"] = this.post.created_by
 			}
 			this.loading = false
 		},
 		routeToPostDetail() {
-			this.isArticle
-				? router.push({name: "SACHCHAI NEPAL ARTICLE", params: { id: this.pin.id }})
-				: router.push({name: "SACHCHAI NEPAL MULTIMEDIA", params: { id: this.pin.id }})
+			router.push({name: "SACHCHAI NEPAL ARTICLE", params: { id: this.pin.id }})
 		},
 	}
 }

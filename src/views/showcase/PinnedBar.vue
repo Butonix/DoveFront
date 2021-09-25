@@ -116,7 +116,6 @@
 							:key="item.id"
 							class="ma-2 d-inline-block pin-post-item"
 							:post="item"
-							is-article
 						/>
 					</horizontal-slider>
 				</v-card>
@@ -128,7 +127,6 @@
 import {mapGetters} from "vuex";
 import {gsap} from "gsap"
 import {ScrollTrigger} from "gsap/ScrollTrigger"
-import HorizontalSlider from "@/components/utils/HorizontalSlider.vue";
 
 ScrollTrigger.defaults({
 	toggleActions: "restart pause resume pause",
@@ -138,7 +136,7 @@ ScrollTrigger.defaults({
 export default {
 	name: "PinnedBarView",
 	components: {
-		HorizontalSlider,
+		HorizontalSlider: () => import("@/components/utils/HorizontalSlider"),
 		PinnedPost: () => import("@/views/showcase/PinnedPost"),
 	},
 	data: () => ({
