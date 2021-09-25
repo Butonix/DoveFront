@@ -2,8 +2,14 @@
 	<v-card flat
 		class="no-radius"
 		min-height="100vh"
-		:loading="loading"
 	>
+		<v-overlay :value="loading">
+			<v-progress-circular
+				size="70"
+				color="primary"
+				indeterminate
+			/>
+		</v-overlay>
 		<header-toolbar />
 		<v-row v-if="currentUser"
 			class="ma-0 pa-0"
@@ -150,19 +156,20 @@
 <script>
 import {mapGetters} from "vuex";
 import Snack from "@/mixins/Snack";
-import CountryAutocomplete from "@/mixins/CountryAutocomplete";
-import ProfileFormHeader from "@/components/profile/_profile_form_header.vue";
-import HeaderToolbar from "@/views/profile/HeaderToolbar.vue";
+import LoadLocationFormMixin from "@/mixins/LoadLocationFormMixin.js";
 
 export default {
 	name: "ChangePassword",
-	components: {HeaderToolbar, ProfileFormHeader},
-	mixins: [Snack],
+	components: {
+		HeaderToolbar: () => import("@/views/profile/HeaderToolbar.vue"),
+		ProfileFormHeader: () => import("@/components/profile/_profile_form_header.vue")
+	},
+	mixins: [Snack, LoadLocationFormMixin],
 	props: {
 		value: Boolean
 	},
 	data: () => ({
-		loading: null,
+		loading: true,
 		profile: {},
 	}),
 	computed: {
@@ -179,7 +186,6 @@ export default {
 	},
 	methods: {
 		async init() {
-			this.loading=true
 			this.profile = { ...this.currentUser.profile}
 			if (this.currentUser.profile.contact) {
 				this.currentUser.profile.contact = this.currentUser.profile.contact.substring(4)
