@@ -103,52 +103,52 @@
 export default {
 	name: "QuickLinksComponent",
 	emits: ["toggle"],
-	data: () => ({
-		items: [
-			{
-				action: "mdi-bird",
-				items: [
-					{ title: "Youtube", icon: "mdi-youtube", to: "https://www.youtube.com/channel/UCJciQdMbWCr-hPmVWu9HVyw" },
-					{ title: "Facebook Group", icon: "mdi-facebook", to: "https://www.facebook.com/groups/2553480628235742/" },
-					{ title: "Facebook Page", icon: "mdi-facebook", to: "https://www.facebook.com/sachchaikendranepal" },
-				],
-				title: "Sachchai",
-			},
-			{
-				action: "mdi-star-circle",
-				items: [
-					{ title: "Profile", icon: "mdi-account-circle", to: "/profile/home" },
-					{ title: "Posts", icon: "mdi-post", to: "/profile/articles" },
-					{ title: "Photos", icon: "mdi-image", to: "/profile/images" },
-					{ title: "Multimedias", icon: "mdi-video-vintage", to: "/profile/multimedias" },
-					{ title: "Events", icon: "mdi-video-vintage", to: "/profile/events" },
-				],
-				title: "My Links",
-			},
-			{
-				action: "mdi-google-maps",
-				items: [
-					{ title: "Branches", icon: "mdi-city", to: "/home/map/branch" },
-				],
-				title: "Maps",
-			},
-			{
-				action: "mdi-office-building",
-				items: [
-					{ title: "FAQs", icon: "mdi-help-circle", to: "/home/faqs" },
-					{ title: "Feedback", icon: "mdi-comment-quote", to: "/home/feedbacks" },
-					{ title: "A Brief History", icon: "mdi-delta", to: "/home/a-brief-history" },
-				],
-				title: "Office",
-			},
-			{
-				action: "mdi-tag",
-				items: [{ title: "Our Partners", icon: "mdi-handshake" }],
-				title: "Promotions",
-			}
-		]
-	}),
 	computed: {
+		items() {
+			return [
+				{
+					action: "mdi-bird",
+					items: [
+						{title: "Youtube", icon: "mdi-youtube", to: this.$urls.youtube},
+						{title: "Facebook Group", icon: "mdi-facebook", to: this.$urls.fbGroup},
+						{title: "Facebook Page", icon: "mdi-facebook", to: this.$urls.fbPage},
+					],
+					title: "Sachchai",
+				},
+				{
+					action: "mdi-star-circle",
+					items: [
+						{title: "Profile", icon: "mdi-account-circle", to: "/profile/home"},
+						{title: "Posts", icon: "mdi-post", to: "/profile/articles"},
+						{title: "Photos", icon: "mdi-image", to: "/profile/images"},
+						{title: "Multimedias", icon: "mdi-video-vintage", to: "/profile/multimedias"},
+						{title: "Events", icon: "mdi-video-vintage", to: "/profile/events"},
+					],
+					title: "My Links",
+				},
+				{
+					action: "mdi-google-maps",
+					items: [
+						{ title: "Branches", icon: "mdi-city", to: "/home/map/branch" },
+					],
+					title: "Maps",
+				},
+				{
+					action: "mdi-office-building",
+					items: [
+						{title: "FAQs", icon: "mdi-help-circle", to: "/home/faqs"},
+						{title: "Feedback", icon: "mdi-comment-quote", to: "/home/feedbacks"},
+						{title: "A Brief History", icon: "mdi-delta", to: "/home/a-brief-history"},
+					],
+					title: "Office",
+				},
+				{
+					action: "mdi-tag",
+					items: [{ title: "Our Partners", icon: "mdi-handshake" }],
+					title: "Promotions",
+				}
+			]
+		},
 		getFullName() {
 			if(!this.$helper.isUserLoggedIn()) return "Welcome to peace"
 			const currentUser = this.$helper.getCurrentUser()
