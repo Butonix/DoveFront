@@ -1,6 +1,6 @@
 <template>
 	<v-card
-		dark rounded="xl"
+		dark rounded="lg"
 		:height="height"
 		:max-width="maxWidth"
 	>
@@ -11,15 +11,15 @@
 				dark
 				tile
 			>
-				<v-img :src="$helper.replaceBackendHost(src)"
-					height="100%"
+				<v-img
 					contain
+					height="100%"
+					:src="$helper.replaceBackendHost(src)"
 				>
-					<v-btn fab
-						dark
-						x-small
+					<v-btn
+						fab dark
+						x-small class="ma-4"
 						color="grey darken-4"
-						class="ma-2"
 						@click="fullscreen=false"
 					>
 						<v-icon>mdi-close</v-icon>
@@ -32,11 +32,12 @@
 			:src="$helper.replaceBackendHost(src)"
 			:height="height"
 			:contain="contain"
+			position="relative"
 		>
 			<template #default>
 				<v-btn icon
 					color="white"
-					class="action-btn"
+					class="action-btn ma-1"
 					@click="fullscreen=true"
 				>
 					<v-icon>mdi-fullscreen</v-icon>
