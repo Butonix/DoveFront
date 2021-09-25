@@ -5,7 +5,6 @@
 		max-width="600"
 	>
 		<v-card v-if="$helper.isUserLoggedIn()"
-			rounded="xl"
 			elevation="0"
 		>
 			<input
@@ -38,10 +37,14 @@
 				accept=".webm,.mp4,.mpeg,.flv,.mov,.MOV"
 				@change="videoInputChanged"
 			>
-			<v-toolbar color="#be75bd"
-				rounded="xl"
+			<v-toolbar
+				color="#be75bd"
 			>
-				<v-icon>mdi-pencil-box</v-icon>
+				<v-icon color="white"
+					large
+				>
+					mdi-pencil-box
+				</v-icon>
 				<v-spacer />
 				<v-toolbar-title class="title-toolbar">
 					start a post
@@ -142,7 +145,7 @@
 					/>
 				</v-col>
 				<v-col cols="12"
-					class="pt-4 relative"
+					class="pt-0 pb-2"
 				>
 					<v-fab-transition>
 						<v-btn v-if="!addDescription"
@@ -150,27 +153,36 @@
 							@click="addDescriptionAndFocus"
 						>
 							<v-icon>mdi-image-text</v-icon>
-							<span v-if="$vuetify.breakpoint.width > 400"
+							<span
+								v-if="$vuetify.breakpoint.width > 400"
 								class="pl-1"
-							>Add description</span>
+							>
+								Add description
+							</span>
 						</v-btn>
-						<v-btn v-else
-							class="remove-desc-btn"
-							rounded
-							@click="removeDescription"
+						<div
+							v-else
+							class="d-flex"
 						>
-							<v-icon color="red lighten-1">
-								mdi-close
-							</v-icon>
-							<span v-if="$vuetify.breakpoint.width > 400"
-								class="pl-1"
-							>Remove description</span>
-						</v-btn>
+							<v-spacer />
+							<v-btn
+								rounded
+								@click="removeDescription"
+							>
+								<v-icon color="red lighten-1">
+									mdi-close
+								</v-icon>
+								<span v-if="$vuetify.breakpoint.width > 400"
+									class="pl-1"
+								>Remove description</span>
+							</v-btn>
+						</div>
 					</v-fab-transition>
 				</v-col>
 				<v-scale-transition>
 					<v-col v-if="addDescription"
 						cols="12"
+						class="py-1"
 					>
 						<v-textarea
 							id="description"
@@ -193,6 +205,7 @@
 				<v-scale-transition>
 					<v-col v-show="uploadVideoUrl"
 						cols="12"
+						class="pb-0"
 					>
 						<v-combobox
 							ref="videoUrlInput"
@@ -221,21 +234,25 @@
 					no-gutters
 					justify="space-around"
 					align="center"
-					class="pa-2"
+					class="pa-2 mt-2"
 				>
-					<v-col cols="12"
-						class="ma-0 pa-0"
-					>
-						<p class="ma-0 pa-0 subtitle-2">
-							<span><v-icon size="20"
-								class="mb-1"
-							>mdi-diamond-stone</v-icon></span>
+					<v-col cols="12">
+						<p class="mb-0 subtitle-2">
+							<span>
+								<v-icon
+									size="20"
+									class="mb-1"
+								>
+									mdi-diamond-stone
+								</v-icon>
+							</span>
 							MEDIA PREVIEW PANE
 						</p>
 						<v-divider />
 					</v-col>
-					<v-col v-for="(file, index) in imageURLs"
-						:key="index"
+					<v-col
+						v-for="(file, index) in imageURLs"
+						:key="file.name"
 						class="d-flex justify-center ma-2"
 						cols="12"
 					>
@@ -243,20 +260,25 @@
 							max-width="500"
 							:src="file"
 						>
-							<v-btn fab
-								x-small class="right-corner"
+							<v-btn
+								absolute
+								class="right-corner"
+								fab x-small
 								@click="removeImage(index)"
 							>
 								<v-icon>mdi-close</v-icon>
 							</v-btn>
 						</card-img>
 					</v-col>
-					<v-col v-for="(item, index) in videoURLs" :key="index"
+					<v-col
+						v-for="(item, index) in videoURLs"
+						:key="item.videoUrl"
 						cols="12"
 						class="d-flex justify-center ma-2"
 					>
 						<v-card height="30vh"
 							max-width="500" dark
+							rounded
 						>
 							<v-btn fab
 								x-small class="right-corner remove-video"
@@ -276,7 +298,9 @@
 							</video>
 						</v-card>
 					</v-col>
-					<v-col v-for="(item, index) in video_urls" :key="index"
+					<v-col
+						v-for="(item, index) in video_urls"
+						:key="item"
 						cols="12"
 						class="ma-2"
 					>
@@ -670,8 +694,8 @@ $dialog-border-radius: 24px
 	text-transform: uppercase
 .right-corner
 	position: absolute
-	right: 1%
-	top: 1%
+	right: 2%
+	top: 2%
 .user-name
 	white-space: normal
 .remove-desc-btn
