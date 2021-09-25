@@ -11,21 +11,14 @@
 				class="d-flex justify-center align-center center-bg"
 			>
 				<div class="center-bg-first">
-					<div class="d-flex justify-center align-center">
-						<v-avatar
-							size="80"
-							class="center-logo"
-							color="blue"
+					<div class="text-center center-logo">
+						<img
+							height="180"
+							:src="require('@/assets/sacchai_logo.png')"
+							alt="Sachchai Kendra Nepal Logo"
 						>
-							<img
-								:src="require('@/assets/sacchai_logo.png')"
-								alt="Sachchai Kendra Nepal Logo"
-							>
-						</v-avatar>
-						<div class="nepali-font text-center center-subtitle">
-							{{ item.subtitle }}
-						</div>
 					</div>
+					<gap height="10" />
 					<div class="pa-2 nepali-font text-center center-title">
 						{{ item.title }}
 					</div>
@@ -116,23 +109,27 @@ export default {
 	mounted() {
 		const tl = gsap.timeline()
 		tl
-			.to(".center-logo", {
-				delay: 3,
-				width: 120,
-				maxWidth: 120,
-				height: 120,
-				duration: .5
-			})
-			.from(".center-subtitle", {
-				width: 0,
+			.from(".center-logo img", {
+				scale: .2,
 				opacity: 0,
-				ease: "power1.out"
-			})
+				ease: "elastic.out(1, 0.3)",
+				duration: 1.5
+			}, 0)
 			.from(".center-title", {
-				opacity: 0,
 				scale: 0,
-				ease: "power1.out"
-			})
+				opacity: 0,
+				ease: "elastic.out(1, 0.3)",
+				duration: 1.5
+			}, 1)
+			.to(".center-title", {
+				scale: 0,
+				opacity: 0,
+				ease: "power4.out"
+			}, 6)
+			.to(".center-logo", {
+				scale: 1.5,
+				ease: "power4.out"
+			}, 6)
 		setTimeout(() => {
 			this.loading = false
 		}, 8000)
@@ -169,7 +166,7 @@ export default {
 }
 
 .center-subtitle {
-	width: 200px;
+	width: 400px;
 	overflow: hidden;
 	font-size: 14px;
 	color: white;
@@ -280,6 +277,44 @@ export default {
 	.context {
 		height: 0;
 		visibility: hidden;
+	}
+}
+.center-logo {
+	img {
+		border: 4px solid #c4d7ff;
+		border-radius: 50%;
+		box-shadow: 0 0 50px #c4d7ff,
+		inset 0 0 50px #c4d7ff;
+		-webkit-box-reflect: below 1px linear-gradient(transparent,transparent,#0002);
+		animation: animate 5s linear infinite;
+	}
+}
+@keyframes animate {
+	0% {
+		box-shadow: 0 0 50px #c4d7ff,
+		inset 0 0 50px #c4d7ff;
+		filter: hue-rotate(0deg);
+	}
+	20% {
+		box-shadow: 0 0 50px #c4d7ff,
+			inset 0 0 50px #c4d7ff;
+	}
+	40% {
+		box-shadow: 0 0 50px #c4d7ff,
+			inset 0 0 50px #c4d7ff;
+	}
+	60% {
+		box-shadow: 0 0 50px #c4d7ff,
+			inset 0 0 50px #c4d7ff;
+	}
+	80% {
+		box-shadow: 0 0 50px #c4d7ff,
+			inset 0 0 50px #c4d7ff;
+	}
+	100% {
+		box-shadow: 0 0 50px #c4d7ff,
+			inset 0 0 50px #c4d7ff;
+		filter: hue-rotate(360deg);
 	}
 }
 </style>
