@@ -190,6 +190,7 @@ export default {
 			if (this.currentUser.profile.contact) {
 				this.currentUser.profile.contact = this.currentUser.profile.contact.substring(4)
 			}
+			await this.loadLocationItems(this.profile)
 			this.loading=false
 		},
 		async patchProfile(body) {
