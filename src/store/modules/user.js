@@ -4,27 +4,19 @@ const util = require("util")
 import urls from "@/urls.json"
 const userUrls = urls.user
 
-export const SET_USERS = "SET_USERS"
-export const SET_USER = "SET_USER"
-export const SET_ROLES = "SET_ROLES"
-export const SET_FORM_ERRORS = "SET_FORM_ERRORS"
-
 const state = {
 	users: [],
 	user: {},
 	formErrors: {}
 }
 const mutations = {
-	[SET_USERS](state, value) {
+	SET_USERS(state, value) {
 		state.users = value
 	},
-	[SET_USER](state, value) {
+	SET_USER(state, value) {
 		state.user = value
 	},
-	[SET_ROLES](state, value) {
-		state.roles = value
-	},
-	[SET_FORM_ERRORS](state, value) {
+	SET_FORM_ERRORS(state, value) {
 		state.formErrors = value
 	}
 }
@@ -99,8 +91,16 @@ const actions = {
 			return false
 		}
 	},
-	changePassword({ commit }, {body: body}) {
-		return $api.post("update-password", body)
+	async changePassword({ commit }, body) {
+		try {
+			await $api.post("update-password", body)
+			return true
+		} catch (e) {
+			if ([400, 403].includes(parseInt(e.response.status.toString()))) {
+				commit("SET_FORM_ERRORS", e.response.data)
+			}
+			return false
+		}
 	},
 	forgotPassword({ commit }, {email: email}) {
 		const fd = new FormData()
