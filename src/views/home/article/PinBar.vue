@@ -60,13 +60,14 @@ export default {
 
 <style scoped>
 .pin-headline {
-	position:absolute; bottom: 0; left: 0;
+	position:absolute;
+	bottom: 0; left: 0;
 	line-height: 1rem;
 	font-size: 1rem;
 	background: #000000ab;
 }
 .pin-headline:hover {
-	background-color: #e5e5e5;
+	background-color: dimgrey;
 }
 .pin-icon {
 	transform: rotate(30deg)
