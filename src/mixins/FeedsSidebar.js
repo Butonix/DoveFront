@@ -16,11 +16,11 @@ const FeedsSidebar = {
 		},
 		homeSideNavItems() {
 			return [
-				{title: "Satsang", to: "satsang"},
-				{title: "Bhajans", to: "bhajan"},
-				{title: "Prayers", to: "prayer"},
-				{title: "Bachans", to: "bachan"},
-				{title: "Testimonials", to: "testimonial"}
+				{title: "Satsang", to: "satsang", icon: "mdi-human-female-dance"},
+				{title: "Bhajans", to: "bhajan", icon: "mdi-music-circle"},
+				{title: "Prayers", to: "prayer", icon: "mdi-hands-pray"},
+				{title: "Bachans", to: "bachan", icon: "mdi-comment-account"},
+				{title: "Testimonials", to: "testimonial", icon: "mdi-human-handsup"}
 			]
 		}
 	},

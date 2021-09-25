@@ -13,6 +13,9 @@
 					:disabled="sideNavActive['All']"
 					@click="$router.push({ name: 'HOME'})"
 				>
+					<v-icon left>
+						mdi-all-inclusive
+					</v-icon>
 					All
 				</v-chip>
 				<v-chip v-for="(item, index) in homeSideNavItems"
@@ -24,6 +27,9 @@
 					:disabled="sideNavActive[item.title]"
 					@click="$router.push({ name: 'HOME', query: { type: item.to } })"
 				>
+					<v-icon left>
+						{{ item.icon }}
+					</v-icon>
 					{{ item.title }}
 				</v-chip>
 			</v-chip-group>

@@ -11,6 +11,11 @@
 				:disabled="sideNavActive['All']"
 				@click="$router.push({ name: 'HOME'})"
 			>
+				<v-list-item-icon>
+					<v-icon>
+						mdi-all-inclusive
+					</v-icon>
+				</v-list-item-icon>
 				<v-list-item-content>
 					<v-list-item-title>All</v-list-item-title>
 				</v-list-item-content>
@@ -24,6 +29,9 @@
 				:disabled="sideNavActive[item.title]"
 				@click="$router.push({ name: 'HOME', query: { type: item.to } })"
 			>
+				<v-list-item-icon>
+					<v-icon>{{ item.icon }}</v-icon>
+				</v-list-item-icon>
 				<v-list-item-content>
 					<v-list-item-title>{{ item.title }}</v-list-item-title>
 				</v-list-item-content>
