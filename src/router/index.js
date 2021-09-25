@@ -382,7 +382,7 @@ const routes = [
 			{
 				path: "multimedia/:id",
 				name: "MULTIMEDIA DETAIL ADMINISTRATION",
-				component: () => import("@/views/multimedia/MultimediaDetail"),
+				component: () => import("@/views/settings/MultimediaDetail"),
 				meta: {
 					authentication: true,
 					admin: true

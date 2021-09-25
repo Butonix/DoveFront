@@ -188,7 +188,6 @@ export default {
 		...mapMutations("multimedia", ["SET_MULTIMEDIA_TO_VIEW"]),
 		async saveType() {
 			this.loading = true
-			console.log("save", this.updateItemType, this.itemForUpdate)
 			await this.$store.dispatch("multimedia/patch", {id: this.itemForUpdate.id, body: {
 				type: this.updateItemType
 			}})
@@ -204,8 +203,8 @@ export default {
 			await this.$store.dispatch("multimedia/filter", {
 				page: val
 			})
-			this.items = this.multimedias
-			this.totalItems = this.multimedias.count
+			this.items = {results: this.multimedias}
+			this.totalItems = this.multimedias.length
 			this.loading = false
 		},
 		toMultimediaDetail(item) {
