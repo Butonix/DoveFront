@@ -1,7 +1,7 @@
 <template>
 	<v-snackbar
 		v-model="snack"
-		:timeout="3000"
+		:timeout="snackTimeout"
 	>
 		{{ snackText }}
 
@@ -25,7 +25,8 @@ export default {
 	computed: {
 		...mapGetters({
 			snackText: "snack/snackText",
-			snackColor: "snack/snackColor"
+			snackColor: "snack/snackColor",
+			snackTimeout: "snack/snackTimeout",
 		}),
 		snack: {
 			get() {

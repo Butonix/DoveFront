@@ -1,35 +1,30 @@
-export const SET_SNACK = "SET_SNACK"
-export const SET_SNACK_TEXT = "SET_SNACK_TEXT"
-export const SET_SNACK_COLOR = "SET_SNACK_COLOR"
-
 const state = {
 	snack: false,
 	snackColor: "",
-	snackText: ""
+	snackText: "",
+	snackTimeout: 3000
 }
 
 const mutations = {
-	[SET_SNACK](state, value) {
+	SET_SNACK(state, value) {
 		state.snack = value
 	},
-	[SET_SNACK_COLOR](state, value) {
+	SET_SNACK_COLOR(state, value) {
 		state.snackColor = value
 	},
-	[SET_SNACK_TEXT](state, value) {
+	SET_SNACK_TEXT(state, value) {
 		state.snackText = value
+	},
+	SET_SNACK_TIMEOUT(state, value) {
+		state.snackTimeout = value
 	}
 }
 
 const getters = {
-	snackState: state => {
-		return state.snack
-	},
-	snackText: state => {
-		return state.snackText
-	},
-	snackColor: state => {
-		return state.snackColor
-	}
+	snackState: state => state.snack,
+	snackText: state => state.snackText,
+	snackColor: state => state.snackColor,
+	snackTimeout: state => state.snackTimeout
 }
 
 const actions = {
@@ -41,6 +36,9 @@ const actions = {
 	},
 	setSnackColor({commit}, value) {
 		commit("SET_SNACK_COLOR", value)
+	},
+	setSnackTimeout({commit}, value) {
+		commit("SET_SNACK_TIMEOUT", value)
 	}
 }
 
