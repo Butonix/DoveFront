@@ -1,11 +1,12 @@
 <template>
 	<v-dialog
 		v-model="dialog"
-		class="start-post-dialog"
 		max-width="600"
+		transition="scale-transition"
 	>
-		<v-card v-if="$helper.isUserLoggedIn()"
-			elevation="0"
+		<v-card
+			v-if="$helper.isUserLoggedIn()"
+			elevation="0" class="start-post-card"
 		>
 			<input
 				v-show="false"
@@ -38,7 +39,10 @@
 				@change="videoInputChanged"
 			>
 			<v-toolbar
+				rounded="xl"
 				color="#be75bd"
+				height="70"
+				class="toolbar align-center"
 			>
 				<v-icon color="white"
 					large
@@ -657,9 +661,16 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-$dialog-border-radius: 24px
+<style lang="scss" scoped>
+div[role="document"] {
+	::v-deep.v-dialog {
+		border-radius: 24px;
+	}
+}
 
+</style>
+
+<style lang="sass" scoped>
 #title
 	font-size: 20px
 	font-weight: 500
