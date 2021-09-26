@@ -9,7 +9,7 @@ const api = {
 			baseURL: `${BACKEND_HOST}/api/`,
 			headers: {
 				"Content-Type": contentType || "application/json",
-				Accept: "application/json",
+				Accept: "*/*",
 				Authorization:
 				typeof $helper.getAccessToken() !== "string"
 					? null

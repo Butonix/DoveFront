@@ -1,4 +1,7 @@
 module.exports = {
 	transpileDependencies: ["vuetify"],
-	publicPath: "./"
+	publicPath: "./",
+	devServer: {
+		proxy: "https://backend.sachchaikendranepal.org.np"
+	}
 }
