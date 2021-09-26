@@ -13,7 +13,9 @@
 					:disabled="sideNavActive['All']"
 					@click="$router.push({ name: 'HOME'})"
 				>
-					<v-icon left>
+					<v-icon left
+						:color="sideNavActive['All'] ? 'purple': ''"
+					>
 						mdi-all-inclusive
 					</v-icon>
 					All
@@ -27,7 +29,9 @@
 					:disabled="sideNavActive[item.title]"
 					@click="$router.push({ name: 'HOME', query: { type: item.to } })"
 				>
-					<v-icon left>
+					<v-icon left
+						:color="sideNavActive[item.title] ? 'purple': ''"
+					>
 						{{ item.icon }}
 					</v-icon>
 					{{ item.title }}
