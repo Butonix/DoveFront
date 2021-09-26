@@ -237,17 +237,32 @@
 					class="pa-2 mt-2"
 				>
 					<v-col cols="12">
-						<p class="mb-0 subtitle-2">
-							<span>
-								<v-icon
-									size="20"
-									class="mb-1"
-								>
-									mdi-diamond-stone
-								</v-icon>
-							</span>
-							MEDIA PREVIEW PANE
-						</p>
+						<div class="d-flex align-center subtitle-2 mb-2">
+							<v-icon size="20"
+								class="mx-2"
+							>
+								mdi-diamond-stone
+							</v-icon>
+							<div>
+								MEDIA PREVIEW PANE
+							</div>
+							<v-spacer />
+							<v-tooltip bottom>
+								<template #activator="{attrs, on}">
+									<v-chip label
+										class="align-center"
+										v-bind="attrs"
+										v-on="on"
+									>
+										<v-icon class="mr-2">
+											mdi-server
+										</v-icon>
+										<b>{{ totalSize/1000000 }}</b>&nbsp;MB
+									</v-chip>
+								</template>
+								<span>Total Upload Size</span>
+							</v-tooltip>
+						</div>
 						<v-divider />
 					</v-col>
 					<v-col
@@ -466,7 +481,8 @@ export default {
 			title: null,
 			description: null,
 			video_url: null
-		}
+		},
+		totalSize: 0
 	}),
 	computed: {
 		...mapGetters({
@@ -495,6 +511,7 @@ export default {
 			e.target.files.forEach(file => {
 				this.images.push(file)
 				this.imageURLs.push(URL.createObjectURL(file))
+				this.totalSize += file.size
 			})
 		},
 		soundInputChanged(e) {
@@ -506,6 +523,7 @@ export default {
 					src: URL.createObjectURL(file),
 					pic: "https://bd.gaadicdn.com/processedimages/hero/passion-pro-110/640X309/passion-pro-1105e5ddca2e3a50.jpg",
 				})
+				this.totalSize += file.size
 			})
 		},
 		videoInputChanged(e) {
@@ -518,6 +536,7 @@ export default {
 					videoUrl: URL.createObjectURL(file),
 					type: file.type
 				})
+				this.totalSize += file.size
 			})
 		},
 		async resetPostForm() {
