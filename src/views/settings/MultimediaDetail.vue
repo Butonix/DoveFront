@@ -26,7 +26,9 @@
 			</v-icon>
 		</v-card-title>
 		<v-card-subtitle>
-			<v-chip small
+			<v-chip
+				v-if="multimedia.is_approved"
+				small
 				class="ma-1"
 				color="green lighten-3"
 			>
@@ -37,7 +39,9 @@
 				</v-icon>
 				<span class="green--text text--darken-4">{{ multimedia.approved_by.username }}</span>
 			</v-chip>
-			<v-chip small
+			<v-chip
+				v-if="multimedia.is_approved"
+				small
 				class="ma-1"
 				color="green lighten-3"
 			>
