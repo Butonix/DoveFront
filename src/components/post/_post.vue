@@ -88,11 +88,42 @@
 				</v-btn>
 			</v-card-actions>
 			<v-card-actions class="ma-0 pa-0">
-				<v-btn icon
-					color="success"
+				<v-menu
+					v-model="sharePost"
+					absolute rounded="xl"
 				>
-					<v-icon>mdi-share-variant-outline</v-icon>
-				</v-btn>
+					<template #activator="{on, attrs}">
+						<v-btn
+							icon
+							color="success"
+							v-bind="attrs"
+							@click="sharePost = !sharePost"
+							v-on="on"
+						>
+							<v-icon>mdi-share-variant-outline</v-icon>
+						</v-btn>
+					</template>
+					<v-card rounded="xl">
+						<v-list dense
+							rounded
+						>
+							<v-list-item @click="sharePostWithFacebook()">
+								<v-list-item-icon>
+									<v-icon color="blue">
+										mdi-facebook
+									</v-icon>
+								</v-list-item-icon>Facebook
+							</v-list-item>
+							<v-list-item @click="sharePostWithTwitter()">
+								<v-list-item-icon>
+									<v-icon color="indigo">
+										mdi-twitter
+									</v-icon>
+								</v-list-item-icon>Twitter
+							</v-list-item>
+						</v-list>
+					</v-card>
+				</v-menu>
 			</v-card-actions>
 			<v-spacer class="post-action-spacer" />
 			<v-card-actions class="ma-0 pa-0">
@@ -153,6 +184,7 @@ export default {
 	data: () => ({
 		extraStatus: {},
 		commentMode: false,
+		sharePost: false
 	}),
 	computed:{
 		currentUser() {
@@ -208,7 +240,15 @@ export default {
 		},
 		setCommentMode() {
 			this.commentMode = !this.commentMode;
-		}
+		},
+		sharePostWithFacebook(){
+			FB.ui({
+				display: "popup",
+				method: "share",
+				href: "https://developers.facebook.com/docs/",
+			}, function (response){});
+		},
+		sharePostWithTwitter(){}
 	}
 }
 </script>
